@@ -1,0 +1,23 @@
+{
+  "name": "fast-wheel",
+  "version": "1.0.0",
+  "description": "Proyecto integrador del curso de programacion web full stack de DIGITAL HOUSE",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acosta-gonzalo-agustin/Fast-Wheel.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/acosta-gonzalo-agustin/Fast-Wheel/issues"
+  },
+  "homepage": "https://github.com/acosta-gonzalo-agustin/Fast-Wheel#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
