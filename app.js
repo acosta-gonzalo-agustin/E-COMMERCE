@@ -7,7 +7,7 @@ app.listen(3000, function() {
     console.log('servidor montado');
 });
 
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, './public')));
 
 
  

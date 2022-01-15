@@ -20,7 +20,7 @@ Páginas referentes:
 Equipo:
 - Gonzalo Acosta: Soy de la provincia de Córdoba, Argentina. Estudié Ingeniería Química en la Universidad Nacional de Córdoba y trabajé por algunos años en la industria de alimentos. Actualmente estoy estudiando y tratando de insertarme en el sector informático en la rama del desarrollo web.
  
-- Luis Monllor: Soy fan de la informática, uno de mis sueños desde adolescente, es trabajar en este rubro y creo que ahora es mi tiempo de lograrlo, trabaje en muchos rubros, de los que más me gustaros son de instructor de conducir y actualmente de chofer de Transporte público, mis hobbies son: la mecánica automotor, natación y Fornite.
+- Luis Monllor: Soy fan de la informática, uno de mis sueños desde adolescente, es trabajar en este rubro y creo que ahora es mi tiempo de lograrlo, trabaje en muchos rubros, de los que más me gustaron son de instructor de conducir y actualmente de chofer de Transporte público, mis hobbies son: la mecánica automotor, natación y Fornite.
  
 - Nataly Arbeláez Núñez: Soy Ingeniera Electrónica, me apasiona la informática y la búsqueda de información. Soy una persona que actúa con mucha tenacidad con el fin de alcanzar sus metas. También me encanta ir al cine y viajar.
 
