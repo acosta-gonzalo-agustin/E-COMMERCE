@@ -5,7 +5,7 @@ p{
 }
 
 
-/*   estilos de la vista login */
+/*   ESTILOS DE LA VISTA LOGIN */
 
 
 
@@ -26,4 +26,38 @@ form {
         width: 80vh;
     }
     
+}
+
+.password {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: nowrap;    
+}
+
+.password button {
+    flex-grow: 10;
+    width: 100%;
+}
+
+
+
+/*   ESTILOS DE LA VISTA REGISTER */
+
+
+
+form.registro {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.alinear {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.alinear div {
+    flex-grow: 0.45;
 }
