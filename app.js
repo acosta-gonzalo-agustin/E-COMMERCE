@@ -35,3 +35,7 @@ app.get('/register',function(req,res) {
 app.get('/shopping-cart',function(req,res) {
     res.sendFile(path.join(__dirname,'views/shopping-cart.html'));
 });
+
+app.get('/about-us',function(req,res) {
+    res.sendFile(path.join(__dirname,'views/about-us.html'));
+});
