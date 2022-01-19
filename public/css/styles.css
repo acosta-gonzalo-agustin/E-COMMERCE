@@ -1,0 +1,23 @@
+/*   estilos de la vista login */
+
+
+
+form {
+    width: 90vw;
+    margin: 0 auto;
+    margin-top: 5vh;
+    border-radius: 0.25rem;
+    border: 1px solid #ced4da;
+    padding: 10px;
+}
+
+
+
+@media (min-width: 480px) {
+
+    form {
+        width: 80vh;
+    }
+    
+}
+
