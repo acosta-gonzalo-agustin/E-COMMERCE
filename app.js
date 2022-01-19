@@ -15,3 +15,23 @@ app.use(express.static(path.join(__dirname, './public')));
 app.get('/home',function(req,res) {
     res.sendFile(path.join(__dirname,'views/index.html'));
 });
+
+app.get('/login',function(req,res) {
+    res.sendFile(path.join(__dirname,'views/login.html'));
+});
+
+app.get('/product-detail',function(req,res) {
+    res.sendFile(path.join(__dirname,'views/product-detail.html'));
+});
+
+app.get('/product-listing',function(req,res) {
+    res.sendFile(path.join(__dirname,'views/product-listing.html'));
+});
+
+app.get('/register',function(req,res) {
+    res.sendFile(path.join(__dirname,'views/register.html'));
+});
+
+app.get('/shopping-cart',function(req,res) {
+    res.sendFile(path.join(__dirname,'views/shopping-cart.html'));
+});
