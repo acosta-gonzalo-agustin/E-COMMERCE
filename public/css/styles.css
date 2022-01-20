@@ -28,6 +28,8 @@ form {
     
 }
 
+/** ESTILOS DEL REGISTER */
+
 .password {
     display: flex;
     flex-direction: column;
@@ -47,9 +49,9 @@ form {
 
 
 form.registro {
-    display: flex;
+    /*display: flex;
     flex-direction: column;
-
+    */
 }
 
 .alinear {
