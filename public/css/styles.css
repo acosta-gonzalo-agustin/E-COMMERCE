@@ -10,7 +10,7 @@ h5{
 
 
 
-form {
+.formulario {
     width: 90vw;
     margin: 0 auto;
     margin-top: 5vh;
@@ -23,13 +23,11 @@ form {
 
 @media (min-width: 480px) {
 
-    form {
+    .formulario {
         width: 80vh;
     }
     
 }
-
-/** ESTILOS DEL REGISTER */
 
 .password {
     display: flex;
@@ -43,24 +41,36 @@ form {
     width: 100%;
 }
 
+/*--------------------------------------- ESTILOS DEL REGISTER---------------------------------------- */
 
 
-/*   ESTILOS DE LA VISTA REGISTER */
-
-
-
-form.registro {
-    /*display: flex;
-    flex-direction: column;
-    */
-}
-
-.alinear {
+.registro {
     display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
+    flex-direction: column;
 }
 
-.alinear div {
-    flex-grow: 0.45;
+.boton  {
+    flex-grow: 1;
+    justify-self: flex-end;
 }
+
+
+
+@media (min-width:480px) {
+    .alinear {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+    
+    .alinear div{
+    
+        flex-grow: 0.45;
+    }
+    .boton  {
+        align-self:flex-end;
+
+    }
+    
+}
+
