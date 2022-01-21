@@ -3,6 +3,22 @@
 
 
 
+/*--------------------------------- ESTILOS DEL FORMULARIO DE BUSQUEDA DE AUTOS--------------------------*/
+
+
+@media (min-width:470px) {
+
+    .busqueda {
+        margin-left: 10% !important;
+        
+    }
+
+    
+}
+
+
+
+
 /*---------------------------------   ESTILOS DE LA VISTA LOGIN -----------------------------------------*/
 
 
@@ -59,11 +75,15 @@
         flex-wrap: nowrap;
         justify-content: space-between;
     }
+
+    .ancho-hijos {
+        width: 8rem;
+    }
     
     .alinear div{
-    
         flex-grow: 0.45;
     }
+
     .boton  {
         align-self:flex-end;
 

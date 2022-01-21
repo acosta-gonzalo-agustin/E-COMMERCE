@@ -102,13 +102,14 @@
    </section>
                 
         <section>
-          <form class = 'formulario registro'>
+          <!--------------------formulario para reserva de autos-------------------------------->
+          <form action = 'product-listing'  method="get"  class = 'formulario registro busqueda'>
             <div>
               <h3>COMIENZA TU AVENTURA</h3>
             </div>
             
             <div class = 'alinear'>
-              <div class="mb-3">
+              <div class="mb-3 ancho-hijos">
                 <select class="form-select" aria-label="Default select example">
                   <option selected>Ciudad retiro</option>
                   <option value="1">Buenos Aires</option>
@@ -116,7 +117,7 @@
                   <option value="3">Bogota</option>
                 </select>
               </div>
-              <div class="mb-3">
+              <div class="mb-3 ancho-hijos">
                 <select class="form-select" aria-label="Default select example">
                   <option selected>Ciudad devolución</option>
                   <option value="1">Buenos Aires</option>
@@ -126,11 +127,11 @@
               </div>
             </div>
             <div class = 'alinear'>
-              <div class="mb-3">
+              <div class="mb-3 ancho-hijos">
                 <label for="fecha-recogida"></label>Fecha de recogida
                 <input type="date" class="form-control" id="fecha-recogida">
               </div>
-              <div class="mb-3">
+              <div class="mb-3 ancho-hijos">
                 <label for="hora-recogida"></label>Hora recogida
                 <select id = 'hora-recogida'class="form-select" aria-label="Default select example">
                   <option value="1">10:00</option>
@@ -149,11 +150,11 @@
               </div>
             </div>
             <div class = 'alinear'>
-              <div class="mb-3">
+              <div class="mb-3 ancho-hijos">
                 <label for="fecha-devolucion"></label>Fecha de devolución
-                <input type="date" class="form-control" id="fecha-devolución">
+                <input type="date" class="form-control fechas" id="fecha-devolución">
               </div>
-              <div class="mb-3">
+              <div class="mb-3 ancho-hijos">
                 <label for="hora-devolución"></label>Hora devolución
                 <select id = 'hora-devolución'class="form-select" aria-label="Default select example">
                   <option value="1">10:00</option>
