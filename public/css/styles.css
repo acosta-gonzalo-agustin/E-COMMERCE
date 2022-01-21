@@ -6,11 +6,24 @@
 /*--------------------------------- ESTILOS DEL FORMULARIO DE BUSQUEDA DE AUTOS--------------------------*/
 
 
-@media (min-width:470px) {
+
+
+
+@media (min-width:480px) {
 
     .busqueda {
-        margin-left: 10% !important;
+        margin-left: 4% !important;
+        margin-top: 0 !important;
+        background-color: white;
         
+    }
+
+    .imagen-flia {
+        padding: 8%;
+        margin-bottom: 4vh;
+        background-image: url('../img/imagen-entrada.jpg');
+        background-position: center;
+        background-size: cover;
     }
 
     
