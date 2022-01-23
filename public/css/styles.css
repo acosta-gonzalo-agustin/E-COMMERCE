@@ -175,3 +175,29 @@
     
         
     }
+
+    /*---------------------------------   ESTILOS DEL FOOTER -----------------------------------------*/
+
+
+    footer {
+        box-sizing: border-box;
+        background-color: rgba(255, 100, 1);
+        padding: 2%;
+        display: flex;
+        justify-content: space-around;
+        position: relative;
+        bottom: 0;
+        
+       
+
+    }
+
+    footer .container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .container li {
+        list-style: none;
+
+    }
