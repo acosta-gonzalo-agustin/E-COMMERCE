@@ -39,3 +39,11 @@ app.get('/shopping-cart',function(req,res) {
 app.get('/about-us',function(req,res) {
     res.sendFile(path.join(__dirname,'views/about-us.html'));
 });
+
+app.get('/FAQ',function(req,res) {
+    res.sendFile(path.join(__dirname,'views/FAQ.html'));
+});
+
+app.get('/cities',function(req,res) {
+    res.sendFile(path.join(__dirname,'views/cities-listing.html'));
+});
