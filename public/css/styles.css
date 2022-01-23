@@ -5,19 +5,25 @@
     border-radius:  10px;
 }
 
+.color {
+    color:rgba(255, 69, 0,.6);
+
+}
+
 
 /*--------------------------------- ESTILOS DEL FORMULARIO DE BUSQUEDA DE AUTOS--------------------------*/
 
 
-
-
+.titulo {
+    color:white;
+}
 
 @media (min-width:480px) {
 
     .busqueda {
         margin-left: 4% !important;
         margin-top: 0 !important;
-        background-color: white;
+        background-color: rgba(255, 69, 0,.6);
         
     }
 
@@ -111,7 +117,7 @@
 
 
 .publicidad-ofertas {
-    background-color: orangered;
+    background-color: rgb(255, 69, 0);
     width: 50vw;
     margin: 0 auto;
     margin-top: 5vh;
