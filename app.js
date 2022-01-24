@@ -41,7 +41,7 @@ app.get('/about-us',function(req,res) {
 });
 
 app.get('/FAQ',function(req,res) {
-    res.sendFile(path.join(__dirname,'views/FAQ.html'));
+    res.sendFile(path.join(__dirname,'views/FAQs.html'));
 });
 
 app.get('/cities',function(req,res) {
