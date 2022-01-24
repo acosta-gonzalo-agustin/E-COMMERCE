@@ -1,3 +1,10 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
 /*---------------------------------------   ESTILOS DE LA BARRA DE NAVEGACION ----------------------- */
 
 .img-logo {
@@ -22,12 +29,14 @@
 
     .busqueda {
         margin-left: 4% !important;
-        margin-top: 0 !important;
+        margin-top: 1% !important;
         background-color: rgba(255, 69, 0,.6);
         
     }
 
     .imagen-flia {
+        position: relative;
+        margin-top: 7%;
         padding: 8%;
         margin-bottom: 4vh;
         background-image: url('../img/imagen-entrada.jpg');
@@ -185,10 +194,8 @@
         padding: 2%;
         display: flex;
         justify-content: space-around;
-        position: relative;
-        bottom: 0;
-        
-       
+        margin-top:auto;  
+
 
     }
 
