@@ -2,6 +2,8 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    gap: 3vh;
+
 }
 
 
@@ -29,14 +31,13 @@ body {
 
     .busqueda {
         margin-left: 4% !important;
-        margin-top: 1% !important;
         background-color: rgba(255, 69, 0,.6);
         
     }
 
     .imagen-flia {
         position: relative;
-        margin-top: 7%;
+        margin-top: 6%;
         padding: 8%;
         margin-bottom: 4vh;
         background-image: url('../img/imagen-entrada.jpg');
@@ -47,6 +48,22 @@ body {
     
 }
 
+/*------------------------------------------ESTILO SECCION CIUDADES---------------------------------*/
+
+
+.ciudades {
+    text-align: center;
+}
+
+.tarjeta-ciudades {
+    display: flex;
+    justify-content: center;
+    gap: 2vw;
+}
+
+.img {
+    
+}
 
 
 
@@ -208,3 +225,11 @@ body {
         list-style: none;
 
     }
+
+
+    /*---------------------------ESTILOS VISTA FAQ---------------------------------*/
+
+.faqs {
+    width: 60vw;
+    margin: 2vh auto;
+}
