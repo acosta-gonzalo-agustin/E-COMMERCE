@@ -1,6 +1,4 @@
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
 
@@ -53,23 +51,49 @@ body {
 
     
 }
+/*--------------------------------------ESTILO CARROUSELL---------------------------------------*/
+
+
+.vehicu-carru{
+    font-size: 200%;
+    background-color:orangered;
+    opacity:0.75;
+    border-radius: 10px;
+    width: 60%;
+    
+}
+
+.parra-carru{
+    font-size: 120%;
+    background-color: white;
+    border-radius: 10px;
+    color: orangered;
+    opacity:0.75;
+    width:60%
+}
+
+
+
+
+
 
 /*------------------------------------------ESTILO SECCION CIUDADES---------------------------------*/
 
 
 .ciudades {
     text-align: center;
+    
 }
 
 .tarjeta-ciudades {
-    display: flex;
     justify-content: center;
     gap: 2vw;
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.img {
+
     
-}
 
 
 
@@ -149,7 +173,7 @@ body {
 
 
 .publicidad-ofertas {
-    background-color: rgb(255, 69, 0);
+    background-color:rgb(255, 69, 0);
     width: 50vw;
     margin: 0 auto;
     margin-top: 5vh;
@@ -160,32 +184,10 @@ body {
 
     }
 
-
-    h4 {
-        box-sizing: border-box;
-        width: 15rem;
-        padding: 10vw, 20vh;
-        color: white;
-        background-color: orangered;
-        text-align: center;
-        border-radius: 0.5rem;
-    }
-
-    h5 {
-        text-align: center;
-
-    }
-
-    p {
-        background-color:black;
-        font-size: 30px;
-        text-align: center;
-        border-radius: 1rem;
-    }
-
     .ingresa-correo{
         color :white;
         font-size: 1.5rem;
+        text-align: center;
     }
 
 
@@ -193,19 +195,36 @@ body {
     /*--------------------------------------STILO DE QUIENES SOMOS--------------------------------*/
 
 
-    @media (min-width:480px) {
+    @media (min-width:380px) {
 
-       
-    
-        .imagen-quienes-somos {
-            padding: 20%;
-            margin-bottom: 4vh;
+        .publicidad-ofertas {
+           
+            width: 40%;
+            background-color: orangered;
+            text-align: center;
+            border-radius: 0.5rem;
+        }
+        .main-about {
+            margin-top: 6%;
+            padding: 15%;
             background-image: url('../img/concesio.jpg');
             background-position: center;
             background-size: cover;
+            display:flex;
+            flex-wrap: wrap;
+            font-size: 150%;
+            color: white;
+            
+        }
+        .parra-requi{
+            background-color: black;
+            text-align: center;
+            color: white;
+            padding: auto;
+            height: 150px;
+            font-size: 150%;
         }
     
-        
     }
 
     /*---------------------------------   ESTILOS DEL FOOTER -----------------------------------------*/
