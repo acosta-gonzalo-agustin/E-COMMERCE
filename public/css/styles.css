@@ -324,6 +324,13 @@ div.filtro {
         font-size: 150%;
         color: white;
         
+        
+    }
+    .main-gene-about{
+        
+        display:flex;
+        flex-direction: column;
+    
     }
     .parra-requi{
         background-color: black;
@@ -347,6 +354,15 @@ div.filtro {
         background-image: url('../img/imagen-entrada.jpg');
         background-size: 100%;
     }
+    .main-city{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+    
+    }
+
+
 
 }   
     
