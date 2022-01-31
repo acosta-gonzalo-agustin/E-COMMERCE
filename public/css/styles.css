@@ -129,7 +129,6 @@ div.filtro {
 
 .lista-productos {
     margin-top: 5vh;
-    flex-grow: 0.85;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -151,8 +150,28 @@ div.filtro {
 .lista-productos .item {
     border: solid lightgrey 1px;
     width: 90%;
+    max-width: none;
 
 }
+/*
+.reserva-derecha {
+    
+    display: flex;
+    flex-direction: row;
+    
+}
+*/
+.reserva {
+    width: 100%;
+
+}
+
+.item ul {
+    list-style:none; 
+    padding-left:0;
+
+}
+
 
 
 
@@ -350,6 +369,25 @@ div.filtro {
         flex-direction: row;
         gap: 10px;
     }
+
+    .reserva-derecha {
+        position: relative;
+    }
+
+    .reserva {
+        width: auto;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+
+    .lista-productos {
+
+        flex-grow: 1;
+
+    }
+
+    
 
     
 }  
