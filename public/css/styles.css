@@ -104,7 +104,35 @@ body {
 
 
     
+/*---------------------------------   ESTILOS DE LA VISTA PRODUCT-LISTING -----------------------------------------*/
 
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+div.filtro {
+    text-align: center;
+    width:100%;
+    margin: 0 auto;
+    background-color: rgb(235, 235, 235);
+}
+
+.lista-productos {
+    margin-top: 5vh;
+}
+
+.lista-productos .container {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.lista-productos .carousel {
+    width: 30%;
+}
 
 
 /*---------------------------------   ESTILOS DE LA VISTA LOGIN -----------------------------------------*/
@@ -231,6 +259,8 @@ body {
 
     }
 
+    
+
     /*--------------------------------------STILO DE QUIENES SOMOS--------------------------------*/
 
     .publicidad-ofertas {
@@ -280,6 +310,14 @@ body {
 @media (min-width: 769px) {
     .formulario {
         width: 600px;
+    }
+
+    /*------------------------------------- ESTILO LISTA PRODUCTOS FILTRADOS------------------------------------------*/
+
+
+    main {
+        flex-direction: row;
+        gap: 10px;
     }
 
     

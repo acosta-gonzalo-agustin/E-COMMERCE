@@ -62,22 +62,113 @@
   
       </header>
 
-      <main class = 'lista-productos'>
-        <div class="container">
-          <div class="row">
-            <div class="col">
-              Column
+      <div class="filtro">
+        <div class="container">07/03 10:00</div>
+        <div class="container">10/10 10:00</div>
+        <div class="container">Entrega:Cordoba</div>
+        <div class="container">Devolucion:Buenso Aires</div>
+
+      </div>
+
+      <main class="container">
+
+        <form action = 'product-listing'  method="get"  class = 'formulario registro busqueda'>
+          <div>
+            <h4 class = 'titulo'>NUEVA BUSQUEDA</h4>
+          </div>
+          
+          <div class = 'alinear'>
+            <div class="mb-1 ancho-hijos">
+              <select class="form-select" aria-label="Default select example">
+                <option selected>Ciudad retiro</option>
+                <option value="1">Buenos Aires</option>
+                <option value="2">Córdoba</option>
+                <option value="3">Bogota</option>
+              </select>
             </div>
-            <div class="col">
-              Column
-            </div>
-            <div class="col">
-              Column
+            <div class="mb-1 ancho-hijos">
+              <select class="form-select" aria-label="Default select example">
+                <option selected>Ciudad devolución</option>
+                <option value="1">Buenos Aires</option>
+                <option value="2">Córdoba</option>
+                <option value="3">Bogota</option>
+              </select>
             </div>
           </div>
+          <div class = 'alinear'>
+            <div class="mb-1 ancho-hijos">
+              <label for="fecha-recogida"></label>Fecha de entrega
+              <input type="date" class="form-control" id="fecha-recogida">
+            </div>
+            <div class="mb-1 ancho-hijos">
+              <label for="hora-recogida"></label>Hora entrega
+              <select id = 'hora-recogida'class="form-select" aria-label="Default select example">
+                <option value="1">10:00</option>
+                <option value="2">11:00</option>
+                <option value="3">12:00</option>
+                <option value="4">13:00</option>
+                <option value="5">14:00</option>
+                <option value="6">15:00</option>
+                <option value="7">16:00</option>
+                <option value="8">17:00</option>
+                <option value="9">18:00</option>
+                <option value="10">19:00</option>
+                <option value="12">20:00</option>
+                <option value="12">21:00</option>
+              </select>
+            </div>
+          </div>
+          <div class = 'alinear'>
+            <div class="mb-1 ancho-hijos">
+              <label for="fecha-devolucion"></label>Fecha de devolución
+              <input type="date" class="form-control fechas" id="fecha-devolución">
+            </div>
+            <div class="mb-1 ancho-hijos">
+              <label for="hora-devolución"></label>Hora devolución
+              <select id = 'hora-devolución'class="form-select" aria-label="Default select example">
+                <option value="1">10:00</option>
+                <option value="2">11:00</option>
+                <option value="3">12:00</option>
+                <option value="4">13:00</option>
+                <option value="5">14:00</option>
+                <option value="6">15:00</option>
+                <option value="7">16:00</option>
+                <option value="8">17:00</option>
+                <option value="9">18:00</option>
+                <option value="10">19:00</option>
+                <option value="12">20:00</option>
+                <option value="12">21:00</option>
+              </select>
+            </div>
+          </div>
+  
+          
+        <div class = 'registro boton'>
+          <button type="submit" class="btn">Enviar</button>
+        </div>
+      </form>
+
+
+      <div class = 'lista-productos'>
+        <div class="container">
+            <div>
+              <img src="img/" alt="">
+            </div>
+            <div>
+              Column
+            </div>
+            <div>
+              Column
+            </div>
         </div>
 
-      </main>
+      </div>
+
+    </main>
+
+      
+
+      
 
 
       <footer>
