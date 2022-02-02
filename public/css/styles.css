@@ -419,11 +419,40 @@ div.filtro .container {
     .main-city{
         display: flex;
         flex-direction: column;
-        width: 100%;
+        background-color: rgba(255, 100, 1);
+        color: white;
 
+    }
+    
+    .imagen-bsas{
+        width: 100%;
     
     }
+    .titulo-citys{
+        text-align: center;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    .parra-citys{
+        text-align: center;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
 
+    .imagen-bogota{
+        width: 100%;
+
+    }
+
+
+    .imagen-cordoba{
+        width: 100%;
+
+    }
+
+
+    .imagen-rosario{
+        width: 100%;
+
+    }
 
 
 }   
