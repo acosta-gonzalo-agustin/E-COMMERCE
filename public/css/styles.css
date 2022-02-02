@@ -164,6 +164,11 @@ main form.tamanio {
     align-self:baseline;
 }
 
+.dos-forms {
+    display: flex;
+    flex-direction: column;
+}
+
 
 div.filtro {
     text-align: center;
