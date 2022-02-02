@@ -27,6 +27,18 @@ body {
     background-color: orange;
 }
 
+.form-control:focus {
+    box-shadow: 2px 2px 8px 2px  orange;
+    border: orange;
+}
+
+.form-select:focus {
+    box-shadow: 2px 2px 8px 2px  orange;
+    border: orange;
+}
+
+
+
 /*--------------------------------- ESTILOS DEL FORMULARIO DE BUSQUEDA DE AUTOS--------------------------*/
 
 
@@ -39,6 +51,7 @@ body {
     
 
 /*--------------------------------------ESTILO CARROUSELL---------------------------------------*/
+
 
 
 .vehicu-carru{
@@ -59,7 +72,37 @@ body {
     width:60%
 }
 
+.calesita {
+    margin-top: 5%;
+    margin-bottom: 40px!important;
+}
 
+.card-body {
+    border-top: solid lightgrey 1px;
+}
+
+.calesita {
+    width: 80%;
+    margin: 0 auto;
+    
+}
+
+.calesita .row {
+    justify-content: center;
+}
+
+P {
+    font-size: 1em;
+}
+
+.calesita h1 {
+    text-align: center;
+}
+
+
+.slide {
+    height: 74%;
+}
 
 
 
@@ -69,6 +112,9 @@ body {
 
 .ciudades {
     text-align: center;
+    background-color: #d3d3d359;
+    padding-bottom: 10%;
+    padding-top: 4%;
     
 }
 
@@ -122,9 +168,21 @@ main form.tamanio {
 div.filtro {
     text-align: center;
     width:100%;
-    margin: 0 auto;
     background-color: rgb(235, 235, 235);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     
+}
+
+div.filtro .container {
+    font-size: 200%;
+}
+
+.fa-arrow-right {
+    color: orange;
+    font-size: 300%;
+    align-self: center;
 }
 
 .lista-productos {
@@ -153,14 +211,7 @@ div.filtro {
     max-width: none;
 
 }
-/*
-.reserva-derecha {
-    
-    display: flex;
-    flex-direction: row;
-    
-}
-*/
+
 .reserva {
     width: 100%;
 
@@ -171,6 +222,8 @@ div.filtro {
     padding-left:0;
 
 }
+
+
 
 
 
@@ -257,6 +310,15 @@ div.filtro {
     margin: 2vh auto;
 }
 
+.accordion-button:not(.collapsed) {
+    background-color: orange;
+    box-shadow: inset 0 -1px 0 white;
+    color: white;
+}
+
+.accordion-header:active {
+    box-shadow: 1px 2px 3px 4px orange;
+}
 
 
 /*---------------------------------- -----MEDIA QUERIES-------------------------------------------------------*/
@@ -393,14 +455,19 @@ div.filtro {
     .reserva {
         width: auto;
         position: absolute;
-        bottom: 0;
-        right: 0;
+        bottom: 2%;
+        right: 2%;
     }
 
     .lista-productos {
 
         flex-grow: 1;
 
+    }
+
+    div.filtro {
+        flex-direction: row;
+        
     }
 
     
