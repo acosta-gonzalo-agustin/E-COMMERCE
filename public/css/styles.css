@@ -290,7 +290,7 @@ div.filtro .container {
         background-color: rgba(255, 100, 1);
         padding: 2%;
         display: flex;
-        justify-content: space-around;
+        flex-direction: column;
         margin-top:auto;  
 
 
@@ -301,8 +301,14 @@ div.filtro .container {
         justify-content: center;
     }
 
+    footer .container ul {
+        padding-left:0;
+    }
+   
+
     footer .container li {
         list-style: none;
+        text-align: left;
 
     }
 
@@ -458,6 +464,10 @@ div.filtro .container {
 
     }
 
+    footer {
+        flex-direction: row;
+    }
+
 
 }   
     
@@ -502,8 +512,6 @@ div.filtro .container {
         flex-direction: row;
         
     }
-
-    
-
-    
+  
+  
 }  
