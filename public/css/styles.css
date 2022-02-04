@@ -292,14 +292,9 @@ div.filtro .container {
         display: flex;
         flex-direction: column;
         margin-top:auto;  
-
-
     }
 
-    footer .container {
-        display: flex;
-        justify-content: center;
-    }
+
 
     footer .container ul {
         padding-left:0;
@@ -309,8 +304,15 @@ div.filtro .container {
     footer .container li {
         list-style: none;
         text-align: left;
+        color: white;
 
     }
+
+    footer .img-logo {
+        height: 8vh;
+    }
+
+  
 
 
     /*---------------------------ESTILOS VISTA FAQ---------------------------------*/
