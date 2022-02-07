@@ -2,6 +2,7 @@
     box-sizing: border-box;
 }
 
+
 body {
     display: flex;
     flex-direction: column;
@@ -34,6 +35,12 @@ body {
 .form-select:focus {
     box-shadow: 2px 2px 8px 2px  orange;
     border: orange;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 
@@ -285,28 +292,28 @@ div.filtro .container {
     /*---------------------------------   ESTILOS DEL FOOTER -----------------------------------------*/
 
 
-    footer {
+footer {
         box-sizing: border-box;
         background-color: rgba(255, 100, 1);
         padding: 2%;
         display: flex;
         flex-direction: column;
         margin-top:auto;  
-    }
+}
 
 
 
-    footer .container ul {
+footer .container ul {
         padding-left:0;
-    }
+}
    
 
-    footer .container li {
+footer .container li {
         list-style: none;
         text-align: left;
         color: white;
 
-    }
+}
 
     footer .img-logo {
         height: 8vh;
@@ -388,7 +395,6 @@ div.filtro .container {
         border-radius: 0.5rem;
     }
     .main-about {
-        margin-top: 6%;
         padding: 15%;
         background-image: url('../img/concesio.jpg');
         background-position: center;
