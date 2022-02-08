@@ -275,6 +275,7 @@ div.filtro .container {
 .registro {
     display: flex;
     flex-direction: column;
+    background-color: gainsboro;
 }
 
 .boton  {
@@ -282,9 +283,11 @@ div.filtro .container {
     justify-self: flex-end;
 }
 
-
-
-
+.main-register{
+    background-image: url('../img/fondo-registro.jpg');
+    align-items: baseline;
+    height: 700px;
+}
 
 
 
