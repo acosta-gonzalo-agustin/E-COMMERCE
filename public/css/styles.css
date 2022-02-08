@@ -126,9 +126,13 @@ P {
 
 .tarjeta-ciudades {
     justify-content: center;
-    gap: 2vw;
+    gap: 10px;
     display: flex;
     flex-wrap: wrap;
+}
+
+.card {
+    width: 80%;
 }
 
 
@@ -383,6 +387,12 @@ footer .container li {
 
     }
 
+    /*-------------------------------------INDEX - CIUDADES---------------------------------------------------*/
+
+    .card {
+        width: 40%;
+    }
+
     
 
     /*--------------------------------------STILO DE QUIENES SOMOS--------------------------------*/
@@ -519,6 +529,12 @@ footer .container li {
     div.filtro {
         flex-direction: row;
         
+    }
+
+    /*-------------------------------------INDEX - CIUDADES---------------------------------------------------*/
+
+    .card {
+        width: 23%;
     }
   
   
