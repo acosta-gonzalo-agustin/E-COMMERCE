@@ -141,7 +141,7 @@ P {
 
 .publicidad-ofertas {
     background-color:rgb(255, 69, 0);
-    width: 50vw;
+    width: 80vw;
     margin: 0 auto;
     margin-top: 5vh;
     border-radius: 1rem;
@@ -347,7 +347,7 @@ footer .container li {
 }
 
 
-/*---------------------------------- -----MEDIA QUERIES-------------------------------------------------------*/
+/*----------------------------------------MEDIA QUERIES-------------------------------------------------------*/
 
 
 
@@ -401,8 +401,6 @@ footer .container li {
     /*--------------------------------------STILO DE QUIENES SOMOS--------------------------------*/
 
     .publicidad-ofertas {
-           
-        width: 40%;
         background-color: orangered;
         text-align: center;
         border-radius: 0.5rem;
@@ -490,7 +488,11 @@ footer .container li {
     }
 
 
-}   
+}
+
+
+
+
     
 @media (min-width: 769px) {
     .formulario {
@@ -539,6 +541,25 @@ footer .container li {
     .card {
         width: 23%;
     }
+
+    /*----------------------------------------INDEX-PUBLICIDAD OFERTA---------------------------------------------------*/
+
+    .publicidad-ofertas {
+
+        width: 60vw;
+
+    
+    }
   
   
-}  
+}
+
+
+
+@media (min-width:1280px) {
+    .publicidad-ofertas {
+        width: 40vw;
+    
+        }
+    
+}
