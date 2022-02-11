@@ -221,10 +221,16 @@ div.filtro .container {
 }
 
 .lista-productos .item {
+    border-radius: 0.8em;
     border: solid lightgrey 1px;
     width: 90%;
     max-width: none;
 
+}
+
+.presupuesto {
+    background-color: lightgray;
+    width:100%;
 }
 
 .reserva {
@@ -236,6 +242,10 @@ div.filtro .container {
     list-style:none; 
     padding-left:0;
 
+}
+
+.escondido {
+    display: none;
 }
 
 
@@ -280,6 +290,7 @@ div.filtro .container {
     display: flex;
     flex-direction: column;
     background-color: gainsboro;
+    
 }
 
 .boton  {
@@ -528,13 +539,8 @@ footer .container li {
     .reserva-derecha {
         position: relative;
     }
-
-    .reserva {
-        width: auto;
-        position: absolute;
-        bottom: 2%;
-        right: 2%;
-    }
+    
+    
 
     .lista-productos {
 
@@ -546,6 +552,12 @@ footer .container li {
         flex-direction: row;
         
     }
+    
+
+    .escondido {
+        display: block;
+    }
+    
 
     /*-------------------------------------INDEX - CIUDADES---------------------------------------------------*/
 
@@ -572,5 +584,21 @@ footer .container li {
         width: 40vw;
     
         }
+
+    .presupuesto {
+        width: 45%;
+        position: absolute;
+        bottom: 12%;
+        right: 2%;
+    
+    }
+    
+    .reserva {
+
+        width: 45%;
+        position: absolute;
+        bottom: 2%;
+        right: 2%;
+    }
     
 }
