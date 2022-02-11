@@ -444,7 +444,18 @@ footer .container li {
         margin-bottom: 4vh;
         background-image: url('../img/imagen-entrada.jpg');
         background-size: 100%;
+        background-repeat: no-repeat;
     }
+
+    /*------------------------------------------ FORMULARIO ---------------------------------------------------*/
+
+    .formulario {
+        margin-top: 2vh;
+
+    }
+
+
+
     .main-city{
         display: flex;
         flex-direction: column;
