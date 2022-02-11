@@ -17,19 +17,19 @@ app.get('/',function(req,res) {
 });
 
 app.get('/login',function(req,res) {
-    res.sendFile(path.join(__dirname,'views/login.html'));
+    res.sendFile(path.join(__dirname,'views/users/login.html'));
 });
 
 app.get('/product-detail',function(req,res) {
-    res.sendFile(path.join(__dirname,'views/product-detail.html'));
+    res.sendFile(path.join(__dirname,'views/products/product-detail.html'));
 });
 
 app.get('/product-listing',function(req,res) {
-    res.sendFile(path.join(__dirname,'views/product-listing.html'));
+    res.sendFile(path.join(__dirname,'views/products/product-listing.html'));
 });
 
 app.get('/register',function(req,res) {
-    res.sendFile(path.join(__dirname,'views/register.html'));
+    res.sendFile(path.join(__dirname,'views/users/register.html'));
 });
 
 app.get('/shopping-cart',function(req,res) {
