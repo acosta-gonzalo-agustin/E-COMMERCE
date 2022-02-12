@@ -6,6 +6,8 @@ app.use(express.static(path.join(__dirname, './public')));
 /*-----------------------------IMPORTANDO RUTAS---------------------------------------------*/
 
 const homeRoute = require('./src/routes/homeRoute');
+const aboutUsRoute = require('./src/routes/aboutUsRoute');
+const productRoute = require('./src/routes/productRoute');
 
 
 
@@ -26,3 +28,7 @@ app.listen(process.env.PORT || 3000, function() {
 /*------------------------------------------ESTABLECIENDO LAS RUTAS----------------------------------*/
 
 app.use('/',homeRoute);
+
+app.use('/about-us',aboutUsRoute);
+
+app.use('/product',productRoute);
