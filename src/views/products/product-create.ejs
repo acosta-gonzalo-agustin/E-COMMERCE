@@ -40,7 +40,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/register">Crear producto</a>
             </li>
-        
+
             <li class="nav-item">
               <a class="nav-link" href="/FAQ">Usuarios</a>
             </li>
@@ -68,8 +68,8 @@
         <input type="text" class="form-control" id="apellido" placeholder="Marca">
       </div>
       <div class="mb-3">
-        <label for="imagenes">Seleccione una o varias imagenes para el producto:</label>
-        <input type="file" name="imagenes" accept=".jpg, .png,.jpeg" multiple>
+        <label for="formFileMultiple" class="form-label">Seleccione una o varias imagenes para el producto:</label>
+        <input class="form-control" type="file" id="formFileMultiple" multiple>
       </div>
       <div class="mb-3">
         <select class="form-select">
@@ -92,31 +92,79 @@
         </select>
       </div>
       <div class="mb-3">
-        <label for="caja">Caja de cambio</label><br>
-        <input type="radio" name="caja" value="Manual">Manual 
-        <input type="radio" name="caja" value="Automatico" checked>Automatico
+        <div class="form-check form-check-inline">
+          <label for="caja">Caja de cambio</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="M">
+          <label class="form-check-label" for="inlineRadio1">Manual</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="A">
+          <label class="form-check-label" for="inlineRadio2">Automático</label>
+        </div>
       </div>
       <div class="mb-3">
-        <label for="airbag">Airbag</label><br>
-        <input type="radio" name="airbag" value="Si">Si 
-        <input type="radio" name="airbag" value="No" checked>No
+        <div class="form-check form-check-inline">
+          <label for="caja">Airbag</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="S">
+          <label class="form-check-label" for="inlineRadio1">Si</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="N">
+          <label class="form-check-label" for="inlineRadio2">No</label>
+        </div>
       </div>
       <div class="mb-3">
         <label for="adicionales">Adicionales</label> <br>
-        <input type="checkbox" name="adicionales">AM/FM Stereo con CD <br>
-        <input type="checkbox" name="adicionales">Bluetooth <br>
-        <input type="checkbox" name="adicionales">Reproductor MP3 <br>
-        <input type="checkbox" name="adicionales">Sistema de frenos ABS <br>
-        <input type="checkbox" name="adicionales">Doble Airbag <br>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            AM/FM Stereo con CD
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+          <label class="form-check-label" for="flexCheckChecked">
+            Bluetooth
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+          <label class="form-check-label" for="flexCheckChecked">
+            Reproductor MP3
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+          <label class="form-check-label" for="flexCheckChecked">
+            Sistema de frenos ABS
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+          <label class="form-check-label" for="flexCheckChecked">
+            Doble Airbag
+          </label>
+        </div>
       </div>
-      <div class="mb-3">
-        <input type="text" class="form-control" id="apellido" placeholder="Precio x/dia">
+      <div class="input-group mb-3">
+        <span class="input-group-text">$</span>
+        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Precio x/dia">
+        <span class="input-group-text">.00</span>
       </div>
-      <div class="mb-3">
-        <input type="text" class="form-control" id="apellido" placeholder="Precio x/semana">
+      <div class="input-group mb-3">
+        <span class="input-group-text">$</span>
+        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"
+          placeholder="Precio x/semana">
+        <span class="input-group-text">.00</span>
       </div>
-      <div class="mb-3">
-        <input type="text" class="form-control" id="apellido" placeholder="Precio x/mes">
+      <div class="input-group mb-3">
+        <span class="input-group-text">$</span>
+        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Precio x/mes">
+        <span class="input-group-text">.00</span>
       </div>
       <div class="mb-3">
         <select class="form-select">
@@ -127,7 +175,7 @@
           <option value="E">Mendoza Capital</option>
         </select>
       </div>
-      
+
       <div class='registro boton'>
         <button type="submit" class="btn">Ingresar producto</button>
       </div>
