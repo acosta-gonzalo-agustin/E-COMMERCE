@@ -12,7 +12,7 @@
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-  <link rel='stylesheet' href='css/styles.css'>
+  <link rel='stylesheet' href='/css/styles.css'>
   </link>
 </head>
 
@@ -21,7 +21,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(255, 69, 0);">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/"><img class="img-logo" src="img/logo9.png"></a>
+        <a class="navbar-brand" href="/"><img class="img-logo" src="/img/logo9.png"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -29,41 +29,20 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" href="">Vehiculos</a>
+              <a class="nav-link" href="">Panel de control</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/cities">Ciudades</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="/home" id="navbarDropdown" role="button"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                Categoria de vehiculos
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Compactos</a></li>
-                <li><a class="dropdown-item" href="#">Medianos</a></li>
-                <li><a class="dropdown-item" href="#">Premium</a></li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Especiales</a></li>
-              </ul>
+              <a class="nav-link" href="/cities">paginas</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/about-us">Quienes somos</a>
+              <a class="nav-link" href="/about-us">Editar productos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/register">Registro</a>
+              <a class="nav-link" href="/register">Crear producto</a>
             </li>
+        
             <li class="nav-item">
-              <!-------------------------------------- Button trigger modal --------------------------------------->
-              <a class="nav-link" href="/login" data-bs-toggle="modal" data-bs-target="#exampleModal">Login</a>
-              <!------------------------------------- Modal -------------------------------->
-
-
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/FAQ">Preguntas Frecuentes</a>
+              <a class="nav-link" href="/FAQ">Usuarios</a>
             </li>
           </ul>
           <form class="d-flex">
@@ -75,3 +54,92 @@
 
 
   </header>
+
+  <main>
+
+    <form class='formulario registro formulario-producto'>
+      <div class="titulo-crear">
+        <h1>CREAR PRODUCTO</h1>
+      </div>
+      <div class="mb-3">
+        <input type="text" class="form-control" id="nombre" placeholder="Nombre del auto">
+      </div>
+      <div class="mb-3">
+        <input type="text" class="form-control" id="apellido" placeholder="Marca">
+      </div>
+      <div class="mb-3">
+        <label for="imagenes">Seleccione una o varias imagenes para el producto:</label>
+        <input type="file" name="imagenes" accept=".jpg, .png,.jpeg" multiple>
+      </div>
+      <div class="mb-3">
+        <select class="form-select">
+          <option selected>Cantidad de asientos</option>
+          <option value="4">Cuatro</option>
+          <option value="5">Cinco</option>
+          <option value="6">Seis</option>
+          <option value="7">Siete</option>
+          <option value="8">Ocho</option>
+          <option value="9">Nueve</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <select class="form-select">
+          <option selected>Tipo de combustible</option>
+          <option value="N">Nafta</option>
+          <option value="G">Gasoil</option>
+          <option value="GNC">GNC</option>
+          <option value="E">Electrico</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="caja">Caja de cambio</label><br>
+        <input type="radio" name="caja" value="Manual">Manual 
+        <input type="radio" name="caja" value="Automatico" checked>Automatico
+      </div>
+      <div class="mb-3">
+        <label for="airbag">Airbag</label><br>
+        <input type="radio" name="airbag" value="Si">Si 
+        <input type="radio" name="airbag" value="No" checked>No
+      </div>
+      <div class="mb-3">
+        <label for="adicionales">Adicionales</label> <br>
+        <input type="checkbox" name="adicionales">AM/FM Stereo con CD <br>
+        <input type="checkbox" name="adicionales">Bluetooth <br>
+        <input type="checkbox" name="adicionales">Reproductor MP3 <br>
+        <input type="checkbox" name="adicionales">Sistema de frenos ABS <br>
+        <input type="checkbox" name="adicionales">Doble Airbag <br>
+      </div>
+      <div class="mb-3">
+        <input type="text" class="form-control" id="apellido" placeholder="Precio x/dia">
+      </div>
+      <div class="mb-3">
+        <input type="text" class="form-control" id="apellido" placeholder="Precio x/semana">
+      </div>
+      <div class="mb-3">
+        <input type="text" class="form-control" id="apellido" placeholder="Precio x/mes">
+      </div>
+      <div class="mb-3">
+        <select class="form-select">
+          <option selected>Ciudad</option>
+          <option value="N">Córdoba</option>
+          <option value="G">Buenos Aires</option>
+          <option value="GNC">Rosario</option>
+          <option value="E">Mendoza Capital</option>
+        </select>
+      </div>
+      
+      <div class='registro boton'>
+        <button type="submit" class="btn">Ingresar producto</button>
+      </div>
+    </form>
+
+
+
+
+
+  </main>
+
+
+</body>
+
+</html>
