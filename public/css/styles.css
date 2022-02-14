@@ -252,7 +252,7 @@ div.filtro .container {
     display: none;
 }
 
-
+/*-------------------------------- ESTILO DE CARRITO DE COMPRA----------------------------------------*/
 
 
 
@@ -427,6 +427,7 @@ footer .container li {
 
     .boton  {
         align-self:flex-end;
+        border-radius: 5px;
 
     }
 
