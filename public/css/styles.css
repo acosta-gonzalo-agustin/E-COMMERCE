@@ -147,6 +147,7 @@ P {
     width: 80vw;
     margin: 0 auto;
     margin-top: 5vh;
+    margin-bottom: 5vh;
     border-radius: 1rem;
     padding: 10px;
     color:white
@@ -251,7 +252,7 @@ div.filtro .container {
     display: none;
 }
 
-
+/*-------------------------------- ESTILO DE CARRITO DE COMPRA----------------------------------------*/
 
 
 
@@ -426,6 +427,7 @@ footer .container li {
 
     .boton  {
         align-self:flex-end;
+        border-radius: 5px;
 
     }
 

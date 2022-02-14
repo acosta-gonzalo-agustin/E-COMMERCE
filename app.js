@@ -9,7 +9,8 @@ const homeRoute = require('./src/routes/homeRoute');
 const aboutUsRoute = require('./src/routes/aboutUsRoute');
 const productRoute = require('./src/routes/productRoute');
 const citiesListingRoute = require('./src/routes/citiesListingRoute');
-
+const faqsRoute = require('./src/routes/faqsRoute');
+const shoppingCartRoute = require('./src/routes/shoppingCartRoute')
 
 /*----------------------------ESTABLECIENDO EL MOTOR DE PLANTILLA -----------------------------------*/
 
@@ -34,3 +35,7 @@ app.use('/about-us',aboutUsRoute);
 app.use('/product',productRoute);
 
 app.use('/cities-listing',citiesListingRoute);
+
+app.use('/FAQs',faqsRoute);
+
+app.use('/shopping-cart',shoppingCartRoute)
