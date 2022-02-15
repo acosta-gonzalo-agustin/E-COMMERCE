@@ -4,6 +4,13 @@ const controlador = {
     },
     edit: function(req,res) {
         res.render('products/product-edit');
+    },
+
+    filter: function(req,res) {
+        res.render('products/product-filter');
+    },
+    list: function(req,res) {
+        res.render('products/product-listing');
     }
 
 }

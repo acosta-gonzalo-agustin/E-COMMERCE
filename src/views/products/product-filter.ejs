@@ -2,9 +2,113 @@
 
 <%- include('../parcials/head')  %>
   
-<h1 class="titulo-lista">LISTA DE PRODUCTOS</h1>
+
+  <div class="filtro">
+    <div>
+      <div class="container"><h1>Entrega:Cordoba</h1></div>
+      <div class="container"><h1>07/03 10:00</h1></div>
+    </div>
+    <i class="fas fa-arrow-right"></i>
+    <div>
+      <div class="container"><h1>Devolucion:Cordoba</h1></div>
+      <div class="container"><h1>07/03 10:00 </h1></div>
+    </div>
+
+  </div>
+
+  <main>
+    <div class="dos-forms">
+      <form action='product-listing' method="get" class='formulario registro busqueda tamanio'>
+        <div>
+          <h4 class='titulo'>NUEVA BUSQUEDA</h4>
+        </div>
+        <div class='alinear'>
+          <div class="mb-1 ancho-hijos">
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Ciudad retiro</option>
+              <option value="1">Buenos Aires</option>
+              <option value="2">Córdoba</option>
+              <option value="3">Bogota</option>
+            </select>
+          </div>
+          <div class="mb-1 ancho-hijos">
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Ciudad devolución</option>
+              <option value="1">Buenos Aires</option>
+              <option value="2">Córdoba</option>
+              <option value="3">Bogota</option>
+            </select>
+          </div>
+        </div>
+        <div class='alinear'>
+          <div class="mb-1 ancho-hijos">
+            <label for="fecha-recogida"></label>Fecha de entrega
+            <input type="date" class="form-control" id="fecha-recogida">
+          </div>
+          <div class="mb-1 ancho-hijos">
+            <label for="hora-recogida"></label>Hora entrega
+            <select id='hora-recogida' class="form-select" aria-label="Default select example">
+              <option value="1">10:00</option>
+              <option value="2">11:00</option>
+              <option value="3">12:00</option>
+              <option value="4">13:00</option>
+              <option value="5">14:00</option>
+              <option value="6">15:00</option>
+              <option value="7">16:00</option>
+              <option value="8">17:00</option>
+              <option value="9">18:00</option>
+              <option value="10">19:00</option>
+              <option value="12">20:00</option>
+              <option value="12">21:00</option>
+            </select>
+          </div>
+        </div>
+        <div class='alinear'>
+          <div class="mb-1 ancho-hijos">
+            <label for="fecha-devolucion"></label>Fecha devolución
+            <input type="date" class="form-control fechas" id="fecha-devolución">
+          </div>
+          <div class="mb-1 ancho-hijos">
+            <label for="hora-devolución"></label>Hora devolución
+            <select id='hora-devolución' class="form-select" aria-label="Default select example">
+              <option value="1">10:00</option>
+              <option value="2">11:00</option>
+              <option value="3">12:00</option>
+              <option value="4">13:00</option>
+              <option value="5">14:00</option>
+              <option value="6">15:00</option>
+              <option value="7">16:00</option>
+              <option value="8">17:00</option>
+              <option value="9">18:00</option>
+              <option value="10">19:00</option>
+              <option value="12">20:00</option>
+              <option value="12">21:00</option>
+            </select>
+          </div>
+        </div>
   
-    <div class='lista-productos listado'>
+  
+        <div class='registro boton'>
+          <button type="submit" class="btn">Enviar</button>
+        </div>
+      </form>
+  
+      <form action='product-listing' method="get" class='formulario registro busqueda tamanio'>
+        <div class="slidecontainer">
+          <label for="myRange"></label>FILTRAR POR PRECIO
+          <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+        </div>
+      </form>
+      
+    </div>
+
+    
+
+
+    
+
+
+    <div class='lista-productos'>
       <div class="container grid item">
         <div class="row">
           <div class='col-md border-end'>
@@ -45,10 +149,10 @@
 
             </div>
             <div>
-              <button type="submit" class="btn reserva">Editar</button>
+              <button type="submit" class="btn reserva">Reservar</button>
             </div>
             <div>
-              <button type="submit" class="btn presupuesto">Eliminar</button>
+              <button type="submit" class="btn presupuesto">Enviar presupuesto</button>
             </div>
 
           </div>
@@ -97,10 +201,10 @@
 
             </div>
             <div>
-              <button type="submit" class="btn reserva">Editar</button>
+              <button type="submit" class="btn reserva">Reservar</button>
             </div>
             <div>
-              <button type="submit" class="btn presupuesto">Eliminar</button>
+              <button type="submit" class="btn presupuesto"><i class="fa-solid fa-envelope"></i>Enviar presupuesto</button>
             </div>
 
           </div>
@@ -149,10 +253,10 @@
 
             </div>
             <div>
-              <button type="submit" class="btn reserva">Editar</button>
+              <button type="submit" class="btn reserva">Reservar</button>
             </div>
             <div>
-              <button type="submit" class="btn presupuesto">Eliminar</button>
+              <button type="submit" class="btn presupuesto">Enviar presupuesto</button>
             </div>
 
           </div>

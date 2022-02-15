@@ -557,6 +557,18 @@ footer .container li {
     
 
     }
+    
+    /*---------------------------------LISTADO PRODUCTO ADMINISTRADOR ------------------------------------------------*/
+
+    .titulo-lista {
+        text-align: center;
+    }
+
+    .listado {
+        width: 70%;
+    }
+
+
 
     /*------------------------------------- ESTILO LISTA PRODUCTOS FILTRADOS------------------------------------------*/
 
