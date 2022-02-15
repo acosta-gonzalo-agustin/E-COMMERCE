@@ -12,6 +12,7 @@ Aquí vimos que el uso de trello puede llegar a servir para poder asignar respon
 
 
 Keep Doing
+Es fundamental comunicar los impedimentos ya que la resolucion se realiza de manera mas efectiva y didactica, aportando experiencia al grupo.
 
 Less of
 
