@@ -16,6 +16,13 @@ body {
 
 /*---------------------------------------   ESTILOS DE LA BARRA DE NAVEGACION ----------------------- */
 
+
+.navbar {
+    padding-bottom: 0 !important;
+
+}
+
+
 .img-logo {
     height: 12vh;
     border-radius:  10px;
@@ -265,7 +272,6 @@ div.filtro .container {
    
 }
 
-<<<<<<< HEAD
 .resumen-producto {
 
     flex-grow: 0 !important;
@@ -278,17 +284,8 @@ div.filtro .container {
 }
 
 
-=======
-h4 {
-    text-align: center;
-    background-color: orange;
-    color: white;
-    border-radius: 5px;
-    padding: 3px;
-    
->>>>>>> bbc7c318c5f37b0222f0396a6b51380d7f217e81
 
-}
+
 
 
 /*---------------------------------   ESTILOS DE LA VISTA LOGIN -----------------------------------------*/
@@ -699,6 +696,7 @@ footer .container li {
     .resumen-pedido {
 
         margin-top: 5vh !important;
+        margin-right: 2vw;
         width: 45VW!important;
         position: sticky;
         top: 100px;   
