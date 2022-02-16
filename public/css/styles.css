@@ -272,11 +272,11 @@ div.filtro .container {
    
 }
 
-.resumen-producto {
+/* .resumen-producto {
 
     flex-grow: 0 !important;
 
-}
+} */
 
 .resumen-pedido {
     margin-top: 5vh !important;
