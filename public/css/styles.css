@@ -338,6 +338,13 @@ div.filtro .container {
     height: 700px;
 }
 
+.titulo-registro {
+    text-align: center;
+    border-bottom: solid gray 1px;
+    margin-bottom: 10px;
+    padding-bottom: 3px;
+}
+
 
 
 
