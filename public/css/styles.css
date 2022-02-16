@@ -254,7 +254,18 @@ div.filtro .container {
 
 /*-------------------------------- ESTILO DE CARRITO DE COMPRA----------------------------------------*/
 
+.g-3{
+    background-color:gainsboro;
+    padding-bottom: 30px;
+    border-radius: 10px;
+}
+.g-5{
+    padding: 10px;
+    margin: 3px;
+   
+}
 
+<<<<<<< HEAD
 .resumen-producto {
 
     flex-grow: 0 !important;
@@ -267,7 +278,17 @@ div.filtro .container {
 }
 
 
+=======
+h4 {
+    text-align: center;
+    background-color: orange;
+    color: white;
+    border-radius: 5px;
+    padding: 3px;
+    
+>>>>>>> bbc7c318c5f37b0222f0396a6b51380d7f217e81
 
+}
 
 
 /*---------------------------------   ESTILOS DE LA VISTA LOGIN -----------------------------------------*/
