@@ -255,6 +255,18 @@ div.filtro .container {
 /*-------------------------------- ESTILO DE CARRITO DE COMPRA----------------------------------------*/
 
 
+.resumen-producto {
+
+    flex-grow: 0 !important;
+
+}
+
+.resumen-pedido {
+    margin-top: 5vh !important;
+    
+}
+
+
 
 
 
@@ -406,7 +418,7 @@ footer .container li {
         display: none;
     }
 
-    .formulario {
+    .formulario-register {
         width: 400px;
     }
 
@@ -539,6 +551,8 @@ footer .container li {
         flex-direction: row;
     }
 
+    
+
 
 }
 
@@ -547,7 +561,7 @@ footer .container li {
 
     
 @media (min-width: 769px) {
-    .formulario {
+    .formulario-register {
         width: 600px;
     }
 
@@ -624,7 +638,8 @@ footer .container li {
         width: 500px;
     
     }
-  
+
+      
   
 }
 
@@ -650,6 +665,22 @@ footer .container li {
         position: absolute;
         bottom: 2%;
         right: 2%;
+    }
+
+    /*-----------------------------------------SHOPPING-CART*--------------------------------------------------*/
+
+    .cliente {
+        margin-left: 5vw !important;
+        width: 45vw !important;
+    }
+
+
+    .resumen-pedido {
+
+        margin-top: 5vh !important;
+        width: 45VW!important;
+        position: sticky;
+        top: 100px;   
     }
     
 }

@@ -1,231 +1,292 @@
 <!-------------------------------------------------INCLUYENDO HEAD Y HEADER------------------------------>
 
-<%- include('parcials/head')  %>
+<%- include('parcials/head') %>
 
 
 
 
-  <main>
-    <div class="row g-5">
-      <div class="col-md-5 col-lg-4 order-md-last">
-        <h4 class="d-flex justify-content-between align-items-center mb-3">
-          <span class="text-primary">TOTAL A PAGAR</span>
-          <span class="badge bg-primary rounded-pill">$</span>
-        </h4>
-        <ul class="list-group mb-3">
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Alquiler por 7 dias</h6>
-              <small class="text-muted">Sin/Desc.</small>
+  <main class="grid">
+
+    <div class="row">
+
+      <!------------------------------------- DATOS DEL PRODUCTO SELECCIONADO--------------------------------->
+
+
+      <div class='container lista-productos resumen-producto col-xs-12  col-xl-6'>
+        <div class="container grid item">
+          <div class="row">
+            <div class='col-md md-border-end-md'>
+              <div class="col-sm border-bottom">
+                <h3>Toyota Corolla</h3>
+                <img src="/img/fondo-blanco-2.jpg" alt="">
+              </div>
+              <div class="col-sm">
+                <ul>
+                  <li><i class="fas fa-check-circle"></i>5 asientos</li>
+                  <li><i class="fas fa-check-circle"></i>gas</li>
+                  <li><i class="fas fa-check-circle"></i>Air bag</li>
+                  <li><i class="fas fa-check-circle"></i>Aire acondicionado</li>
+                </ul>
+              </div>
             </div>
-            <span class="text-muted">$22.000</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Proteccion</h6>
-              <small class="text-muted">Bonificado</small>
-            </div>
-            <span class="text-muted">$0</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-sm">
-            <div>
-              <h6 class="my-0">Tazas incluidas</h6>
-              <small class="text-muted"></small>
-            </div>
-            <span class="text-muted">$5.000</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between bg-light">
-            <div class="text-success">
-              <h6 class="my-0">Codigo de Promocion</h6>
-              <small>EXAMPLECODE</small>
-            </div>
-            <span class="text-success">−$3.000</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between">
-            <span>Total (Pesos $)</span>
-            <strong>$24.000</strong>
-          </li>
-        </ul>
+            <div class="col-md reserva-derecha">
+              <div>
+                $2000/dia
+              </div>
+              <div>
+                <ul>
+                  SEGUROS
+                  <li> Protección Total (LDW)</li>
+                  <li> Protección a Terceros (ALI)</li>
+                  <li> Franquicia por Accidente</li>
+                </ul>
 
-        <form class="card p-2">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Codigo de Promocion">
-            <button type="submit" class="btn btn-secondary">Validar</button>
+              </div>
+              <div class="escondido">
+                <ul>
+                  ADICIONALES
+                  <li>AM/FM Stereo con CD</li>
+                  <li>Reproductor MP3</li>
+                  <li>Sistema de frenos ABS</li>
+                  <li>Doble Airbag</li>
+                </ul>
+
+              </div>
+            </div>
+
           </div>
-        </form>
+
+        </div>
+
       </div>
-      <div class="col-md-7 col-lg-8">
-        <h4 class="mb-3">DATOS OBLIGATORIOS DEL CLIENTE</h4>
-        <form class="needs-validation" novalidate>
-          <div class="row g-3">
-            <div class="col-sm-6">
-              <label for="firstName" class="form-label">First name</label>
-              <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-              <div class="invalid-feedback">
-                Valid first name is required.
-              </div>
-            </div>
 
-            <div class="col-sm-6">
-              <label for="lastName" class="form-label">Last name</label>
-              <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-              <div class="invalid-feedback">
-                Valid last name is required.
-              </div>
-            </div>
 
-            <div class="col-12">
-              <label for="username" class="form-label">Username</label>
-              <div class="input-group has-validation">
-                <span class="input-group-text">@</span>
-                <input type="text" class="form-control" id="username" placeholder="Username" required>
-              <div class="invalid-feedback">
-                  Your username is required.
+      <!----------------------------- RESUMEN DEL PEDIDO-------------------------------->
+
+      <div class="formulario container  col-xs-12 col-sm-6 col-xl-6 resumen-pedido">
+        <div class="order-md-last">
+          <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-primary">TOTAL A PAGAR</span>
+            <span class="badge bg-primary rounded-pill">$</span>
+          </h4>
+          <ul class="list-group mb-3">
+            <li class="list-group-item d-flex justify-content-between lh-sm">
+              <div>
+                <h6 class="my-0">Alquiler por 7 dias</h6>
+                <small class="text-muted">Sin/Desc.</small>
+              </div>
+              <span class="text-muted">$22.000</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between lh-sm">
+              <div>
+                <h6 class="my-0">Proteccion</h6>
+                <small class="text-muted">Bonificado</small>
+              </div>
+              <span class="text-muted">$0</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between lh-sm">
+              <div>
+                <h6 class="my-0">Tazas incluidas</h6>
+                <small class="text-muted"></small>
+              </div>
+              <span class="text-muted">$5.000</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between bg-light">
+              <div class="text-success">
+                <h6 class="my-0">Codigo de Promocion</h6>
+                <small>EXAMPLECODE</small>
+              </div>
+              <span class="text-success">−$3.000</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Total (Pesos $)</span>
+              <strong>$24.000</strong>
+            </li>
+          </ul>
+
+          <form class="card p-2">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Codigo de Promocion">
+              <button type="submit" class="btn btn-secondary">Validar</button>
+            </div>
+          </form>
+        </div>
+        
+      </div>
+
+
+      <!------------------------------------- DATOS DEL CLIENTE --------------------------------------->
+
+      <div class="formulario cliente container  col-xs-12 col-sm-9  col-md-7 col-xl-6">
+
+        <div class="col-md-7 col-lg-8">
+          <h4 class="mb-3">DATOS OBLIGATORIOS DEL CLIENTE</h4>
+          <form class="needs-validation" novalidate>
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <label for="firstName" class="form-label">First name</label>
+                <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                <div class="invalid-feedback">
+                  Valid first name is required.
+                </div>
+              </div>
+  
+              <div class="col-sm-6">
+                <label for="lastName" class="form-label">Last name</label>
+                <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                <div class="invalid-feedback">
+                  Valid last name is required.
+                </div>
+              </div>
+  
+              <div class="col-12">
+                <label for="username" class="form-label">Username</label>
+                <div class="input-group has-validation">
+                  <span class="input-group-text">@</span>
+                  <input type="text" class="form-control" id="username" placeholder="Username" required>
+                  <div class="invalid-feedback">
+                    Your username is required.
+                  </div>
+                </div>
+              </div>
+  
+              <div class="col-12">
+                <label for="email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
+                <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                <div class="invalid-feedback">
+                  Please enter a valid email address for shipping updates.
+                </div>
+              </div>
+  
+              <div class="col-12">
+                <label for="address" class="form-label">Address</label>
+                <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+                <div class="invalid-feedback">
+                  Please enter your shipping address.
+                </div>
+              </div>
+  
+              <div class="col-12">
+                <label for="address2" class="form-label">Address 2 <span class="text-muted">(Optional)</span></label>
+                <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+              </div>
+  
+              <div class="col-md-5">
+                <label for="country" class="form-label">Country</label>
+                <select class="form-select" id="country" required>
+                  <option value="">Choose...</option>
+                  <option>United States</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please select a valid country.
+                </div>
+              </div>
+  
+              <div class="col-md-4">
+                <label for="state" class="form-label">State</label>
+                <select class="form-select" id="state" required>
+                  <option value="">Choose...</option>
+                  <option>California</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please provide a valid state.
+                </div>
+              </div>
+  
+              <div class="col-md-3">
+                <label for="zip" class="form-label">Zip</label>
+                <input type="text" class="form-control" id="zip" placeholder="" required>
+                <div class="invalid-feedback">
+                  Zip code required.
                 </div>
               </div>
             </div>
-
-            <div class="col-12">
-              <label for="email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
-              <input type="email" class="form-control" id="email" placeholder="you@example.com">
-              <div class="invalid-feedback">
-                Please enter a valid email address for shipping updates.
-              </div>
-            </div>
-
-            <div class="col-12">
-              <label for="address" class="form-label">Address</label>
-              <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
-              <div class="invalid-feedback">
-                Please enter your shipping address.
-              </div>
-            </div>
-
-            <div class="col-12">
-              <label for="address2" class="form-label">Address 2 <span class="text-muted">(Optional)</span></label>
-              <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
-            </div>
-
-            <div class="col-md-5">
-              <label for="country" class="form-label">Country</label>
-              <select class="form-select" id="country" required>
-                <option value="">Choose...</option>
-                <option>United States</option>
-              </select>
-              <div class="invalid-feedback">
-                Please select a valid country.
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <label for="state" class="form-label">State</label>
-              <select class="form-select" id="state" required>
-                <option value="">Choose...</option>
-                <option>California</option>
-              </select>
-              <div class="invalid-feedback">
-                Please provide a valid state.
-              </div>
-            </div>
-
-            <div class="col-md-3">
-              <label for="zip" class="form-label">Zip</label>
-              <input type="text" class="form-control" id="zip" placeholder="" required>
-              <div class="invalid-feedback">
-                Zip code required.
-              </div>
-            </div>
-          </div>
-
-          <hr class="my-4">
-
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="same-address">
-            <label class="form-check-label" for="same-address">Shipping address is the same as my billing address</label>
-          </div>
-
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="save-info">
-            <label class="form-check-label" for="save-info">Save this information for next time</label>
-          </div>
-
-          <hr class="my-4">
-
-          <h4 class="mb-3">METODOS DE PAGO</h4>
-
-          <div class="my-3">
-            <div class="form-check">
-              <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
-              <label class="form-check-label" for="credit">Tarjeta de credito</label>
-            </div>
-            <div class="form-check">
-              <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required>
-              <label class="form-check-label" for="debit">Tarjeta de debito</label>
-            </div>
-            <div class="form-check">
-              <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
-              <label class="form-check-label" for="paypal">PayPal</label>
-            </div>
-          </div>
-
-          <div class="row gy-3">
-            <div class="col-md-6">
-              <label for="cc-name" class="form-label">Name on card</label>
-              <input type="text" class="form-control" id="cc-name" placeholder="" required>
-              <small class="text-muted">Full name as displayed on card</small>
-              <div class="invalid-feedback">
-                Name on card is required
-              </div>
-            </div>
-
-            <div class="col-md-6">
-              <label for="cc-number" class="form-label">Credit card number</label>
-              <input type="text" class="form-control" id="cc-number" placeholder="" required>
-              <div class="invalid-feedback">
-                Credit card number is required
-              </div>
-            </div>
-
-            <div class="col-md-3">
-              <label for="cc-expiration" class="form-label">Expiration</label>
-              <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
-              <div class="invalid-feedback">
-                Expiration date required
-              </div>
-            </div>
-
-            <div class="col-md-3">
-              <label for="cc-cvv" class="form-label">CVV</label>
-              <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
-              <div class="invalid-feedback">
-                Security code required
-              </div>
-            </div>
-          </div>
-
-          <hr class="my-4">
-
-          <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
-        </form>
-      </div>
-    </div>
-  </main>
-  <div class="content-area">
-    <div class="content">
-      <h3 class="title-top-vehiculo">Toyota Corolla</h3>
-      <div class="content-fijo-8">
-        <div class="content-7"></div>
-        <div class="content-12">
-          <div class="content-6"></div>
-          <div class="content-6"></div>
-        </div>
-        <div class="content-5"><img class="img-vehiculos" src="img/fondo-blanco-2.jpg"></div>
-      </div>
-    </div>
-  </div>
-
-
   
-<!-------------------------------------------------INCLUYENDO FOOTER------------------------------>
+            <hr class="my-4">
+  
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="same-address">
+              <label class="form-check-label" for="same-address">Shipping address is the same as my billing
+                address</label>
+            </div>
+  
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="save-info">
+              <label class="form-check-label" for="save-info">Save this information for next time</label>
+            </div>
 
-<%- include('parcials/footer') %> 
+            <!------------------------------------- DATOS TARJETA --------------------------------------->
+  
+            <hr class="my-4">
+  
+            <h4 class="mb-3">METODOS DE PAGO</h4>
+  
+            <div class="my-3">
+              <div class="form-check">
+                <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
+                <label class="form-check-label" for="credit">Tarjeta de credito</label>
+              </div>
+              <div class="form-check">
+                <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required>
+                <label class="form-check-label" for="debit">Tarjeta de debito</label>
+              </div>
+              <div class="form-check">
+                <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
+                <label class="form-check-label" for="paypal">PayPal</label>
+              </div>
+            </div>
+  
+            <div class="row gy-3">
+              <div class="col-md-6">
+                <label for="cc-name" class="form-label">Name on card</label>
+                <input type="text" class="form-control" id="cc-name" placeholder="" required>
+                <small class="text-muted">Full name as displayed on card</small>
+                <div class="invalid-feedback">
+                  Name on card is required
+                </div>
+              </div>
+  
+              <div class="col-md-6">
+                <label for="cc-number" class="form-label">Credit card number</label>
+                <input type="text" class="form-control" id="cc-number" placeholder="" required>
+                <div class="invalid-feedback">
+                  Credit card number is required
+                </div>
+              </div>
+  
+              <div class="col-md-3">
+                <label for="cc-expiration" class="form-label">Expiration</label>
+                <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+                <div class="invalid-feedback">
+                  Expiration date required
+                </div>
+              </div>
+  
+              <div class="col-md-3">
+                <label for="cc-cvv" class="form-label">CVV</label>
+                <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+                <div class="invalid-feedback">
+                  Security code required
+                </div>
+              </div>
+            </div>
+  
+            <hr class="my-4">
+  
+            <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
+          </form>
+        </div>
+
+      </div> 
+
+    </div>
+
+  </main>
+
+
+
+
+
+  <!-------------------------------------------------INCLUYENDO FOOTER------------------------------>
+
+  <%- include('parcials/footer') %>
