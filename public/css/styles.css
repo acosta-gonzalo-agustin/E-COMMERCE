@@ -609,13 +609,24 @@ footer .container li {
 
 
 
-    /*------------------------------------- ESTILO LISTA PRODUCTOS FILTRADOS------------------------------------------*/
+    /*------------------------------------- PRODUCT-FILTER------------------------------------------*/
 
-
-    main {
-        flex-direction: row;
-        gap: 10px;
+    .presupuesto {
+        width: 45%;
+        position: absolute;
+        bottom: 12%;
+        right: 2%;
+    
     }
+    
+    .reserva {
+
+        width: 45%;
+        position: absolute;
+        bottom: 2%;
+        right: 2%;
+    }
+   
 
     .reserva-derecha {
         position: relative;
@@ -681,20 +692,18 @@ footer .container li {
     
         }
 
-    .presupuesto {
-        width: 45%;
-        position: absolute;
-        bottom: 12%;
-        right: 2%;
     
-    }
-    
-    .reserva {
 
-        width: 45%;
-        position: absolute;
-        bottom: 2%;
-        right: 2%;
+    /*-------------------------------------PRODUCT-FILTER-----------------------------------------------------*/
+
+    main {
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    .dos-forms form {
+        position:sticky;
+        top: 100px;
     }
 
     /*-----------------------------------------SHOPPING-CART*--------------------------------------------------*/
