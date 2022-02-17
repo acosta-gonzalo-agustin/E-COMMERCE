@@ -638,6 +638,11 @@ footer .container li {
     .escondido {
         display: block;
     }
+
+
+    .lista-productos {
+        margin-top: 2vh;
+    }
     
 
     /*-------------------------------------INDEX - CIUDADES---------------------------------------------------*/
