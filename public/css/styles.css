@@ -272,16 +272,7 @@ div.filtro .container {
    
 }
 
-/* .resumen-producto {
 
-    flex-grow: 0 !important;
-
-} */
-
-.resumen-pedido {
-    margin-top: 5vh !important;
-    
-}
 
 
 
@@ -652,7 +643,7 @@ footer .container li {
 
 
     .lista-productos {
-        margin-top: 5vh;
+        margin-top: 30px;
     }
     
 
@@ -712,12 +703,13 @@ footer .container li {
 
 
     .resumen-pedido {
-
-        margin-top: 5vh !important;
         margin-right: 2vw;
         width: 45VW!important;
         position: sticky;
         top: 120px;   
     }
+
+
+    
     
 }
