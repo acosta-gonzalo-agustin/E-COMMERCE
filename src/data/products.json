@@ -2,7 +2,7 @@
     {
         "id":1,
         "nombre":"Citroen DS4",
-        "marca":"Citroen'",
+        "marca":"Citroen",
         "categoria":"Medianos",
         "imagen":"fondo-blanco.jpg",
         "cantidadAsientos":5,
@@ -27,9 +27,9 @@
         ]
     },
     {
-        "id":1,
+        "id":2,
         "nombre":"Citroen DS4",
-        "marca":"Citroen'",
+        "marca":"Citroen",
         "categoria":"Medianos",
         "imagen":"fondo-blanco.jpg",
         "cantidadAsientos":5,
@@ -54,9 +54,9 @@
         ]
     },
     {
-        "id":1,
+        "id":3,
         "nombre":"Citroen DS4",
-        "marca":"Citroen'",
+        "marca":"Citroen",
         "categoria":"Medianos",
         "imagen":"fondo-blanco.jpg",
         "cantidadAsientos":5,
@@ -81,9 +81,9 @@
         ]
     },
     {
-        "id":1,
+        "id":4,
         "nombre":"Citroen DS4",
-        "marca":"Citroen'",
+        "marca":"Citroen",
         "categoria":"Medianos",
         "imagen":"fondo-blanco.jpg",
         "cantidadAsientos":5,
@@ -108,9 +108,9 @@
         ]
     },
     {
-        "id":1,
+        "id":5,
         "nombre":"Citroen DS4",
-        "marca":"Citroen'",
+        "marca":"Citroen",
         "categoria":"Medianos",
         "imagen":"fondo-blanco.jpg",
         "cantidadAsientos":5,

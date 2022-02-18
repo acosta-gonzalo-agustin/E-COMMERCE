@@ -11,6 +11,19 @@ const controlador = {
         res.render('products/product-listing',{productos:products});
     },
 
+    edit: function (req, res) {
+        let id = req.params.id;
+        let producto = null;
+        for(i of products) {
+            if(i.id == id) {
+                producto = i;
+                break;
+                
+            }
+        }
+        res.render('products/product-edit',{producto,producto});
+    },
+
 
     filter: function (req, res) {
         res.render('products/product-filter');
@@ -20,12 +33,6 @@ const controlador = {
     create: function (req, res) {
         res.render('products/product-create');
     },
-
-    edit: function (req, res) {
-        res.render('products/product-edit');
-    },
-
-    
 
 }
 
