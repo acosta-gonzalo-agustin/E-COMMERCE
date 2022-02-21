@@ -1,29 +1,26 @@
 [
  {
   "id": "1",
-  "nombre": "Citroen DS4",
+  "nombre": "Citroen S4",
   "marca": "Citroen",
-  "categoria": "Premium",
+  "categoria": "Especiales",
   "imagen": "fondo-blanco.jpg",
-  "cantidadAsientos": "Seis",
-  "combustible": "GNC",
-  "adicionales": [
-   "AM/FM Stereo con CD",
-   "Bluetooth",
-   "Reproductor MP3",
-   "Sistema de frenos ABS",
-   "Doble Airbag"
-  ],
-  "precioDia": 500,
-  "precioSemana": 5000,
-  "precioMes": 30000,
+  "cantidadAsientos": "Nueve",
+  "combustible": "Electrico",
+  "precioDia": "10000000",
+  "precioSemana": "10000000",
+  "precioMes": "10000000",
   "estado": true,
   "seguro": [
    "Proteccion total",
    "Proteccion a terceros",
    "Franquicia por accidente"
   ],
-  "ciudad": "Ciudad"
+  "ciudad": "Mendoza Capital",
+  "adicionales": [
+   "Bluetooth",
+   "Doble Airbag"
+  ]
  },
  {
   "id": "2",

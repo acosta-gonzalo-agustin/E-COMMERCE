@@ -76,28 +76,28 @@
       <div class="mb-3">
         <label for="adicionales">Adicionales</label> <br>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="AM/FM Stereo con CD" <%if(producto.adicionales.indexOf('AM/FM Stereo con CD') != -1) { %> checked  <%}%> id="adicionales" name = 'adicionales'>
+          <input class="form-check-input" type="checkbox" value="AM/FM Stereo con CD" <%if(producto.adicionales && producto.adicionales.indexOf('AM/FM Stereo con CD') != -1) { %> checked  <%}%> id="adicionales" name = 'adicionales'>
           <label class="form-check-label" for="flexCheckDefault">
             AM/FM Stereo con CD
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="Bluetooth" <%if(producto.adicionales.indexOf('Bluetooth') != -1) { %> checked  <%}%> id="adicionales" name = 'adicionales'>
+          <input class="form-check-input" type="checkbox" value="Bluetooth" <%if(producto.adicionales && producto.adicionales.indexOf('Bluetooth') != -1) { %> checked  <%}%> id="adicionales" name = 'adicionales'>
             Bluetooth
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="Reproductor MP3" <%if(producto.adicionales.indexOf('Reproductor MP3') != -1) { %> checked  <%}%> id="adicionales" name = 'adicionales'>
+          <input class="form-check-input" type="checkbox" value="Reproductor MP3" <%if( producto.adicionales && producto.adicionales.indexOf('Reproductor MP3') != -1) { %> checked  <%}%> id="adicionales" name = 'adicionales'>
             Reproductor MP3
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="Sistema de frenos ABS" <%if(producto.adicionales.indexOf('Sistema de frenos ABS') != -1) { %> checked  <%}%> id="adicionales" name = 'adicionales'>
+          <input class="form-check-input" type="checkbox" value="Sistema de frenos ABS" <%if(producto.adicionales && producto.adicionales.indexOf('Sistema de frenos ABS') != -1) { %> checked  <%}%> id="adicionales" name = 'adicionales'>
             Sistema de frenos ABS
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="Doble Airbag" <%if(producto.adicionales.indexOf('Doble Airbag') != -1) { %> checked  <%}%> id="adicionales" name="adicionales">
+          <input class="form-check-input" type="checkbox" value="Doble Airbag" <%if(producto.adicionales && producto.adicionales.indexOf('Doble Airbag') != -1) { %> checked  <%}%> id="adicionales" name="adicionales">
             Doble Airbag
           </label>
         </div>

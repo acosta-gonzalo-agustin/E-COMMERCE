@@ -57,6 +57,9 @@ const controlador = {
                     i.ciudad = dato.ciudad;
                 };
                 i.adicionales = dato.adicionales;
+                i.precioDia = dato.precioDia;
+                i.precioSemana = dato.precioSemana;
+                i.precioMes = dato.precioMes;
                 break;
             }
         }
