@@ -41,9 +41,13 @@
             <div class="escondido">
               <ul>
                 ADICIONALES
+                <%if(typeof  i.adicionales == 'object') {%> 
                 <% for(let j of i.adicionales) {%> 
-                <li><%=j%> </li>
-                <% } %> 
+                <li><%=j%></li>
+                <%}%>
+                <%} else { %>
+                  <li><%=i.adicionales%> </li>
+                <%}%>   
               </ul>
 
             </div>

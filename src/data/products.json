@@ -1,20 +1,13 @@
 [
  {
   "id": "1",
-  "nombre": "RENAULT KANGOO",
-  "categoria": "Categoria de vehiculo",
+  "nombre": "Citroen DS4",
+  "marca": "Citroen",
+  "categoria": "Premium",
   "imagen": "fondo-blanco.jpg",
-  "cantidadAsientos": "9",
-  "combustible": "N",
-  "cajaDeCambio": "A",
-  "arieAcondicionado": "S",
-  "airbag": "S",
-  "adicionales": [
-   "AM/FM Stereo con CD",
-   "Reproductor MP3",
-   "Sistema de frenos ABS",
-   "Doble Airbag"
-  ],
+  "cantidadAsientos": "Seis",
+  "combustible": "GNC",
+  "adicionales": "Doble Airbag",
   "precioDia": 500,
   "precioSemana": 5000,
   "precioMes": 30000,
@@ -24,23 +17,18 @@
    "Proteccion a terceros",
    "Franquicia por accidente"
   ],
-  "marca": "vamos"
+  "ciudad": "Ciudad"
  },
  {
-  "id": 2,
+  "id": "2",
   "nombre": "Renaul Duster",
   "marca": "Citroen",
   "categoria": "Medianos",
   "imagen": "fondo-blanco.jpg",
   "cantidadAsientos": 5,
   "combustible": "gas",
-  "cajaDeCambio": "manual",
-  "arieAcondicionado": "S",
-  "airbag": "S",
   "adicionales": [
    "AM/FM Stereo con CD",
-   "Reproductor MP3",
-   "Sistema de frenos ABS",
    "Doble Airbag"
   ],
   "precioDia": 500,
@@ -54,22 +42,14 @@
   ]
  },
  {
-  "id": 3,
+  "id": "3",
   "nombre": "Citroen DS4",
   "marca": "Citroen",
   "categoria": "Medianos",
   "imagen": "fondo-blanco.jpg",
-  "cantidadAsientos": 5,
+  "cantidadAsientos": "Cuatro",
   "combustible": "gas",
-  "cajaDeCambio": "manual",
-  "arieAcondicionado": "S",
-  "airbag": "S",
-  "adicionales": [
-   "AM/FM Stereo con CD",
-   "Reproductor MP3",
-   "Sistema de frenos ABS",
-   "Doble Airbag"
-  ],
+  "adicionales": "Doble Airbag",
   "precioDia": 500,
   "precioSemana": 5000,
   "precioMes": 30000,
@@ -89,7 +69,6 @@
   "cantidadAsientos": 5,
   "combustible": "gas",
   "cajaDeCambio": "manual",
-  "arieAcondicionado": "S",
   "airbag": "S",
   "adicionales": [
    "AM/FM Stereo con CD",
@@ -108,16 +87,13 @@
   ]
  },
  {
-  "id": 5,
+  "id": "5",
   "nombre": "Citroen DS4",
   "marca": "Citroen",
-  "categoria": "Medianos",
+  "categoria": "Categoria de vehiculo",
   "imagen": "fondo-blanco.jpg",
-  "cantidadAsientos": 5,
-  "combustible": "gas",
-  "cajaDeCambio": "manual",
-  "arieAcondicionado": "S",
-  "airbag": "S",
+  "cantidadAsientos": "Cantidad de asientos",
+  "combustible": "Tipo de combustible",
   "adicionales": [
    "AM/FM Stereo con CD",
    "Reproductor MP3",
@@ -132,6 +108,7 @@
    "Proteccion total",
    "Proteccion a terceros",
    "Franquicia por accidente"
-  ]
+  ],
+  "ciudad": "Mendoza Capital"
  }
 ]

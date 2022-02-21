@@ -42,10 +42,21 @@ const controlador = {
                 i.id = id;
                 i.nombre = dato.nombre;
                 i.marca = dato.marca;
-                i.categoria = dato.categoria;
-                i.cantidadAsientos = dato.cantidadAsientos;
-                i.combustible = dato.combustible;
+                if(dato.categoria != 'Categoria de vehiculo') {
+                    i.categoria = dato.categoria;
+                };
+                if(dato.cantidadAsientos != 'Cantidad de asientos') {
+                    i.cantidadAsientos = dato.cantidadAsientos;
+                };
+                if(dato.combustible != 'Tipo de combustible') {
+                    i.combustible = dato.combustible;
+                }
                 i.cajaDeCambio = dato.cajaDeCambio;
+                i.airbag = dato.airbag;
+                if(dato.ciudad != 'Ciudad') {
+                    i.ciudad = dato.ciudad;
+                };
+                i.adicionales = dato.adicionales;
                 break;
             }
         }
