@@ -7,7 +7,13 @@
   "imagen": "fondo-blanco.jpg",
   "cantidadAsientos": "Seis",
   "combustible": "GNC",
-  "adicionales": "Doble Airbag",
+  "adicionales": [
+   "AM/FM Stereo con CD",
+   "Bluetooth",
+   "Reproductor MP3",
+   "Sistema de frenos ABS",
+   "Doble Airbag"
+  ],
   "precioDia": 500,
   "precioSemana": 5000,
   "precioMes": 30000,
@@ -94,12 +100,7 @@
   "imagen": "fondo-blanco.jpg",
   "cantidadAsientos": "Cantidad de asientos",
   "combustible": "Tipo de combustible",
-  "adicionales": [
-   "AM/FM Stereo con CD",
-   "Reproductor MP3",
-   "Sistema de frenos ABS",
-   "Doble Airbag"
-  ],
+  "adicionales": "Doble Airbag",
   "precioDia": 500,
   "precioSemana": 5000,
   "precioMes": 30000,
