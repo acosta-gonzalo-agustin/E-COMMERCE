@@ -1,137 +1,137 @@
 [
-    {
-        "id":1,
-        "nombre":"Citroen DS4",
-        "marca":"Citroen",
-        "categoria":"Medianos",
-        "imagen":"fondo-blanco.jpg",
-        "cantidadAsientos":5,
-        "combustible":"gas",
-        "cajaDeCambio":"manual",
-        "arieAcondicionado":"S",
-        "airbag":"S",
-        "adicionales":[
-            "AM/FM Stereo con CD",
-            "Reproductor MP3",
-            "Sistema de frenos ABS",
-            "Doble Airbag"
-        ],
-        "precioDia":500,
-        "precioSemana":5000,
-        "precioMes":30000,
-        "estado":true,
-        "seguro":[
-            "Proteccion total",
-            "Proteccion a terceros",
-            "Franquicia por accidente"
-        ]
-    },
-    {
-        "id":2,
-        "nombre":"Citroen DS4",
-        "marca":"Citroen",
-        "categoria":"Medianos",
-        "imagen":"fondo-blanco.jpg",
-        "cantidadAsientos":5,
-        "combustible":"gas",
-        "cajaDeCambio":"manual",
-        "arieAcondicionado":"S",
-        "airbag":"S",
-        "adicionales":[
-            "AM/FM Stereo con CD",
-            "Reproductor MP3",
-            "Sistema de frenos ABS",
-            "Doble Airbag"
-        ],
-        "precioDia":500,
-        "precioSemana":5000,
-        "precioMes":30000,
-        "estado":true,
-        "seguro":[
-            "Proteccion total",
-            "Proteccion a terceros",
-            "Franquicia por accidente"
-        ]
-    },
-    {
-        "id":3,
-        "nombre":"Citroen DS4",
-        "marca":"Citroen",
-        "categoria":"Medianos",
-        "imagen":"fondo-blanco.jpg",
-        "cantidadAsientos":5,
-        "combustible":"gas",
-        "cajaDeCambio":"manual",
-        "arieAcondicionado":"S",
-        "airbag":"S",
-        "adicionales":[
-            "AM/FM Stereo con CD",
-            "Reproductor MP3",
-            "Sistema de frenos ABS",
-            "Doble Airbag"
-        ],
-        "precioDia":500,
-        "precioSemana":5000,
-        "precioMes":30000,
-        "estado":true,
-        "seguro":[
-            "Proteccion total",
-            "Proteccion a terceros",
-            "Franquicia por accidente"
-        ]
-    },
-    {
-        "id":4,
-        "nombre":"Citroen DS4",
-        "marca":"Citroen",
-        "categoria":"Medianos",
-        "imagen":"fondo-blanco.jpg",
-        "cantidadAsientos":5,
-        "combustible":"gas",
-        "cajaDeCambio":"manual",
-        "arieAcondicionado":"S",
-        "airbag":"S",
-        "adicionales":[
-            "AM/FM Stereo con CD",
-            "Reproductor MP3",
-            "Sistema de frenos ABS",
-            "Doble Airbag"
-        ],
-        "precioDia":500,
-        "precioSemana":5000,
-        "precioMes":30000,
-        "estado":true,
-        "seguro":[
-            "Proteccion total",
-            "Proteccion a terceros",
-            "Franquicia por accidente"
-        ]
-    },
-    {
-        "id":5,
-        "nombre":"Citroen DS4",
-        "marca":"Citroen",
-        "categoria":"Medianos",
-        "imagen":"fondo-blanco.jpg",
-        "cantidadAsientos":5,
-        "combustible":"gas",
-        "cajaDeCambio":"manual",
-        "arieAcondicionado":"S",
-        "airbag":"S",
-        "adicionales":[
-            "AM/FM Stereo con CD",
-            "Reproductor MP3",
-            "Sistema de frenos ABS",
-            "Doble Airbag"
-        ],
-        "precioDia":500,
-        "precioSemana":5000,
-        "precioMes":30000,
-        "estado":true,
-        "seguro":[
-            "Proteccion total",
-            "Proteccion a terceros",
-            "Franquicia por accidente"
-        ]
-    }
+ {
+  "id": "1",
+  "nombre": "RENAULT KANGOO",
+  "categoria": "Categoria de vehiculo",
+  "imagen": "fondo-blanco.jpg",
+  "cantidadAsientos": "9",
+  "combustible": "N",
+  "cajaDeCambio": "A",
+  "arieAcondicionado": "S",
+  "airbag": "S",
+  "adicionales": [
+   "AM/FM Stereo con CD",
+   "Reproductor MP3",
+   "Sistema de frenos ABS",
+   "Doble Airbag"
+  ],
+  "precioDia": 500,
+  "precioSemana": 5000,
+  "precioMes": 30000,
+  "estado": true,
+  "seguro": [
+   "Proteccion total",
+   "Proteccion a terceros",
+   "Franquicia por accidente"
+  ],
+  "marca": "vamos"
+ },
+ {
+  "id": 2,
+  "nombre": "Renaul Duster",
+  "marca": "Citroen",
+  "categoria": "Medianos",
+  "imagen": "fondo-blanco.jpg",
+  "cantidadAsientos": 5,
+  "combustible": "gas",
+  "cajaDeCambio": "manual",
+  "arieAcondicionado": "S",
+  "airbag": "S",
+  "adicionales": [
+   "AM/FM Stereo con CD",
+   "Reproductor MP3",
+   "Sistema de frenos ABS",
+   "Doble Airbag"
+  ],
+  "precioDia": 500,
+  "precioSemana": 5000,
+  "precioMes": 30000,
+  "estado": true,
+  "seguro": [
+   "Proteccion total",
+   "Proteccion a terceros",
+   "Franquicia por accidente"
+  ]
+ },
+ {
+  "id": 3,
+  "nombre": "Citroen DS4",
+  "marca": "Citroen",
+  "categoria": "Medianos",
+  "imagen": "fondo-blanco.jpg",
+  "cantidadAsientos": 5,
+  "combustible": "gas",
+  "cajaDeCambio": "manual",
+  "arieAcondicionado": "S",
+  "airbag": "S",
+  "adicionales": [
+   "AM/FM Stereo con CD",
+   "Reproductor MP3",
+   "Sistema de frenos ABS",
+   "Doble Airbag"
+  ],
+  "precioDia": 500,
+  "precioSemana": 5000,
+  "precioMes": 30000,
+  "estado": true,
+  "seguro": [
+   "Proteccion total",
+   "Proteccion a terceros",
+   "Franquicia por accidente"
+  ]
+ },
+ {
+  "id": 4,
+  "nombre": "Citroen DS4",
+  "marca": "Citroen",
+  "categoria": "Medianos",
+  "imagen": "fondo-blanco.jpg",
+  "cantidadAsientos": 5,
+  "combustible": "gas",
+  "cajaDeCambio": "manual",
+  "arieAcondicionado": "S",
+  "airbag": "S",
+  "adicionales": [
+   "AM/FM Stereo con CD",
+   "Reproductor MP3",
+   "Sistema de frenos ABS",
+   "Doble Airbag"
+  ],
+  "precioDia": 500,
+  "precioSemana": 5000,
+  "precioMes": 30000,
+  "estado": true,
+  "seguro": [
+   "Proteccion total",
+   "Proteccion a terceros",
+   "Franquicia por accidente"
+  ]
+ },
+ {
+  "id": 5,
+  "nombre": "Citroen DS4",
+  "marca": "Citroen",
+  "categoria": "Medianos",
+  "imagen": "fondo-blanco.jpg",
+  "cantidadAsientos": 5,
+  "combustible": "gas",
+  "cajaDeCambio": "manual",
+  "arieAcondicionado": "S",
+  "airbag": "S",
+  "adicionales": [
+   "AM/FM Stereo con CD",
+   "Reproductor MP3",
+   "Sistema de frenos ABS",
+   "Doble Airbag"
+  ],
+  "precioDia": 500,
+  "precioSemana": 5000,
+  "precioMes": 30000,
+  "estado": true,
+  "seguro": [
+   "Proteccion total",
+   "Proteccion a terceros",
+   "Franquicia por accidente"
+  ]
+ }
 ]

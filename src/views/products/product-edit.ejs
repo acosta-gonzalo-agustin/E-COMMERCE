@@ -4,18 +4,18 @@
 
   <main>
 
-    <form class='formulario registro formulario-producto'>
+    <form class='formulario registro formulario-producto' action= "/product/listing/<%=producto.id%> " method="POST">
       <div class="titulo-crear">
         <h1>EDITAR PRODUCTO</h1>
       </div>
       <div class="mb-3">
-        <input type="text" class="form-control" id="nombre" value="<%=producto.nombre%>">
+        <input type="text" class="form-control" name="nombre" id="nombre" value="<%=producto.nombre%>">
       </div>
       <div class="mb-3">
-        <input type="text" class="form-control" id="apellido" value="<%=producto.marca%>">
+        <input type="text" class="form-control" name = "marca"  id="marca" value="<%=producto.marca%>">
       </div>
       <div class="mb-3">
-        <select class="form-select">
+        <select class="form-select" name="categoria" id="categoria">
           <option selected>Categoria de vehiculo</option>
           <option value="Compactos">Compactos</option>
           <option value="Medianos">Medianos</option>
@@ -28,7 +28,7 @@
         <input class="form-control" type="file" id="formFileMultiple" multiple>
       </div>
       <div class="mb-3">
-        <select class="form-select">
+        <select class="form-select" name="cantidadAsientos" id="cantidadAsientos">
           <option selected>Cantidad de asientos</option>
           <option value="4">Cuatro</option>
           <option value="5">Cinco</option>
@@ -39,7 +39,7 @@
         </select>
       </div>
       <div class="mb-3">
-        <select class="form-select">
+        <select class="form-select" name="combustible" id="combustible">
           <option selected>Tipo de combustible</option>
           <option value="N">Nafta</option>
           <option value="G">Gasoil</option>
@@ -49,15 +49,15 @@
       </div>
       <div class="mb-3">
         <div class="form-check form-check-inline">
-          <label for="caja">Caja de cambio</label>
+          <label for="cajaDeCambio">Caja de cambio</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="M">
-          <label class="form-check-label" for="inlineRadio1">Manual</label>
+          <input class="form-check-input" type="radio" name="cajaDeCambio" id="cajaDeCambio" value="M">
+          <label class="form-check-label" for="cajaDeCambio">Manual</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="A">
-          <label class="form-check-label" for="inlineRadio2">Automático</label>
+          <input class="form-check-input" type="radio" name="cajaDeCambio" id="cajaDeCambio" value="A">
+          <label class="form-check-label" for="cajaDeCambio">Automático</label>
         </div>
       </div>
       <div class="mb-3">

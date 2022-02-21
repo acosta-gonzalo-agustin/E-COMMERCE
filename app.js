@@ -28,7 +28,10 @@ app.listen(process.env.PORT || 3000, function() {
     console.log('servidor montado');
 });
 
+/*---------------------------------------------ACTIVANDO ENVIO POR FORMULARIO------------------------------------------*/
 
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 /*-----------------------------------------IMPORTANDO METODOS PUT Y DELETE-------------------------------*/
 
