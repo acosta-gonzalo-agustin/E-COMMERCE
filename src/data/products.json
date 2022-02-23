@@ -27,7 +27,7 @@
   "nombre": "Renaul Duster",
   "marca": "Citroen",
   "categoria": "Medianos",
-  "imagen": "1645631092528fondo-blanco-4.jpg",
+  "imagen": "1645632882299fondo-blanco-4.jpg",
   "cantidadAsientos": 5,
   "combustible": "gas",
   "adicionales": [
@@ -46,29 +46,36 @@
  },
  {
   "id": "3",
-  "nombre": "Citroen DS4",
+  "nombre": "New Avensis",
   "marca": "Citroen",
-  "categoria": "Medianos",
-  "imagen": "1645631067385fondo-blanco-4.jpg",
-  "cantidadAsientos": "Cuatro",
-  "combustible": "gas",
-  "adicionales": "Doble Airbag",
-  "precioDia": "500",
-  "precioSemana": "5000",
-  "precioMes": "30000",
+  "categoria": "Especiales",
+  "imagen": "1645636623320fondo-blanco-2.jpg",
+  "cantidadAsientos": "Nueve",
+  "combustible": "GNC",
+  "adicionales": [
+   "AM/FM Stereo con CD",
+   "Bluetooth",
+   "Reproductor MP3",
+   "Sistema de frenos ABS",
+   "Doble Airbag"
+  ],
+  "precioDia": "1000",
+  "precioSemana": "1000",
+  "precioMes": "1000",
   "estado": true,
   "seguro": [
    "Proteccion total",
    "Proteccion a terceros",
    "Franquicia por accidente"
-  ]
+  ],
+  "ciudad": "Mendoza Capital"
  },
  {
   "id": "4",
   "nombre": "Citroen DS4",
   "marca": "Citroen",
   "categoria": "Medianos",
-  "imagen": "1645631102666fondo-blanco-4.jpg",
+  "imagen": "1645631288794fondo-blanco-3.jpg",
   "cantidadAsientos": 5,
   "combustible": "gas",
   "adicionales": [
