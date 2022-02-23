@@ -4,7 +4,7 @@
 
   <main>
 
-    <form class='formulario registro formulario-producto' action= "/product/listing/<%=producto.id%> " method="POST">
+    <form class='formulario registro formulario-producto' action= "/product/listing/<%=producto.id%>?_method=PUT" method="POST"  enctype = 'multipart/form-data'>
       <div class="titulo-crear">
         <h1>EDITAR PRODUCTO</h1>
       </div>
@@ -24,8 +24,8 @@
         </select>
       </div>
       <div class="mb-3">
-        <label for="formFileMultiple" class="form-label">Remplazar imagenes:</label>
-        <input class="form-control" type="file" id="formFileMultiple" multiple>
+        <label for="image" class="form-label">Remplazar imagenes:</label>
+        <input class="form-control" type="file" name = "imagen" id="imagen" multiple>
       </div>
       <div class="mb-3">
         <select class="form-select" name="cantidadAsientos" id="cantidadAsientos">

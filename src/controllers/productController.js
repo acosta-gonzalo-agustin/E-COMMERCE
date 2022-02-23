@@ -60,10 +60,14 @@ const controlador = {
                 i.precioDia = dato.precioDia;
                 i.precioSemana = dato.precioSemana;
                 i.precioMes = dato.precioMes;
+                var old_imagen = i.imagen;
+                i.imagen = req.file.filename;
+                
                 break;
             }
         }
         
+        fs.unlinkSync(path.join(__dirname,'../../public/img/' + old_imagen));
         fs.writeFileSync(path.join(__dirname,'../data/products.json'),JSON.stringify(products,null,' '));
         res.redirect('/');
                 
