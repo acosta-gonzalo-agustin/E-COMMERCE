@@ -7,19 +7,26 @@
    "Proteccion a terceros",
    "Franquicia por accidente"
   ],
-  "imagen": "1645652998174fondo-blanco-3.jpg",
-  "nombre": "",
-  "marca": "",
-  "precioDia": "",
-  "precioSemana": "",
-  "precioMes": ""
+  "imagen": "1645654602810fondo-blanco-3.jpg",
+  "nombre": "Citroen S4",
+  "marca": "Citroen",
+  "precioDia": "2000",
+  "precioSemana": "2000",
+  "precioMes": "2000",
+  "adicionales": [
+   "Bluetooth",
+   "Sistema de frenos ABS"
+  ],
+  "cantidadAsientos": "Siete",
+  "cajaDeCambio": "Automatico",
+  "airbag": "S"
  },
  {
   "id": "2",
   "nombre": "Renaul Duster",
   "marca": "Citroen",
   "categoria": "Medianos",
-  "imagen": "1645632882299fondo-blanco-4.jpg",
+  "imagen": "1645654762377fondo-blanco-3.jpg",
   "cantidadAsientos": 5,
   "combustible": "gas",
   "adicionales": [
@@ -41,7 +48,7 @@
   "nombre": "New Avensis",
   "marca": "Citroen",
   "categoria": "Especiales",
-  "imagen": "1645636623320fondo-blanco-2.jpg",
+  "imagen": "1645654773101fondo-blanco-3.jpg",
   "cantidadAsientos": "Nueve",
   "combustible": "GNC",
   "adicionales": [
@@ -67,7 +74,7 @@
   "nombre": "Citroen DS4",
   "marca": "Citroen",
   "categoria": "Medianos",
-  "imagen": "1645631288794fondo-blanco-3.jpg",
+  "imagen": "1645654785998fondo-blanco-4.jpg",
   "cantidadAsientos": 5,
   "combustible": "gas",
   "adicionales": [
@@ -91,7 +98,7 @@
   "nombre": "Citroen DS4",
   "marca": "Citroen",
   "categoria": "Categoria de vehiculo",
-  "imagen": "1645631114169fondo-blanco-4.jpg",
+  "imagen": "1645654798039fondo-blanco-2.jpg",
   "cantidadAsientos": "Cantidad de asientos",
   "combustible": "Tipo de combustible",
   "adicionales": "Doble Airbag",

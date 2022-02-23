@@ -64,20 +64,19 @@ const controlador = {
 
                 /*--------------------------CARGANDO FOTO--------------------------------------------*/
 
-                if(req.files.imagen) {
+                if(req.files) {
+                    console.log('llego');
                     const file = req.files.imagen;
                     const nombre = Date.now() + file.name
-                    const ruta = path.join(__dirname, '../../public/img/' + nombre);
-                    console.log(ruta);
-                    console.log(file);
+                    const ruta = path.join(__dirname, '../../public/img/' + nombre)
                     file.mv(ruta, (err) => {
                     if (err) {
                         return res.status(500).send(err);
                     }
                     return res.send({ status: "success", path: ruta });
                     });
+                    fs.unlinkSync(path.join(__dirname,'../../public/img/' + i.imagen));
                     i.imagen = nombre;
-                
                 }
                 break;    
             }

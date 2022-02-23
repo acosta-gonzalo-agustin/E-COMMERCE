@@ -52,24 +52,24 @@
           <label for="cajaDeCambio">Caja de cambio</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="cajaDeCambio"  id="cajaDeCambio" value="M">
+          <input class="form-check-input" type="radio" name="cajaDeCambio"  id="cajaDeCambio" value="Manual" <%if(producto.cajaDeCambio && producto.cajaDeCambio == 'Manual') { %> checked  <%}%>>
           <label class="form-check-label" for="cajaDeCambio">Manual</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="cajaDeCambio" id="cajaDeCambio" value="A">
+          <input class="form-check-input" type="radio" name="cajaDeCambio" id="cajaDeCambio" value="Automatico" <%if(producto.cajaDeCambio && producto.cajaDeCambio == 'Automatico') { %> checked  <%}%>>
           <label class="form-check-label" for="cajaDeCambio">Automático</label>
         </div>
       </div>
       <div class="mb-3">
         <div class="form-check form-check-inline">
-          <label for="caja">Airbag</label>
+          <label for="airbag">Airbag</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="caja" id="caja" value="S">
+          <input class="form-check-input" type="radio" name="airbag" id="airbag" value="S"  <%if(producto.airbag && producto.airbag == 'S') { %> checked  <%}%>>
           <label class="form-check-label" for="inlineRadio1">Si</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="caja" id="caja" value="N">
+          <input class="form-check-input" type="radio" name="airbag" id="airbag" value="N" <%if(producto.airbag && producto.airbag == '') { %> checked  <%}%>>
           <label class="form-check-label" for="inlineRadio2">No</label>
         </div>
       </div>

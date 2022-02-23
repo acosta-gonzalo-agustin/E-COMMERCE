@@ -19,8 +19,11 @@
             <div class="col-sm">
               <ul>
                 <li><i class="fas fa-check-circle"></i><%= i.cantidadAsientos%> asientos</li>
+                <li><i class="fas fa-check-circle"></i><%=i.cajaDeCambio%></li>
                 <li><i class="fas fa-check-circle"></i><%=i.combustible%></li>
-                <li><i class="fas fa-check-circle"></i><%= i.airbag %></li>
+                <% if(i.airbag == 'S') { %>
+                  <li><i class="fas fa-check-circle"></i>Airbag</li>
+                <% } %> 
                 <li><i class="fas fa-check-circle"></i><%=i.arieAcondicionado%></li>
               </ul>
             </div>
