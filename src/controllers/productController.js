@@ -64,17 +64,22 @@ const controlador = {
 
                 /*--------------------------CARGANDO FOTO--------------------------------------------*/
 
-                const file = req.files.imagen;
-                const path = __dirname + "../../public/img" + file.name;
-                console.log(path);
-                console.log(file);
-                file.mv(path, (err) => {
-                  if (err) {
-                    return res.status(500).send(err);
-                  }
-                  return res.send({ status: "success", path: path });
-                });
-                break;
+                if(req.files.imagen) {
+                    const file = req.files.imagen;
+                    const nombre = Date.now() + file.name
+                    const ruta = path.join(__dirname, '../../public/img/' + nombre);
+                    console.log(ruta);
+                    console.log(file);
+                    file.mv(ruta, (err) => {
+                    if (err) {
+                        return res.status(500).send(err);
+                    }
+                    return res.send({ status: "success", path: ruta });
+                    });
+                    i.imagen = nombre;
+                
+                }
+                break;    
             }
         }
         
