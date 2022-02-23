@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 app.use(express.static(path.join(__dirname, './public')));
+const expressFileUpload = require('express-fileupload');
 
 /*-----------------------------IMPORTANDO RUTAS---------------------------------------------*/
 
@@ -39,6 +40,13 @@ const methodOverride = require('method-override');
 app.use(methodOverride('_method'));
 
 /*------------------------------------------ESTABLECIENDO LAS RUTAS----------------------------------*/
+
+/*----------------------------------------------RUTA DE EXPRESS FILE UPLOAD-------------------------------*/
+app.use(expressFileUpload({
+    // limits: { fileSize: 512000 }, // 500kb
+    abortOnLimit: true
+  })
+  );
 
 app.use('/',homeRoute);
 

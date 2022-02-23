@@ -60,14 +60,25 @@ const controlador = {
                 i.precioDia = dato.precioDia;
                 i.precioSemana = dato.precioSemana;
                 i.precioMes = dato.precioMes;
-                var old_imagen = i.imagen;
-                i.imagen = req.file.filename;
-                
+                i.adicionales = dato.adicionales;
+
+                /*--------------------------CARGANDO FOTO--------------------------------------------*/
+
+                const file = req.files.imagen;
+                const path = __dirname + "../../public/img" + file.name;
+                console.log(path);
+                console.log(file);
+                file.mv(path, (err) => {
+                  if (err) {
+                    return res.status(500).send(err);
+                  }
+                  return res.send({ status: "success", path: path });
+                });
                 break;
             }
         }
         
-        fs.unlinkSync(path.join(__dirname,'../../public/img/' + old_imagen));
+        
         fs.writeFileSync(path.join(__dirname,'../data/products.json'),JSON.stringify(products,null,' '));
         res.redirect('/');
                 

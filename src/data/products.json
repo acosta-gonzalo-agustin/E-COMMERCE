@@ -7,20 +7,12 @@
    "Proteccion a terceros",
    "Franquicia por accidente"
   ],
-  "nombre": "citroen",
-  "marca": "citroen",
-  "precioDia": "0",
-  "precioSemana": "0",
-  "precioMes": "0",
-  "categoria": "Premium",
-  "cantidadAsientos": "Seis",
-  "combustible": "GNC",
-  "ciudad": "Buenos Aires",
-  "adicionales": [
-   "Sistema de frenos ABS",
-   "Doble Airbag"
-  ],
-  "imagen": "1645631028234fondo-blanco-4.jpg"
+  "imagen": "1645631028234fondo-blanco-4.jpg",
+  "nombre": "",
+  "marca": "",
+  "precioDia": "",
+  "precioSemana": "",
+  "precioMes": ""
  },
  {
   "id": "2",

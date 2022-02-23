@@ -2,7 +2,9 @@ const productController = require('../controllers/productController');
 const express = require('express');
 const path = require('path');
 const router = express.Router();
-const uploadfile = require('../middlewares/multer');
+
+
+
 
 
 
@@ -13,7 +15,7 @@ const uploadfile = require('../middlewares/multer');
 router.get('/listing',productController.list);
 
 router.get('/edit/:id',productController.edit);
-router.put('/listing/:id',uploadfile.single('imagen'),productController.update);
+router.put('/listing/:id',productController.update);
 
 
 router.get('/create',productController.create);
