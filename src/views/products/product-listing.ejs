@@ -7,66 +7,11 @@
 
   <div class='lista-productos listado'>
 
-    <% for(let i of productos) { %>
-   
-      <div class="container grid item">
-        <div class="row">
-          <div class='col-md border-end'>
-            <div class="col-sm border-bottom">
-              <h3><%= i.nombre%></h3>
-              <img src="/img/<%=i.imagen%> " alt="">
-            </div>
-            <div class="col-sm">
-              <ul>
-                <li><i class="fas fa-check-circle"></i><%= i.cantidadAsientos%> asientos</li>
-                <li><i class="fas fa-check-circle"></i><%=i.cajaDeCambio%></li>
-                <li><i class="fas fa-check-circle"></i><%=i.combustible%></li>
-                <% if(i.airbag == 'S') { %>
-                  <li><i class="fas fa-check-circle"></i>Airbag</li>
-                <% } %> 
-              </ul>
-            </div>
-          </div>
-          <div class="col-md reserva-derecha">
-            <div>
-              $<%= i.precioDia%>/dia
-            </div>
-            <div>
-              <ul>
-                SEGUROS
-                <% for(let j of i.seguro) {%> 
-                <li><%=j%></li>                  
-                <%}%>
-              </ul>
+    <!----------------------------INCLUYENDO PARCIAL DE LISTADO------------------------------------>
 
-            </div>
-            <div class="escondido">
-              <ul>
-                ADICIONALES
-                <%if(typeof  i.adicionales == 'object') {%> 
-                <% for(let j of i.adicionales) {%> 
-                <li><%=j%></li>
-                <%}%>
-                <%} else { %>
-                  <li><%=i.adicionales%> </li>
-                <%}%>   
-              </ul>
+    <%- include('../parcials/list') %>
 
-            </div>
-            <div>
-              <button type="submit" class="btn reserva"><a href="/product/edit/<%=i.id%> " class="btn">Editar</a></button>
-            </div>
-            <div>
-              <button type="submit" class="btn presupuesto">Eliminar</button>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-      <% } %>
+    
 
 
 

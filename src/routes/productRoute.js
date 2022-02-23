@@ -19,7 +19,7 @@ router.put('/listing/:id',productController.update);
 
 
 router.get('/create',productController.create);
-router.get('/filter',productController.filter);
+router.get('/filter/',productController.filter);
 
 
 module.exports = router;

@@ -92,7 +92,7 @@ const controlador = {
 
 
     filter: function (req, res) {
-        res.render('products/product-filter');
+        res.render('products/product-filter',{productos:products});
     },
 
 
