@@ -7,19 +7,23 @@
    "Proteccion a terceros",
    "Franquicia por accidente"
   ],
-  "imagen": "1645654602810fondo-blanco-3.jpg",
+  "imagen": "1645655935730fondo-blanco-2.jpg",
   "nombre": "Citroen S4",
   "marca": "Citroen",
   "precioDia": "2000",
   "precioSemana": "2000",
   "precioMes": "2000",
   "adicionales": [
+   "AM/FM Stereo con CD",
    "Bluetooth",
-   "Sistema de frenos ABS"
+   "Reproductor MP3",
+   "Sistema de frenos ABS",
+   "Doble Airbag"
   ],
   "cantidadAsientos": "Siete",
   "cajaDeCambio": "Automatico",
-  "airbag": "S"
+  "airbag": "S",
+  "combustible": "GNC"
  },
  {
   "id": "2",
@@ -28,9 +32,12 @@
   "categoria": "Medianos",
   "imagen": "1645654762377fondo-blanco-3.jpg",
   "cantidadAsientos": 5,
-  "combustible": "gas",
+  "combustible": "Electrico",
   "adicionales": [
    "AM/FM Stereo con CD",
+   "Bluetooth",
+   "Reproductor MP3",
+   "Sistema de frenos ABS",
    "Doble Airbag"
   ],
   "precioDia": "500",
@@ -41,7 +48,9 @@
    "Proteccion total",
    "Proteccion a terceros",
    "Franquicia por accidente"
-  ]
+  ],
+  "cajaDeCambio": "Manual",
+  "airbag": "S"
  },
  {
   "id": "3",
@@ -67,7 +76,8 @@
    "Proteccion a terceros",
    "Franquicia por accidente"
   ],
-  "ciudad": "Mendoza Capital"
+  "ciudad": "Mendoza Capital",
+  "cajaDeCambio": "Manual"
  },
  {
   "id": "4",
@@ -79,6 +89,7 @@
   "combustible": "gas",
   "adicionales": [
    "AM/FM Stereo con CD",
+   "Bluetooth",
    "Reproductor MP3",
    "Sistema de frenos ABS",
    "Doble Airbag"
@@ -91,7 +102,8 @@
    "Proteccion total",
    "Proteccion a terceros",
    "Franquicia por accidente"
-  ]
+  ],
+  "cajaDeCambio": "Automatico"
  },
  {
   "id": "5",
@@ -101,7 +113,13 @@
   "imagen": "1645654798039fondo-blanco-2.jpg",
   "cantidadAsientos": "Cantidad de asientos",
   "combustible": "Tipo de combustible",
-  "adicionales": "Doble Airbag",
+  "adicionales": [
+   "AM/FM Stereo con CD",
+   "Bluetooth",
+   "Reproductor MP3",
+   "Sistema de frenos ABS",
+   "Doble Airbag"
+  ],
   "precioDia": "500",
   "precioSemana": "5000",
   "precioMes": "30000",
@@ -111,6 +129,7 @@
    "Proteccion a terceros",
    "Franquicia por accidente"
   ],
-  "ciudad": "Mendoza Capital"
+  "ciudad": "Mendoza Capital",
+  "cajaDeCambio": "Manual"
  }
 ]
