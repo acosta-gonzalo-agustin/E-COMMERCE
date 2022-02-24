@@ -68,15 +68,22 @@ const controlador = {
                     console.log('llego');
                     const file = req.files.imagen;
                     const nombre = Date.now() + file.name
-                    const ruta = path.join(__dirname, '../../public/img/img-autos' + nombre)
-                    file.mv(ruta, (err) => {
-                    if (err) {
-                        return res.status(500).send(err);
+                    const ruta = path.join(__dirname, '../../public/img/img-autos/' + nombre)
+                    if(file.mimetype == 'image/jepg' || file.mimetype == 'image/jpeg' || file.mimetype == 'image/jepg') {
+                        file.mv(ruta, (err) => {
+                            if (err) {
+                                return res.status(500).send(err);
+                            }
+                            res.send({ status: "success", path: ruta });
+                            });
+                            fs.unlinkSync(path.join(__dirname,'../../public/img/img-autos/' + i.imagen));
+                            i.imagen = nombre;
+                    } else {
+                        let error_tipo = 'El archivo debe tener formato jpg, jpeg,png';
+                        console.log(i);
+                        res.render('products/product-edit',{error:error_tipo,producto:i});
                     }
-                    return res.send({ status: "success", path: ruta });
-                    });
-                    fs.unlinkSync(path.join(__dirname,'../../public/img/img-autos' + i.imagen));
-                    i.imagen = nombre;
+                    
                 }
                 break;    
             }

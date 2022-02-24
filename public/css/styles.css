@@ -526,6 +526,11 @@ footer .container li {
 
     /*------------------------------------------ FORMULARIO ---------------------------------------------------*/
 
+    .error {
+        color: red;
+    }
+
+
     .formulario {
         margin-top: 2vh;
 

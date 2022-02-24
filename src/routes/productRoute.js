@@ -15,7 +15,7 @@ const router = express.Router();
 router.get('/listing',productController.list);
 
 router.get('/edit/:id',productController.edit);
-router.put('/listing/:id',productController.update);
+router.put('/edit/:id',productController.update);
 
 
 router.get('/create',productController.create);

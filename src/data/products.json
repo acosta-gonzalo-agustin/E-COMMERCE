@@ -7,30 +7,25 @@
    "Proteccion a terceros",
    "Franquicia por accidente"
   ],
-  "imagen": "1645715760715fondo-blanco-4.jpg",
-  "nombre": "Citroen S4",
+  "imagen": "16457317669971645716206102fondo-blanco-2.jpg",
+  "nombre": "",
   "marca": "Citroen",
-  "precioDia": "30",
-  "precioSemana": "300",
-  "precioMes": "3000",
-  "adicionales": [
-   "AM/FM Stereo con CD",
-   "Bluetooth",
-   "Reproductor MP3",
-   "Sistema de frenos ABS",
-   "Doble Airbag"
-  ],
-  "cantidadAsientos": "Siete",
-  "cajaDeCambio": "Manual",
+  "precioDia": "500",
+  "precioSemana": "1000",
+  "precioMes": "1515151",
+  "cantidadAsientos": "Cuatro",
+  "combustible": "Nafta",
+  "categoria": "Compactos",
+  "cajaDeCambio": "Automatico",
   "airbag": "N",
-  "combustible": "GNC"
+  "ciudad": "Rosario"
  },
  {
   "id": "2",
   "nombre": "Renaul Duster",
   "marca": "Citroen",
   "categoria": "Medianos",
-  "imagen": "1645654762377fondo-blanco-3.jpg",
+  "imagen": "1645717118366fondo-blanco-4.jpg",
   "cantidadAsientos": 5,
   "combustible": "Electrico",
   "adicionales": [
@@ -57,7 +52,7 @@
   "nombre": "New Avensis",
   "marca": "Citroen",
   "categoria": "Especiales",
-  "imagen": "1645654773101fondo-blanco-3.jpg",
+  "imagen": "1645717135980img-autos1645716520015fondo-blanco-3.jpg",
   "cantidadAsientos": "Nueve",
   "combustible": "GNC",
   "adicionales": [
@@ -84,7 +79,7 @@
   "nombre": "Citroen DS4",
   "marca": "Citroen",
   "categoria": "Medianos",
-  "imagen": "1645654785998fondo-blanco-4.jpg",
+  "imagen": "1645717149483fondo-blanco-4.jpg",
   "cantidadAsientos": 5,
   "combustible": "gas",
   "adicionales": [
@@ -110,7 +105,7 @@
   "nombre": "Citroen DS4",
   "marca": "Citroen",
   "categoria": "Categoria de vehiculo",
-  "imagen": "1645654798039fondo-blanco-2.jpg",
+  "imagen": "1645720178618img-autos1645716520015fondo-blanco-3.jpg",
   "cantidadAsientos": "Cantidad de asientos",
   "combustible": "Tipo de combustible",
   "adicionales": [
