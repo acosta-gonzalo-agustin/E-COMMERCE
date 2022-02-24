@@ -7,12 +7,12 @@
    "Proteccion a terceros",
    "Franquicia por accidente"
   ],
-  "imagen": "1645661366597fondo-blanco-4.jpg",
+  "imagen": "1645664225952fondo-blanco-3.jpg",
   "nombre": "Citroen S4",
   "marca": "Citroen",
-  "precioDia": "2000",
-  "precioSemana": "2000",
-  "precioMes": "2000",
+  "precioDia": "30",
+  "precioSemana": "300",
+  "precioMes": "3000",
   "adicionales": [
    "AM/FM Stereo con CD",
    "Bluetooth",
@@ -22,7 +22,7 @@
   ],
   "cantidadAsientos": "Siete",
   "cajaDeCambio": "Automatico",
-  "airbag": "S",
+  "airbag": "N",
   "combustible": "GNC"
  },
  {
