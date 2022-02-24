@@ -68,7 +68,7 @@ const controlador = {
                     console.log('llego');
                     const file = req.files.imagen;
                     const nombre = Date.now() + file.name
-                    const ruta = path.join(__dirname, '../../public/img/' + nombre)
+                    const ruta = path.join(__dirname, '../../public/img/img-autos' + nombre)
                     file.mv(ruta, (err) => {
                     if (err) {
                         return res.status(500).send(err);
