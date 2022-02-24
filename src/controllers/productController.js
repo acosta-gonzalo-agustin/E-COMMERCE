@@ -75,7 +75,7 @@ const controlador = {
                     }
                     return res.send({ status: "success", path: ruta });
                     });
-                    fs.unlinkSync(path.join(__dirname,'../../public/img/' + i.imagen));
+                    fs.unlinkSync(path.join(__dirname,'../../public/img/img-autos' + i.imagen));
                     i.imagen = nombre;
                 }
                 break;    
