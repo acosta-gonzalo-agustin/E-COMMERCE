@@ -65,11 +65,11 @@ const controlador = {
                 /*--------------------------CARGANDO FOTO--------------------------------------------*/
 
                 if(req.files) {
-                    console.log('llego');
                     const file = req.files.imagen;
+                    console.log(file);
                     const nombre = Date.now() + file.name
                     const ruta = path.join(__dirname, '../../public/img/img-autos/' + nombre)
-                    if(file.mimetype == 'image/jpg' || file.mimetype == 'image/png' || file.mimetype == 'image/jepg') {
+                    if(file.mimetype == 'image/jpg' || file.mimetype == 'image/png' || file.mimetype == 'image/jpeg') {
                         file.mv(ruta, (err) => {
                             if (err) {
                                 return res.status(500).send(err);
