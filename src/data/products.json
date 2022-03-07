@@ -2,24 +2,31 @@
  {
   "id": "1",
   "estado": true,
-  "imagen": "1646578372729img-autos1645716589515fondo-blanco-3.jpg",
-  "nombre": "",
+  "imagen": "1646695820698img-autos1645716589515fondo-blanco-3.jpg",
+  "nombre": "Citreon S4",
   "marca": "Citroen",
   "precioDia": "500",
   "precioSemana": "1000",
-  "precioMes": "1515151",
-  "cantidadAsientos": "Cuatro",
+  "precioMes": "1651",
+  "cantidadAsientos": "Siete",
   "combustible": "Nafta",
   "categoria": "Compactos",
-  "cajaDeCambio": "Automatico",
-  "airbag": "N",
+  "cajaDeCambio": "Manual",
+  "airbag": "S",
   "ciudad": "Rosario",
+  "seguros": "Proteccion a terceros",
   "adicionales": [
    "AM/FM Stereo con CD",
+   "Bluetooth",
    "Reproductor MP3",
+   "Sistema de frenos ABS",
    "Doble Airbag"
   ],
-  "seguros": "Proteccion a terceros"
+  "seguro": [
+   "Proteccion total",
+   "Proteccion a terceros",
+   "Franquicia por accidente"
+  ]
  },
  {
   "id": "2",
@@ -128,5 +135,31 @@
   ],
   "ciudad": "Mendoza Capital",
   "cajaDeCambio": "Manual"
+ },
+ {
+  "id": "6",
+  "nombre": "dsad",
+  "marca": "dsads",
+  "categoria": "Compactos",
+  "cantidadAsientos": "Cuatro",
+  "combustible": "Nafta",
+  "ciudad": "Córdoba",
+  "precioDia": "651",
+  "precioSemana": "651",
+  "precioMes": "651",
+  "cajaDeCambio": "Automatico",
+  "airbag": "S",
+  "adicionales": [
+   "AM/FM Stereo con CD",
+   "Bluetooth",
+   "Reproductor MP3",
+   "Sistema de frenos ABS",
+   "Doble Airbag"
+  ],
+  "seguro": [
+   "Proteccion total",
+   "Proteccion a terceros",
+   "Franquicia por accidente"
+  ]
  }
 ]
