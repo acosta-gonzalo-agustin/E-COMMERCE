@@ -160,6 +160,73 @@
    "Proteccion total",
    "Proteccion a terceros",
    "Franquicia por accidente"
+  ],
+  "imagen": "1646696520687img-autos1645717025495fondo-blanco-4.jpg"
+ },
+ {
+  "id": "7",
+  "nombre": "dasd",
+  "marca": "dsad",
+  "categoria": "Categoria de vehiculo",
+  "cantidadAsientos": "Cantidad de asientos",
+  "combustible": "Tipo de combustible",
+  "ciudad": "Ciudad",
+  "precioDia": "81981",
+  "precioSemana": "981981",
+  "precioMes": "981",
+  "imagen": "1646696505714img-autos1645716589515fondo-blanco-3.jpg",
+  "adicionales": [
+   "Bluetooth",
+   "Reproductor MP3",
+   "Sistema de frenos ABS"
+  ]
+ },
+ {
+  "id": "8",
+  "nombre": "dasd",
+  "marca": "dasdas",
+  "categoria": "Categoria de vehiculo",
+  "cantidadAsientos": "Cantidad de asientos",
+  "combustible": "Tipo de combustible",
+  "ciudad": "Ciudad",
+  "precioDia": "4",
+  "precioSemana": "4",
+  "precioMes": "4",
+  "imagen": "1646696356713img-autos1645717025495fondo-blanco-4.jpg",
+  "cajaDeCambio": "Manual",
+  "airbag": "S",
+  "adicionales": [
+   "Bluetooth",
+   "Reproductor MP3",
+   "Sistema de frenos ABS"
+  ],
+  "seguro": [
+   "Proteccion total",
+   "Proteccion a terceros"
+  ]
+ },
+ {
+  "id": "9",
+  "nombre": "dsa",
+  "marca": "dsad",
+  "categoria": "Categoria de vehiculo",
+  "cantidadAsientos": "Cantidad de asientos",
+  "combustible": "Tipo de combustible",
+  "ciudad": "Ciudad",
+  "precioDia": "4",
+  "precioSemana": "4",
+  "precioMes": "4",
+  "imagen": "16466964884651645716206102fondo-blanco-2.jpg",
+  "seguro": [
+   "Proteccion total",
+   "Proteccion a terceros",
+   "Franquicia por accidente"
+  ],
+  "adicionales": [
+   "AM/FM Stereo con CD",
+   "Bluetooth",
+   "Reproductor MP3",
+   "Sistema de frenos ABS"
   ]
  }
 ]
