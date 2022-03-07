@@ -2,11 +2,6 @@
  {
   "id": "1",
   "estado": true,
-  "seguro": [
-   "Proteccion total",
-   "Proteccion a terceros",
-   "Franquicia por accidente"
-  ],
   "imagen": "1646578372729img-autos1645716589515fondo-blanco-3.jpg",
   "nombre": "",
   "marca": "Citroen",
@@ -18,7 +13,13 @@
   "categoria": "Compactos",
   "cajaDeCambio": "Automatico",
   "airbag": "N",
-  "ciudad": "Rosario"
+  "ciudad": "Rosario",
+  "adicionales": [
+   "AM/FM Stereo con CD",
+   "Reproductor MP3",
+   "Doble Airbag"
+  ],
+  "seguros": "Proteccion a terceros"
  },
  {
   "id": "2",
@@ -45,7 +46,8 @@
    "Franquicia por accidente"
   ],
   "cajaDeCambio": "Manual",
-  "airbag": "S"
+  "airbag": "S",
+  "seguros": "Proteccion a terceros"
  },
  {
   "id": "3",

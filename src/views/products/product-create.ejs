@@ -1,139 +1,185 @@
 <!-------------------------------------------------INCLUYENDO HEAD Y HEADER------------------------------>
 
-<%- include('../parcials/head')  %>
+<%- include('../parcials/head') %>
 
   <main>
 
-    <form class='formulario registro formulario-producto'>
+    <form class='formulario registro formulario-producto' action="/product/create" enctype="multipart/form-data" method="POST">
       <div class="titulo-crear">
         <h1>CREAR PRODUCTO</h1>
       </div>
       <div class="mb-3">
-        <input type="text" class="form-control" id="nombre" placeholder="Nombre del auto">
+        <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre de producto">
+        <% if (locals && locals.errors) { %>
+          <% if (locals.errors[0].param=="nombre") { %>
+            <p class = 'error'> <%= locals.errors[0].msg %>  </p> 
+          <% } %>
+        <% } %>
       </div>
       <div class="mb-3">
-        <input type="text" class="form-control" id="apellido" placeholder="Marca">
+        <input type="text" class="form-control" name="marca" id="marca" placeholder="Marca del producto">
+        <% if (locals && locals.errors) { %>
+          <% if (locals.errors[1].param=="marca") { %>
+            <p class = 'error'> <%= locals.errors[1].msg %>  </p> 
+          <% } %>
+        <% } %>
       </div>
       <div class="mb-3">
-        <select class="form-select">
+        <select class="form-select" name="categoria" id="categoria">
           <option selected>Categoria de vehiculo</option>
-          <option value="4">Compactos</option>
-          <option value="5">Medianos</option>
-          <option value="6">Premium</option>
-          <option value="7">Especiales</option>
+          <option>Compactos</option>
+          <option>Medianos</option>
+          <option>Premium</option>
+          <option>Especiales</option>
         </select>
       </div>
       <div class="mb-3">
-        <label for="formFileMultiple" class="form-label">Seleccione una o varias imagenes para el producto:</label>
-        <input class="form-control" type="file" id="formFileMultiple" multiple>
+        <label for="image" class="form-label">Remplazar imagenes:</label>
+        <input class="form-control" type="file" name="imagen" id="imagen">
+        <% if(typeof error !='undefined' ) { %>
+          <p class='error'>
+            <%=error%>
+          </p>
+          <% } %>
       </div>
       <div class="mb-3">
-        <select class="form-select">
-          <option selected>Cantidad de asientos</option>
-          <option value="4">Cuatro</option>
-          <option value="5">Cinco</option>
-          <option value="6">Seis</option>
-          <option value="7">Siete</option>
-          <option value="8">Ocho</option>
-          <option value="9">Nueve</option>
+        <select class="form-select" name="cantidadAsientos" id="cantidadAsientos">
+          <option>Cantidad de asientos</option>
+          <option>Cuatro</option>
+          <option>Cinco</option>
+          <option>Seis</option>
+          <option>Siete</option>
+          <option>Ocho</option>
+          <option>Nueve</option>
         </select>
       </div>
       <div class="mb-3">
-        <select class="form-select">
-          <option selected>Tipo de combustible</option>
-          <option value="N">Nafta</option>
-          <option value="G">Gasoil</option>
-          <option value="GNC">GNC</option>
-          <option value="E">Electrico</option>
+        <select class="form-select" name="combustible" id="combustible">
+          <option>Tipo de combustible</option>
+          <option>Nafta</option>
+          <option>Gasoil</option>
+          <option>GNC</option>
+          <option>Electrico</option>
         </select>
       </div>
       <div class="mb-3">
         <div class="form-check form-check-inline">
-          <label for="caja">Caja de cambio</label>
+          <label for="cajaDeCambio">Caja de cambio</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="M">
-          <label class="form-check-label" for="inlineRadio1">Manual</label>
+          <input class="form-check-input" type="radio" name="cajaDeCambio" id="cajaDeCambio" value="Manual">
+          <label class="form-check-label" for="cajaDeCambio">Manual</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="A">
-          <label class="form-check-label" for="inlineRadio2">Automático</label>
+          <input class="form-check-input" type="radio" name="cajaDeCambio" id="cajaDeCambio" value="Automatico">
+          <label class="form-check-label" for="cajaDeCambio">Automático</label>
         </div>
       </div>
       <div class="mb-3">
         <div class="form-check form-check-inline">
-          <label for="caja">Airbag</label>
+          <label for="airbag">Airbag</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="S">
+          <input class="form-check-input" type="radio" name="airbag" id="airbag" value="S">
           <label class="form-check-label" for="inlineRadio1">Si</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="N">
+          <input class="form-check-input" type="radio" name="airbag" id="airbag" value="N">
           <label class="form-check-label" for="inlineRadio2">No</label>
         </div>
       </div>
       <div class="mb-3">
         <label for="adicionales">Adicionales</label> <br>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-          <label class="form-check-label" for="flexCheckDefault">
-            AM/FM Stereo con CD
-          </label>
+          <input class="form-check-input" type="checkbox" value="AM/FM Stereo con CD" id="adicionales" name ='adicionales'>
+            <label class="form-check-label" for="flexCheckDefault">
+              AM/FM Stereo con CD
+            </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-          <label class="form-check-label" for="flexCheckChecked">
+          <input class="form-check-input" type="checkbox" value="Bluetooth" id="adicionales" name = 'adicionales'>
             Bluetooth
-          </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-          <label class="form-check-label" for="flexCheckChecked">
+          <input class="form-check-input" type="checkbox" value="Reproductor MP3" id="adicionales" name ='adicionales'>
             Reproductor MP3
-          </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-          <label class="form-check-label" for="flexCheckChecked">
+          <input class="form-check-input" type="checkbox" value="Sistema de frenos ABS" id="adicionales" name ='adicionales'>
             Sistema de frenos ABS
-          </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-          <label class="form-check-label" for="flexCheckChecked">
+          <input class="form-check-input" type="checkbox" value="Doble Airbag" id="adicionales" name="adicionales">
             Doble Airbag
-          </label>
         </div>
       </div>
+
+
+      
+
+      <div class="mb-3">
+        <label for="seguro">Seguros</label> <br>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Proteccion total" id="seguro" name ='seguro'>
+            <label class="form-check-label" for="flexCheckDefault">
+              Proteccion total
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Proteccion a terceros" id="seguro" name = 'seguro'>
+            Proteccion a terceros
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Franquicia por accidente" id="seguro" name ='seguro'>
+            Franquicia por accidente
+        </div>
+      </div>
+
+
       <div class="input-group mb-3">
         <span class="input-group-text">$</span>
-        <input type="number" step="0.01" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Precio x/dia">
+        <input type="number" step="0.01" class="form-control" aria-label="Amount (to the nearest dollar)" name="precioDia" placeholder="precioxDia">
         <span class="input-group-text">.00</span>
       </div>
+      <% if (locals && locals.errors) { %>
+        <% if (locals.errors[2].param=="precioDia") { %>
+          <p class = 'error'> <%= locals.errors[2].msg %>  </p> 
+        <% } %>
+      <% } %>
       <div class="input-group mb-3">
         <span class="input-group-text">$</span>
         <input type="number" step="0.01" class="form-control" aria-label="Amount (to the nearest dollar)"
-          placeholder="Precio x/semana">
+          name="precioSemana" placeholder="precioxSemana">
         <span class="input-group-text">.00</span>
       </div>
+      <% if (locals && locals.errors) { %>
+        <% if (locals.errors[3].param=="precioSemana") { %>
+          <p class = 'error'> <%= locals.errors[3].msg %>  </p> 
+        <% } %>
+      <% } %>
       <div class="input-group mb-3">
         <span class="input-group-text">$</span>
-        <input type="number" step="0.01" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Precio x/mes">
+        <input type="number" step="0.01" class="form-control" aria-label="Amount (to the nearest dollar)"
+          name="precioMes" placeholder="precioxMes">
         <span class="input-group-text">.00</span>
       </div>
+      <% if (locals && locals.errors) { %>
+        <% if (locals.errors[4].param=="precioMes") { %>
+          <p class = 'error'> <%= locals.errors[4].msg %>  </p> 
+        <% } %>
+      <% } %>
       <div class="mb-3">
-        <select class="form-select">
-          <option selected>Ciudad</option>
-          <option value="N">Córdoba</option>
-          <option value="G">Buenos Aires</option>
-          <option value="GNC">Rosario</option>
-          <option value="E">Mendoza Capital</option>
+        <select class="form-select" name='ciudad' id="ciudad">
+          <option>Ciudad</option>
+          <option>Córdoba</option>
+          <option>Buenos Aires</option>
+          <option>Rosario</option>
+          <option>Mendoza Capital</option>
         </select>
       </div>
 
       <div class='registro boton'>
-        <button type="submit" class="btn">Ingresar producto</button>
+        <button type="submit" class="btn">Guardar articulo</button>
       </div>
     </form>
 
@@ -144,12 +190,11 @@
   </main>
 
 
-  <!-------------------------------------------------INCLUYENDO FOOTER------------------------------>
-
-  <%- include('../parcials/footer') %> 
 
 
-</body>
+  <%- include('../parcials/footer') %>
 
-</html>
 
+    </body>
+
+    </html>

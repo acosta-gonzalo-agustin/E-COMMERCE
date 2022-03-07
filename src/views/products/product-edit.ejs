@@ -1,10 +1,11 @@
 <!-------------------------------------------------INCLUYENDO HEAD Y HEADER------------------------------>
 
-<%- include('../parcials/head')  %>
+<%- include('../parcials/head') %>
 
   <main>
 
-    <form class='formulario registro formulario-producto' action= "/product/edit/<%=producto.id%>?_method=PUT" enctype="multipart/form-data" method="POST">
+    <form class='formulario registro formulario-producto' action="/product/edit/<%=producto.id%>?_method=PUT"
+      enctype="multipart/form-data" method="POST">
       <div class="titulo-crear">
         <h1>EDITAR PRODUCTO</h1>
       </div>
@@ -12,7 +13,7 @@
         <input type="text" class="form-control" name="nombre" id="nombre" value="<%=producto.nombre%>">
       </div>
       <div class="mb-3">
-        <input type="text" class="form-control" name = "marca"  id="marca" value="<%=producto.marca%>">
+        <input type="text" class="form-control" name="marca" id="marca" value="<%=producto.marca%>">
       </div>
       <div class="mb-3">
         <select class="form-select" name="categoria" id="categoria">
@@ -25,10 +26,12 @@
       </div>
       <div class="mb-3">
         <label for="image" class="form-label">Remplazar imagenes:</label>
-        <input class="form-control" type="file" name = "imagen" id="imagen">
-        <% if(typeof error != 'undefined')  { %> 
-          <p class = 'error'><%=error%> </p> 
-          <% } %> 
+        <input class="form-control" type="file" name="imagen" id="imagen">
+        <% if(typeof error !='undefined' ) { %>
+          <p class='error'>
+            <%=error%>
+          </p>
+          <% } %>
       </div>
       <div class="mb-3">
         <select class="form-select" name="cantidadAsientos" id="cantidadAsientos">
@@ -55,12 +58,14 @@
           <label for="cajaDeCambio">Caja de cambio</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="cajaDeCambio"  id="cajaDeCambio" value="Manual" <%if(producto.cajaDeCambio && producto.cajaDeCambio == 'Manual') { %> checked  <%}%>>
-          <label class="form-check-label" for="cajaDeCambio">Manual</label>
+          <input class="form-check-input" type="radio" name="cajaDeCambio" id="cajaDeCambio" value="Manual"
+            <%if(producto.cajaDeCambio && producto.cajaDeCambio=='Manual' ) { %> checked <%}%>>
+            <label class="form-check-label" for="cajaDeCambio">Manual</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="cajaDeCambio" id="cajaDeCambio" value="Automatico" <%if(producto.cajaDeCambio && producto.cajaDeCambio == 'Automatico') { %> checked  <%}%>>
-          <label class="form-check-label" for="cajaDeCambio">Automático</label>
+          <input class="form-check-input" type="radio" name="cajaDeCambio" id="cajaDeCambio" value="Automatico"
+            <%if(producto.cajaDeCambio && producto.cajaDeCambio=='Automatico' ) { %> checked <%}%>>
+            <label class="form-check-label" for="cajaDeCambio">Automático</label>
         </div>
       </div>
       <div class="mb-3">
@@ -68,60 +73,98 @@
           <label for="airbag">Airbag</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="airbag" id="airbag" value="S"  <%if(producto.airbag && producto.airbag == 'S') { %> checked  <%}%>>
-          <label class="form-check-label" for="inlineRadio1">Si</label>
+          <input class="form-check-input" type="radio" name="airbag" id="airbag" value="S" <%if(producto.airbag &&
+            producto.airbag=='S' ) { %> checked <%}%>>
+            <label class="form-check-label" for="inlineRadio1">Si</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="airbag" id="airbag" value="N" <%if(producto.airbag && producto.airbag == 'N') { %> checked  <%}%>>
-          <label class="form-check-label" for="inlineRadio2">No</label>
+          <input class="form-check-input" type="radio" name="airbag" id="airbag" value="N" <%if(producto.airbag &&
+            producto.airbag=='N' ) { %> checked <%}%>>
+            <label class="form-check-label" for="inlineRadio2">No</label>
         </div>
       </div>
       <div class="mb-3">
         <label for="adicionales">Adicionales</label> <br>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="AM/FM Stereo con CD" <%if(producto.adicionales && producto.adicionales.indexOf('AM/FM Stereo con CD') != -1) { %> checked  <%}%> id="adicionales" name = 'adicionales'>
-          <label class="form-check-label" for="flexCheckDefault">
-            AM/FM Stereo con CD
-          </label>
+          <input class="form-check-input" type="checkbox" value="AM/FM Stereo con CD" <%if(producto.adicionales &&
+            producto.adicionales.indexOf('AM/FM Stereo con CD') !=-1) { %> checked <%}%> id="adicionales" name =
+            'adicionales'>
+            <label class="form-check-label" for="flexCheckDefault">
+              AM/FM Stereo con CD
+            </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="Bluetooth" <%if(producto.adicionales && producto.adicionales.indexOf('Bluetooth') != -1) { %> checked  <%}%> id="adicionales" name = 'adicionales'>
+          <input class="form-check-input" type="checkbox" value="Bluetooth" <%if(producto.adicionales &&
+            producto.adicionales.indexOf('Bluetooth') !=-1) { %> checked <%}%> id="adicionales" name = 'adicionales'>
             Bluetooth
-          </label>
+            </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="Reproductor MP3" <%if( producto.adicionales && producto.adicionales.indexOf('Reproductor MP3') != -1) { %> checked  <%}%> id="adicionales" name = 'adicionales'>
+          <input class="form-check-input" type="checkbox" value="Reproductor MP3" <%if( producto.adicionales &&
+            producto.adicionales.indexOf('Reproductor MP3') !=-1) { %> checked <%}%> id="adicionales" name =
+            'adicionales'>
             Reproductor MP3
-          </label>
+            </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="Sistema de frenos ABS" <%if(producto.adicionales && producto.adicionales.indexOf('Sistema de frenos ABS') != -1) { %> checked  <%}%> id="adicionales" name = 'adicionales'>
+          <input class="form-check-input" type="checkbox" value="Sistema de frenos ABS" <%if(producto.adicionales &&
+            producto.adicionales.indexOf('Sistema de frenos ABS') !=-1) { %> checked <%}%> id="adicionales" name =
+            'adicionales'>
             Sistema de frenos ABS
-          </label>
+            </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="Doble Airbag" <%if(producto.adicionales && producto.adicionales.indexOf('Doble Airbag') != -1) { %> checked  <%}%> id="adicionales" name="adicionales">
+          <input class="form-check-input" type="checkbox" value="Doble Airbag" <%if(producto.adicionales &&
+            producto.adicionales.indexOf('Doble Airbag') !=-1) { %> checked <%}%> id="adicionales" name="adicionales">
             Doble Airbag
-          </label>
+            </label>
         </div>
       </div>
+
+
+      <div class="mb-3">
+        <label for="seguro">Seguros</label> <br>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Proteccion total" id="seguro" name ='seguro' <%if(producto.seguro &&
+            producto.seguro.indexOf('Proteccion total') !=-1) { %> checked <%}%>>
+            <label class="form-check-label" for="flexCheckDefault">
+              Proteccion total
+            </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Proteccion a terceros" id="seguro" name = 'seguro' <%if(producto.seguro &&
+            producto.seguro.indexOf('Proteccion a terceros') !=-1) { %> checked <%}%>>
+            Proteccion a terceros
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="Franquicia por accidente" id="seguro" name ='seguro' <%if(producto.seguro &&
+            producto.seguro.indexOf('Franquicia por accidente') !=-1) { %> checked <%}%>>
+            Franquicia por accidente
+        </div>
+      </div>
+
+
+
       <div class="input-group mb-3">
         <span class="input-group-text">$</span>
-        <input type="number" step="0.01" class="form-control" aria-label="Amount (to the nearest dollar)" name = "precioDia" value="<%=producto.precioDia%>">
+        <input type="number" step="0.01" class="form-control" aria-label="Amount (to the nearest dollar)"
+          name="precioDia" value="<%=producto.precioDia%>">
         <span class="input-group-text">.00</span>
       </div>
       <div class="input-group mb-3">
         <span class="input-group-text">$</span>
-        <input type="number" step="0.01" class="form-control" aria-label="Amount (to the nearest dollar)" name = "precioSemana" value="<%=producto.precioSemana%>">
+        <input type="number" step="0.01" class="form-control" aria-label="Amount (to the nearest dollar)"
+          name="precioSemana" value="<%=producto.precioSemana%>">
         <span class="input-group-text">.00</span>
       </div>
       <div class="input-group mb-3">
         <span class="input-group-text">$</span>
-        <input type="number" step="0.01" class="form-control" aria-label="Amount (to the nearest dollar)" name = "precioMes" value="<%=producto.precioMes%>">
+        <input type="number" step="0.01" class="form-control" aria-label="Amount (to the nearest dollar)"
+          name="precioMes" value="<%=producto.precioMes%>">
         <span class="input-group-text">.00</span>
       </div>
       <div class="mb-3">
-        <select class="form-select" name = 'ciudad' id="ciudad">
+        <select class="form-select" name='ciudad' id="ciudad">
           <option>Ciudad</option>
           <option>Córdoba</option>
           <option>Buenos Aires</option>
@@ -144,9 +187,9 @@
 
   <!-------------------------------------------------INCLUYENDO FOOTER------------------------------>
 
-  <%- include('../parcials/footer') %> 
+  <%- include('../parcials/footer') %>
 
 
-</body>
+    </body>
 
 </html>

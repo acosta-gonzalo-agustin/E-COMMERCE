@@ -34,9 +34,13 @@
             <div>
               <ul>
                 SEGUROS
-                <% for(let j of i.seguro) {%> 
-                <li><%=j%></li>                  
-                <%}%>
+                <%if(typeof  i.seguro == 'object') {%> 
+                  <% for(let j of i.seguro) {%> 
+                  <li><%=j%></li>
+                  <%}%>
+                  <%} else { %>
+                    <li><%=i.seguro%> </li>
+                  <%}%>
               </ul>
 
             </div>
