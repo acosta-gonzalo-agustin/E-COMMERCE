@@ -1,161 +1,21 @@
 [
  {
-  "id": "2",
-  "nombre": "Renaul Duster",
-  "marca": "Citroen",
-  "categoria": "Medianos",
-  "imagen": "1645717118366fondo-blanco-4.jpg",
-  "cantidadAsientos": 5,
-  "combustible": "Electrico",
-  "adicionales": [
-   "AM/FM Stereo con CD",
-   "Bluetooth",
-   "Reproductor MP3",
-   "Sistema de frenos ABS",
-   "Doble Airbag"
-  ],
-  "precioDia": "500",
-  "precioSemana": "5000",
-  "precioMes": "30000",
-  "estado": true,
-  "seguro": [
-   "Proteccion total",
-   "Proteccion a terceros",
-   "Franquicia por accidente"
-  ],
-  "cajaDeCambio": "Manual",
-  "airbag": "S",
-  "seguros": "Proteccion a terceros"
- },
- {
-  "id": "3",
-  "nombre": "New Avensis",
-  "marca": "Citroen",
-  "categoria": "Especiales",
-  "imagen": "1645717135980img-autos1645716520015fondo-blanco-3.jpg",
-  "cantidadAsientos": "Nueve",
-  "combustible": "GNC",
-  "adicionales": [
-   "AM/FM Stereo con CD",
-   "Bluetooth",
-   "Reproductor MP3",
-   "Sistema de frenos ABS",
-   "Doble Airbag"
-  ],
-  "precioDia": "1000",
-  "precioSemana": "1000",
-  "precioMes": "1000",
-  "estado": true,
-  "seguro": [
-   "Proteccion total",
-   "Proteccion a terceros",
-   "Franquicia por accidente"
-  ],
-  "ciudad": "Mendoza Capital",
-  "cajaDeCambio": "Manual"
- },
- {
-  "id": "4",
-  "nombre": "Citroen DS4",
-  "marca": "Citroen",
-  "categoria": "Medianos",
-  "imagen": "1645717149483fondo-blanco-4.jpg",
-  "cantidadAsientos": 5,
-  "combustible": "gas",
-  "adicionales": [
-   "AM/FM Stereo con CD",
-   "Bluetooth",
-   "Reproductor MP3",
-   "Sistema de frenos ABS",
-   "Doble Airbag"
-  ],
-  "precioDia": "500",
-  "precioSemana": "5000",
-  "precioMes": "30000",
-  "estado": true,
-  "seguro": [
-   "Proteccion total",
-   "Proteccion a terceros",
-   "Franquicia por accidente"
-  ],
-  "cajaDeCambio": "Automatico"
- },
- {
-  "id": "5",
-  "nombre": "Citroen DS4",
-  "marca": "Citroen",
+  "id": 1,
+  "nombre": "doasin",
+  "marca": "oimmdasoim",
   "categoria": "Categoria de vehiculo",
-  "imagen": "1645720178618img-autos1645716520015fondo-blanco-3.jpg",
   "cantidadAsientos": "Cantidad de asientos",
   "combustible": "Tipo de combustible",
-  "adicionales": [
-   "AM/FM Stereo con CD",
-   "Bluetooth",
-   "Reproductor MP3",
-   "Sistema de frenos ABS",
-   "Doble Airbag"
-  ],
-  "precioDia": "500",
-  "precioSemana": "5000",
-  "precioMes": "30000",
-  "estado": true,
-  "seguro": [
-   "Proteccion total",
-   "Proteccion a terceros",
-   "Franquicia por accidente"
-  ],
-  "ciudad": "Mendoza Capital",
-  "cajaDeCambio": "Manual"
- },
- {
-  "id": "6",
-  "nombre": "dsad",
-  "marca": "dsads",
-  "categoria": "Compactos",
-  "cantidadAsientos": "Cuatro",
-  "combustible": "Nafta",
-  "ciudad": "Córdoba",
+  "ciudad": "Ciudad",
   "precioDia": "651",
   "precioSemana": "651",
   "precioMes": "651",
-  "cajaDeCambio": "Automatico",
-  "airbag": "S",
-  "adicionales": [
-   "AM/FM Stereo con CD",
-   "Bluetooth",
-   "Reproductor MP3",
-   "Sistema de frenos ABS",
-   "Doble Airbag"
-  ],
-  "seguro": [
-   "Proteccion total",
-   "Proteccion a terceros",
-   "Franquicia por accidente"
-  ],
-  "imagen": "1646696520687img-autos1645717025495fondo-blanco-4.jpg"
+  "imagen": "1646753567733fondo-blanco-3.jpg"
  },
  {
-  "id": "7",
-  "nombre": "dasd",
-  "marca": "dsad",
-  "categoria": "Categoria de vehiculo",
-  "cantidadAsientos": "Cantidad de asientos",
-  "combustible": "Tipo de combustible",
-  "ciudad": "Ciudad",
-  "precioDia": "81981",
-  "precioSemana": "981981",
-  "precioMes": "981",
-  "imagen": "1646696505714img-autos1645716589515fondo-blanco-3.jpg",
-  "adicionales": [
-   "Bluetooth",
-   "Reproductor MP3",
-   "Sistema de frenos ABS"
-  ]
- },
- {
-  "id": "8",
-  "nombre": "dasd",
-  "marca": "dasdas",
+  "id": 2,
+  "nombre": "dsad",
+  "marca": "dsadsa",
   "categoria": "Categoria de vehiculo",
   "cantidadAsientos": "Cantidad de asientos",
   "combustible": "Tipo de combustible",
@@ -163,23 +23,64 @@
   "precioDia": "4",
   "precioSemana": "4",
   "precioMes": "4",
-  "imagen": "1646696356713img-autos1645717025495fondo-blanco-4.jpg",
-  "cajaDeCambio": "Manual",
-  "airbag": "S",
-  "adicionales": [
-   "Bluetooth",
-   "Reproductor MP3",
-   "Sistema de frenos ABS"
-  ],
-  "seguro": [
-   "Proteccion total",
-   "Proteccion a terceros"
-  ]
+  "imagen": "1646753660322fondo-blanco-4.jpg"
  },
  {
-  "id": "9",
-  "nombre": "dsa",
-  "marca": "dsad",
+  "id": 3,
+  "nombre": "dasda",
+  "marca": "dsadsa",
+  "categoria": "Categoria de vehiculo",
+  "cantidadAsientos": "Cantidad de asientos",
+  "combustible": "Tipo de combustible",
+  "ciudad": "Ciudad",
+  "precioDia": "651651",
+  "precioSemana": "651651",
+  "precioMes": "651651",
+  "imagen": "16467537719141645716206102fondo-blanco-2.jpg"
+ },
+ {
+  "id": 4,
+  "nombre": "dasd",
+  "marca": "dsaad",
+  "categoria": "Categoria de vehiculo",
+  "cantidadAsientos": "Cantidad de asientos",
+  "combustible": "Tipo de combustible",
+  "ciudad": "Ciudad",
+  "precioDia": "651",
+  "precioSemana": "651",
+  "precioMes": "651",
+  "imagen": "1646753785085fondo-blanco-4.jpg"
+ },
+ {
+  "id": 5,
+  "nombre": "dasdkam",
+  "marca": "dsaklmads",
+  "categoria": "Categoria de vehiculo",
+  "cantidadAsientos": "Cantidad de asientos",
+  "combustible": "Tipo de combustible",
+  "ciudad": "Ciudad",
+  "precioDia": "7",
+  "precioSemana": "7",
+  "precioMes": "7",
+  "imagen": "1646753800538fondo-blanco-3.jpg"
+ },
+ {
+  "id": 6,
+  "nombre": "ofiasm",
+  "marca": "fdsapimafs",
+  "categoria": "Categoria de vehiculo",
+  "cantidadAsientos": "Cantidad de asientos",
+  "combustible": "Tipo de combustible",
+  "ciudad": "Ciudad",
+  "precioDia": "456154",
+  "precioSemana": "65454",
+  "precioMes": "54",
+  "imagen": "1646753813436img-autos1645717025495fondo-blanco-4.jpg"
+ },
+ {
+  "id": 7,
+  "nombre": "oimfasd",
+  "marca": "pmdfsapokfas",
   "categoria": "Categoria de vehiculo",
   "cantidadAsientos": "Cantidad de asientos",
   "combustible": "Tipo de combustible",
@@ -187,36 +88,97 @@
   "precioDia": "4",
   "precioSemana": "4",
   "precioMes": "4",
-  "imagen": "16466964884651645716206102fondo-blanco-2.jpg",
-  "seguro": [
-   "Proteccion total",
-   "Proteccion a terceros",
-   "Franquicia por accidente"
-  ],
-  "adicionales": [
-   "AM/FM Stereo con CD",
-   "Bluetooth",
-   "Reproductor MP3",
-   "Sistema de frenos ABS"
-  ]
+  "imagen": "1646753910186img-autos1645716589515fondo-blanco-3.jpg"
+ },
+ {
+  "id": 8,
+  "nombre": "jndaskjdn",
+  "marca": "lkmdaslkdmas",
+  "categoria": "Categoria de vehiculo",
+  "cantidadAsientos": "Cantidad de asientos",
+  "combustible": "Tipo de combustible",
+  "ciudad": "Ciudad",
+  "precioDia": "651651",
+  "precioSemana": "651651",
+  "precioMes": "651651",
+  "imagen": "1646753944294fondo-blanco-4.jpg"
+ },
+ {
+  "id": 9,
+  "nombre": "jmnfdsalk",
+  "marca": "dslakmadsf",
+  "categoria": "Categoria de vehiculo",
+  "cantidadAsientos": "Cantidad de asientos",
+  "combustible": "Tipo de combustible",
+  "ciudad": "Ciudad",
+  "precioDia": "6541",
+  "precioSemana": "651",
+  "precioMes": "651",
+  "imagen": "1646753977359img-autos1645716520015fondo-blanco-3.jpg"
  },
  {
   "id": 10,
-  "nombre": "nad",
-  "marca": "andanda",
-  "categoria": "Especiales",
+  "nombre": "lkdmfaslk",
+  "marca": "kmdasl",
+  "categoria": "Categoria de vehiculo",
   "cantidadAsientos": "Cantidad de asientos",
   "combustible": "Tipo de combustible",
-  "cajaDeCambio": "Manual",
-  "airbag": "N",
   "ciudad": "Ciudad",
-  "adicionales": [
-   "Bluetooth",
-   "Reproductor MP3"
-  ],
-  "precioDia": "65165",
-  "precioSemana": "16516",
-  "precioMes": "1651",
-  "imagen": "1646697262803fondo-blanco-4.jpg"
+  "precioDia": "44",
+  "precioSemana": "44",
+  "precioMes": "44",
+  "imagen": "1646754007967fondo-blanco-3.jpg"
+ },
+ {
+  "id": 11,
+  "nombre": "a",
+  "marca": "a",
+  "categoria": "Categoria de vehiculo",
+  "cantidadAsientos": "Cantidad de asientos",
+  "combustible": "Tipo de combustible",
+  "ciudad": "Ciudad",
+  "precioDia": "4",
+  "precioSemana": "4",
+  "precioMes": "4",
+  "imagen": "16467540204101645716206102fondo-blanco-2.jpg"
+ },
+ {
+  "id": 12,
+  "nombre": "omdasoim",
+  "marca": "pmdaspodiam",
+  "categoria": "Categoria de vehiculo",
+  "cantidadAsientos": "Cantidad de asientos",
+  "combustible": "Tipo de combustible",
+  "ciudad": "Ciudad",
+  "precioDia": "4",
+  "precioSemana": "4",
+  "precioMes": "4",
+  "imagen": "1646754178490img-autos1645716589515fondo-blanco-3.jpg"
+ },
+ {
+  "id": 13,
+  "nombre": "dasd",
+  "marca": "dasdsa",
+  "categoria": "Categoria de vehiculo",
+  "cantidadAsientos": "Cantidad de asientos",
+  "combustible": "Tipo de combustible",
+  "ciudad": "Ciudad",
+  "precioDia": "5",
+  "precioSemana": "5",
+  "precioMes": "5",
+  "imagen": "1646755007879img-autos1645716520015fondo-blanco-3.jpg"
+ },
+ {
+  "id": 14,
+  "nombre": "dsad",
+  "marca": "dsadsa",
+  "categoria": "Categoria de vehiculo",
+  "cantidadAsientos": "Cantidad de asientos",
+  "combustible": "Tipo de combustible",
+  "ciudad": "Ciudad",
+  "precioDia": "544",
+  "precioSemana": "54",
+  "precioMes": "54",
+  "imagen": "1646755044155fiat-cronos.jpg"
  }
 ]

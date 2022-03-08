@@ -8,9 +8,9 @@ const { body } = require('express-validator');
 const validation = [
     body('nombre').notEmpty().withMessage('Debe asignar un nombre al articulo'),
     body('marca').notEmpty().withMessage('Debe asignar una marca al articulo'),
-    body('precioDia').notEmpty().withMessage('Debe asignar un valor al articulo'),
-    body('precioSemana').notEmpty().withMessage('Debe asignar un valor al articulo'),
-    body('precioMes').notEmpty().withMessage('Debe asignar un valor al articulo'),
+    body('precioDia').notEmpty().withMessage('Debe asignar un valor al precioxDia'),
+    body('precioSemana').notEmpty().withMessage('Debe asignar un valor al precioxSemana'),
+    body('precioMes').notEmpty().withMessage('Debe asignar un valor al precioxMes'),
 ];
 
 
