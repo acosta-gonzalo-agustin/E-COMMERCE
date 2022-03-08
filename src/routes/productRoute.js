@@ -31,6 +31,10 @@ router.put('/edit/:id',productController.update);
 router.get('/create/',productController.create);
 router.post('/create/',validation,productController.save);
 
+/*-----------------RUTA PARA ELIMINAR PRODUCTO-------------------------*/
+
+router.get('/delete/:id',productController.delete);
+
 
 router.get('/filter/',productController.filter);
 

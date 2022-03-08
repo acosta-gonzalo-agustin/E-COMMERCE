@@ -41,6 +41,10 @@ body {
     background-color: orange;
 }
 
+.eliminar {
+    background-color: lightgrey;
+}
+
 .form-control:focus {
     box-shadow: 2px 2px 8px 2px  orange;
     border: orange;

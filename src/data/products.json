@@ -1,34 +1,5 @@
 [
  {
-  "id": "1",
-  "estado": true,
-  "imagen": "1646695820698img-autos1645716589515fondo-blanco-3.jpg",
-  "nombre": "Citreon S4",
-  "marca": "Citroen",
-  "precioDia": "500",
-  "precioSemana": "1000",
-  "precioMes": "1651",
-  "cantidadAsientos": "Siete",
-  "combustible": "Nafta",
-  "categoria": "Compactos",
-  "cajaDeCambio": "Manual",
-  "airbag": "S",
-  "ciudad": "Rosario",
-  "seguros": "Proteccion a terceros",
-  "adicionales": [
-   "AM/FM Stereo con CD",
-   "Bluetooth",
-   "Reproductor MP3",
-   "Sistema de frenos ABS",
-   "Doble Airbag"
-  ],
-  "seguro": [
-   "Proteccion total",
-   "Proteccion a terceros",
-   "Franquicia por accidente"
-  ]
- },
- {
   "id": "2",
   "nombre": "Renaul Duster",
   "marca": "Citroen",
@@ -247,18 +218,5 @@
   "precioSemana": "16516",
   "precioMes": "1651",
   "imagen": "1646697262803fondo-blanco-4.jpg"
- },
- {
-  "id": "11",
-  "nombre": "Citroen S4",
-  "marca": "Citroen",
-  "categoria": "Categoria de vehiculo",
-  "cantidadAsientos": "Cantidad de asientos",
-  "combustible": "Tipo de combustible",
-  "ciudad": "Ciudad",
-  "precioDia": "45",
-  "precioSemana": "45",
-  "precioMes": "45",
-  "imagen": "1646698615216fondo-blanco-4.jpg"
  }
 ]
