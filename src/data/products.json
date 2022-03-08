@@ -228,5 +228,37 @@
    "Reproductor MP3",
    "Sistema de frenos ABS"
   ]
+ },
+ {
+  "id": 10,
+  "nombre": "nad",
+  "marca": "andanda",
+  "categoria": "Especiales",
+  "cantidadAsientos": "Cantidad de asientos",
+  "combustible": "Tipo de combustible",
+  "cajaDeCambio": "Manual",
+  "airbag": "N",
+  "ciudad": "Ciudad",
+  "adicionales": [
+   "Bluetooth",
+   "Reproductor MP3"
+  ],
+  "precioDia": "65165",
+  "precioSemana": "16516",
+  "precioMes": "1651",
+  "imagen": "1646697262803fondo-blanco-4.jpg"
+ },
+ {
+  "id": "11",
+  "nombre": "Citroen S4",
+  "marca": "Citroen",
+  "categoria": "Categoria de vehiculo",
+  "cantidadAsientos": "Cantidad de asientos",
+  "combustible": "Tipo de combustible",
+  "ciudad": "Ciudad",
+  "precioDia": "45",
+  "precioSemana": "45",
+  "precioMes": "45",
+  "imagen": "1646698615216fondo-blanco-4.jpg"
  }
 ]
