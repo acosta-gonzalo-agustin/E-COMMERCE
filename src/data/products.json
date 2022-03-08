@@ -1,32 +1,6 @@
 [
  {
   "id": 1,
-  "nombre": "doasin",
-  "marca": "oimmdasoim",
-  "categoria": "Categoria de vehiculo",
-  "cantidadAsientos": "Cantidad de asientos",
-  "combustible": "Tipo de combustible",
-  "ciudad": "Ciudad",
-  "precioDia": "651",
-  "precioSemana": "651",
-  "precioMes": "651",
-  "imagen": "1646753567733fondo-blanco-3.jpg"
- },
- {
-  "id": 2,
-  "nombre": "dsad",
-  "marca": "dsadsa",
-  "categoria": "Categoria de vehiculo",
-  "cantidadAsientos": "Cantidad de asientos",
-  "combustible": "Tipo de combustible",
-  "ciudad": "Ciudad",
-  "precioDia": "4",
-  "precioSemana": "4",
-  "precioMes": "4",
-  "imagen": "1646753660322fondo-blanco-4.jpg"
- },
- {
-  "id": 3,
   "nombre": "dasda",
   "marca": "dsadsa",
   "categoria": "Categoria de vehiculo",
@@ -39,7 +13,7 @@
   "imagen": "16467537719141645716206102fondo-blanco-2.jpg"
  },
  {
-  "id": 4,
+  "id": 2,
   "nombre": "dasd",
   "marca": "dsaad",
   "categoria": "Categoria de vehiculo",
@@ -52,20 +26,7 @@
   "imagen": "1646753785085fondo-blanco-4.jpg"
  },
  {
-  "id": 5,
-  "nombre": "dasdkam",
-  "marca": "dsaklmads",
-  "categoria": "Categoria de vehiculo",
-  "cantidadAsientos": "Cantidad de asientos",
-  "combustible": "Tipo de combustible",
-  "ciudad": "Ciudad",
-  "precioDia": "7",
-  "precioSemana": "7",
-  "precioMes": "7",
-  "imagen": "1646753800538fondo-blanco-3.jpg"
- },
- {
-  "id": 6,
+  "id": 3,
   "nombre": "ofiasm",
   "marca": "fdsapimafs",
   "categoria": "Categoria de vehiculo",
@@ -78,7 +39,7 @@
   "imagen": "1646753813436img-autos1645717025495fondo-blanco-4.jpg"
  },
  {
-  "id": 7,
+  "id": 4,
   "nombre": "oimfasd",
   "marca": "pmdfsapokfas",
   "categoria": "Categoria de vehiculo",
@@ -91,7 +52,7 @@
   "imagen": "1646753910186img-autos1645716589515fondo-blanco-3.jpg"
  },
  {
-  "id": 8,
+  "id": 5,
   "nombre": "jndaskjdn",
   "marca": "lkmdaslkdmas",
   "categoria": "Categoria de vehiculo",
@@ -104,20 +65,7 @@
   "imagen": "1646753944294fondo-blanco-4.jpg"
  },
  {
-  "id": 9,
-  "nombre": "jmnfdsalk",
-  "marca": "dslakmadsf",
-  "categoria": "Categoria de vehiculo",
-  "cantidadAsientos": "Cantidad de asientos",
-  "combustible": "Tipo de combustible",
-  "ciudad": "Ciudad",
-  "precioDia": "6541",
-  "precioSemana": "651",
-  "precioMes": "651",
-  "imagen": "1646753977359img-autos1645716520015fondo-blanco-3.jpg"
- },
- {
-  "id": 10,
+  "id": 6,
   "nombre": "lkdmfaslk",
   "marca": "kmdasl",
   "categoria": "Categoria de vehiculo",
@@ -130,7 +78,7 @@
   "imagen": "1646754007967fondo-blanco-3.jpg"
  },
  {
-  "id": 11,
+  "id": 7,
   "nombre": "a",
   "marca": "a",
   "categoria": "Categoria de vehiculo",
@@ -143,7 +91,7 @@
   "imagen": "16467540204101645716206102fondo-blanco-2.jpg"
  },
  {
-  "id": 12,
+  "id": 8,
   "nombre": "omdasoim",
   "marca": "pmdaspodiam",
   "categoria": "Categoria de vehiculo",
@@ -156,7 +104,7 @@
   "imagen": "1646754178490img-autos1645716589515fondo-blanco-3.jpg"
  },
  {
-  "id": 13,
+  "id": 9,
   "nombre": "dasd",
   "marca": "dasdsa",
   "categoria": "Categoria de vehiculo",
@@ -167,18 +115,5 @@
   "precioSemana": "5",
   "precioMes": "5",
   "imagen": "1646755007879img-autos1645716520015fondo-blanco-3.jpg"
- },
- {
-  "id": 14,
-  "nombre": "dsad",
-  "marca": "dsadsa",
-  "categoria": "Categoria de vehiculo",
-  "cantidadAsientos": "Cantidad de asientos",
-  "combustible": "Tipo de combustible",
-  "ciudad": "Ciudad",
-  "precioDia": "544",
-  "precioSemana": "54",
-  "precioMes": "54",
-  "imagen": "1646755044155fiat-cronos.jpg"
  }
 ]
