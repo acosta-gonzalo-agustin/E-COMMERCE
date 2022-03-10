@@ -22,10 +22,10 @@
       <div class="mb-3">
         <select class="form-select" name="categoria" id="categoria">
           <option selected>Categoria de vehiculo</option>
-          <option>Compactos</option>
-          <option>Medianos</option>
-          <option>Premium</option>
-          <option>Especiales</option>
+          <option <%if(locals.old && old.categoria == 'Compactos') { %> selected <% }%>>Compactos</option>
+          <option <%if(locals.old && old.categoria == 'Medianos') { %> selected <% }%> >Medianos</option>
+          <option <%if(locals.old && old.categoria == 'Premium') { %> selected <% }%>>Premium</option>
+          <option <%if(locals.old && old.categoria == 'Especiales') { %> selected <% }%> >Especiales</option>
         </select>
       </div>
       <div class="mb-3">
@@ -40,21 +40,21 @@
       <div class="mb-3">
         <select class="form-select" name="cantidadAsientos" id="cantidadAsientos">
           <option>Cantidad de asientos</option>
-          <option>Cuatro</option>
-          <option>Cinco</option>
-          <option>Seis</option>
-          <option>Siete</option>
-          <option>Ocho</option>
-          <option>Nueve</option>
+          <option <%if(locals.old && old.cantidadAsientos == 'Cuatro') { %> selected <% }%> >Cuatro</option>
+          <option <%if(locals.old && old.cantidadAsientos == 'Cinco') { %> selected <% }%> >Cinco</option>
+          <option <%if(locals.old && old.cantidadAsientos == 'Seis') { %> selected <% }%> >Seis</option>
+          <option <%if(locals.old && old.cantidadAsientos == 'Siete') { %> selected <% }%> >Siete</option>
+          <option <%if(locals.old && old.cantidadAsientos == 'Ocho') { %> selected <% }%> >Ocho</option>
+          <option <%if(locals.old && old.cantidadAsientos == 'Nueve') { %> selected <% }%> >Nueve</option>
         </select>
       </div>
       <div class="mb-3">
-        <select class="form-select" name="combustible" id="combustible">
+        <select class="form-select" name="combustible" id="combustible"  >
           <option>Tipo de combustible</option>
-          <option>Nafta</option>
-          <option>Gasoil</option>
-          <option>GNC</option>
-          <option>Electrico</option>
+          <option <%if(locals.old && old.combustible == 'Nafta') { %> selected <% }%> >Nafta</option>
+          <option <%if(locals.old && old.combustible == 'Gasoil') { %> selected <% }%> >Gasoil</option>
+          <option <%if(locals.old && old.combustible == 'GNC') { %> selected <% }%> >GNC</option>
+          <option <%if(locals.old && old.combustible == 'Electrico') { %> selected <% }%> >Electrico</option>
         </select>
       </div>
       <div class="mb-3">
@@ -62,12 +62,12 @@
           <label for="cajaDeCambio">Caja de cambio</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="cajaDeCambio" id="cajaDeCambio" value="Manual">
+          <input class="form-check-input" type="radio" name="cajaDeCambio" id="cajaDeCambio" value="Manual" <%if(locals.old && old.cajaDeCambio == 'Manual') { %> checked <% }%>>
           <label class="form-check-label" for="cajaDeCambio">Manual</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="cajaDeCambio" id="cajaDeCambio" value="Automatico">
-          <label class="form-check-label" for="cajaDeCambio">Automático</label>
+          <input class="form-check-input" type="radio" name="cajaDeCambio" id="cajaDeCambio" value="Automatico" <%if(locals.old && old.cajaDeCambio == 'Automatico') { %> checked <% }%>>
+          <label class="form-check-label" for="cajaDeCambio">Automatico</label>
         </div>
       </div>
       <div class="mb-3">
@@ -75,36 +75,36 @@
           <label for="airbag">Airbag</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="airbag" id="airbag" value="S">
-          <label class="form-check-label" for="inlineRadio1">Si</label>
+          <input class="form-check-input" type="radio" name="airbag" id="airbag" value="S" <%if(locals.old && old.airbag == 'S') { %> checked <% }%>>
+          <label class="form-check-label" for="inlineRadio1" >Si</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="airbag" id="airbag" value="N">
+          <input class="form-check-input" type="radio" name="airbag" id="airbag" value="N" <%if(locals.old && old.airbag == 'N') { %> checked <% }%>>
           <label class="form-check-label" for="inlineRadio2">No</label>
         </div>
       </div>
       <div class="mb-3">
         <label for="adicionales">Adicionales</label> <br>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="AM/FM Stereo con CD" id="adicionales" name ='adicionales'>
+          <input class="form-check-input" type="checkbox" value="AM/FM Stereo con CD" id="adicionales" name ='adicionales' <%if(locals.old && old.adicionales &&  (old.adicionales.indexOf('AM/FM Stereo con CD') != -1 || old.adicionales == 'AM/FM Stereo con CD' )) { %> checked <% }%>>
             <label class="form-check-label" for="flexCheckDefault">
               AM/FM Stereo con CD
             </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="Bluetooth" id="adicionales" name = 'adicionales'>
+          <input class="form-check-input" type="checkbox" value="Bluetooth" id="adicionales" name = 'adicionales' <%if(locals.old && old.adicionales && (old.adicionales.indexOf('Bluetooth') != -1 || old.adicionales == 'Bluetooth' )) { %> checked <% }%>>
             Bluetooth
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="Reproductor MP3" id="adicionales" name ='adicionales'>
+          <input class="form-check-input" type="checkbox" value="Reproductor MP3" id="adicionales" name ='adicionales' <%if(locals.old &&  old.adicionales &&  (old.adicionales.indexOf('Reproductor MP3') != -1 || old.adicionales == 'Reproductor MP3' )) { %> checked <% }%>>
             Reproductor MP3
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="Sistema de frenos ABS" id="adicionales" name ='adicionales'>
+          <input class="form-check-input" type="checkbox" value="Sistema de frenos ABS" id="adicionales" name ='adicionales' <%if(locals.old && old.adicionales &&  (old.adicionales.indexOf('Sistema de frenos ABS') != -1 || old.adicionales == 'Sistema de frenos ABS' )) { %> checked <% }%>>
             Sistema de frenos ABS
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="Doble Airbag" id="adicionales" name="adicionales">
+          <input class="form-check-input" type="checkbox" value="Doble Airbag" id="adicionales" name="adicionales" <%if(locals.old &&  old.adicionales &&  (old.adicionales.indexOf('Doble Airbag') != -1 || old.adicionales == 'Doble Airbag' )) { %> checked <% }%>>
             Doble Airbag
         </div>
       </div>
@@ -115,17 +115,17 @@
       <div class="mb-3">
         <label for="seguro">Seguros</label> <br>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="Proteccion total" id="seguro" name ='seguro'>
+          <input class="form-check-input" type="checkbox" value="Proteccion total" id="seguro" name ='seguro' <%if(locals.old &&  old.seguro &&  (old.seguro.indexOf('Proteccion total') != -1 || old.seguro == 'Proteccion total' )) { %> checked <% }%>>
             <label class="form-check-label" for="flexCheckDefault">
               Proteccion total
             </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="Proteccion a terceros" id="seguro" name = 'seguro'>
+          <input class="form-check-input" type="checkbox" value="Proteccion a terceros" id="seguro" name = 'seguro' <%if(locals.old &&  old.seguro &&  (old.seguro.indexOf('Proteccion a terceros') != -1 || old.seguro == 'Proteccion a terceros' )) { %> checked <% }%>>
             Proteccion a terceros
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="Franquicia por accidente" id="seguro" name ='seguro'>
+          <input class="form-check-input" type="checkbox" value="Franquicia por accidente" id="seguro" name ='seguro' <%if(locals.old &&  old.seguro &&  (old.seguro.indexOf('Franquicia por accidente') != -1 || old.seguro == 'Franquicia por accidente' )) { %> checked <% }%>>
             Franquicia por accidente
         </div>
       </div>
@@ -151,10 +151,10 @@
       <div class="mb-3">
         <select class="form-select" name='ciudad' id="ciudad">
           <option>Ciudad</option>
-          <option>Córdoba</option>
-          <option>Buenos Aires</option>
-          <option>Rosario</option>
-          <option>Mendoza Capital</option>
+          <option <%if(locals.old && old.ciudad == 'Córdoba') { %> selected <% }%>>Córdoba</option>
+          <option <%if(locals.old && old.ciudad == 'Buenos Aires') { %> selected <% }%>>Buenos Aires</option>
+          <option <%if(locals.old && old.ciudad == 'Rosario') { %> selected <% }%>>Rosario</option>
+          <option <%if(locals.old && old.ciudad == 'Mendoza Capital') { %> selected <% }%>>Mendoza Capital</option>
         </select>
       </div>
 

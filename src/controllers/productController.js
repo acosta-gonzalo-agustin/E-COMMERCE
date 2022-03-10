@@ -173,6 +173,7 @@ const controlador = {
             }
         
         } else {
+            console.log(req.body);
             res.render('products/product-create', { errors: errors.array(), old: req.body });
         }    
                   
