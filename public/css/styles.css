@@ -26,6 +26,10 @@ body {
     color: white !important;
 }
 
+.navbar .categoria{
+    color: black !important;
+}
+
 
 .img-logo {
     height: 12vh;

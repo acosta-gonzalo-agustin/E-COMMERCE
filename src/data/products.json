@@ -3,22 +3,53 @@
   "id": 1,
   "nombre": "Citroen S4",
   "marca": "Citroen",
-  "categoria": "Medianos",
-  "cantidadAsientos": "Siete",
+  "categoria": "Premium",
+  "cantidadAsientos": "Cinco",
   "combustible": "GNC",
   "cajaDeCambio": "Manual",
   "airbag": "N",
-  "ciudad": "Rosario",
+  "ciudad": "Buenos Aires",
   "adicionales": [
-   "AM/FM Stereo con CD",
    "Bluetooth",
-   "Reproductor MP3",
    "Sistema de frenos ABS",
    "Doble Airbag"
   ],
-  "precioDia": "874",
-  "precioSemana": "1984",
-  "precioMes": "6516",
-  "imagen": "16468706852801645716206102fondo-blanco-2.jpg"
+  "precioDia": "5245",
+  "precioSemana": "254524",
+  "precioMes": "542452",
+  "imagen": "16468713087161645716206102fondo-blanco-2.jpg"
+ },
+ {
+  "id": 2,
+  "nombre": "Peugeot 208",
+  "marca": "Peugeot",
+  "categoria": "Medianos",
+  "cantidadAsientos": "Nueve",
+  "combustible": "GNC",
+  "cajaDeCambio": "Manual",
+  "airbag": "N",
+  "ciudad": "Buenos Aires",
+  "adicionales": [
+   "AM/FM Stereo con CD",
+   "Reproductor MP3",
+   "Doble Airbag"
+  ],
+  "precioDia": "4534",
+  "precioSemana": "34534",
+  "precioMes": "354343",
+  "imagen": "1646871402802img-autos1645716589515fondo-blanco-3.jpg"
+ },
+ {
+  "id": 3,
+  "nombre": "fasd",
+  "marca": "dasdsa",
+  "categoria": "Categoria de vehiculo",
+  "cantidadAsientos": "Cantidad de asientos",
+  "combustible": "Tipo de combustible",
+  "ciudad": "Ciudad",
+  "precioDia": "245",
+  "precioSemana": "245",
+  "precioMes": "245",
+  "imagen": "1646871417980fondo-blanco-4.jpg"
  }
 ]
