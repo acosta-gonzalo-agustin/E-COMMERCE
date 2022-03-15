@@ -51,5 +51,72 @@
   "precioSemana": "245",
   "precioMes": "245",
   "imagen": "1646871417980fondo-blanco-4.jpg"
+ },
+ {
+  "id": 4,
+  "nombre": "Citroen S4",
+  "marca": "Citroen",
+  "categoria": "Medianos",
+  "cantidadAsientos": "Cuatro",
+  "combustible": "Nafta",
+  "cajaDeCambio": "Manual",
+  "airbag": "N",
+  "ciudad": "Rosario",
+  "adicionales": [
+   "Bluetooth",
+   "Reproductor MP3"
+  ],
+  "precioDia": "651651",
+  "precioSemana": "651651",
+  "precioMes": "651651",
+  "imagen": "1647043161518fondo-blanco-4.jpg"
+ },
+ {
+  "id": 5,
+  "nombre": "Citroen S4",
+  "marca": "Citroen",
+  "categoria": "Categoria de vehiculo",
+  "cantidadAsientos": "Cantidad de asientos",
+  "combustible": "Tipo de combustible",
+  "ciudad": "Ciudad",
+  "precioDia": "61651",
+  "precioSemana": "651651",
+  "precioMes": "651651",
+  "imagen": "1647043257737fondo-blanco-3.jpg"
+ },
+ {
+  "id": 6,
+  "nombre": "citroen",
+  "marca": "citroen",
+  "categoria": "Categoria de vehiculo",
+  "cantidadAsientos": "Cantidad de asientos",
+  "combustible": "Tipo de combustible",
+  "ciudad": "Ciudad",
+  "precioDia": "5",
+  "precioSemana": "5",
+  "precioMes": "5",
+  "imagen": "1647043299286fondo-blanco-3.jpg"
+ },
+ {
+  "id": 7,
+  "nombre": "citroen",
+  "marca": "citroen",
+  "categoria": "Premium",
+  "cantidadAsientos": "Ocho",
+  "combustible": "GNC",
+  "cajaDeCambio": "Manual",
+  "airbag": "N",
+  "ciudad": "Mendoza Capital",
+  "adicionales": [
+   "AM/FM Stereo con CD",
+   "Bluetooth",
+   "Reproductor MP3",
+   "Sistema de frenos ABS",
+   "Doble Airbag"
+  ],
+  "precioDia": "6851",
+  "precioSemana": "651",
+  "precioMes": "651",
+  "imagen": "1647043348210img-autos1645717025495fondo-blanco-4.jpg"
  }
 ]
