@@ -1,6 +1,5 @@
 const productController = require('../controllers/productController');
 const express = require('express');
-const path = require('path');
 const router = express.Router();
 
 const { body } = require('express-validator');
@@ -28,8 +27,8 @@ router.put('/edit/:id',productController.update);
 /*---------------RUTAS PARA CREAR -----------------------------*/
 
 
-router.get('/create/',productController.create);
-router.post('/create/',validation,productController.save);
+router.get('/create',productController.create);
+router.post('/create',validation,productController.save);
 
 /*-----------------RUTA PARA ELIMINAR PRODUCTO-------------------------*/
 

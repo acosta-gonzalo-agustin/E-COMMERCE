@@ -118,5 +118,18 @@
   "precioSemana": "651",
   "precioMes": "651",
   "imagen": "1647043348210img-autos1645717025495fondo-blanco-4.jpg"
+ },
+ {
+  "id": 8,
+  "nombre": "Citroen",
+  "marca": "Citrone",
+  "categoria": "Categoria de vehiculo",
+  "cantidadAsientos": "Cantidad de asientos",
+  "combustible": "Tipo de combustible",
+  "ciudad": "Ciudad",
+  "precioDia": "651",
+  "precioSemana": "651",
+  "precioMes": "651",
+  "imagen": "1647737169947img-autos1645716520015fondo-blanco-3.jpg"
  }
 ]

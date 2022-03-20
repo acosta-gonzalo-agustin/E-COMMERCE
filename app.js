@@ -48,6 +48,10 @@ app.use(expressFileUpload({
   })
   );
 
+
+
+/*---------------------------RUTEO DE VISTAS-------------------------------*/  
+
 app.use('/',homeRoute);
 
 app.use('/about-us',aboutUsRoute);
