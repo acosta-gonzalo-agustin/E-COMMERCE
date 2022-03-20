@@ -5,6 +5,7 @@ const {validationResult} = require('express-validator');
 
 
 
+
 let productosJSON = fs.readFileSync(path.join(__dirname, '../data/products.json'), 'utf-8');
 let products = JSON.parse(productosJSON);
 

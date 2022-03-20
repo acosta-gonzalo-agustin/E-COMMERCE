@@ -1,9 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 const {validationResult} = require('express-validator');
+const bcrypt = require('bcryptjs');
 
 let usersJSON = fs.readFileSync(path.join(__dirname, '../data/users.json'), 'utf-8');
-let products = JSON.parse(usersJSON);
+let users = JSON.parse(usersJSON);
 
 
 
@@ -29,27 +30,17 @@ const controlador = {
 
         if(errors.isEmpty()) {
 
-            res.redirect('/');
+            let usuario = {
 
 
-            // let articulo = {
+                id: users.length + 1,
+                nombre: dato.nombre,
+                apellido: dato.apellido,
+                contraseña: bcrypt.hashSync(dato.password,10),
+                email: dato.email,     
+            }
 
-
-        //         id: products.length + 1,
-        //         nombre: dato.nombre,
-        //         marca: dato.marca,
-        //         categoria: dato.categoria,
-        //         cantidadAsientos: dato.cantidadAsientos,
-        //         combustible: dato.combustible,
-        //         cajaDeCambio: dato.cajaDeCambio,
-        //         airbag: dato.airbag,
-        //         ciudad: dato.ciudad,
-        //         adicionales: dato.adicionales,
-        //         precioDia: dato.precioDia,
-        //         precioSemana: dato.precioSemana,
-        //         precioMes: dato.precioMes,
-        //         adicionales: dato.adicionales
-        //     }
+            console.log('usuario');
     
         //     /*--------------------------CARGANDO FOTO--------------------------------------------*/
     
@@ -65,9 +56,9 @@ const controlador = {
         //                 res.send({ status: "success", path: ruta });
         //             });
         //             articulo.imagen = nombre;
-        //             products.push(articulo);
-        //             fs.writeFileSync(path.join(__dirname, '../data/products.json'), JSON.stringify(products, null, ' '));
-        //             res.redirect('/');
+                    users.push(usuario);
+                    fs.writeFileSync(path.join(__dirname, '../data/users.json'), JSON.stringify(users, null, ' '));
+                    res.redirect('/');
         //         } else {
         //             let error_tipo = 'El archivo debe tener formato jpg, jpeg,png';
         //             res.render('products/product-create', {errors: errors.array(),old:req.body ,error: error_tipo});
@@ -80,7 +71,6 @@ const controlador = {
         //     }
         
         } else {
-            console.log(req.body);
             res.render('users/register', { errors: errors.array(), old: req.body });
         }    
                   
