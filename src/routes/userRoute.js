@@ -11,6 +11,7 @@ const validation = [
     body('email').notEmpty().withMessage('debe proveer un email').bail().isEmail().withMessage('el campo debe tener formato de email, por ejemplo nombre@gmail.com'),
     body('password').notEmpty().withMessage('debe elegir una clave para el usuario').bail().isLength({min:8}).withMessage('La clave debe contener al menos ocho caracteres').bail().matches(
         /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z\d@$.!%*#?&]/,).withMessage('La clave debe contener mayusculas, minuscula,letras y numeros y al menos un caracter especial'),
+    body('repeatpassword').notEmpty().withMessage(' ').bail().withMessage('las contraseñas no coinciden')
 ];
 
 

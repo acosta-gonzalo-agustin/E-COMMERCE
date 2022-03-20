@@ -24,16 +24,16 @@
       </div>
 
       <div class="mb-3">
-        <input type="email" class="form-control" name = 'email' id="email" aria-describedby="emailHelp"
+        <input class="form-control" name = 'email' id="email" aria-describedby="emailHelp"
           placeholder="Correo Electrónico"  value ="<%= locals.old && old.email%>">
         <div id="emailHelp" class="form-text">Nunca compartiremos tu correo electrónico con alguien más</div>
       </div>
       <div class='alinear'>
         <div class="mb-3">
-          <input type="password" class="form-control" name = 'password' id="password" placeholder="Contraseña" value ="<%= locals.old && old.password%>">
+          <input type="password" class="form-control" name = 'password' id="password" placeholder="Contraseña" value ="<%= locals.old && old.password && old.password != ''%>">
         </div>
         <div class="mb-3">
-          <input type="password" class="form-control" name = 'password' id="password" placeholder="Repetir Contraseña" value ="<%= locals.old && old.password%>">
+          <input type="password" class="form-control" name = 'repeatpassword' id="repeatpassword" placeholder="Repetir Contraseña" value ="<%= locals.old && old.repeatpassword && old.repeatpassword != ''%>">
         </div>
       </div>
       <div class='registro boton'>

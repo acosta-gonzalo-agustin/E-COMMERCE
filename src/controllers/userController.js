@@ -80,6 +80,7 @@ const controlador = {
         //     }
         
         } else {
+            console.log(req.body);
             res.render('users/register', { errors: errors.array(), old: req.body });
         }    
                   
