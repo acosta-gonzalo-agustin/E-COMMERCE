@@ -40,35 +40,36 @@ const controlador = {
                 email: dato.email,     
             }
 
-            console.log('usuario');
     
-        //     /*--------------------------CARGANDO FOTO--------------------------------------------*/
+            /*--------------------------CARGANDO FOTO--------------------------------------------*/
     
-        //     if (req.files) {
-        //         const file = req.files.imagen;
-        //         const nombre = Date.now() + file.name
-        //         const ruta = path.join(__dirname, '../../public/img/img-autos/' + nombre)
-        //         if (file.mimetype == 'image/jpg' || file.mimetype == 'image/png' || file.mimetype == 'image/jpeg') {
-        //             file.mv(ruta, (err) => {
-        //                 if (err) {
-        //                     return res.status(500).send(err);
-        //                 }
-        //                 res.send({ status: "success", path: ruta });
-        //             });
-        //             articulo.imagen = nombre;
+            if (req.files) {
+                console.log('aca');
+                const file = req.files.imagen;
+                const nombre = Date.now() + file.name
+                const ruta = path.join(__dirname, '../../public/img/img-users/' + nombre)
+                if (file.mimetype == 'image/jpg' || file.mimetype == 'image/png' || file.mimetype == 'image/jpeg') {
+                    file.mv(ruta, (err) => {
+                        if (err) {
+                            return res.status(500).send(err);
+                        }
+                        res.send({ status: "success", path: ruta });
+                    });
+                    usuario.imagen = nombre;
                     users.push(usuario);
+
                     fs.writeFileSync(path.join(__dirname, '../data/users.json'), JSON.stringify(users, null, ' '));
                     res.redirect('/');
-        //         } else {
-        //             let error_tipo = 'El archivo debe tener formato jpg, jpeg,png';
-        //             res.render('products/product-create', {errors: errors.array(),old:req.body ,error: error_tipo});
-        //         }
+                } else {
+                    let error_tipo = 'El archivo debe tener formato jpg, jpeg,png';
+                    res.render('users/register', {errors: errors.array(),old:req.body ,error: error_tipo});
+                }
     
-        //     } else {
+            } else {
 
-        //         let error_tipo = 'Debe seleccionar una imagen';
-        //         res.render('products/product-create', {errors: errors.array(),old:req.body ,error: error_tipo});
-        //     }
+                let error_tipo = 'Debe seleccionar una imagen de perfil';
+                res.render('users/register', {errors: errors.array(),old:req.body ,error: error_tipo});
+            }
         
         } else {
             res.render('users/register', { errors: errors.array(), old: req.body });
