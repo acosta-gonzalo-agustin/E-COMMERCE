@@ -131,5 +131,23 @@
   "precioSemana": "651",
   "precioMes": "651",
   "imagen": "1647737169947img-autos1645716520015fondo-blanco-3.jpg"
+ },
+ {
+  "id": 9,
+  "nombre": "doakmdas",
+  "marca": "pdoamspdosiam",
+  "categoria": "Especiales",
+  "cantidadAsientos": "Seis",
+  "combustible": "GNC",
+  "ciudad": "Córdoba",
+  "adicionales": [
+   "Reproductor MP3",
+   "Sistema de frenos ABS",
+   "Doble Airbag"
+  ],
+  "precioDia": "6516981",
+  "precioSemana": "651651",
+  "precioMes": "6516516",
+  "imagen": "1647901776851img-autos1645717025495fondo-blanco-4.jpg"
  }
 ]

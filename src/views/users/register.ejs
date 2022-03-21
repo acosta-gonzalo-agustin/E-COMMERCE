@@ -5,7 +5,9 @@
 
     <main class="main-register">
     <form class='formulario registro formulario-register' action="/user/register" method="POST" enctype="multipart/form-data">
-
+      <% if (locals && locals.registrado) { %>
+          <p class = 'error'> <%=registrado%> </p> 
+      <% } %>
       <% if (locals && locals.errors) { %>
         <%for(i of errors) { %>
           <p class = 'error'> <%=i.msg %>  </p> 
@@ -40,10 +42,10 @@
 
       <div class='alinear'>
         <div class="mb-3">
-          <input type="password" class="form-control" name = 'password' id="password" placeholder="Contraseña" value ="<%= locals.old && old.password && old.password != ''%>" enctype="multipart/form-data">
+          <input type="password" class="form-control" name = 'password' id="password" placeholder="Contraseña" value ="<%= locals.old && old.password%>" enctype="multipart/form-data">
         </div>
         <div class="mb-3">
-          <input type="password" class="form-control" name = 'repeatpassword' id="repeatpassword" placeholder="Repetir Contraseña" value ="<%= locals.old && old.repeatpassword && old.repeatpassword != ''%>">
+          <input type="password" class="form-control" name = 'repeatpassword' id="repeatpassword" placeholder="Repetir Contraseña" value ="<%= locals.old && old.repeatpassword%>">
         </div>
       </div>
       <div class='registro boton'>

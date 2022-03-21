@@ -44,7 +44,6 @@ const controlador = {
             /*--------------------------CARGANDO FOTO--------------------------------------------*/
     
             if (req.files) {
-                console.log('aca');
                 const file = req.files.imagen;
                 const nombre = Date.now() + file.name
                 const ruta = path.join(__dirname, '../../public/img/img-users/' + nombre)
