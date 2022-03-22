@@ -1,8 +1,12 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-app.use(express.static(path.join(__dirname, './public')));
+const session = require('express-session');
 const expressFileUpload = require('express-fileupload');
+
+
+app.use(express.static(path.join(__dirname, './public')));
+
 
 /*-----------------------------IMPORTANDO RUTAS---------------------------------------------*/
 
@@ -46,6 +50,14 @@ app.use(expressFileUpload({
     abortOnLimit: true
   })
   );
+
+/*------------------------------EXPRESS-SESSION A NIVEL APLICACION--------------------------------*/
+
+  app.use(session( {
+    secret: "Secret message",
+    resave:false,
+    saveUninitialized:false,
+  }));
 
 
 

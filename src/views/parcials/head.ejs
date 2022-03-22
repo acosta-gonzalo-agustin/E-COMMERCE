@@ -57,7 +57,7 @@
             </li>
             <li class="nav-item">
               <!-------------------------------------- Button trigger modal --------------------------------------->
-              <a class="nav-link" href="/login" data-bs-toggle="modal" data-bs-target="#exampleModal">Login</a>
+              <a class="nav-link" href="/user/login" data-bs-toggle="modal" data-bs-target="#exampleModal">Login</a>
               <!------------------------------------- Modal -------------------------------->
 
 
@@ -84,14 +84,14 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form>
+          <form action="/user/login" method="post">
             <div class="mb-3">
-              <input type="email" class="form-control" placeholder="Correo Electrónico" id="exampleInputEmail1"
+              <input type="email" class="form-control" placeholder="Correo Electrónico" name="email" id="email"
                 aria-describedby="emailHelp">
               <div id="emailHelp" class="form-text">Nunca compartiremos tu correo electrónico con alguien más</div>
             </div>
             <div class="mb-3">
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña">
+              <input type="password" class="form-control" name="password" id="password" placeholder="Contraseña">
             </div>
             <div class="mb-3 form-check">
               <input type="checkbox" class="form-check-input" id="exampleCheck1">

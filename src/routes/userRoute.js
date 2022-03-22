@@ -2,6 +2,7 @@ const userController = require('../controllers/userController');
 const express = require('express');
 const router = express.Router();
 const verificacion_usuario = require('../middlewares/verificacion_usuario')
+const verificacion_cuenta = require('../middlewares/login_validation')
 
 const { body } = require('express-validator');
 
@@ -20,14 +21,6 @@ const validation = [
     })
 ];
 
-
-
-// if(body('password') == ' ') {
-//     console.log('llego');
-//     validation.push(body('repeatpassword').notEmpty().withMessage(' ').bail().withMessage('las contraseñas no coinciden'))
-// };
-
-
 /*------------------------RUTAS PARA REGISTRAR UN USARIO-------------------------*/
 
 router.get('/register',userController.register);
@@ -35,6 +28,6 @@ router.post('/register',verificacion_usuario,validation,userController.save);
 
 /*---------------------RUTAS PARA LOGUEAR UN USARIO---------------------------*/
 
-router.get('/profile',userController.profile);
+router.post('/login',verificacion_cuenta,userController.login);
 
 module.exports = router;

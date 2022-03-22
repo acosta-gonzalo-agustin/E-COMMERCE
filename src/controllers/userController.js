@@ -8,9 +8,6 @@ let users = JSON.parse(usersJSON);
 
 
 
-
-
-
 const controlador = {
 
     /*-----------------------METODO CARGAR FORMULARIO DE REGISTRO--------------------------------*/
@@ -31,8 +28,6 @@ const controlador = {
         if(errors.isEmpty()) {
 
             let usuario = {
-
-
                 id: users.length + 1,
                 nombre: dato.nombre,
                 apellido: dato.apellido,
@@ -76,12 +71,8 @@ const controlador = {
                   
     },
 
-
-
-
-
-    profile: function(req,res) {
-        res.render('users/profile')
+    login: function(req,res) {
+        res.redirect('/');
     }
 }
 
