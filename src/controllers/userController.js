@@ -72,7 +72,7 @@ const controlador = {
     },
 
     login: function(req,res) {
-        res.redirect('/');
+        res.render('index',{user:req.session.user});
     }
 }
 

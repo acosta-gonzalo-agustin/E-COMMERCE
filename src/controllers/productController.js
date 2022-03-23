@@ -30,7 +30,9 @@ const controlador = {
 
 
             }
+            
         }
+        console.log(req.session.user);
         res.render('products/product-edit', { producto, producto });
     },
 

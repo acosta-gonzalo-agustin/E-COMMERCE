@@ -9,15 +9,22 @@
   "cajaDeCambio": "Manual",
   "airbag": "N",
   "ciudad": "Buenos Aires",
-  "adicionales": [
-   "Bluetooth",
-   "Sistema de frenos ABS",
-   "Doble Airbag"
-  ],
   "precioDia": "5245",
   "precioSemana": "254524",
   "precioMes": "542452",
-  "imagen": "16468713087161645716206102fondo-blanco-2.jpg"
+  "imagen": "16468713087161645716206102fondo-blanco-2.jpg",
+  "adicionales": [
+   "AM/FM Stereo con CD",
+   "Bluetooth",
+   "Reproductor MP3",
+   "Sistema de frenos ABS",
+   "Doble Airbag"
+  ],
+  "seguro": [
+   "Proteccion total",
+   "Proteccion a terceros",
+   "Franquicia por accidente"
+  ]
  },
  {
   "id": 2,
