@@ -57,9 +57,8 @@
             </li>
             <li class="nav-item">
               <!-------------------------------------- Button trigger modal --------------------------------------->
-              <a class="nav-link" href="/user/login" data-bs-toggle="modal" data-bs-target="#exampleModal">Login</a>
+              <a class="nav-link" href="/user/login" data-bs-toggle="modal" data-bs-target="#exampleModal">Login</a> 
               <!------------------------------------- Modal -------------------------------->
-
 
             </li>
             <li class="nav-item">
@@ -76,18 +75,20 @@
 
   </header>
 
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal <%if(locals && locals.mensaje) { %> in <% } else { %> fade <% } %> "  id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" <% if(locals && locals.mensaje) { %> style="display:block;" <% }%> >
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">INGRESAR</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          
         </div>
         <div class="modal-body">
           <form action="/user/login" method="post">
+            <%if(locals && locals.mensaje) { %><p class = 'error'> <%=locals.mensaje %>  </p> <% } %> 
             <div class="mb-3">
               <input type="email" class="form-control" placeholder="Correo Electrónico" name="email" id="email"
-                aria-describedby="emailHelp">
+                aria-describedby="emailHelp" value = '<% if(locals.old) { %> <%=locals.old%> <% } %>'>
               <div id="emailHelp" class="form-text">Nunca compartiremos tu correo electrónico con alguien más</div>
             </div>
             <div class="mb-3">
@@ -99,8 +100,8 @@
             </div>
             <div class='password'>
               <button type="submit" class="btn">Iniciar sesión</button>
-              <a href="">¿Olvidaste tu contraseña?</a>
-              <a href="user/register">¿Primera vez? Registrate</a>
+              <a href="/">¿Olvidaste tu contraseña?</a>
+              <a href="/user/register">¿Primera vez? Registrate</a>
             </div>
           </form>
         </div>
