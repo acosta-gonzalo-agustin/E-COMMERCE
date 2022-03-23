@@ -3,6 +3,8 @@ const app = express();
 const path = require('path');
 const session = require('express-session');
 const expressFileUpload = require('express-fileupload');
+const Logueado = require('./src/middlewares/Loggued');
+
 
 
 app.use(express.static(path.join(__dirname, './public')));
@@ -25,13 +27,6 @@ app.set('view engine', 'ejs');
 
 app.set('views', './src/views');
 
-
-/*---------------------------------MONTAJE DE SERVIDOR----------------------------------------------*/
-
-
-app.listen(process.env.PORT || 3000, function() {
-    console.log('servidor montado');
-});
 
 /*---------------------------------------------ACTIVANDO ENVIO POR FORMULARIO------------------------------------------*/
 
@@ -59,6 +54,10 @@ app.use(expressFileUpload({
     saveUninitialized:false,
   }));
 
+  /*------------------------------MIDDLEWARE USUARIO LOGGUEADO NIVEL APLICACION--------------------------------*/
+
+  app.use(Logueado);
+
 
 
 /*---------------------------RUTEO DE VISTAS-------------------------------*/  
@@ -84,3 +83,12 @@ app.use('/user',userRoute)
 app.use((req, res, next) => {
     res.status(404).render('not-found');
    })
+
+
+
+/*---------------------------------MONTAJE DE SERVIDOR----------------------------------------------*/
+
+
+app.listen(process.env.PORT || 3000, function() {
+  console.log('servidor montado');
+});

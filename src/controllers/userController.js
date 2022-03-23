@@ -72,7 +72,17 @@ const controlador = {
     },
 
     login: function(req,res) {
-        res.render('index',{user:req.session.user});
+        res.render('users/profile',{user:req.session.user});
+    },
+
+    profile: function(req,res) {
+        res.render('users/profile',{user:req.session.user});
+    },
+
+    logout: function(req,res) {
+        
+        req.session.destroy();
+        res.render('index');
     }
 }
 

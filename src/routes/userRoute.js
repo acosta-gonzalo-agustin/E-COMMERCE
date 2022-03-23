@@ -26,8 +26,18 @@ const validation = [
 router.get('/register',userController.register);
 router.post('/register',verificacion_usuario,validation,userController.save);
 
-/*---------------------RUTAS PARA LOGUEAR UN USARIO---------------------------*/
+
+
+/*---------------------RUTAS PARA LOGUEAR UN USUARIO---------------------------*/
 
 router.post('/login',verificacion_cuenta,userController.login);
+
+/*---------------------RUTAS PARA VER PERFIL---------------------------*/
+
+router.get('/profile',userController.profile);
+
+/*---------------------RUTAS PARA DESLOGUEAR UN USARIO---------------------------*/
+
+router.get('/logout',userController.logout);
 
 module.exports = router;
