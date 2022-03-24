@@ -75,7 +75,7 @@ const controlador = {
     },
 
     login: function(req,res) {
-        res.render('users/profile');8
+        res.redirect('/');
     },
 
     profile: function(req,res) {
@@ -84,7 +84,7 @@ const controlador = {
 
     logout: function(req,res) {
         req.session.destroy();
-        res.render('index');
+        res.redirect('/');
     }
 }
 

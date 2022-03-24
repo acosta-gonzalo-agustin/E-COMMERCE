@@ -46,9 +46,7 @@ app.use(expressFileUpload({
   })
   );
 
-   /*------------------------------MIDDLEWARE USUARIO LOGGUEADO NIVEL APLICACION--------------------------------*/
 
-   app.use(Logueado);
 
 /*------------------------------EXPRESS-SESSION A NIVEL APLICACION--------------------------------*/
 
@@ -58,7 +56,9 @@ app.use(expressFileUpload({
     saveUninitialized:false,
   }));
 
- 
+   /*------------------------------MIDDLEWARE USUARIO LOGGUEADO NIVEL APLICACION--------------------------------*/
+
+   app.use(Logueado); 
 
 
 
