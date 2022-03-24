@@ -12,7 +12,12 @@ function verificacion(req,res,next) {
         if(req.body.email == i.email) {
             condicion = 1;
             if(bcrypt.compareSync(req.body.password,i.contraseña)) {
-                req.session.user = [i.nombre,i.apellido,i.email,i.imagen];
+                req.session.user = {
+                    'nombre': i.nombre,
+                    'apellido': i.apellido,
+                    'email':i.email,
+                    'imagen':i.imagen
+                };
                 condicion = 2;
                 break;
             } 

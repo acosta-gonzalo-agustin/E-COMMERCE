@@ -25,7 +25,7 @@ const userRoute = require('./src/routes/userRoute');
 
 app.set('view engine', 'ejs');
 
-app.set('views', './src/views');
+app.set('views', 'src/views');
 
 
 /*---------------------------------------------ACTIVANDO ENVIO POR FORMULARIO------------------------------------------*/
@@ -46,6 +46,10 @@ app.use(expressFileUpload({
   })
   );
 
+   /*------------------------------MIDDLEWARE USUARIO LOGGUEADO NIVEL APLICACION--------------------------------*/
+
+   app.use(Logueado);
+
 /*------------------------------EXPRESS-SESSION A NIVEL APLICACION--------------------------------*/
 
   app.use(session( {
@@ -54,9 +58,7 @@ app.use(expressFileUpload({
     saveUninitialized:false,
   }));
 
-  /*------------------------------MIDDLEWARE USUARIO LOGGUEADO NIVEL APLICACION--------------------------------*/
-
-  app.use(Logueado);
+ 
 
 
 

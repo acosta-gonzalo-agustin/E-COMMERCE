@@ -12,7 +12,7 @@
   "precioDia": "5245",
   "precioSemana": "254524",
   "precioMes": "542452",
-  "imagen": "16468713087161645716206102fondo-blanco-2.jpg",
+  "imagen": "1648128525576img-autos1645716520015fondo-blanco-3.jpg",
   "adicionales": [
    "AM/FM Stereo con CD",
    "Bluetooth",
@@ -156,5 +156,31 @@
   "precioSemana": "651651",
   "precioMes": "6516516",
   "imagen": "1647901776851img-autos1645717025495fondo-blanco-4.jpg"
+ },
+ {
+  "id": 10,
+  "nombre": "dasdad",
+  "marca": "deasdas",
+  "categoria": "Categoria de vehiculo",
+  "cantidadAsientos": "Cantidad de asientos",
+  "combustible": "Tipo de combustible",
+  "ciudad": "Ciudad",
+  "precioDia": "651651",
+  "precioSemana": "651616",
+  "precioMes": "65165",
+  "imagen": "1648083844524fondo-blanco-2.jpg"
+ },
+ {
+  "id": 11,
+  "nombre": "doiasjd",
+  "marca": "poiadskpoasidk",
+  "categoria": "Categoria de vehiculo",
+  "cantidadAsientos": "Cantidad de asientos",
+  "combustible": "Tipo de combustible",
+  "ciudad": "Ciudad",
+  "precioDia": "65416488",
+  "precioSemana": "681",
+  "precioMes": "651",
+  "imagen": "16481283521241645716206102fondo-blanco-2.jpg"
  }
 ]

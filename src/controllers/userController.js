@@ -42,18 +42,21 @@ const controlador = {
                 const file = req.files.imagen;
                 const nombre = Date.now() + file.name
                 const ruta = path.join(__dirname, '../../public/img/img-users/' + nombre)
+
                 if (file.mimetype == 'image/jpg' || file.mimetype == 'image/png' || file.mimetype == 'image/jpeg') {
-                    file.mv(ruta, (err) => {
+                     file.mv(ruta, (err) => {
                         if (err) {
                             return res.status(500).send(err);
+                        } else {
+                            usuario.imagen = nombre;
+                            users.push(usuario);
+                            fs.writeFileSync(path.join(__dirname, '../data/users.json'), JSON.stringify(users, null, ' '));
+                            res.redirect('/');
                         }
-                        res.send({ status: "success", path: ruta });
+                        
                     });
-                    usuario.imagen = nombre;
-                    users.push(usuario);
 
-                    fs.writeFileSync(path.join(__dirname, '../data/users.json'), JSON.stringify(users, null, ' '));
-                    res.redirect('/');
+                    
                 } else {
                     let error_tipo = 'El archivo debe tener formato jpg, jpeg,png';
                     res.render('users/register', {errors: errors.array(),old:req.body ,error: error_tipo});
@@ -72,15 +75,14 @@ const controlador = {
     },
 
     login: function(req,res) {
-        res.render('users/profile',{user:req.session.user});
+        res.render('users/profile');8
     },
 
     profile: function(req,res) {
-        res.render('users/profile',{user:req.session.user});
+        res.render('users/profile');
     },
 
     logout: function(req,res) {
-        
         req.session.destroy();
         res.render('index');
     }

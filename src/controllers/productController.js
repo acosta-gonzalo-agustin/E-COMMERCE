@@ -32,7 +32,7 @@ const controlador = {
             }
             
         }
-        console.log(req.session.user);
+
         res.render('products/product-edit', { producto, producto });
     },
 
@@ -73,7 +73,6 @@ const controlador = {
 
                 if (req.files) {
                     const file = req.files.imagen;
-                    console.log(file);
                     const nombre = Date.now() + file.name
                     const ruta = path.join(__dirname, '../../public/img/img-autos/' + nombre)
                     if (file.mimetype == 'image/jpg' || file.mimetype == 'image/png' || file.mimetype == 'image/jpeg') {
@@ -89,7 +88,6 @@ const controlador = {
                         i.imagen = nombre;
                     } else {
                         let error_tipo = 'El archivo debe tener formato jpg, jpeg,png';
-                        console.log(i);
                         res.render('products/product-edit', { error: error_tipo, producto: i });
                     }
 
@@ -153,17 +151,20 @@ const controlador = {
                 const file = req.files.imagen;
                 const nombre = Date.now() + file.name
                 const ruta = path.join(__dirname, '../../public/img/img-autos/' + nombre)
+
                 if (file.mimetype == 'image/jpg' || file.mimetype == 'image/png' || file.mimetype == 'image/jpeg') {
-                    file.mv(ruta, (err) => {
+                     file.mv(ruta, (err) => {
                         if (err) {
                             return res.status(500).send(err);
+                        } else {
+                            articulo.imagen = nombre;
+                            products.push(articulo);
+                            fs.writeFileSync(path.join(__dirname, '../data/products.json'), JSON.stringify(products, null, ' '));
+                            res.redirect('/');
                         }
-                        res.send({ status: "success", path: ruta });
+                        
                     });
-                    articulo.imagen = nombre;
-                    products.push(articulo);
-                    fs.writeFileSync(path.join(__dirname, '../data/products.json'), JSON.stringify(products, null, ' '));
-                    res.redirect('/');
+
                 } else {
                     let error_tipo = 'El archivo debe tener formato jpg, jpeg,png';
                     res.render('products/product-create', {errors: errors.array(),old:req.body ,error: error_tipo});
@@ -176,7 +177,6 @@ const controlador = {
             }
         
         } else {
-            console.log(req.body);
             res.render('products/product-create', { errors: errors.array(), old: req.body });
         }    
                   
@@ -201,7 +201,6 @@ const controlador = {
             return elemento.id != id;
         });
 
-        console.log(products); 
 
         for(let j = 0;j<products.length;j++) {
 
