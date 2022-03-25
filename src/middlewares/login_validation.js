@@ -14,7 +14,7 @@ function verificacion(req,res,next) {
             if(bcrypt.compareSync(req.body.password,i.contraseña)) {
                 if(req.body.mantener_sesion != undefined) {
                     res.cookie('user',i.id, {
-                        expire: 300000 + Date.now()
+                        maxAge: 1000 *3600
                      });
                     req.session.user = {
                         'id':i.id,
