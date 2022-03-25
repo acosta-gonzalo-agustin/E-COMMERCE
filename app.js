@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 
 const expressFileUpload = require('express-fileupload');
 const Logueado = require('./src/middlewares/Loggued');
+const userCookie = require('./src/middlewares/user_cookie');
 
 
 
@@ -58,13 +59,17 @@ app.use(expressFileUpload({
     saveUninitialized:false,
   }));
 
-  /*------------------------------COOKIE-PARSER A NIVEL APLICACION--------------------------------*/
+/*------------------------------COOKIE-PARSER A NIVEL APLICACION--------------------------------*/
 
-  app.use(cookieParser());
+app.use(cookieParser());
 
-   /*------------------------------MIDDLEWARE USUARIO LOGGUEADO NIVEL APLICACION--------------------------------*/
+/*------------------------------MIDDLEWARE USUARIO LOGGUEADO NIVEL APLICACION--------------------------------*/
 
-   app.use(Logueado); 
+app.use(userCookie); 
+
+/*------------------------------MIDDLEWARE USUARIO LOGGUEADO NIVEL APLICACION--------------------------------*/
+
+app.use(Logueado); 
 
 
 
@@ -83,14 +88,6 @@ app.use('/FAQs',faqsRoute);
 app.use('/shopping-cart',shoppingCartRoute);
 
 app.use('/user',userRoute)
-
-
-/*-------------------------------------- ERROR PARA RUTAS ERRONEAS------------------------------------------*/
-
-
-app.use((req, res, next) => {
-    res.status(404).render('not-found');
-   })
 
 
 

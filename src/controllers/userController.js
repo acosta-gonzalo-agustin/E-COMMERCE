@@ -83,6 +83,7 @@ const controlador = {
     },
 
     logout: function(req,res) {
+        res.clearCookie('user');
         req.session.destroy();
         res.redirect('/');
     }
