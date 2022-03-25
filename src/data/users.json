@@ -1,1 +1,18 @@
-[]
+[
+ {
+  "id": 1,
+  "nombre": "gonzalo",
+  "apellido": "acosta",
+  "contraseña": "$2a$10$CQVKRFTG7zka7KE2rrEpbOtJk6S5Px4Pam.bR/WKbV8sjfITHF32y",
+  "email": "g@gmail.com",
+  "imagen": "1648149211404foto.jpg"
+ },
+ {
+  "id": 2,
+  "nombre": "silvia",
+  "apellido": "rosa",
+  "contraseña": "$2a$10$wdHhkIEIbp9T25A4i1hG6eZo/BQm36VDvzzXN.NNr6h6pJBUeACvO",
+  "email": "s@gmail.com",
+  "imagen": "1648149242516foto.jpg"
+ }
+]

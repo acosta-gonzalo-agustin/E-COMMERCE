@@ -12,7 +12,20 @@ function verificacion(req,res,next) {
         if(req.body.email == i.email) {
             condicion = 1;
             if(bcrypt.compareSync(req.body.password,i.contraseña)) {
+                if(req.body.mantener_sesion != undefined) {
+                    res.cookie('user',i.id, {maxAge:1000*60});
+                    req.session.user = {
+                        'id':i.id,
+                        'nombre': i.nombre,
+                        'apellido': i.apellido,
+                        'email':i.email,
+                        'imagen':i.imagen
+                    };
+                    condicion = 2;
+                    break;
+                }
                 req.session.user = {
+                    'id':i.id,
                     'nombre': i.nombre,
                     'apellido': i.apellido,
                     'email':i.email,

@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const session = require('express-session');
+const cookieParser = require('cookie-parser');
+
 const expressFileUpload = require('express-fileupload');
 const Logueado = require('./src/middlewares/Loggued');
 
@@ -55,6 +57,10 @@ app.use(expressFileUpload({
     resave:false,
     saveUninitialized:false,
   }));
+
+  /*------------------------------COOKIE-PARSER A NIVEL APLICACION--------------------------------*/
+
+  app.use(cookieParser());
 
    /*------------------------------MIDDLEWARE USUARIO LOGGUEADO NIVEL APLICACION--------------------------------*/
 
