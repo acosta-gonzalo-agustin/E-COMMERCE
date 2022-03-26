@@ -54,12 +54,18 @@
             </li>
 
             <% if(locals.loggued == true) { %>
-              <li class="nav-item">
-                <a class="nav-link" href="/user/profile"><%=locals.user.nombre + ' ' + locals.user.apellido%>   </a> 
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="/home" id="navbarDropdown" role="button"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  <%=locals.user.nombre + ' ' + locals.user.apellido%>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item categoria" href="/user/profile">Mi perfil</a></a></li>
+                  <li><a class="dropdown-item categoria" href="#">Mis reservas</a></li>
+                  <li><a class="dropdown-item categoria" href="/user/logout">Log out</a></a></li>
+                </ul>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/user/logout">Log out</a> 
-              </li>
+
             
             <% } else { %>
               <li class="nav-item">
@@ -67,7 +73,7 @@
               </li>
               <li class="nav-item">
                 <!-------------------------------------- Button trigger modal --------------------------------------->
-                <a class="nav-link" href="" data-bs-toggle="modal" data-bs-target="#exampleModal">Login</a>   
+                <a class="nav-link" href="" data-bs-toggle="modal" data-bs-target="#exampleModal">Iniciar sesión</a>   
                 <!------------------------------------- Modal -------------------------------->
               </li>
             <% } %>    
