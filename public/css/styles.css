@@ -697,9 +697,12 @@ footer .container li {
     }
 
     .point:hover {
+        box-shadow: 1px 5px 1px 1px lightgray;
+    }
 
-        border: solid lightgray 5px;
-        
+    .point a {
+        color: black!important;
+        text-decoration: none;
     }
 
     /*----------------------------------------INDEX-PUBLICIDAD OFERTA---------------------------------------------------*/
