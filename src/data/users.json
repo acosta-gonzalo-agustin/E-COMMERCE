@@ -1,11 +1,13 @@
 [
  {
   "id": 1,
-  "nombre": "gonzalo",
-  "apellido": "acosta",
+  "nombre": "Luis",
+  "apellido": "das",
   "contraseña": "$2a$10$CQVKRFTG7zka7KE2rrEpbOtJk6S5Px4Pam.bR/WKbV8sjfITHF32y",
-  "email": "g@gmail.com",
-  "imagen": "1648149211404foto.jpg"
+  "email": "luisacosta@gmail.com",
+  "imagen": "1648149211404foto.jpg",
+  "telefono": "6516",
+  "tarjeta": "65165"
  },
  {
   "id": 2,
@@ -14,5 +16,22 @@
   "contraseña": "$2a$10$wdHhkIEIbp9T25A4i1hG6eZo/BQm36VDvzzXN.NNr6h6pJBUeACvO",
   "email": "s@gmail.com",
   "imagen": "1648149242516foto.jpg"
+ },
+ {
+  "id": 3,
+  "nombre": "gonzalo",
+  "apellido": "acosta",
+  "contraseña": "$2a$10$VCHAZIRUiVlkzqbk19H7V.ljOUzyh4mPKnSGfNRdUwszUEN9axTKi",
+  "email": "acosta.gonzalo.agustin@gmail.com",
+  "imagen": "1648501933061ciudad-bsas.jpg"
+ },
+ {
+  "id": 4,
+  "nombre": "o",
+  "apellido": "o",
+  "contraseña": "$2a$10$qJOvm430THKPBnxl7zS6J.91OKmLtg0PX/1EnUQE8j0NmoTqueXr.",
+  "email": "o@gmail.com",
+  "cupon": true,
+  "imagen": "1648682968437foto.jpg"
  }
 ]

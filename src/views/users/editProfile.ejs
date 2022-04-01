@@ -1,0 +1,52 @@
+<!-------------------------------------------------INCLUYENDO HEAD Y HEADER------------------------------>
+
+<%- include('../parcials/head') %>
+
+  <main>
+
+    <form class='formulario registro formulario-producto' action="/user/edit/<%=locals.user.id%>/?_method=PUT"
+      enctype="multipart/form-data" method="POST">
+      <div class="titulo-crear">
+        <h1>EDITAR PERFIL</h1>
+      </div>
+  
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre:</label>
+        <input type="text" class="form-control" name="nombre" id="nombre" value="<%=locals.user.nombre%>">
+      </div>
+      <div class="mb-3">
+        <label for="apellido" class="form-label">Apellido:</label>
+        <input type="text" class="form-control" name="apellido" id="apellido" value="<%=locals.user.apellido%>">
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email:</label>
+        <input type="text" class="form-control" name="email" id="email" value="<%=locals.user.email%>">
+      </div>
+      <div class="mb-3">
+        <label for="telefono" class="form-label">Telefono:</label>
+        <input type="text" class="form-control" name="telefono" id="telefono" value=" <%if(locals.user.telefono) { %> <%=locals.user.telefono%> <% } %> ">
+      </div>
+      <div class="mb-3">
+        <label for="tarjeta" class="form-label">Tarjeta:</label>
+        <input type="text" class="form-control" name="tarjeta" id="tarjeta" value=" <%if(locals.user.tarjeta) { %> <%=locals.user.tarjeta%> <% } %> ">
+      </div>
+      <div class='registro boton'>
+        <button type="submit" class="btn">Guardar modificaciones</button>
+      </div>
+    </form>
+
+
+
+
+
+  </main>
+
+
+  <!-------------------------------------------------INCLUYENDO FOOTER------------------------------>
+
+  <%- include('../parcials/footer') %>
+
+
+    </body>
+
+</html>

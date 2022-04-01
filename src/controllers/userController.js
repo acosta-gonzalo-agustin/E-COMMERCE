@@ -32,7 +32,8 @@ const controlador = {
                 nombre: dato.nombre,
                 apellido: dato.apellido,
                 contraseña: bcrypt.hashSync(dato.password,10),
-                email: dato.email,     
+                email: dato.email,
+                cupon: true,     
             }
 
     
@@ -86,7 +87,59 @@ const controlador = {
         res.clearCookie('user');
         req.session.destroy();
         res.redirect('/');
-    }
+    },
+
+    /*------------------------- controlador administrador------------------------------------*/
+
+    admin: function(req,res) {
+        res.render('users/admin');
+    },
+
+    adminview: function(req,res) {
+        res.redirect('/');
+    },
+
+    /*-----------------------actualizar usuario-----------------------------------*/
+
+    edit: function(req,res) {
+        res.render('users/editProfile');
+    },
+
+    /*----------------------------metodo editar usuario y redireccionar a index-------------------------------*/
+
+
+    update: function (req, res) {
+        let dato = req.body;
+        console.log(dato);
+        let id = req.params.id;
+        for (i of users) {
+            if (i.id == id) {
+                i.nombre = dato.nombre;
+                i.apellido = dato.apellido;
+                i.email = dato.email;
+
+                if(dato.telefono) {
+                    i.telefono = dato.telefono;
+
+                };
+                if(dato.tarjeta) {
+                    i.tarjeta = dato.tarjeta;
+
+                };
+                
+                break;
+            }
+        }
+
+
+        fs.writeFileSync(path.join(__dirname, '../data/users.json'), JSON.stringify(users, null, ' '));
+        req.session.destroy();
+        res.redirect('/');
+
+    },
+
+
+
 }
 
 module.exports = controlador;

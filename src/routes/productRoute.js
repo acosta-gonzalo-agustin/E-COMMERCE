@@ -37,5 +37,10 @@ router.get('/delete/:id',productController.delete);
 
 router.get('/filter/',productController.filter);
 
+/*---------------------RUTA PARA RESERVAR PRODUCTO------------------------*/
+
+
+router.get('/shopping-cart',productController.reserva);
+
 
 module.exports = router;

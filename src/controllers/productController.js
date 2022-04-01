@@ -212,6 +212,10 @@ const controlador = {
             
     },
 
+    reserva: function(req,res) {
+        res.render('products/shopping-cart')
+    }
+
 }
 
 module.exports = controlador;

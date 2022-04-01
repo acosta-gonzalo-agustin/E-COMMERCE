@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcryptjs');
 
-let usersJSON = fs.readFileSync(path.join(__dirname, '../data/users.json'), 'utf-8');
+let usersJSON = fs.readFileSync(path.join(__dirname, '../data/admin.json'), 'utf-8');
 let users = JSON.parse(usersJSON);
 
 
@@ -16,18 +16,12 @@ function verificacion(req,res,next) {
                     res.cookie('user',i.id, {
                         maxAge: 1000 *3600
                      });
-                     
                 }
-
                 req.session.user = {
                     'id':i.id,
                     'nombre': i.nombre,
-                    'apellido': i.apellido,
                     'email':i.email,
-                    'imagen':i.imagen,
-                    'telefono':i.telefono,
-                    'tarjeta':i.tarjeta,
-                    'cupon':i.cupon
+                    'imagen':i.imagen
                 };
                 condicion = 2;
                 break;
@@ -36,10 +30,10 @@ function verificacion(req,res,next) {
     }
 
     if(condicion == 0) {
-        res.render('index',{mensaje:'El correo electrónico que ingresaste no está conectado a una cuenta. Encuentra tu cuenta e inicia sesión'});
+        res.render('users/admin',{mensaje_admin:'El correo electrónico no corresponde a un administrador'});
 
     } else if(condicion == 1) {
-        res.render('index',{old:req.body.email,mensaje:'La contraseña que ingresaste es incorrecta'});
+        res.render('users/admin',{old:req.body.email,mensaje_admin:'La contraseña que ingresaste es incorrecta'});
     } else {
         next();
     }

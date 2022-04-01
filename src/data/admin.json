@@ -1,0 +1,9 @@
+[
+{
+        "id": "admin",
+        "nombre": "administrador",
+        "contraseña": "$2a$10$xk45o572DTyAGFgATho1Be/kl3MX1C4AGquLA7c/jZZtJzc4HvngG",
+        "email": "admin@gmail.com",
+        "imagen": "1648600821549foto.jpg"
+}
+]

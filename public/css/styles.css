@@ -11,6 +11,11 @@ body {
 
 }
 
+a:-webkit-any-link {
+
+    color:white !important;
+}
+
 
 
 
@@ -22,13 +27,23 @@ body {
 
 }
 
-.navbar a{
+ .navbar a{
     color: white !important;
-}
+} 
+
 
 .navbar .categoria{
     color: black !important;
 }
+
+.nav-list {
+    
+    flex-grow: 0.7;
+    justify-content: space-around;
+
+}
+
+
 
 
 .img-logo {
@@ -79,6 +94,10 @@ header {
     
 
 /*--------------------------------------ESTILO CARROUSELL---------------------------------------*/
+
+.separador {
+    border-bottom: solid 1px lightgray;
+}
 
 
 
@@ -156,6 +175,7 @@ P {
 .card {
     width: 80%;
 }
+
 
 
 /*-----------------------------------STILO PUBLICIDAD OFERTAS----------------------------------------*/
@@ -412,18 +432,20 @@ footer .container li {
     border-bottom: 1px lightgray;
 }
 
+/*---------------------------------PERFIL USUARIO------------------------------------------*/
 
 
+.link-boton {
+    color: black;
+    text-decoration: none;
+}
 
+.link-white {
+    color: white;
+    text-decoration: none;
+    
 
-
-
-
-
-
-
-
-
+}
 
 
 
@@ -672,6 +694,12 @@ footer .container li {
 
     .card {
         width: 23%;
+    }
+
+    .point:hover {
+
+        border: solid lightgray 5px;
+        
     }
 
     /*----------------------------------------INDEX-PUBLICIDAD OFERTA---------------------------------------------------*/

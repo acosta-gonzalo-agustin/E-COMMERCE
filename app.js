@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 const expressFileUpload = require('express-fileupload');
 const Logueado = require('./src/middlewares/Loggued');
 const userCookie = require('./src/middlewares/user_cookie');
+const adminCookie = require('./src/middlewares/admin_cookie');
 
 
 
@@ -20,7 +21,6 @@ const aboutUsRoute = require('./src/routes/aboutUsRoute');
 const productRoute = require('./src/routes/productRoute');
 const citiesListingRoute = require('./src/routes/citiesListingRoute');
 const faqsRoute = require('./src/routes/faqsRoute');
-const shoppingCartRoute = require('./src/routes/shoppingCartRoute');
 const userRoute = require('./src/routes/userRoute');
 
 
@@ -67,6 +67,10 @@ app.use(cookieParser());
 
 app.use(userCookie); 
 
+/*------------------------------MIDDLEWARE ADMINISTRADOR LOGGUEADO NIVEL APLICACION--------------------------------*/
+
+app.use(adminCookie); 
+
 /*------------------------------MIDDLEWARE USUARIO LOGGUEADO NIVEL APLICACION--------------------------------*/
 
 app.use(Logueado); 
@@ -85,7 +89,6 @@ app.use('/cities-listing',citiesListingRoute);
 
 app.use('/FAQs',faqsRoute);
 
-app.use('/shopping-cart',shoppingCartRoute);
 
 app.use('/user',userRoute)
 
