@@ -70,7 +70,12 @@ const controlador = {
             }
         
         } else {
-            res.render('users/register', { errors: errors.array(), old: req.body });
+            let arreglo = errors.array();
+            let mensajes = [];
+            for(i of arreglo) {
+                mensajes.push(i.msg)
+            }
+            res.render('users/register', { errors: mensajes, old: req.body });
         }    
                   
     },

@@ -33,5 +33,23 @@
   "email": "o@gmail.com",
   "cupon": true,
   "imagen": "1648682968437foto.jpg"
+ },
+ {
+  "id": 5,
+  "nombre": "dasd",
+  "apellido": "dsad",
+  "contraseña": "$2a$10$pSL3DZWDMjVWOavf.4nIuO.pVp2nB7tvcl2xuEu4IamNkWECMsJim",
+  "email": "a@gmail.com",
+  "cupon": true,
+  "imagen": "1648867486025foto.jpg"
+ },
+ {
+  "id": 6,
+  "nombre": "oismdaoi",
+  "apellido": "sdaoimds",
+  "contraseña": "$2a$10$U7OOu/6NuU9KOB/cHPboOukEpxfrbOuuiWhwOQ44PaqROYVTBUrgu",
+  "email": "luisacosta@gmail.com",
+  "cupon": true,
+  "imagen": "1649122496509foto.jpg"
  }
 ]

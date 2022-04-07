@@ -1,62 +1,89 @@
 <!-------------------------------------------------INCLUYENDO HEAD Y HEADER------------------------------>
 
-<%- include('../parcials/head')  %>
+<%- include('../parcials/head') %>
 
 
-    <main class="main-register">
-    <form class='formulario registro formulario-register' action="/user/register" method="POST" enctype="multipart/form-data">
+  <main class="main-register">
+    <form class='formulario registro formulario-register' action="/user/register" method="POST"
+      enctype="multipart/form-data">
       <% if (locals && locals.registrado) { %>
-          <p class = 'error'> <%=registrado%> </p> 
-      <% } %>
-      <% if (locals && locals.errors) { %>
-        <%for(i of errors) { %>
-          <p class = 'error'> <%=i.msg %>  </p> 
+        <p class='error'>
+          <%=registrado%>
+        </p>
         <% } %>
-      <% } %>
-      <div class="titulo-registro">
-        <h5>Registrate</h5>
-        <h5 class="error">Obtene un 10% de descuento en tu primera reserva</h5>
-      </div>
-      <div class='alinear'>
-        <div class="mb-3">
-          <input type="text" class="form-control" name = 'nombre' id="nombre" placeholder="Nombre"  value ="<%= locals.old && old.nombre %>">
-        </div>
-        <div class="mb-3">
-          <input type="text" class="form-control" name = 'apellido' id="apellido" placeholder="Apellido"  value ="<%= locals.old && old.apellido%>">
-        </div>
-      </div>
+          <div class="titulo-registro">
+            <h5>Registrate</h5>
+          </div>
+          <div class='alinear'>
+            <div class="mb-3">
+              <input type="text" class="form-control" name='nombre' id="nombre" placeholder="Nombre"
+                value="<%= locals.old && old.nombre %>">
+              <% if (locals && locals.errors) { for(i of locals.errors) { if(i.includes('nombre')) { %>
+                <p class='error'>
+                  <%=i%>
+                </p>
+                <% } } } %>
+            </div>
+            <div class="mb-3">
+              <input type="text" class="form-control" name='apellido' id="apellido" placeholder="Apellido"
+                value="<%= locals.old && old.apellido%>">
+              <% if (locals && locals.errors) { for(i of locals.errors) { if(i.includes('apellido')) { %>
+                <p class='error'>
+                  <%=i%>
+                </p>
+                <% } } } %>
+            </div>
 
-      <div class="mb-3">
-        <input class="form-control" name = 'email' id="email" aria-describedby="emailHelp"
-          placeholder="Correo Electrónico"  value ="<%= locals.old && old.email%>">
-        <div id="emailHelp" class="form-text">Nunca compartiremos tu correo electrónico con alguien más</div>
-      </div>
-      <div class="mb-3">
-        <label for="image" class="form-label">Cargar imagenes de perfil:</label>
-        <input class="form-control" type="file" name="imagen" id="imagen">
-        <% if(typeof error !='undefined' ) { %>
-          <p class='error'>
-            <%=error%>
-          </p>
-          <% } %>
-      </div>
+          </div>
 
-      <div class='alinear'>
-        <div class="mb-3">
-          <input type="password" class="form-control" name = 'password' id="password" placeholder="Contraseña" value ="<%= locals.old && old.password%>" enctype="multipart/form-data">
-        </div>
-        <div class="mb-3">
-          <input type="password" class="form-control" name = 'repeatpassword' id="repeatpassword" placeholder="Repetir Contraseña" value ="<%= locals.old && old.repeatpassword%>">
-        </div>
-      </div>
-      <div class='registro boton'>
-        <button type="submit" class="btn">Enviar</button>
-      </div>
+          <div class="mb-3">
+            <input class="form-control" name='email' id="email" aria-describedby="emailHelp"
+              placeholder="Correo Electrónico" value="<%= locals.old && old.email%>">
+            <% if (locals && locals.errors) { for(i of locals.errors) { if(i.includes('email')) { %>
+              <p class='error'>
+                <%=i%>
+              </p>
+              <% } } } %>
+                <div id="emailHelp" class="form-text">Nunca compartiremos tu correo electrónico con alguien más</div>
+          </div>
+          <div class="mb-3">
+            <label for="image" class="form-label">Cargar imagenes de perfil:</label>
+            <input class="form-control" type="file" name="imagen" id="imagen">
+            <% if(typeof error !='undefined' ) { %>
+              <p class='error'>
+                <%=error%>
+              </p>
+              <% } %>
+          </div>
+
+          <div class='alinear'>
+            <div class="mb-3">
+              <input type="password" class="form-control" name='password' id="password" placeholder="Contraseña"
+                value="<%= locals.old && old.password%>" enctype="multipart/form-data">
+              <% if (locals && locals.errors) { for(i of locals.errors) { if(i.includes('clave') && ! i.includes('coinciden') ) { %>
+                <p class='error'>
+                  <%=i%>
+                </p>
+                <% } } } %>
+                <% if (locals && locals.errors) { for(i of locals.errors) { if(i.includes('coinciden')) { %>
+                  <p class='error'>
+                    <%=i%>
+                  </p>
+                  <% } } } %>
+            </div>
+            <div class="mb-3">
+              <input type="password" class="form-control" name='repeatpassword' id="repeatpassword"
+                placeholder="Repetir Contraseña" value="<%= locals.old && old.repeatpassword%>">
+            </div>
+          </div>
+          <div class='registro boton'>
+            <button type="submit" class="btn">Enviar</button>
+          </div>
     </form>
   </main>
 
 
 
-<!-------------------------------------------------INCLUYENDO FOOTER------------------------------>
+  <!-------------------------------------------------INCLUYENDO FOOTER------------------------------>
 
-<%- include('../parcials/footer') %> 
+  <%- include('../parcials/footer') %>
