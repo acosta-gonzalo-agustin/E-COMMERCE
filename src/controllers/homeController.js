@@ -9,20 +9,12 @@ const controlador = {
 
         let categories = db.categories.findAll();
         let cities = db.cities.findAll();
-        let vehicles = db.vehicles.findAll();
-        let vehicles_user = db.vehicles.findAll({
-            order: sequelize.random(),
-            limit:4,
-        })
-
-
-
-        Promise.all([categories,cities,vehicles,vehicles_user])
-        .then(function([categories,cities,vehicles,vehicles_user]) {
-            for(i of vehicles_user) {
-                console.log(i.name);
-            }
-            res.render('index',{categories,cities,vehicles,vehicles_user})
+        let vehicles = db.vehicles.findAll({include:[{association:'category'}]});
+        
+        Promise.all([categories,cities,vehicles])
+        .then(function([categories,cities,vehicles]) {
+            console.log(categories[2].name);
+            res.render('index',{categories,cities,vehicles})
         });
         
     },

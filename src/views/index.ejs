@@ -17,16 +17,20 @@
           <select class="form-select" aria-label="Default select example">
             <option selected>Ciudad retiro</option>
             <%for(i of cities) { %>
-            <option value="<%i.id%>"><%=i.name%> </option>
-            <% } %> 
+              <option value="<%i.id%>">
+                <%=i.name%>
+              </option>
+              <% } %>
           </select>
         </div>
         <div class="mb-1 ancho-hijos">
           <select class="form-select" aria-label="Default select example">
             <option selected>Ciudad devolución</option>
             <%for(i of cities) { %>
-              <option value="<%i.id%>"><%=i.name%> </option>
-            <%}%>
+              <option value="<%i.id%>">
+                <%=i.name%>
+              </option>
+              <%}%>
           </select>
         </div>
       </div>
@@ -89,243 +93,138 @@
   <section class='calesita'>
 
     <!--contenido de carrusell-->
-    <% if(locals.loggued==true) { %>
-      <h1 class="separador">SELECCIONADOS PARA VOS</h1>
-      <% } else { %>
-        <h1 class="separador">CONOCE NUESTRA FLOTA</h1>
+
+    <% if(locals.loggued==false) { %>
+      <h1 class="separador">CONOCE NUESTRA FLOTA</h1>
+
+      <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <!-- <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
+            aria-label="Slide 1"></button>
+        </div> -->
+
+
+        <div class="carousel-inner">
+
+          <div class="carousel-item active">
+            <div class="row" style= "text-align:center;">
+              <h1>
+                <%=categories[0].name%>
+              </h1>
+              <%let contador=0; %>
+                <%for(i of vehicles) { %>
+                  <%if(i.category.name==categories[0].name) { %>
+                    <% contador++%>
+                      <div class="col-4">
+                        <div class="card" style="width: 100%">
+                          <h4>
+                            <%=i.name%>
+                          </h4>
+                          <img src="img/img-autos/<%=i.picture%>" class="d-block w-100" alt="propaganda autos">
+                          <div class="card-body">
+                            <p>
+                              <%=i.description%>
+                            </p>
+                            <a href="#" class="btn">Reservar</a>
+                          </div>
+                        </div>
+                      </div>
+                      <%} if(contador==4) { 
+                        break; 
+                      } 
+                  } %>
+
+            </div>
+          </div>
+
+
+          <%for(let i = 1;i < categories.length;i++) { %>
+
+            <div class="carousel-item">
+              <div class="row" style="text-align: center;">
+                <h1>
+                  <%=categories[i].name%>
+                </h1>
+                <%let suma=0; %>
+                  <%for(j of vehicles) { %>
+                    <%if(j.category.name==categories[i].name) { %>
+                      <% suma++%>
+                        <div class="col-4">
+                          <div class="card" style="width: 100%">
+                            <h4>
+                              <%=j.name%>
+                            </h4>
+                            <img src="img/img-autos/<%=j.picture%>" class="d-block w-100" alt="propaganda autos">
+                            <div class="card-body">
+                              <p>
+                                <%=j.description%>
+                              </p>
+                              <a href="#" class="btn">Reservar</a>
+                            </div>
+                          </div>
+                        </div>
+                      <%} if(suma==4) { break; 
+                      } 
+                    } %>
+
+              </div>
+              
+              
+            </div>
+            <%}%>
+            
+          
+
+
+        </div>
+
+        <button class="carousel-control-prev slide" type="button" data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next slide" type="button" data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    <% } else { %>
+        <h1 class="separador">SELECCIONADOS PARA VOS</h1>
+
+        <section class='ciudades'>
+
+          <div class='tarjeta-ciudades'>
+            <%for(let i=0; i<4;i++) {%>
+              <div class="card">
+                <h4>
+                  <%= vehicles[i].name%>
+                </h4>
+                <img src="img/img-autos/<%=vehicles[i].picture%> " class="d-block w-100" alt="propaganda autos">
+                <div class="card-body">
+                  <p>
+                    <%= vehicles[i].description%>
+                  </p>
+                  <a href="product/shopping-cart" class="btn">Reservar</a>
+                </div>
+              </div>
+              <%}%>
+          </div>
+
+        </section>
+
         <% } %>
 
-          <% if(locals.loggued==false) { %>
-
-            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-              <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-                  aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-                  aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                  aria-label="Slide 3"></button>
-              </div>
-              <div class="carousel-inner">
-
-                <div class="carousel-item active" data-bs-interval="3000">
-                  <div class="row">
-                    <h1>Autos Compactos</h1>
-                    <div class="col-4">
-                      <div class="card" style="width: 100%">
-                        <img src="img/fondo-blanco-3.jpg" class="d-block w-100" alt="propaganda autos">
-                        <div class="card-body">
-                          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. <br> <br> Aut rerum soluta atque
-                            nulla
-                            assumenda perferendis </p>
-                          <a href="#" class="btn">Buscar</a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-4">
-                      <div class="card" style="width: 100%">
-                        <img src="img/fondo-blanco-3.jpg" class="d-block w-100" alt="propaganda autos">
-                        <div class="card-body">
-                          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. <br> <br> Aut rerum soluta atque
-                            nulla
-                            assumenda perferendis </p>
-                          <a href="#" class="btn">Buscar</a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-4">
-                      <div class="card" style="width: 100%">
-                        <img src="img/fondo-blanco-3.jpg" class="d-block w-100" alt="propaganda autos">
-                        <div class="card-body">
-                          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. <br> <br> Aut rerum soluta atque
-                            nulla
-                            assumenda perferendis </p>
-                          <a href="#" class="btn">Buscar</a>
-                        </div>
-                      </div>
-                    </div>
-                    <!--<div class="carousel-caption d-none d-md-block">
-                                    <h4 class="vehicu-carru">Vehiculo mediano</h4>
-                                    <p class="parra-carru">Hay lugares donde uno se queda, y lugares que se quedan en uno.</p>
-                                  </div>-->
-                  </div>
-                </div>
-                <div class="carousel-item" data-bs-interval="3000">
-                  <div class="row">
-                    <h1>Autos Medianos</h1>
-                    <div class="col-4">
-                      <div class="card" style="width: 100%">
-                        <img src="img/fondo-blanco-2.jpg" class="d-block w-100" alt="propaganda autos">
-                        <div class="card-body">
-                          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. <br> <br> Aut rerum soluta atque
-                            nulla
-                            assumenda perferendis </p>
-                          <a href="#" class="btn">Buscar</a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-4">
-                      <div class="card" style="width: 100%">
-                        <img src="img/fondo-blanco-2.jpg" class="d-block w-100" alt="propaganda autos">
-                        <div class="card-body">
-                          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. <br> <br> Aut rerum soluta atque
-                            nulla
-                            assumenda perferendis </p>
-                          <a href="#" class="btn">Buscar</a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-4">
-                      <div class="card" style="width: 100%">
-                        <img src="img/fondo-blanco-2.jpg" class="d-block w-100" alt="propaganda autos">
-                        <div class="card-body">
-                          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. <br> <br> Aut rerum soluta atque
-                            nulla
-                            assumenda perferendis </p>
-                          <a href="#" class="btn">Buscar</a>
-                        </div>
-                      </div>
-                    </div>
-                    <!--<div class="carousel-caption d-none d-md-block">
-                                    <h4 class="vehicu-carru">Vehiculo mediano</h4>
-                                    <p class="parra-carru">Hay lugares donde uno se queda, y lugares que se quedan en uno.</p>
-                                  </div>-->
-                  </div>
-                </div>
-                <div class="carousel-item" data-bs-interval="3000">
-                  <div class="row">
-                    <h1>Autos Premium</h1>
-                    <div class="col-4">
-                      <div class="card" style="width: 100%">
-                        <img src="img/fondo-blanco-4.jpg" class="d-block w-100" alt="propaganda autos">
-                        <div class="card-body">
-                          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. <br> <br> Aut rerum soluta atque
-                            nulla
-                            assumenda perferendis </p>
-                          <a href="#" class="btn">Buscar</a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-4">
-                      <div class="card" style="width: 100%">
-                        <img src="img/fondo-blanco-4.jpg" class="d-block w-100" alt="propaganda autos">
-                        <div class="card-body">
-                          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. <br> <br> Aut rerum soluta atque
-                            nulla
-                            assumenda perferendis </p>
-                          <a href="#" class="btn">Buscar</a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-4">
-                      <div class="card" style="width: 100%">
-                        <img src="img/fondo-blanco-4.jpg" class="d-block w-100" alt="propaganda autos">
-                        <div class="card-body">
-                          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. <br> <br> Aut rerum soluta atque
-                            nulla
-                            assumenda perferendis </p>
-                          <a href="#" class="btn">Buscar</a>
-                        </div>
-                      </div>
-                    </div>
-                    <!--<div class="carousel-caption d-none d-md-block">
-                                    <h4 class="vehicu-carru">Vehiculo mediano</h4>
-                                    <p class="parra-carru">Hay lugares donde uno se queda, y lugares que se quedan en uno.</p>
-                                  </div>-->
-                  </div>
-                </div>
-                <div class="carousel-item" data-bs-interval="3000">
-                  <div class="row">
-                    <h1>Autos Especiales</h1>
-                    <div class="col-4">
-                      <div class="card" style="width: 100%">
-                        <img src="img/fondo-blanco-2.jpg" class="d-block w-100" alt="propaganda autos">
-                        <div class="card-body">
-                          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. <br> <br> Aut rerum soluta atque
-                            nulla
-                            assumenda perferendis </p>
-                          <a href="#" class="btn">Buscar</a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-4">
-                      <div class="card" style="width: 100%">
-                        <img src="img/fondo-blanco-2.jpg" class="d-block w-100" alt="propaganda autos">
-                        <div class="card-body">
-                          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. <br> <br> Aut rerum soluta atque
-                            nulla
-                            assumenda perferendis </p>
-                          <a href="#" class="btn">Buscar</a>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-4">
-                      <div class="card" style="width: 100%">
-                        <img src="img/fondo-blanco-2.jpg" class="d-block w-100" alt="propaganda autos">
-                        <div class="card-body">
-                          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. <br> <br> Aut rerum soluta atque
-                            nulla
-                            assumenda perferendis </p>
-                          <a href="#" class="btn">Buscar</a>
-                        </div>
-                      </div>
-                    </div>
-                    <!--<div class="carousel-caption d-none d-md-block">
-                                    <h4 class="vehicu-carru">Vehiculo mediano</h4>
-                                    <p class="parra-carru">Hay lugares donde uno se queda, y lugares que se quedan en uno.</p>
-                                  </div>-->
-                  </div>
-                </div>
-              </div>
-              <button class="carousel-control-prev slide" type="button" data-bs-target="#carouselExampleCaptions"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next slide" type="button" data-bs-target="#carouselExampleCaptions"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
-            </div>
-
-            <% } else { %>
-
-              <section class='ciudades'>
-
-                <div class='tarjeta-ciudades'>
-                  <%for(i of vehicles_user) {%>
-                  <div class="card">
-                    <img src="img/img-autos/<%=i.picture%> " class="d-block w-100" alt="propaganda autos">
-                    <div class="card-body">
-                      <p><%= i.description%></p>
-                      <a href="product/shopping-cart" class="btn">Reservar</a>
-                    </div>
-                  </div>
-                  <%}%> 
-                </div>
-
-              </section>
-
-              <% } %>
-
-
 
   </section>
 
-  <section>
-    <!--contenido de dos imagenes publicitarias-->
-  </section>
 
-
-
-  <section>
-    <!--otro carrusel de productos destacados-->
-  </section>
-
-  <section>
-    <!--Categorias de productos-->
-  </section>
 
   <section class='ciudades'>
     <% if(locals.loggued==true) { %>
@@ -334,42 +233,19 @@
         <h1>PRINCIPALES DESTINOS</h1>
         <% } %>
 
-          <!--Otro carrusel de Ciudades destacadas-->
           <div class='tarjeta-ciudades'>
 
-            <div class="card point">
-              <a href="product/filter" class="">
-                
-                <img src="img/buenos-aires.jpg" class="card-img-top img-fluid" alt="...">
-                <div class="card-body">
-                </div>
-                BUENOS AIRES
-              </a>
-            </div>
-            <div class="card point">
-              <a href="product/filter" class="">
-                <img src="img/cordoba.jpg" class="card-img-top img-fluid" alt="...">
-                <div class="card-body">
-                </div>
-                CÓRDOBA
-              </a>
-            </div>
-            <div class="card point">
-              <a href="product/filter" class="">
-                <img src="img/bogota.jpg" class="card-img-top img-fluid" alt="...">
-                <div class="card-body">
-                </div>
-                BOGOTÁ
-              </a>
-            </div>
-            <div class="card point">
-              <a href="product/filter" class="">
-                <img src="img/rosario.jpg" class="card-img-top img-fluid" alt="...">
-                <div class="card-body">
-                </div>
-                ROSARIO
-              </a>
-            </div>
+            <%for(let i=0;i <4; i++) { %>
+              <div class="card point">
+                <a href="product/filter" class="">
+
+                  <img src="img/img-cities/<%=cities[i].picture%> " class="card-img-top img-fluid" alt="...">
+                  <div class="card-body">
+                  </div>
+                  <%=cities[i].name%>
+                </a>
+              </div>
+              <% } %>
           </div>
 
   </section>
