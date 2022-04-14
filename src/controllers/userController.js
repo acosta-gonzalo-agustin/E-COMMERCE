@@ -138,7 +138,7 @@ const controlador = {
 
 
         fs.writeFileSync(path.join(__dirname, '../data/users.json'), JSON.stringify(users, null, ' '));
-        req.session.destroy();
+        // req.session.destroy();
         res.redirect('/');
 
     },

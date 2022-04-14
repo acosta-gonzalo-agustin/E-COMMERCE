@@ -3,7 +3,6 @@ const express = require('express');
 const router = express.Router();
 const verificacion_usuario = require('../middlewares/verificacion_usuario')
 const verificacion_cuenta = require('../middlewares/login_validation')
-const verificacion_admin = require('../middlewares/admin_loguin')
 
 const { body } = require('express-validator');
 
@@ -32,12 +31,6 @@ router.post('/register',verificacion_usuario,validation,userController.save);
 /*---------------------RUTAS PARA LOGUEAR UN USUARIO---------------------------*/
 
 router.post('/login',verificacion_cuenta,userController.login);
-
-/*--------------------RUTA ADMINISTRADOR-----------------------------*/
-
-router.get('/admin',userController.admin);
-router.post('/admin',verificacion_admin,userController.adminview);
-
 
 
 /*---------------------RUTAS PERFIL---------------------------*/

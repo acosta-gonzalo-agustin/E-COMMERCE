@@ -7,7 +7,6 @@ const cookieParser = require('cookie-parser');
 const expressFileUpload = require('express-fileupload');
 const Logueado = require('./src/middlewares/Loggued');
 const userCookie = require('./src/middlewares/user_cookie');
-const adminCookie = require('./src/middlewares/admin_cookie');
 
 
 
@@ -67,9 +66,6 @@ app.use(cookieParser());
 
 app.use(userCookie); 
 
-/*------------------------------MIDDLEWARE ADMINISTRADOR LOGGUEADO NIVEL APLICACION--------------------------------*/
-
-app.use(adminCookie); 
 
 /*------------------------------MIDDLEWARE USUARIO LOGGUEADO NIVEL APLICACION--------------------------------*/
 

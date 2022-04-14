@@ -1,7 +1,7 @@
 [
  {
   "id": 1,
-  "nombre": "Citroen S4",
+  "nombre": "Citroen S",
   "marca": "Citroen",
   "categoria": "Premium",
   "cantidadAsientos": "Cinco",
@@ -169,18 +169,5 @@
   "precioSemana": "651616",
   "precioMes": "65165",
   "imagen": "1648083844524fondo-blanco-2.jpg"
- },
- {
-  "id": 11,
-  "nombre": "doiasjd",
-  "marca": "poiadskpoasidk",
-  "categoria": "Categoria de vehiculo",
-  "cantidadAsientos": "Cantidad de asientos",
-  "combustible": "Tipo de combustible",
-  "ciudad": "Ciudad",
-  "precioDia": "65416488",
-  "precioSemana": "681",
-  "precioMes": "651",
-  "imagen": "16481283521241645716206102fondo-blanco-2.jpg"
  }
 ]

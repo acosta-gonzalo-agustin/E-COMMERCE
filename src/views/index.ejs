@@ -16,17 +16,17 @@
         <div class="mb-1 ancho-hijos">
           <select class="form-select" aria-label="Default select example">
             <option selected>Ciudad retiro</option>
-            <option value="1">Buenos Aires</option>
-            <option value="2">Córdoba</option>
-            <option value="3">Bogota</option>
+            <%for(i of cities) { %>
+            <option value="<%i.id%>"><%=i.name%> </option>
+            <% } %> 
           </select>
         </div>
         <div class="mb-1 ancho-hijos">
           <select class="form-select" aria-label="Default select example">
             <option selected>Ciudad devolución</option>
-            <option value="1">Buenos Aires</option>
-            <option value="2">Córdoba</option>
-            <option value="3">Bogota</option>
+            <%for(i of cities) { %>
+              <option value="<%i.id%>"><%=i.name%> </option>
+            <%}%>
           </select>
         </div>
       </div>
@@ -294,44 +294,15 @@
               <section class='ciudades'>
 
                 <div class='tarjeta-ciudades'>
-
+                  <%for(i of vehicles_user) {%>
                   <div class="card">
-                    <img src="img/fondo-blanco-2.jpg" class="d-block w-100" alt="propaganda autos">
+                    <img src="img/img-autos/<%=i.picture%> " class="d-block w-100" alt="propaganda autos">
                     <div class="card-body">
-                      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. <br> <br> Aut rerum soluta atque
-                        nulla
-                        assumenda perferendis </p>
+                      <p><%= i.description%></p>
                       <a href="product/shopping-cart" class="btn">Reservar</a>
                     </div>
                   </div>
-                  <div class="card">
-                    <img src="img/fondo-blanco-2.jpg" class="d-block w-100" alt="propaganda autos">
-                    <div class="card-body">
-                      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. <br> <br> Aut rerum soluta atque
-                        nulla
-                        assumenda perferendis </p>
-                      <a href="product/shopping-cart" class="btn">Reservar</a>
-                    </div>
-                  </div>
-                  <div class="card">
-                    <img src="img/fondo-blanco-2.jpg" class="d-block w-100" alt="propaganda autos">
-                    <div class="card-body">
-                      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. <br> <br> Aut rerum soluta atque
-                        nulla
-                        assumenda perferendis </p>
-                      <a href="product/shopping-cart" class="btn">Reservar</a>
-                    </div>
-                  </div>
-                  <div class="card">
-                    <img src="img/fondo-blanco-2.jpg" class="d-block w-100" alt="propaganda autos">
-                    <div class="card-body">
-                      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. <br> <br> Aut rerum soluta atque
-                        nulla
-                        assumenda perferendis </p>
-                      <a href="product/shopping-cart" class="btn">Reservar</a>
-                    </div>
-                  </div>
-
+                  <%}%> 
                 </div>
 
               </section>

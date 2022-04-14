@@ -1,4 +1,10 @@
-[
+[{
+    "id": "admin",
+    "nombre": "administrador",
+    "contraseña": "$2a$10$xk45o572DTyAGFgATho1Be/kl3MX1C4AGquLA7c/jZZtJzc4HvngG",
+    "email": "admin@gmail.com",
+    "imagen": "1648600821549foto.jpg"
+},
  {
   "id": 1,
   "nombre": "Luis",
@@ -6,8 +12,8 @@
   "contraseña": "$2a$10$CQVKRFTG7zka7KE2rrEpbOtJk6S5Px4Pam.bR/WKbV8sjfITHF32y",
   "email": "luisacosta@gmail.com",
   "imagen": "1648149211404foto.jpg",
-  "telefono": "6516",
-  "tarjeta": "65165"
+  "telefono": "    6516    ",
+  "tarjeta": "    65165    "
  },
  {
   "id": 2,

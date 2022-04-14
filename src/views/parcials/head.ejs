@@ -47,10 +47,11 @@
                 Categoria de vehiculos
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item categoria" href="#">Compactos</a></li>
-                <li><a class="dropdown-item categoria" href="#">Medianos</a></li>
-                <li><a class="dropdown-item categoria" href="#">Premium</a></li>
-                <li><a class="dropdown-item categoria" href="#">Especiales</a></li>
+                <%if(locals && locals.categories) {
+                  for(i of categories) { %>
+                  <li><a class="dropdown-item categoria" href="#"><%=i.name%> </a></li>
+                <% }
+                }%> 
               </ul>
             </li>
              
