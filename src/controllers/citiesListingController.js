@@ -1,6 +1,12 @@
+const tempFileHandler = require('express-fileupload/lib/tempFileHandler');
+const db = require('../database/models');
+
 const controlador = {
     cities: function(req,res) {
-        res.render('cities-listing')
+        db.cities.findAll()
+        .then( function(cities) {
+            res.render('cities-listing',{cities})
+        });
     }
 }
 

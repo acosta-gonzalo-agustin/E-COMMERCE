@@ -6,7 +6,7 @@ function fuelsData(sequelize, Datatypes) {
         name:{type:Datatypes.STRING(20)},
     };
     
-    let config = {timestamps:false,camelCase:false,tableName:'fuels'};
+    let config = {timestamps:false,camelCase:false,tableName:'fuel'};
 
     const fuels = sequelize.define(alias,cols,config);
 

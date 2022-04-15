@@ -4,50 +4,15 @@
 
       <main class="main-city">
 
-        <div class="contene-city-1">
-          <img class="imagen-bsas" src ="img/ciudad-bsas.jpg">
-          <h3 class="titulo-citys">Buenos Aires</h3>
-          <p class="parra-citys">Buenos Aires es una ciudad auténtica, elegante pero también es hipster, 
-            bohemia, transgresora, y quizás el encanto más intrínseco descanse en su heterogeneidad. En 
-            esa heterogeneidad tan genuinamente arrasadora, una que sin planearlo se ha enriquecido de 
-            diversas culturas y aspectos artísticos que no han logrado nada más que embellecer cada uno 
-            de sus esplendorosos recovecos.
-
-            Gloriosamente bella y enérgica, la ciudad se jacta de poseer una atmósfera vibrante, 
-            con barrios que contrastan intensamente entre sí y que con el paso del tiempo han reafirmado
-             su estilo y estimulado un ambiente creativo con una identidad singular.</p>
-        </div>
-        
-        <div class="contene-city-2">
-          <img class="imagen-bogota" src="img/ciudad-bogota.jpeg">
-          <h3 class="titulo-citys">Bogota</h3>
-          <p class="parra-citys">Colombia es uno de los países más ricos en diversidad biológica, 
-            representada en su vasta geografía compuesta por dos mares, tres cordilleras y una sierra 
-            nevada, selvas exuberantes y ríos incomparables. El estar en la zona ecuatorial sumado a las
-             condiciones geológicas del país permiten disfrutar de una variedad de ecosistemas y paisajes
-              en los que se desarrollan experiencias naturales que persiguen la comprensión y la 
-              conservación del patrimonio natural del país.</p>
-        </div>
-
-        <div class="contene-city-3">
-          <img class="imagen-cordoba" src="img/ciudad-cordoba.jpg">
-          <h3 class="titulo-citys">Cordoba</h3>
-          <p class="parra-citys">Córdoba es la segunda ciudad más importante de Argentina y capital de una
-            provincia con numerosos atractivos naturales y pueblos encantadores. Posee una larga historia y
-             conserva edificios coloniales de gran relevancia y una intensa agenda cultural, gracias a su 
-             universidad, que acoge estudiantes de todo el país.</p>
-        </div>
-
-        <div class="contene-city-4">
-          <img class="imagen-rosario" src="img/ciudad-rosario.jpg">
-          <h3 class="titulo-citys">Rosario</h3>
-          <p class="parra-citys">Rosario es una ciudad ubicada en el centro-este de Argentina, cabecera del
-             departamento homónimo ubicada en la provincia de Santa Fe. ... La ciudad de Rosario es conocida
-              como la Cuna de la Bandera, siendo su edificación más conocida el Monumento a la Bandera.</p>
-        </div>
-
-
-
+        <%for(i of cities) { %> 
+          <div class="contene-city-1">
+            <img class="imagen-bsas" src ="img/img-cities/<%=i.picture%> ">
+            <h3 class="titulo-citys"><%=i.name%> </h3>
+            <p class="parra-citys">
+              <%=i.description%> 
+            </p>
+            </div>
+          <%}%>  
 
       </main>
 

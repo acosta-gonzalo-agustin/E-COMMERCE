@@ -2,6 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const {validationResult} = require('express-validator');
 
+const db = require('../database/models');
+
 
 
 
@@ -15,7 +17,20 @@ const controlador = {
     /*-------------------------metodo listar productos para administrador-------------------------*/
 
     list: function (req, res) {
-        res.render('products/product-listing', { productos: products });
+
+        db.vehicles.findAll({include:[
+            {association:'brand'},
+            {association:'category'},
+            {association:'city'},
+            {association:'features'},
+            {association:'fuel'}
+        ]
+        })
+        .then(function(vehicles) {
+            res.render('products/product-listing', {vehicles});
+        })
+
+        
     },
 
     /*----------------------------metodo llamar formulario par editar producto-------------------------------*/

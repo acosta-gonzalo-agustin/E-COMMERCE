@@ -14,8 +14,7 @@ const validation = [
 
 
 
-/*-------------------------RUTAS PARCIALES-------------------------------*/
-
+/*-------------------------RUTA PARA LISTAR PRODUCTOS-------------------------------*/
 
 router.get('/listing',productController.list);
 

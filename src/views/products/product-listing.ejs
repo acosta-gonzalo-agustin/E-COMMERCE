@@ -7,54 +7,37 @@
 
   <div class='lista-productos listado'>
 
-    <% for(let i of productos) { %>
+    <% for(let i of vehicles) { %>
    
       <div class="container grid item">
         <div class="row">
           <div class='col-md border-end'>
             <div class="col-sm border-bottom">
-              <h3><%= i.nombre%></h3>
-              <img src="/img/img-autos/<%=i.imagen%>" alt="">
+              <h3><%= i.name%></h3>
+              <img src="/img/img-autos/<%=i.picture%>" alt="">
             </div>
             <div class="col-sm">
               <ul>
-                <li><i class="fas fa-check-circle"></i><%= i.cantidadAsientos%> asientos</li>
-                <li><i class="fas fa-check-circle"></i><%=i.cajaDeCambio%></li>
-                <li><i class="fas fa-check-circle"></i><%=i.combustible%></li>
-                <% if(i.airbag == 'S') { %>
-                  <li><i class="fas fa-check-circle"></i>Airbag</li>
-                <% } %> 
+                CARACTERISTICAS 
+                <li><i class="fas fa-check-circle"></i><%= i.seat_number%> asientos</li>
+                <li><i class="fas fa-check-circle"></i><%if(i.transmission = 1) { %> automático <% } else { %> manual <%}%></li>
+                <li><i class="fas fa-check-circle"></i><%=i.fuel.name%></li>
+                 
               </ul>
             </div>
           </div>
           <div class="col-md reserva-derecha">
             <div>
-              $<%= i.precioDia%>/dia
-            </div>
-            <div>
-              <ul>
-                SEGUROS
-                <%if(typeof  i.seguro == 'object') {%> 
-                  <% for(let j of i.seguro) {%> 
-                  <li><%=j%></li>
-                  <%}%>
-                  <%} else { %>
-                    <li><%=i.seguro%> </li>
-                  <%}%>
-              </ul>
-
+              $<%= i.pricexday%>/dia
             </div>
             <div class="escondido">
+              <%if(i.features != null) %> 
               <ul>
                 ADICIONALES
-                <%if(typeof  i.adicionales == 'object') {%> 
-                <% for(let j of i.adicionales) {%> 
-                <li><%=j%></li>
-                <%}%>
-                <%} else { %>
-                  <li><%=i.adicionales%> </li>
-                <%}%>   
+                <%for(j of i.features) {%>  
+                <li><%=j.name%></li>
               </ul>
+              <%}%> 
 
             </div>
             <div>
