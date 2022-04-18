@@ -1,17 +1,25 @@
 <!-------------------------------------------------INCLUYENDO HEAD Y HEADER------------------------------>
 
-<%- include('../parcials/head')  %>
-  
+<%- include('../parcials/head') %>
+
 
   <div class="filtro">
     <div>
-      <div class="container"><h1>Entrega:Cordoba</h1></div>
-      <div class="container"><h1>07/03 10:00</h1></div>
+      <div class="container">
+        <h1>Entrega:Cordoba</h1>
+      </div>
+      <div class="container">
+        <h1>07/03 10:00</h1>
+      </div>
     </div>
     <i class="fas fa-arrow-right"></i>
     <div>
-      <div class="container"><h1>Devolucion:Cordoba</h1></div>
-      <div class="container"><h1>07/03 10:00 </h1></div>
+      <div class="container">
+        <h1>Devolucion:Cordoba</h1>
+      </div>
+      <div class="container">
+        <h1>07/03 10:00 </h1>
+      </div>
     </div>
 
   </div>
@@ -26,27 +34,32 @@
           <div class="mb-1 ancho-hijos">
             <select class="form-select" aria-label="Default select example">
               <option selected>Ciudad retiro</option>
-              <option value="1">Buenos Aires</option>
-              <option value="2">Córdoba</option>
-              <option value="3">Bogota</option>
+              <%for(i of cities) { %>
+                <option value="<%i.id%>">
+                  <%=i.name%>
+                </option>
+                <% } %>
             </select>
           </div>
           <div class="mb-1 ancho-hijos">
             <select class="form-select" aria-label="Default select example">
               <option selected>Ciudad devolución</option>
-              <option value="1">Buenos Aires</option>
-              <option value="2">Córdoba</option>
-              <option value="3">Bogota</option>
+              <%for(i of cities) { %>
+                <option value="<%i.id%>">
+                  <%=i.name%>
+                </option>
+                <%}%>
             </select>
           </div>
+
         </div>
         <div class='alinear'>
           <div class="mb-1 ancho-hijos">
-            <label for="fecha-recogida"></label>Fecha de entrega
+            <label for="fecha-recogida" class='blanco'>Fecha de recogida</label>
             <input type="date" class="form-control" id="fecha-recogida">
           </div>
           <div class="mb-1 ancho-hijos">
-            <label for="hora-recogida"></label>Hora entrega
+            <label for="hora-recogida" class='blanco'>Hora recogida</label>
             <select id='hora-recogida' class="form-select" aria-label="Default select example">
               <option value="1">10:00</option>
               <option value="2">11:00</option>
@@ -65,11 +78,11 @@
         </div>
         <div class='alinear'>
           <div class="mb-1 ancho-hijos">
-            <label for="fecha-devolucion"></label>Fecha devolución
+            <label for="fecha-devolucion" class='blanco'>Fecha de devolución</label>
             <input type="date" class="form-control fechas" id="fecha-devolución">
           </div>
           <div class="mb-1 ancho-hijos">
-            <label for="hora-devolución"></label>Hora devolución
+            <label for="hora-devolución" class='blanco'>Hora devolución</label>
             <select id='hora-devolución' class="form-select" aria-label="Default select example">
               <option value="1">10:00</option>
               <option value="2">11:00</option>
@@ -86,85 +99,75 @@
             </select>
           </div>
         </div>
-  
-  
+
+
         <div class='registro boton'>
           <button type="submit" class="btn">Enviar</button>
         </div>
       </form>
-  
+
       <form action='product-listing' method="get" class='formulario registro busqueda tamanio precio'>
         <div class="slidecontainer">
           <label for="myRange"></label>FILTRAR POR PRECIO
           <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
         </div>
       </form>
-      
+
     </div>
 
-    
 
 
-    
+
+
 
 
     <div class='lista-productos'>
 
-      <% for(let i of productos) { %>
-   
+      <% for(let i of filter) { %>
+
         <div class="container grid item">
           <div class="row">
             <div class='col-md border-end'>
               <div class="col-sm border-bottom">
-                <h3><%= i.nombre%></h3>
-                <img src="/img/img-autos/<%=i.imagen%> " alt="">
+                <h3><%= i.name%></h3>
+                <img src="/img/img-autos/<%=i.picture%>" alt="">
+                <h5>Número de placa <%= i.plate_number%></h5>
               </div>
               <div class="col-sm">
                 <ul>
-                  <li><i class="fas fa-check-circle"></i><%= i.cantidadAsientos%> asientos</li>
-                  <li><i class="fas fa-check-circle"></i><%=i.cajaDeCambio%></li>
-                  <li><i class="fas fa-check-circle"></i><%=i.combustible%></li>
-                  <% if(i.airbag == 'S') { %>
-                    <li><i class="fas fa-check-circle"></i>Airbag</li>
-                  <% } %> 
+                  CARACTERISTICAS 
+                  <li><i class="fas fa-check-circle"></i><%= i.seat_number%> asientos</li>
+                  <li><i class="fas fa-check-circle"></i><%if(i.transmission = 1) { %> automático <% } else { %> manual <%}%></li>
+                  <li><i class="fas fa-check-circle"></i><%=i.fuel.name%></li>
+                  
                 </ul>
               </div>
             </div>
             <div class="col-md reserva-derecha">
               <div>
-                $<%= i.precioDia%>/dia
-              </div>
-              <div>
-                <ul>
-                  SEGUROS
-                  <%if(typeof  i.seguro == 'object') {%> 
-                    <% for(let j of i.seguro) {%> 
-                    <li><%=j%></li>
-                    <%}%>
-                    <%} else { %>
-                      <li><%=i.seguro%> </li>
-                    <%}%>
-                </ul>
-  
+                $<%= i.pricexday%>/dia
               </div>
               <div class="escondido">
+                 
                 <ul>
                   ADICIONALES
-                  <%if(typeof  i.adicionales == 'object') {%> 
-                  <% for(let j of i.adicionales) {%> 
-                  <li><%=j%></li>
-                  <%}%>
-                  <%} else { %>
-                    <li><%=i.adicionales%> </li>
-                  <%}%>   
+                  <%if(i.features != null) %>
+                  <%for(j of i.features) {%>  
+                  <li><%=j.name%></li>
+                  <%}%> 
+                  <li>kilometraje <%=i.mileage%></li>
                 </ul>
+                
   
               </div>
               <div>
-                <button type="submit" class="btn reserva"><a href="/product/shopping-cart" class="btn">Reservar</a></button>
+                <button type="submit" class="btn reserva"><a href="/product/edit/<%=i.id%> " class="btn">Editar</a></button>
               </div>
               <div>
-                <button type="submit" class="btn presupuesto"><i class="fa-solid fa-envelope"></i>Enviar presupuesto</button>
+                <form  action="/product/delete/<%=i.id%>?_method=DELETE" method="POST">
+                  <button class="eliminar presupuesto" type="submit">Eliminar</button>  
+                </form>
+                
               </div>
   
             </div>
@@ -172,7 +175,7 @@
           </div>
   
         </div>
-  
+
         <% } %>
 
 
@@ -185,6 +188,6 @@
 
 
 
-<!-------------------------------------------------INCLUYENDO FOOTER------------------------------>
+  <!-------------------------------------------------INCLUYENDO FOOTER------------------------------>
 
-<%- include('../parcials/footer') %> 
+  <%- include('../parcials/footer') %>

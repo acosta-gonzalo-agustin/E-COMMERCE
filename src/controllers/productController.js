@@ -17,9 +17,9 @@ const controlador = {
         db.vehicles.findAll({
             include: [
                 { association: 'brand' },
-                { association: 'category' },
+                { association: 'category'},
                 { association: 'city' },
-                { association: 'features' },
+                { association: 'features'},
                 { association: 'fuel' }
             ]
         })
@@ -44,20 +44,19 @@ const controlador = {
         let vehicle_feature = db.vehicles_features.findAll();
 
         let vehicle = db.vehicles.findOne({
-            include: [{
-                association: 'brand'
-            },
-            { association: 'category' },
-            { association: 'city' },
-            { association: 'fuel' },
-            { association: 'features' }
+            include: [
+                { association: 'brand' },
+                { association: 'category' },
+                { association: 'city' },
+                { association: 'fuel' },
+                { association: 'features' }
             ],
             where: { id: req.params.id }
         })
 
-        Promise.all([brands, additionals, categories, cities, features, fuels, vehicle,vehicle_feature])
-            .then(function ([brands, additionals, categories, cities, features, fuels, vehicle,vehicle_feature]) {
-                res.render('products/product-edit', { brands, additionals, categories, cities, features, fuels, vehicle,vehicle_feature });
+        Promise.all([brands, additionals, categories, cities, features, fuels, vehicle, vehicle_feature])
+            .then(function ([brands, additionals, categories, cities, features, fuels, vehicle, vehicle_feature]) {
+                res.render('products/product-edit', { brands, additionals, categories, cities, features, fuels, vehicle, vehicle_feature });
             })
 
     },
@@ -173,21 +172,22 @@ const controlador = {
             let features = db.features.findAll();
             let fuels = db.fuels.findAll();
             let vehicle = db.vehicles.findOne(
-                {include: 
-                [
-                
-                {association: 'brand'},
-                { association: 'category' },
-                { association: 'city' },
-                { association: 'fuel' },
-                { association: 'features' }
-                ],
-                where: { id: req.params.id }
-            })
+                {
+                    include:
+                        [
 
-            Promise.all([brands, additionals, categories, cities, features, fuels,vehicle])
-                .then(function ([brands, additionals, categories, cities, features, fuels,vehicle]) {
-                    res.render('products/product-edit', { errors: errors.array(), old: req.body, brands, additionals, categories, cities, features, fuels,vehicle });
+                            { association: 'brand' },
+                            { association: 'category' },
+                            { association: 'city' },
+                            { association: 'fuel' },
+                            { association: 'features' }
+                        ],
+                    where: { id: req.params.id }
+                })
+
+            Promise.all([brands, additionals, categories, cities, features, fuels, vehicle])
+                .then(function ([brands, additionals, categories, cities, features, fuels, vehicle]) {
+                    res.render('products/product-edit', { errors: errors.array(), old: req.body, brands, additionals, categories, cities, features, fuels, vehicle });
                 })
 
         }
@@ -198,7 +198,35 @@ const controlador = {
 
 
     filter: function (req, res) {
-        res.render('products/product-filter', { productos: products });
+
+
+        let categories = db.categories.findAll();
+        let cities = db.cities.findAll();
+        let vehicles = db.vehicles.findAll(
+            {
+                include: [
+                    { association: 'category' },
+                    { association: 'brand' },
+                    { association: 'city' },
+                    { association: 'fuel' },
+                    { association: 'category' },
+                    { association: 'features'},
+                ]
+            }
+
+        );
+
+        Promise.all([categories, cities, vehicles])
+            .then(function ([categories, cities, vehicles]) {
+                filter = [];
+                for (i of vehicles) {
+                    if (i.category.id == req.params.id) {
+                        filter.push(i);
+                    }
+                }
+                res.render('products/product-filter', { categories, cities, vehicles, filter})
+            })
+
     },
 
 
@@ -266,7 +294,7 @@ const controlador = {
 
                                         db.vehicles.findOne({ order: [['id', 'DESC']] })
                                             .then(function (resultado) {
-                                                console.log(resultado.id);
+
 
                                                 for (i of dato.features) {
 

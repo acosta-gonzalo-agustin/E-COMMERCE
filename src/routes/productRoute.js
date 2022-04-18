@@ -37,7 +37,7 @@ router.post('/create',validation,productController.save);
 router.delete('/delete/:id',productController.delete);
 
 
-router.get('/filter/',productController.filter);
+router.get('/filter/:id',productController.filter);
 
 /*---------------------RUTA PARA RESERVAR PRODUCTO------------------------*/
 

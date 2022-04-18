@@ -1,5 +1,6 @@
 function loggued(req,res,next) {
     
+    
     res.locals.loggued = false;
     if(req.session && req.session.user) {
         res.locals.loggued = true;      

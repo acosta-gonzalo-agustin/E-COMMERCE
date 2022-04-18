@@ -25,7 +25,7 @@ const controlador = {
 
         let dato = req.body;
         let errors = validationResult(req);
-        console.log(req.files);
+        
 
 
         if (errors.isEmpty()) {
@@ -35,10 +35,10 @@ const controlador = {
             if (req.files) {
 
                 const file = req.files.imagen;
-                console.log(file);
+               
 
                 const nombre = Date.now() + file.name
-                console.log('llego al error');
+                
                 const ruta = path.join(__dirname, '../../public/img/img-users/' + nombre)
 
                 if (file.mimetype == 'image/jpg' || file.mimetype == 'image/png' || file.mimetype == 'image/jpeg') {
@@ -197,7 +197,7 @@ const controlador = {
             for (i of arreglo) {
                 mensajes.push(i.msg)
             }
-            console.log(mensajes);
+            
 
             res.render('users/editProfile', { errors: mensajes, old: req.body });
 
