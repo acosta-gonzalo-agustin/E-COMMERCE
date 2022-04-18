@@ -1,15 +1,11 @@
 const fs = require('fs');
 const path = require('path');
-const {validationResult} = require('express-validator');
+const { validationResult } = require('express-validator');
 
 const db = require('../database/models');
 
 
 
-
-
-let productosJSON = fs.readFileSync(path.join(__dirname, '../data/products.json'), 'utf-8');
-let products = JSON.parse(productosJSON);
 
 
 const controlador = {
@@ -18,19 +14,20 @@ const controlador = {
 
     list: function (req, res) {
 
-        db.vehicles.findAll({include:[
-            {association:'brand'},
-            {association:'category'},
-            {association:'city'},
-            {association:'features'},
-            {association:'fuel'}
-        ]
+        db.vehicles.findAll({
+            include: [
+                { association: 'brand' },
+                { association: 'category' },
+                { association: 'city' },
+                { association: 'features' },
+                { association: 'fuel' }
+            ]
         })
-        .then(function(vehicles) {
-            res.render('products/product-listing', {vehicles});
-        })
+            .then(function (vehicles) {
+                res.render('products/product-listing', { vehicles });
+            })
 
-        
+
     },
 
     /*----------------------------metodo llamar formulario par editar producto-------------------------------*/
@@ -45,7 +42,7 @@ const controlador = {
 
 
             }
-            
+
         }
 
         res.render('products/product-edit', { producto, producto });
@@ -97,7 +94,7 @@ const controlador = {
                             }
                             res.send({ status: "success", path: ruta });
                         });
-                        if(typeof i.imagen != 'undefined') {
+                        if (typeof i.imagen != 'undefined') {
                             fs.unlinkSync(path.join(__dirname, '../../public/img/img-autos/' + i.imagen));
                         }
                         i.imagen = nombre;
@@ -112,7 +109,7 @@ const controlador = {
         }
 
 
-        fs.writeFileSync(path.join(__dirname, '../data/products.json'), JSON.stringify(products, null, ' '));
+       
         res.redirect('/');
 
     },
@@ -129,7 +126,19 @@ const controlador = {
 
 
     create: function (req, res) {
-        res.render('products/product-create');
+
+        let brands = db.brands.findAll();
+        let additionals = db.additionals.findAll();
+        let categories = db.categories.findAll();
+        let cities = db.cities.findAll();
+        let features = db.features.findAll();
+        let fuels = db.fuels.findAll();
+
+        Promise.all([brands, additionals, categories, cities, features, fuels])
+            .then(function ([brands, additionals, categories, cities, features, fuels]) {
+                res.render('products/product-create', { brands, additionals, categories, cities, features, fuels });
+            })
+
     },
 
     /*----------------------------METODO PARA ENVIAR NUEVO PRODUCTO-----------------------*/
@@ -137,64 +146,91 @@ const controlador = {
 
     save: function (req, res) {
         let dato = req.body;
+
         let errors = validationResult(req);
+        if (errors.isEmpty()) {
 
-        if(errors.isEmpty()) {
 
-
-            let articulo = {
-
-                id: products.length + 1,
-                nombre: dato.nombre,
-                marca: dato.marca,
-                categoria: dato.categoria,
-                cantidadAsientos: dato.cantidadAsientos,
-                combustible: dato.combustible,
-                cajaDeCambio: dato.cajaDeCambio,
-                airbag: dato.airbag,
-                ciudad: dato.ciudad,
-                adicionales: dato.adicionales,
-                precioDia: dato.precioDia,
-                precioSemana: dato.precioSemana,
-                precioMes: dato.precioMes,
-                adicionales: dato.adicionales
-            }
-    
             /*--------------------------CARGANDO FOTO--------------------------------------------*/
-    
+
             if (req.files) {
                 const file = req.files.imagen;
                 const nombre = Date.now() + file.name
                 const ruta = path.join(__dirname, '../../public/img/img-autos/' + nombre)
 
                 if (file.mimetype == 'image/jpg' || file.mimetype == 'image/png' || file.mimetype == 'image/jpeg') {
-                     file.mv(ruta, (err) => {
+                    file.mv(ruta, (err) => {
                         if (err) {
                             return res.status(500).send(err);
                         } else {
-                            articulo.imagen = nombre;
-                            products.push(articulo);
-                            fs.writeFileSync(path.join(__dirname, '../data/products.json'), JSON.stringify(products, null, ' '));
+
+
+
+                            db.vehicles.create({
+                                name: dato.name,
+                                plate_number: dato.plate_number,
+                                seat_number: dato.seat_number,
+                                transmission: dato.transmission,
+                                mileage: '0',
+                                pricexday: dato.pricexday,
+                                picture: nombre,
+                                description: dato.description,
+                                id_category: dato.category,
+                                id_fuel: dato.fuel,
+                                id_brand: dato.brands,
+                                id_city: dato.city,
+                            })
+                                .then(function () {
+                                    if (dato.features != undefined) {
+
+                                        db.vehicles.findOne({ order: [['id', 'DESC']] })
+                                            .then(function (resultado) {
+                                                console.log(resultado.id);
+
+                                                for (i of dato.features) {
+
+                                                    db.vehicles_features.create({
+                                                        id_feature: i,
+                                                        id_vehicle: resultado.id,
+                                                    })
+
+                                                }
+                                            })
+                                    }
+
+                                })
                             res.redirect('/');
                         }
-                        
+
                     });
 
                 } else {
                     let error_tipo = 'El archivo debe tener formato jpg, jpeg,png';
-                    res.render('products/product-create', {errors: errors.array(),old:req.body ,error: error_tipo});
+                    res.render('products/product-create', { errors: errors.array(), old: req.body, error: error_tipo });
                 }
-    
+
             } else {
 
                 let error_tipo = 'Debe seleccionar una imagen';
-                res.render('products/product-create', {errors: errors.array(),old:req.body ,error: error_tipo});
+                res.render('products/product-create', { errors: errors.array(), old: req.body, error: error_tipo });
             }
-        
+
         } else {
-            res.render('products/product-create', { errors: errors.array(), old: req.body });
-        }    
-                  
+
+            let brands = db.brands.findAll();
+            let additionals = db.additionals.findAll();
+            let categories = db.categories.findAll();
+            let cities = db.cities.findAll();
+            let features = db.features.findAll();
+            let fuels = db.fuels.findAll();
+
+            Promise.all([brands, additionals, categories, cities, features, fuels])
+                .then(function ([brands, additionals, categories, cities, features, fuels]) {
+                    res.render('products/product-create', { errors: errors.array(), old: req.body, brands, additionals, categories, cities, features, fuels });
+                })
+
+        }
+
     },
 
     delete: function (req, res) {
@@ -212,22 +248,24 @@ const controlador = {
 
         /*----------------------------  ELIMINANDO PRODUCTO --------------------------*/
 
-        products = products.filter(function(elemento) {
-            return elemento.id != id;
-        });
+        db.vehicles_features.destroy({
+            where: {
+                id_vehicle: req.params.id
+            }
+        })
+        .then(function() {
+            db.vehicles.destroy({
+                where: {
+                    id: req.params.id
+                }
+            })
+        })
 
-
-        for(let j = 0;j<products.length;j++) {
-
-            products[j].id = j+1;    
-        }
-
-        fs.writeFileSync(path.join(__dirname, '../data/products.json'), JSON.stringify(products, null, ' '));
         res.redirect('/');
-            
+
     },
 
-    reserva: function(req,res) {
+    reserva: function (req, res) {
         res.render('products/shopping-cart')
     }
 

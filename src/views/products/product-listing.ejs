@@ -15,6 +15,7 @@
             <div class="col-sm border-bottom">
               <h3><%= i.name%></h3>
               <img src="/img/img-autos/<%=i.picture%>" alt="">
+              <h5>Número de placa <%= i.plate_number%></h5>
             </div>
             <div class="col-sm">
               <ul>
@@ -22,7 +23,7 @@
                 <li><i class="fas fa-check-circle"></i><%= i.seat_number%> asientos</li>
                 <li><i class="fas fa-check-circle"></i><%if(i.transmission = 1) { %> automático <% } else { %> manual <%}%></li>
                 <li><i class="fas fa-check-circle"></i><%=i.fuel.name%></li>
-                 
+                
               </ul>
             </div>
           </div>
@@ -31,13 +32,16 @@
               $<%= i.pricexday%>/dia
             </div>
             <div class="escondido">
-              <%if(i.features != null) %> 
+               
               <ul>
                 ADICIONALES
+                <%if(i.features != null) %>
                 <%for(j of i.features) {%>  
                 <li><%=j.name%></li>
+                <%}%> 
+                <li>kilometraje <%=i.mileage%></li>
               </ul>
-              <%}%> 
+              
 
             </div>
             <div>

@@ -4,12 +4,15 @@ const router = express.Router();
 
 const { body } = require('express-validator');
 
+
 const validation = [
-    body('nombre').notEmpty().withMessage('Debe asignar un nombre al articulo'),
-    body('marca').notEmpty().withMessage('Debe asignar una marca al articulo'),
-    body('precioDia').notEmpty().withMessage('Debe asignar un valor al precioxDia'),
-    body('precioSemana').notEmpty().withMessage('Debe asignar un valor al precioxSemana'),
-    body('precioMes').notEmpty().withMessage('Debe asignar un valor al precioxMes'),
+    body('name').notEmpty().withMessage('Debe asignar un nombre al articulo').isLength({max:19}).withMessage('El numero de placa tiene como maximo 19 caracteres'),
+    body('plate_number').notEmpty().withMessage('Debe asignar un nombre al articulo').bail().isLength({max:19}).withMessage('El numero de placa tiene como maximo 19 caracteres'),
+    body('brands').notEmpty().withMessage('Debe asignar una marca al articulo'),
+    body('fuel').notEmpty().withMessage('Debe asignar una combustible al articulo'),
+    body('seat_number').notEmpty().withMessage('Debe asignar cantidad de asientos al articulo'),
+    body('transmission').notEmpty().withMessage('Debe seleccionar caja de cambio'),
+    body('pricexday').notEmpty().withMessage('Debe asignar un valor al precioxDia'),
 ];
 
 

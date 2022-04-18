@@ -13,7 +13,7 @@ const controlador = {
         
         Promise.all([categories,cities,vehicles])
         .then(function([categories,cities,vehicles]) {
-            console.log(categories[2].name);
+            
             res.render('index',{categories,cities,vehicles})
         });
         
