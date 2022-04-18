@@ -16,17 +16,17 @@
           </div>
           <div class='alinear'>
             <div class="mb-3">
-              <input type="text" class="form-control" name='nombre' id="nombre" placeholder="Nombre"
-                value="<%= locals.old && old.nombre %>">
-              <% if (locals && locals.errors) { for(i of locals.errors) { if(i.includes('nombre')) { %>
+              <input type="text" class="form-control" name='name' id="name" placeholder="Nombre"
+                value="<%= locals.old && old.name%>">
+              <%if(locals && locals.errors) { for(i of locals.errors) { if(i.includes('nombre')) { %>
                 <p class='error'>
-                  <%=i%>
+              <%=i%>
                 </p>
                 <% } } } %>
             </div>
             <div class="mb-3">
-              <input type="text" class="form-control" name='apellido' id="apellido" placeholder="Apellido"
-                value="<%= locals.old && old.apellido%>">
+              <input type="text" class="form-control" name='last_name' id="last_name" placeholder="Apellido"
+                value="<%= locals.old && old.last_name%>">
               <% if (locals && locals.errors) { for(i of locals.errors) { if(i.includes('apellido')) { %>
                 <p class='error'>
                   <%=i%>
@@ -47,7 +47,7 @@
                 <div id="emailHelp" class="form-text">Nunca compartiremos tu correo electrónico con alguien más</div>
           </div>
           <div class="mb-3">
-            <label for="image" class="form-label">Cargar imagenes de perfil:</label>
+            <label for="imagen" class="form-label">Cargar imagenes de perfil:</label>
             <input class="form-control" type="file" name="imagen" id="imagen">
             <% if(typeof error !='undefined' ) { %>
               <p class='error'>

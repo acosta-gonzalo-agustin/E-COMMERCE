@@ -11,6 +11,7 @@ function usersData(sequelize, Datatypes) {
         driver_licence:{type:Datatypes.STRING(40)},
         promo_code:{type:Datatypes.STRING(10)},
         id_role:{type:Datatypes.INTEGER},
+        profile_picture:{type:Datatypes.STRING(500)}
     };
     
     let config = {timestamps:false,camelCase:false,tableName:'user'};

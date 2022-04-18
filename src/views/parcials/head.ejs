@@ -30,7 +30,7 @@
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-list">
 
             
-            <% if(locals.loggued == true && locals.user.id == "admin") { %>
+            <% if(locals.loggued == true && locals.user.id_role == 1) { %>
  
             <li class="nav-item">
               <a class="nav-link" href="/product/listing">Vehiculos</a>
@@ -67,10 +67,10 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="/home" id="navbarDropdown" role="button"
                   data-bs-toggle="dropdown" aria-expanded="false">
-                  <%=locals.user.nombre%>
+                  <%=locals.user.name + ' ' +  locals.user.last_name%>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <%if(locals.user.id != 'admin') { %> 
+                  <%if(locals.user.id_role == 2) { %> 
                   <li><a class="dropdown-item categoria" href="/user/profile">Mi perfil</a></a></li>
                   <li><a class="dropdown-item categoria" href="#">Mis reservas</a></li>
                   <% } %> 
@@ -84,9 +84,9 @@
                 <a class="nav-link" href="/user/register">Registro</a> 
               </li>
               <li class="nav-item">
-                <!-------------------------------------- Button trigger modal --------------------------------------->
+                <!-------------------------------------- Button trigger modal ---------------------------------------!>
                 <a class="nav-link" href="" data-bs-toggle="modal" data-bs-target="#exampleModal">Iniciar sesión</a>   
-                <!------------------------------------- Modal -------------------------------->
+                <!------------------------------------- Modal --------------------------------!>
               </li>
             <% } %>    
           </ul>

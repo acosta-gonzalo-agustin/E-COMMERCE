@@ -31,7 +31,7 @@ function vehiclesData(sequelize, Datatypes) {
 
         vehicles.hasMany(model.bookings, {
             as:'bookings',
-            foreignKey:'id_product'
+            foreignKey:'id_vehicle'
         });
 
         vehicles.belongsTo(model.categories, {

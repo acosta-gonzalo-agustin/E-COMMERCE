@@ -4,32 +4,80 @@
 
   <main>
 
-    <form class='formulario registro formulario-producto' action="/user/edit/<%=locals.user.id%>/?_method=PUT"
+    <form class='formulario registro formulario-producto' action="/user/edit/?_method=PUT"
       enctype="multipart/form-data" method="POST">
+
+      
       <div class="titulo-crear">
         <h1>EDITAR PERFIL</h1>
       </div>
   
       <div class="mb-3">
-        <label for="nombre" class="form-label">Nombre:</label>
-        <input type="text" class="form-control" name="nombre" id="nombre" value="<%=locals.user.nombre%>">
+        <label for="name" class="form-label">Nombre:</label>
+        <input type="text" class="form-control" name="name" id="name" value="<%if(locals.old && old.name) { %> <%=old.name%> <% } else { %> <%=locals.user.name%> <% } %>">
       </div>
+
       <div class="mb-3">
-        <label for="apellido" class="form-label">Apellido:</label>
-        <input type="text" class="form-control" name="apellido" id="apellido" value="<%=locals.user.apellido%>">
+        <label for="last_name" class="form-label">Apellido:</label>
+        <input type="text" class="form-control" name="last_name" id="last_name" value="<%if(locals.old && old.last_name) { %> <%=old.last_name%> <% } else { %> <%=locals.user.last_name%> <% } %>">
       </div>
+      <% if (locals && locals.errors) { for(i of locals.errors) { if(i.includes('apellido')) { %>
+        <p class='error'>
+          <%=i%>
+        </p>
+        <% } } } %>
+
       <div class="mb-3">
         <label for="email" class="form-label">Email:</label>
-        <input type="text" class="form-control" name="email" id="email" value="<%=locals.user.email%>">
+        <input type="text" class="form-control" name="email" id="email" value="<%if(locals.old && old.email) { %> <%=old.email%> <% } else { %> <%=locals.user.email%> <% } %>">
       </div>
+      <%if(locals && locals.errors) { for(i of locals.errors) { if(i.includes('email')) { %>
+        <p class='error'>
+          <%=i%>
+        </p>
+        <% } } } %>
+        
+
       <div class="mb-3">
-        <label for="telefono" class="form-label">Telefono:</label>
-        <input type="text" class="form-control" name="telefono" id="telefono" value=" <%if(locals.user.telefono) { %> <%=locals.user.telefono%> <% } %> ">
+        <label for="phone_number" class="form-label">Telefono:</label>
+        <input type="text" class="form-control" name="phone_number" id="phone_number" value="<%if(locals.old && old.phone_number) { %> <%=old.phone_number%> <% } else if(locals.user.phone_number != "NULL") { %> <%=locals.user.phone_number%> <% } %>">
       </div>
+      <%if(locals && locals.errors) { 
+        for(j of locals.errors) {
+          if(j.includes('telefono')) { %>
+        <p class='error'>
+      <%=j%>
+        </p>
+        <%} 
+      } 
+      }%>
+        
       <div class="mb-3">
-        <label for="tarjeta" class="form-label">Tarjeta:</label>
-        <input type="text" class="form-control" name="tarjeta" id="tarjeta" value=" <%if(locals.user.tarjeta) { %> <%=locals.user.tarjeta%> <% } %> ">
+        <label for="driver_licence" class="form-label">Licencia de Conducir:</label>
+        <input type="text" class="form-control" id = 'adriver_licence' name = 'driver_licence' value="<%if(locals.old && old.phone_number) { %> <%=old.driver_licence%> <% } else if(locals.user.driver_licence != "NULL") { %> <%=locals.user.driver_licence%> <% } %>">
       </div>
+
+      <%if(locals && locals.errors) { 
+        for(j of locals.errors) {
+          if(j.includes('licencia')) { %>
+        <p class='error'>
+      <%=j%>
+        </p>
+        <%} 
+      } 
+      }%>
+
+
+      <div class="mb-3">
+        <label for="imagen" class="form-label">Cargar imagenes:</label>
+        <input class="form-control" type="file" name="imagen" id="imagen">
+        <% if(typeof error !='undefined' ) { %>
+          <p class='error'>
+            <%=error%>
+          </p>
+          <% } %>
+      </div>
+
       <div class='registro boton'>
         <button type="submit" class="btn">Guardar modificaciones</button>
       </div>

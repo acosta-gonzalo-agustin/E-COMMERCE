@@ -24,7 +24,7 @@ router.get('/listing',productController.list);
 /*-------------RUTAS PARA EDITAR-------------------------------*/
 
 router.get('/edit/:id',productController.edit);
-router.put('/edit/:id',productController.update);
+router.put('/edit/:id',validation,productController.update);
 
 /*---------------RUTAS PARA CREAR -----------------------------*/
 

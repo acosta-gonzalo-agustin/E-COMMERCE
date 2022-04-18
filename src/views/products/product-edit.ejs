@@ -4,26 +4,50 @@
 
   <main>
 
-    <form class='formulario registro formulario-producto' action="/product/edit/<%=producto.id%>?_method=PUT"
+    <form class='formulario registro formulario-producto' action="/product/edit/<%=vehicle.id%>?_method=PUT"
       enctype="multipart/form-data" method="POST">
+
+      <% if (locals && locals.errors) { %>
+        <%for(i of errors) { %>
+          <p class = 'error'> <%=i.msg %>  </p> 
+        <% } %>
+      <% } %>
+
       <div class="titulo-crear">
         <h1>EDITAR PRODUCTO</h1>
       </div>
       <div class="mb-3">
-        <input type="text" class="form-control" name="nombre" id="nombre" value="<%=producto.nombre%>">
+        <input type="text" class="form-control" name="name" id="name" value="<%if(locals.old && old.name) { %> <%=old.name%> <% } else { %> <%=vehicle.name%> <%}%>">
       </div>
+
       <div class="mb-3">
-        <input type="text" class="form-control" name="marca" id="marca" value="<%=producto.marca%>">
+        <input type="text" class="form-control" name="plate_number" id="plate_number" placeholder="Numero de placa" value="<%if(locals.old && old.plate_number) { %> <%=old.plate_number%> <% } else { %> <%=vehicle.plate_number%> <%}%>">
       </div>
+
+
       <div class="mb-3">
-        <select class="form-select" name="categoria" id="categoria">
-          <option selected>Categoria de vehiculo</option>
-          <option>Compactos</option>
-          <option>Medianos</option>
-          <option>Premium</option>
-          <option>Especiales</option>
+        <select class="form-select" name="brands" id="brands">
+          <option>Marca del vehiculo</option>
+          <%for(i of brands) { %> 
+          <option value="<%=i.id%>" <%if((locals.old && old.brands == i.name) || (vehicle.brand.name = i.name)) { %>
+              selected 
+          <%}%>><%=i.name%></option>
+          <%} %> 
         </select>
       </div>
+
+
+      <div class="mb-3">
+        <select class="form-select" name="category" id="category">
+          <option selected>Categoria de vehiculo</option>
+          <%for(i of categories) { %> 
+          <option value = '<%=i.id%>'  <%if((locals.old && old.categoria == i.name) ||(vehicle.category.name == i.name))  { %>
+              selected 
+          <%}%>><%=i.name%></option>
+          <%} %> 
+        </select>
+      </div>
+
       <div class="mb-3">
         <label for="image" class="form-label">Remplazar imagenes:</label>
         <input class="form-control" type="file" name="imagen" id="imagen">
@@ -33,148 +57,81 @@
           </p>
           <% } %>
       </div>
+
+
+      <div class="input-group mb-3">
+        <span class="input-group-text"></span>
+        <input type="number" min="4" max="50" step="1" class="form-control" aria-label="Amount (to the nearest dollar)" id="seat_number" name="seat_number" placeholder="number of seats"  value ="<%if(locals.old && old.seat_number) { %> <%=old.seat_number%> <% } else { %> <%=vehicle.seat_number%> <%}%>">
+        <span class="input-group-text"></span>
+      </div>
+
+
       <div class="mb-3">
-        <select class="form-select" name="cantidadAsientos" id="cantidadAsientos">
-          <option>Cantidad de asientos</option>
-          <option>Cuatro</option>
-          <option>Cinco</option>
-          <option>Seis</option>
-          <option>Siete</option>
-          <option>Ocho</option>
-          <option>Nueve</option>
+        <select class="form-select" name="fuel" id="fuel">
+          <option selected>Tipo de combustible</option>
+          <%for(i of fuels) { %> 
+          <option value="<%=i.id %>" <%if((locals.old && old.fuel == i.name) ||(vehicle.fuel.name == i.name))  { %>
+              selected 
+          <%}%>><%=i.name%></option>
+          <%} %> 
         </select>
       </div>
-      <div class="mb-3">
-        <select class="form-select" name="combustible" id="combustible">
-          <option>Tipo de combustible</option>
-          <option>Nafta</option>
-          <option>Gasoil</option>
-          <option>GNC</option>
-          <option>Electrico</option>
-        </select>
-      </div>
+
       <div class="mb-3">
         <div class="form-check form-check-inline">
-          <label for="cajaDeCambio">Caja de cambio</label>
+          <label for="transmission">Caja de cambio</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="cajaDeCambio" id="cajaDeCambio" value="Manual"
-            <%if(producto.cajaDeCambio && producto.cajaDeCambio=='Manual' ) { %> checked <%}%>>
-            <label class="form-check-label" for="cajaDeCambio">Manual</label>
+          <input class="form-check-input" type="radio" name="transmission" id="transmission" value="0" <%if(locals.old && old.transmission == '0') { %> checked <% }%>>
+          <label class="form-check-label" for="transmission">Manual</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="cajaDeCambio" id="cajaDeCambio" value="Automatico"
-            <%if(producto.cajaDeCambio && producto.cajaDeCambio=='Automatico' ) { %> checked <%}%>>
-            <label class="form-check-label" for="cajaDeCambio">Automático</label>
+          <input class="form-check-input" type="radio" name="transmission" id="transmission" value="1" <%if(locals.old && old.transmission == '1') { %> checked <% }%>>
+          <label class="form-check-label" for="transmission">Automatico</label>
         </div>
       </div>
+
+
       <div class="mb-3">
-        <div class="form-check form-check-inline">
-          <label for="airbag">Airbag</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="airbag" id="airbag" value="S" <%if(producto.airbag &&
-            producto.airbag=='S' ) { %> checked <%}%>>
-            <label class="form-check-label" for="inlineRadio1">Si</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="airbag" id="airbag" value="N" <%if(producto.airbag &&
-            producto.airbag=='N' ) { %> checked <%}%>>
-            <label class="form-check-label" for="inlineRadio2">No</label>
-        </div>
-      </div>
-      <div class="mb-3">
-        <label for="adicionales">Adicionales</label> <br>
+        <label for="features">Características</label> <br>
+
+        <%for(i of features) { %> 
+
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="AM/FM Stereo con CD" <%if(producto.adicionales &&
-            producto.adicionales.indexOf('AM/FM Stereo con CD') !=-1) { %> checked <%}%> id="adicionales" name =
-            'adicionales'>
+          <input class="form-check-input" type="checkbox" value="<%=i.id%>" id="features" name ='features' <%if((locals.old && old.features &&  (old.features.indexOf(i.name) != -1 || old.features == i.name ))) { %> checked <% }%>>
             <label class="form-check-label" for="flexCheckDefault">
-              AM/FM Stereo con CD
+              <%=i.name%> 
             </label>
         </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="Bluetooth" <%if(producto.adicionales &&
-            producto.adicionales.indexOf('Bluetooth') !=-1) { %> checked <%}%> id="adicionales" name = 'adicionales'>
-            Bluetooth
-            </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="Reproductor MP3" <%if( producto.adicionales &&
-            producto.adicionales.indexOf('Reproductor MP3') !=-1) { %> checked <%}%> id="adicionales" name =
-            'adicionales'>
-            Reproductor MP3
-            </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="Sistema de frenos ABS" <%if(producto.adicionales &&
-            producto.adicionales.indexOf('Sistema de frenos ABS') !=-1) { %> checked <%}%> id="adicionales" name =
-            'adicionales'>
-            Sistema de frenos ABS
-            </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="Doble Airbag" <%if(producto.adicionales &&
-            producto.adicionales.indexOf('Doble Airbag') !=-1) { %> checked <%}%> id="adicionales" name="adicionales">
-            Doble Airbag
-            </label>
-        </div>
+
+        <% } %> 
+
       </div>
 
 
+      <div class="input-group mb-3">
+        <span class="input-group-text">$</span>
+        <input type="number" step="0.01" class="form-control" aria-label="Amount (to the nearest dollar)" name="pricexday" placeholder="precioxDia"  value ="<%= locals.old && old.pricexday%>">
+        <span class="input-group-text">.00</span>
+      </div>
+      
+    
       <div class="mb-3">
-        <label for="seguro">Seguros</label> <br>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="Proteccion total" id="seguro" name ='seguro' <%if(producto.seguro &&
-            producto.seguro.indexOf('Proteccion total') !=-1) { %> checked <%}%>>
-            <label class="form-check-label" for="flexCheckDefault">
-              Proteccion total
-            </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="Proteccion a terceros" id="seguro" name = 'seguro' <%if(producto.seguro &&
-            producto.seguro.indexOf('Proteccion a terceros') !=-1) { %> checked <%}%>>
-            Proteccion a terceros
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="Franquicia por accidente" id="seguro" name ='seguro' <%if(producto.seguro &&
-            producto.seguro.indexOf('Franquicia por accidente') !=-1) { %> checked <%}%>>
-            Franquicia por accidente
-        </div>
-      </div>
-
-
-
-      <div class="input-group mb-3">
-        <span class="input-group-text">$</span>
-        <input type="number" step="0.01" class="form-control" aria-label="Amount (to the nearest dollar)"
-          name="precioDia" value="<%=producto.precioDia%>">
-        <span class="input-group-text">.00</span>
-      </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text">$</span>
-        <input type="number" step="0.01" class="form-control" aria-label="Amount (to the nearest dollar)"
-          name="precioSemana" value="<%=producto.precioSemana%>">
-        <span class="input-group-text">.00</span>
-      </div>
-      <div class="input-group mb-3">
-        <span class="input-group-text">$</span>
-        <input type="number" step="0.01" class="form-control" aria-label="Amount (to the nearest dollar)"
-          name="precioMes" value="<%=producto.precioMes%>">
-        <span class="input-group-text">.00</span>
-      </div>
-      <div class="mb-3">
-        <select class="form-select" name='ciudad' id="ciudad">
+        <select class="form-select" name='city' id="city">
           <option>Ciudad</option>
-          <option>Córdoba</option>
-          <option>Buenos Aires</option>
-          <option>Rosario</option>
-          <option>Mendoza Capital</option>
+          <%for(i of cities) { %>
+          <option value="<%=i.id %>" <%if(locals.old && old.city == i.name) { %> selected <% }%>><%=i.name%> </option>
+          <%}%> 
         </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="description">Descripcion del producto</label>
+        <textarea class="form-control" name="description" id="description" rows="3"> <%= locals.old && old.description %> </textarea>
       </div>
 
       <div class='registro boton'>
-        <button type="submit" class="btn">Guardar modificaciones</button>
+        <button type="submit" class="btn">Guardar articulo</button>
       </div>
     </form>
 

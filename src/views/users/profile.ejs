@@ -8,7 +8,7 @@
 
   <main class="container">
     <div class="card">
-      <img src="/img/img-users/<%=locals.user.imagen%>" class="card-img-top img-fluid" alt="imagen no cargada">
+      <img src="/img/img-users/<%=locals.user.profile_picture%>" class="card-img-top img-fluid" alt="imagen no cargada">
       <div class="card-body">
         <h5 class="card-title"><button>cambiar foto perfil</button></h5>
       </div>
@@ -19,13 +19,13 @@
         <tr>
           <td>Nombre</td>
           <td>
-            <%=locals.user.nombre%>
+            <%=locals.user.name%>
           </td>
         </tr>
         <tr>
           <td>Apellido</td>
           <td>
-            <%=locals.user.apellido%>
+            <%=locals.user.last_name%>
           </td>
         </tr>
         <tr>
@@ -37,17 +37,17 @@
         <tr>
           <td>Telefono</td>
           <td>
-            <% if(locals.user.telefono != undefined) { %> 
-              <%=locals.user.telefono%>
-            <% } %>     
+            <% if(locals.user.phone_number !='NULL' ) { %>
+              <%=locals.user.phone_number%>
+                <% } %>
           </td>
         </tr>
         <tr>
-          <td>Datos Tarjeta de credito</td>
+          <td>Licencia de conducir</td>
           <td>
-            <% if(locals.user.tarjeta) { %> 
-              <%=locals.user.tarjeta%>
-            <% } %>     
+            <% if(locals.user.driver_licence !='NULL' ) { %>
+              <%=locals.user.driver_licence%>
+                <% } %>
           </td>
         </tr>
         <tr>
@@ -58,13 +58,16 @@
             </div>
           </td>
         </tr>
-        <tfoot>
-          <tr>
-            <td><button>Reservas actuales</button><button>Reservas pasadas</button></td>
-            <td></td>
-          </tr>
-        </tfoot>
-        
+      <tfoot>
+        <tr>
+          <td><button>Reservas actuales</button><button>Reservas pasadas</button></td>
+          <td>
+            <form action="/user/delete/<%=locals.user.id%>?_method=DELETE" method="POST">
+              <button class="" type="submit">Eliminar usuario</button>
+            </form>
+          </td>
+        </tr>
+      </tfoot>
 
       </tbody>
     </table>
