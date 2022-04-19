@@ -14,7 +14,7 @@ const controlador = {
         Promise.all([categories,cities,vehicles])
         .then(function([categories,cities,vehicles]) {
             
-            res.send('llego')
+            res.render('index',{categories,cities,vehicles})
         });
         
     },
