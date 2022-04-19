@@ -51,7 +51,7 @@
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <%if(locals && locals.categories) {
                   for(i of categories) { %>
-                  <li><a class="dropdown-item categoria" href="product/filter/<%=i.id%>"><%=i.name%> </a></li>
+                  <li><a class="dropdown-item categoria" href="/product/filter/<%=i.id%>"><%=i.name%> </a></li>
                 <% }
                 }%> 
               </ul>
