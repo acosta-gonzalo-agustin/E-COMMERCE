@@ -54,6 +54,7 @@ const controlador = {
             where: { id: req.params.id }
         })
 
+
         Promise.all([brands, additionals, categories, cities, features, fuels, vehicle, vehicle_feature])
             .then(function ([brands, additionals, categories, cities, features, fuels, vehicle, vehicle_feature]) {
                 res.render('products/product-edit', { brands, additionals, categories, cities, features, fuels, vehicle, vehicle_feature });

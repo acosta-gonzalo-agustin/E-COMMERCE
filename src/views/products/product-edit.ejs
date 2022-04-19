@@ -17,11 +17,11 @@
         <h1>EDITAR PRODUCTO</h1>
       </div>
       <div class="mb-3">
-        <input type="text" class="form-control" name="name" id="name" value="<%if(locals.old && old.name) { %> <%=old.name%> <% } else { %> <%=vehicle.name%> <%}%>">
+        <input type="text" class="form-control" name="name" id="name" value="<%if(locals.old && old.name) { %> <%=old.name%> <% } else { %><%=vehicle.name%><%}%>">
       </div>
 
       <div class="mb-3">
-        <input type="text" class="form-control" name="plate_number" id="plate_number" placeholder="Numero de placa" value="<%if(locals.old && old.plate_number) { %> <%=old.plate_number%> <% } else { %> <%=vehicle.plate_number%> <%}%>">
+        <input type="text" class="form-control" name="plate_number" id="plate_number" placeholder="Numero de placa" value="<%if(locals.old && old.plate_number) { %> <%=old.plate_number%> <% } else { %><%=vehicle.plate_number%><%}%>">
       </div>
 
 
@@ -61,7 +61,7 @@
 
       <div class="input-group mb-3">
         <span class="input-group-text"></span>
-        <input type="number" min="4" max="50" step="1" class="form-control" aria-label="Amount (to the nearest dollar)" id="seat_number" name="seat_number" placeholder="number of seats"  value ="<%if(locals.old && old.seat_number) { %> <%=old.seat_number%> <% } else { %> <%=vehicle.seat_number%> <%}%>">
+        <input type="number" min="4" max="50" step="1" class="form-control" aria-label="Amount (to the nearest dollar)" id="seat_number" name="seat_number" placeholder="number of seats"  value ="<%if(locals.old && old.seat_number) { %> <%=old.seat_number%> <% } else { %><%=vehicle.seat_number%><%}%>">
         <span class="input-group-text"></span>
       </div>
 
@@ -111,7 +111,7 @@
 
       <div class="input-group mb-3">
         <span class="input-group-text">$</span>
-        <input type="number" step="0.01" class="form-control" aria-label="Amount (to the nearest dollar)" name="pricexday" placeholder="precioxDia"  value ="<%= locals.old && old.pricexday%>">
+        <input type="number" step="0.01" class="form-control" aria-label="Amount (to the nearest dollar)" name="pricexday" placeholder="precioxDia"  value ="<%if(locals.old && old.pricexday) { %> <%=old.pricexday%> <% } else { %><%=vehicle.pricexday%><%}%>">
         <span class="input-group-text">.00</span>
       </div>
       
