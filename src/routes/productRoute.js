@@ -36,13 +36,19 @@ router.post('/create',validation,productController.save);
 
 router.delete('/delete/:id',productController.delete);
 
+/*---------------------------FILTRADO POR CATEGORIA-------------------------*/
 
 router.get('/filter/:id',productController.filter);
+
+/*----------------------------FILTRADO POR CIUDAD-------------------------------*/
+router.get('/cities/:id',productController.cities);
+
 
 /*---------------------RUTA PARA RESERVAR PRODUCTO------------------------*/
 
 
-router.get('/shopping-cart',productController.reserva);
+
+router.get('/shopping-cart/:id',productController.reserva);
 
 
 module.exports = router;

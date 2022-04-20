@@ -13,8 +13,10 @@ const controlador = {
 
     register: function (req, res) {
 
-
-        res.render('users/register')
+        db.categories.findAll()
+        .then(function(categories) {
+            res.render('users/register',{categories})
+        })
     },
 
 
@@ -92,7 +94,10 @@ const controlador = {
     },
 
     profile: function (req, res) {
-        res.render('users/profile');
+        db.categories.findAll()
+        .then(function(categories) {
+            res.render('users/profile',{categories})
+        })
     },
 
     logout: function (req, res) {
@@ -101,15 +106,6 @@ const controlador = {
         res.redirect('/');
     },
 
-    /*------------------------- controlador administrador------------------------------------*/
-
-    admin: function (req, res) {
-        res.render('users/admin');
-    },
-
-    adminview: function (req, res) {
-        res.redirect('/');
-    },
 
     /*-----------------------actualizar usuario-----------------------------------*/
 

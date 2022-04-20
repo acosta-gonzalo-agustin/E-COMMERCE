@@ -3,9 +3,12 @@ const db = require('../database/models');
 
 const controlador = {
     cities: function(req,res) {
-        db.cities.findAll()
-        .then( function(cities) {
-            res.render('cities-listing',{cities})
+        let categories = db.categories.findAll();
+        let cities = db.cities.findAll();
+
+        Promise.all([cities,categories])
+        .then( function([cities,categories]) {
+            res.render('cities-listing',{cities,categories})
         });
     }
 }

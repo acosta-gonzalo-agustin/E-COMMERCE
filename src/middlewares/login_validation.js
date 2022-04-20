@@ -66,7 +66,7 @@ function verificacion(req, res, next) {
                 Promise.all([categories, cities, vehicles])
                     .then(function ([categories, cities, vehicles]) {
 
-                        res.render('index', { categories, cities, vehicles, mensaje: 'La contraseña que ingresaste es incorrecta'})
+                        res.render('/', { categories, cities, vehicles, mensaje: 'La contraseña que ingresaste es incorrecta'})
                     });
 
             } else {

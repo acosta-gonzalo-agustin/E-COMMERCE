@@ -123,7 +123,7 @@
 
     <div class='lista-productos'>
 
-      <% for(let i of filter) { %>
+      <% for(let i of vehicles) { %>
 
         <div class="container grid item">
           <div class="row">
@@ -131,7 +131,6 @@
               <div class="col-sm border-bottom">
                 <h3><%= i.name%></h3>
                 <img src="/img/img-autos/<%=i.picture%>" alt="">
-                <h5>Número de placa <%= i.plate_number%></h5>
               </div>
               <div class="col-sm">
                 <ul>
@@ -161,7 +160,7 @@
   
               </div>
               <div>
-                <button type="submit" class="btn reserva"><a href="/product/shopping-cart/<%=i.id%> " class="btn">Reservar</a></button>
+                <button type="submit" class="btn reserva"><a href="/product/shopping-cart/<%=i.id%>" class="btn">Reservar</a></button>
               </div>
   
             </div>

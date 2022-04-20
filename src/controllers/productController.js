@@ -14,7 +14,11 @@ const controlador = {
 
     list: function (req, res) {
 
-        db.vehicles.findAll({
+        let categories = db.categories.findAll();
+        
+
+        let vehicles = db.vehicles.findAll({
+
             include: [
                 { association: 'brand' },
                 { association: 'category'},
@@ -23,8 +27,10 @@ const controlador = {
                 { association: 'fuel' }
             ]
         })
-            .then(function (vehicles) {
-                res.render('products/product-listing', { vehicles });
+
+        Promise.all([categories,vehicles])
+        .then(function ([categories,vehicles]) {
+                res.render('products/product-listing',{categories,vehicles});
             })
 
 
@@ -212,20 +218,43 @@ const controlador = {
                     { association: 'fuel' },
                     { association: 'category' },
                     { association: 'features'},
-                ]
+                ],
+                where:{id_category:req.params.id}
             }
 
         );
 
         Promise.all([categories, cities, vehicles])
             .then(function ([categories, cities, vehicles]) {
-                filter = [];
-                for (i of vehicles) {
-                    if (i.category.id == req.params.id) {
-                        filter.push(i);
-                    }
-                }
-                res.render('products/product-filter', { categories, cities, vehicles, filter})
+                res.render('products/product-filter', { categories, cities, vehicles})
+            })
+
+    },
+
+    cities: function (req, res) {
+
+
+        let categories = db.categories.findAll();
+        let cities = db.cities.findAll();
+
+        let vehicles = db.vehicles.findAll(
+            {
+                include: [
+                    { association: 'brand'},
+                    { association: 'city'},
+                    { association: 'fuel'},
+                    { association: 'category'},
+                    { association: 'features'},
+                ],
+                where: {id_city:req.params.id}
+            }
+
+        );
+
+        Promise.all([categories, cities, vehicles])
+            .then(function ([categories, cities, vehicles]) {
+                console.log('llego');
+                res.render('products/product-filter', { categories, cities, vehicles})
             })
 
     },
@@ -374,7 +403,25 @@ const controlador = {
     },
 
     reserva: function (req, res) {
-        res.render('products/shopping-cart')
+        let categories = db.categories.findAll();
+        let vehicle = db.vehicles.findOne({
+            include: [
+                { association: 'brand' },
+                { association: 'category' },
+                { association: 'city' },
+                { association: 'fuel' },
+                { association: 'features' }
+            ],
+            where: { id: req.params.id }
+        })
+
+        Promise.all([categories,vehicle])
+        .then(function([categories,vehicle]) {
+            res.render('products/shopping-cart',{categories,vehicle});
+
+        })
+
+        
     }
 
 }

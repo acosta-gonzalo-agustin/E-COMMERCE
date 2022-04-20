@@ -1,6 +1,13 @@
+const db = require('../database/models');
+
 const controlador = {
     Us: function(req,res) {
-        res.render('about-us')
+
+        db.categories.findAll()
+        .then(function(categories) {
+            res.render('about-us',{categories})
+        })
+
     }
 }
 
