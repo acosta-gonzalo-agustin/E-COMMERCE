@@ -49,8 +49,8 @@
                 Categoria de vehiculos
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <%if(locals && locals.categories) {
-                  for(i of categories) { %>
+                <%if(locals && locals.categories) { %>
+                  <%for(i of categories) { %>
                   <li><a class="dropdown-item categoria" href="/product/filter/<%=i.id%>"><%=i.name%> </a></li>
                 <% }
                 }%> 
@@ -86,9 +86,9 @@
                 <a class="nav-link" href="/user/register">Registro</a> 
               </li>
               <li class="nav-item">
-                <!-------------------------------------- Button trigger modal ---------------------------------------!>
+                <!-------------------------------------- Button trigger modal --------------------------------------->
                 <a class="nav-link" href="" data-bs-toggle="modal" data-bs-target="#exampleModal">Iniciar sesión</a>   
-                <!------------------------------------- Modal --------------------------------!>
+                <!------------------------------------- Modal -------------------------------->
               </li>
             <% } %>    
           </ul>
@@ -102,7 +102,7 @@
 
   </header>
 
-  <div class="modal <%if(locals && locals.mensaje) { %> in <% } else { %> fade <% } %> "  id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" <% if(locals && locals.mensaje) { %> style="display:block;" <% }%> >
+  <div class="modal fade"  id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" <% if(locals && locals.mensaje) { %> style="display:none;" <% }%> >
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -115,7 +115,7 @@
             <%if(locals && locals.mensaje) { %><p class = 'error'> <%=locals.mensaje %>  </p> <% } %> 
             <div class="mb-3">
               <input type="email" class="form-control" placeholder="Correo Electrónico" name="email" id="email"
-                aria-describedby="emailHelp" value = '<% if(locals.old) { %> <%=locals.old%> <% } %>'>
+                aria-describedby="emailHelp" value = '<% if(locals.old) { %> <%=old.email%> <% } %>'>
               <div id="emailHelp" class="form-text">Nunca compartiremos tu correo electrónico con alguien más</div>
             </div>
             <div class="mb-3">

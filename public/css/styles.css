@@ -18,6 +18,12 @@ a:-webkit-any-link {
 
 
 
+.modal a {
+    color:black !important;
+}
+
+
+
 
 /*---------------------------------------   ESTILOS DE LA BARRA DE NAVEGACION ----------------------- */
 
@@ -94,6 +100,9 @@ header {
     
 
 /*--------------------------------------ESTILO CARROUSELL---------------------------------------*/
+
+
+
 
 .separador {
     border-bottom: solid 1px lightgray;
@@ -620,6 +629,10 @@ footer .container li {
 
     
 @media (min-width: 769px) {
+
+    /* estilos carrousel*/
+
+
     .formulario-register {
         width: 600px;
     }
