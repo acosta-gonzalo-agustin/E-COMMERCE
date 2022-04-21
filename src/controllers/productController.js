@@ -10,31 +10,269 @@ const db = require('../database/models');
 
 const controlador = {
 
-    /*-------------------------metodo listar productos para administrador-------------------------*/
 
-    list: function (req, res) {
+
+
+    /*---------------------------- funcion cargar filtro categoria en formulario --------------------------*/
+
+    categories: function (req, res) {
+
 
         let categories = db.categories.findAll();
-        
+        let cities = db.cities.findAll();
+        let vehicles = db.vehicles.findAll(
+            {
+                include: [
+                    { association: 'category' },
+                    { association: 'brand' },
+                    { association: 'city' },
+                    { association: 'fuel' },
+                    { association: 'features' },
+                ],
+                where: { id_category: req.params.id }
+            }
 
-        let vehicles = db.vehicles.findAll({
+        );
 
+        Promise.all([categories, cities, vehicles])
+            .then(function ([categories, cities, vehicles]) {
+                res.render('products/product-filter', { categories, cities, vehicles })
+            })
+
+    },
+
+
+    /*---------------------------- funcion cargar filtro ciudades en formulario --------------------------*/
+
+    cities: function (req, res) {
+
+
+        let categories = db.categories.findAll();
+        let cities = db.cities.findAll();
+
+        let vehicles = db.vehicles.findAll(
+            {
+                include: [
+                    { association: 'brand' },
+                    { association: 'city' },
+                    { association: 'fuel' },
+                    { association: 'category' },
+                    { association: 'features' },
+                ],
+                where: { id_city: req.params.id }
+            }
+
+        );
+
+        Promise.all([categories, cities, vehicles])
+            .then(function ([categories, cities, vehicles]) {
+                console.log('llego');
+                res.render('products/product-filter', { categories, cities, vehicles })
+            })
+
+    },
+
+    /*---------------------------- funcion enviar formulario con filtros--------------------------*/
+
+    formFilter: function (req, res) {
+
+        let filtro = req.query;
+        console.log(filtro);
+
+        // let vehicles = db.vehicles.findAll(
+        //     {
+        //         include: [
+        //             { association: 'brand'},
+        //             { association: 'city'},
+        //             { association: 'fuel'},
+        //             { association: 'category'},
+        //             { association: 'features'},
+        //         ],
+        //         where: {id_city:req.params.id}
+        //     }
+
+        // );
+
+
+        // let categories = db.categories.findAll();
+        // let cities = db.cities.findAll();
+
+
+        // let bookings = db.bookings.findAll()
+
+
+
+        // Promise.all([categories, cities, vehicles])
+        //     .then(function ([categories, cities, vehicles]) {
+        //         console.log('llego');
+        //         res.render('products/product-filter', { categories, cities, vehicles})
+        //     })
+
+    },
+
+    /*---------------------------- funcion detalle de producto --------------------------*/
+
+    detail: function (req, res) {
+
+        let cities = db.cities.findAll();
+        let vehicle = db.vehicles.findOne(
+            {
+                include: [
+                    { association: 'category'},
+                    { association: 'brand'},
+                    { association: 'city'},
+                    { association: 'fuel'},
+                    { association: 'features'},
+                ],
+                where: { id: req.params.id }
+            }
+
+        );
+
+        Promise.all([vehicle,cities])
+            .then(function ([vehicle,cities]) {
+                res.render('products/product-detail', { vehicle,cities})
+            })
+
+    },
+
+    /*---------------------------- funcion cargar shopping-cart --------------------------*/
+
+    reserva: function (req, res) {
+        let categories = db.categories.findAll();
+        let vehicle = db.vehicles.findOne({
             include: [
                 { association: 'brand' },
-                { association: 'category'},
+                { association: 'category' },
                 { association: 'city' },
-                { association: 'features'},
-                { association: 'fuel' }
-            ]
+                { association: 'fuel' },
+                { association: 'features' }
+            ],
+            where: { id: req.params.id }
         })
 
-        Promise.all([categories,vehicles])
-        .then(function ([categories,vehicles]) {
-                res.render('products/product-listing',{categories,vehicles});
+        Promise.all([categories, vehicle])
+            .then(function ([categories, vehicle]) {
+                res.render('products/shopping-cart', { categories,vehicle});
+
             })
 
 
     },
+
+
+    /*----------------------------METODO PARA CARGAR FORMULARIO DE CREACION-----------------------*/
+
+
+    create: function (req, res) {
+
+        let brands = db.brands.findAll();
+        let additionals = db.additionals.findAll();
+        let categories = db.categories.findAll();
+        let cities = db.cities.findAll();
+        let features = db.features.findAll();
+        let fuels = db.fuels.findAll();
+
+        Promise.all([brands, additionals, categories, cities, features, fuels])
+            .then(function ([brands, additionals, categories, cities, features, fuels]) {
+                res.render('products/product-create', { brands, additionals, categories, cities, features, fuels });
+            })
+
+    },
+
+    /*----------------------------METODO PARA GUARDAR PRODUCTO EN BASE DE DATOS -----------------------*/
+
+
+    save: function (req, res) {
+
+        let dato = req.body;
+
+        let errors = validationResult(req);
+        if (errors.isEmpty()) {
+
+
+            /*--------------------------CARGANDO FOTO--------------------------------------------*/
+
+            if (req.files) {
+                const file = req.files.imagen;
+                const nombre = Date.now() + file.name
+                const ruta = path.join(__dirname, '../../public/img/img-autos/' + nombre)
+
+                if (file.mimetype == 'image/jpg' || file.mimetype == 'image/png' || file.mimetype == 'image/jpeg') {
+                    file.mv(ruta, (err) => {
+                        if (err) {
+                            return res.status(500).send(err);
+                        } else {
+
+
+
+                            db.vehicles.create({
+                                name: dato.name,
+                                plate_number: dato.plate_number,
+                                seat_number: dato.seat_number,
+                                transmission: dato.transmission,
+                                mileage: '0',
+                                pricexday: dato.pricexday,
+                                picture: nombre,
+                                description: dato.description,
+                                id_category: dato.category,
+                                id_fuel: dato.fuel,
+                                id_brand: dato.brands,
+                                id_city: dato.city,
+                            })
+                                .then(function () {
+                                    if (dato.features != undefined) {
+
+                                        db.vehicles.findOne({ order: [['id', 'DESC']] })
+                                            .then(function (resultado) {
+
+
+                                                for (i of dato.features) {
+
+                                                    db.vehicles_features.create({
+                                                        id_feature: i,
+                                                        id_vehicle: resultado.id,
+                                                    })
+
+                                                }
+                                            })
+                                    }
+
+                                })
+                            res.redirect('/');
+                        }
+
+                    });
+
+                } else {
+                    let error_tipo = 'El archivo debe tener formato jpg, jpeg,png';
+                    res.render('products/product-create', { errors: errors.array(), old: req.body, error: error_tipo });
+                }
+
+            } else {
+
+                let error_tipo = 'Debe seleccionar una imagen';
+                res.render('products/product-create', { errors: errors.array(), old: req.body, error: error_tipo });
+            }
+
+        } else {
+
+            let brands = db.brands.findAll();
+            let additionals = db.additionals.findAll();
+            let categories = db.categories.findAll();
+            let cities = db.cities.findAll();
+            let features = db.features.findAll();
+            let fuels = db.fuels.findAll();
+
+            Promise.all([brands, additionals, categories, cities, features, fuels])
+                .then(function ([brands, additionals, categories, cities, features, fuels]) {
+                    res.render('products/product-create', { errors: errors.array(), old: req.body, brands, additionals, categories, cities, features, fuels });
+                })
+
+        }
+
+    },
+
 
     /*----------------------------metodo llamar formulario par editar producto-------------------------------*/
 
@@ -70,7 +308,7 @@ const controlador = {
 
 
 
-    /*----------------------------metodo editar producto y redireccionar a lista-------------------------------*/
+    /*----------------------------METODO EDITAR PRODUCTO EN BASE DE DATO-------------------------------*/
 
 
     update: function (req, res) {
@@ -201,176 +439,35 @@ const controlador = {
 
     },
 
-    /*---------------------------- metodo filtrar autos ------------------------------------------*/
+    /*-------------------------metodo listar productos para administrador-------------------------*/
 
-
-    filter: function (req, res) {
-
+    list: function (req, res) {
 
         let categories = db.categories.findAll();
-        let cities = db.cities.findAll();
-        let vehicles = db.vehicles.findAll(
-            {
-                include: [
-                    { association: 'category' },
-                    { association: 'brand' },
-                    { association: 'city' },
-                    { association: 'fuel' },
-                    { association: 'category' },
-                    { association: 'features'},
-                ],
-                where:{id_category:req.params.id}
-            }
 
-        );
 
-        Promise.all([categories, cities, vehicles])
-            .then(function ([categories, cities, vehicles]) {
-                res.render('products/product-filter', { categories, cities, vehicles})
+        let vehicles = db.vehicles.findAll({
+
+            include: [
+                { association: 'brand' },
+                { association: 'category' },
+                { association: 'city' },
+                { association: 'features' },
+                { association: 'fuel' }
+            ]
+        })
+
+        Promise.all([categories, vehicles])
+            .then(function ([categories, vehicles]) {
+                res.render('products/product-listing', { categories, vehicles });
             })
 
-    },
-
-    cities: function (req, res) {
-
-
-        let categories = db.categories.findAll();
-        let cities = db.cities.findAll();
-
-        let vehicles = db.vehicles.findAll(
-            {
-                include: [
-                    { association: 'brand'},
-                    { association: 'city'},
-                    { association: 'fuel'},
-                    { association: 'category'},
-                    { association: 'features'},
-                ],
-                where: {id_city:req.params.id}
-            }
-
-        );
-
-        Promise.all([categories, cities, vehicles])
-            .then(function ([categories, cities, vehicles]) {
-                console.log('llego');
-                res.render('products/product-filter', { categories, cities, vehicles})
-            })
 
     },
 
 
-    /*----------------------------METODO PARA CARGAR FORMULARIO DE CREACION-----------------------*/
+    /*-----------------------METODO PARA ELIMINACION DE PRODUCTO EN BASE DE DATOS ------------*/
 
-
-    create: function (req, res) {
-
-        let brands = db.brands.findAll();
-        let additionals = db.additionals.findAll();
-        let categories = db.categories.findAll();
-        let cities = db.cities.findAll();
-        let features = db.features.findAll();
-        let fuels = db.fuels.findAll();
-
-        Promise.all([brands, additionals, categories, cities, features, fuels])
-            .then(function ([brands, additionals, categories, cities, features, fuels]) {
-                res.render('products/product-create', { brands, additionals, categories, cities, features, fuels });
-            })
-
-    },
-
-    /*----------------------------METODO PARA ENVIAR NUEVO PRODUCTO-----------------------*/
-
-
-    save: function (req, res) {
-
-        let dato = req.body;
-
-        let errors = validationResult(req);
-        if (errors.isEmpty()) {
-
-
-            /*--------------------------CARGANDO FOTO--------------------------------------------*/
-
-            if (req.files) {
-                const file = req.files.imagen;
-                const nombre = Date.now() + file.name
-                const ruta = path.join(__dirname, '../../public/img/img-autos/' + nombre)
-
-                if (file.mimetype == 'image/jpg' || file.mimetype == 'image/png' || file.mimetype == 'image/jpeg') {
-                    file.mv(ruta, (err) => {
-                        if (err) {
-                            return res.status(500).send(err);
-                        } else {
-
-
-
-                            db.vehicles.create({
-                                name: dato.name,
-                                plate_number: dato.plate_number,
-                                seat_number: dato.seat_number,
-                                transmission: dato.transmission,
-                                mileage: '0',
-                                pricexday: dato.pricexday,
-                                picture: nombre,
-                                description: dato.description,
-                                id_category: dato.category,
-                                id_fuel: dato.fuel,
-                                id_brand: dato.brands,
-                                id_city: dato.city,
-                            })
-                                .then(function () {
-                                    if (dato.features != undefined) {
-
-                                        db.vehicles.findOne({ order: [['id', 'DESC']] })
-                                            .then(function (resultado) {
-
-
-                                                for (i of dato.features) {
-
-                                                    db.vehicles_features.create({
-                                                        id_feature: i,
-                                                        id_vehicle: resultado.id,
-                                                    })
-
-                                                }
-                                            })
-                                    }
-
-                                })
-                            res.redirect('/');
-                        }
-
-                    });
-
-                } else {
-                    let error_tipo = 'El archivo debe tener formato jpg, jpeg,png';
-                    res.render('products/product-create', { errors: errors.array(), old: req.body, error: error_tipo });
-                }
-
-            } else {
-
-                let error_tipo = 'Debe seleccionar una imagen';
-                res.render('products/product-create', { errors: errors.array(), old: req.body, error: error_tipo });
-            }
-
-        } else {
-
-            let brands = db.brands.findAll();
-            let additionals = db.additionals.findAll();
-            let categories = db.categories.findAll();
-            let cities = db.cities.findAll();
-            let features = db.features.findAll();
-            let fuels = db.fuels.findAll();
-
-            Promise.all([brands, additionals, categories, cities, features, fuels])
-                .then(function ([brands, additionals, categories, cities, features, fuels]) {
-                    res.render('products/product-create', { errors: errors.array(), old: req.body, brands, additionals, categories, cities, features, fuels });
-                })
-
-        }
-
-    },
 
     delete: function (req, res) {
 
@@ -401,28 +498,6 @@ const controlador = {
         res.redirect('/');
 
     },
-
-    reserva: function (req, res) {
-        let categories = db.categories.findAll();
-        let vehicle = db.vehicles.findOne({
-            include: [
-                { association: 'brand' },
-                { association: 'category' },
-                { association: 'city' },
-                { association: 'fuel' },
-                { association: 'features' }
-            ],
-            where: { id: req.params.id }
-        })
-
-        Promise.all([categories,vehicle])
-        .then(function([categories,vehicle]) {
-            res.render('products/shopping-cart',{categories,vehicle});
-
-        })
-
-        
-    }
 
 }
 

@@ -10,6 +10,8 @@ const controlador = {
         let categories = db.categories.findAll();
         let cities = db.cities.findAll();
         let vehicles = db.vehicles.findAll({include:[{association:'category'}]});
+        let date = new Date()
+        console.log(date.getFullYear() + ' ' +  date.getMonth() + ' ' + date.getDay());
         
         Promise.all([categories,cities,vehicles])
         .then(function([categories,cities,vehicles]) {

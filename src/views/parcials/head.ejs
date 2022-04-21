@@ -102,12 +102,12 @@
 
   </header>
 
-  <div class="modal fade"  id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" <% if(locals && locals.mensaje) { %> style="display:none;" <% }%> >
+  <div class="modal <%if(locals && locals.mensaje) { %>  in <% } else {%> fade <% } %> "  id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" <% if(locals && locals.mensaje) { %> style="display:none;" <% }%> >
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">INGRESAR</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button prueba" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           
         </div>
         <div class="modal-body">

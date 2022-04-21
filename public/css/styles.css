@@ -300,6 +300,12 @@ div.filtro .container {
     display: none;
 }
 
+/*-------------------------------- ESTILO DETALLE DE PRODUCTO----------------------------------------*/
+
+.vehicle {
+    width: 100% !important;
+}
+
 /*-------------------------------- ESTILO DE CARRITO DE COMPRA----------------------------------------*/
 
 .g-3{
@@ -683,7 +689,7 @@ footer .container li {
 
     .lista-productos {
 
-        flex-grow: 1;
+        flex-grow: 0.5;
 
     }
 

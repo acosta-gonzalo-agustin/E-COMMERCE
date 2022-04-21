@@ -6,7 +6,7 @@
 
     <!--------------------formulario para reserva de autos-------------------------------->
 
-    <form action='product/filter' method="get" class='formulario formulario-register registro busqueda'>
+    <form action='product/formFilter' method="get" class='formulario formulario-register registro busqueda'>
       <div>
         <h3 class='titulo-mobile'>ALQUILA TU AUTO</h3>
         <h4 class='titulo'>COMIENZA TU AVENTURA</h4>
@@ -14,71 +14,67 @@
 
       <div class='alinear'>
         <div class="mb-1 ancho-hijos">
-          <select class="form-select" aria-label="Default select example">
+          <select class="form-select" name="pickup_city" id="pickup_city" aria-label="Default select example">
             <option selected>Ciudad retiro</option>
             <%for(i of cities) { %>
-              <option value="<%i.id%>">
+              <option value ="<%=i.id%>">
                 <%=i.name%>
               </option>
               <% } %>
           </select>
         </div>
         <div class="mb-1 ancho-hijos">
-          <select class="form-select" aria-label="Default select example">
+          <select class="form-select" name = "dropoff_city" id = 'dropoff_city' aria-label="Default select example">
             <option selected>Ciudad devolución</option>
             <%for(i of cities) { %>
-              <option value="<%i.id%>">
+              <option value="<%=i.id%>">
                 <%=i.name%>
               </option>
               <%}%>
           </select>
         </div>
       </div>
+
+
       <div class='alinear'>
         <div class="mb-1 ancho-hijos">
-          <label for="fecha-recogida" class='blanco'>Fecha de recogida</label>
-          <input type="date" class="form-control" id="fecha-recogida">
+          <label for="pickup_date" min = "<%=Date.now()%> " class='blanco'>Fecha de recogida</label>
+          <input type="date" class="form-control" id="pickup_date" name="pickup_date">
         </div>
         <div class="mb-1 ancho-hijos">
-          <label for="hora-recogida" class='blanco'>Hora recogida</label>
-          <select id='hora-recogida' class="form-select" aria-label="Default select example">
-            <option value="1">10:00</option>
-            <option value="2">11:00</option>
-            <option value="3">12:00</option>
-            <option value="4">13:00</option>
-            <option value="5">14:00</option>
-            <option value="6">15:00</option>
-            <option value="7">16:00</option>
-            <option value="8">17:00</option>
-            <option value="9">18:00</option>
-            <option value="10">19:00</option>
-            <option value="12">20:00</option>
-            <option value="12">21:00</option>
-          </select>
+          <label for="pickup_time" class='blanco'>Hora de recogida</label>
+          <input type="time" min="10:00" max="18:00" class="form-control fechas" id="pickup_date" name="pickup_date">
         </div>
       </div>
+
+
       <div class='alinear'>
         <div class="mb-1 ancho-hijos">
-          <label for="fecha-devolucion" class='blanco'>Fecha de devolución</label>
-          <input type="date" class="form-control fechas" id="fecha-devolución">
+          <label for="dropoff_date" class='blanco'>Fecha de devolución</label>
+          <input type="date" class="form-control fechas" id="dropoff_date" name="dropoff_date">
         </div>
         <div class="mb-1 ancho-hijos">
-          <label for="hora-devolución" class='blanco'>Hora devolución</label>
-          <select id='hora-devolución' class="form-select" aria-label="Default select example">
-            <option value="1">10:00</option>
-            <option value="2">11:00</option>
-            <option value="3">12:00</option>
-            <option value="4">13:00</option>
-            <option value="5">14:00</option>
-            <option value="6">15:00</option>
-            <option value="7">16:00</option>
-            <option value="8">17:00</option>
-            <option value="9">18:00</option>
-            <option value="10">19:00</option>
-            <option value="12">20:00</option>
-            <option value="12">21:00</option>
+          <label for="dropoff_time" class='blanco'>Hora de devolucion</label>
+          <input type="time"  min="10:00" max="18:00" class="form-control fechas" id="dropoff_date" name="dropoff_date">
+        </div>
+      </div>
+
+      <div class='alinear'>
+        <div class="mb-1 ancho-hijos">
+          <select class="form-select" name = "id_category" id = 'id_category' aria-label="Default select example">
+            <option selected>Categoría</option>
+            <%for(i of categories) { %>
+              <option value="<%=i.id%>">
+                <%=i.name%>
+              </option>
+              <%}%>
           </select>
         </div>
+        <div class="mb-1 ancho-hijos">
+          <input type="text" placeholder="Codigo promocional">
+        </div>
+
+
       </div>
 
 

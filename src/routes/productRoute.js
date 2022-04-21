@@ -16,15 +16,34 @@ const validation = [
 ];
 
 
+/*----------------------------------------------RUTAS CLIENTE--------------------------------------------------*/
 
-/*-------------------------RUTA PARA LISTAR PRODUCTOS-------------------------------*/
 
-router.get('/listing',productController.list);
 
-/*-------------RUTAS PARA EDITAR-------------------------------*/
+/*--------FILTRADO POR CATEGORIA-----------*/
 
-router.get('/edit/:id',productController.edit);
-router.put('/edit/:id',validation,productController.update);
+router.get('/filter/:id',productController.categories);
+
+/*----------FILTRADO POR CIUDAD----------------*/
+
+router.get('/cities/:id',productController.cities);
+
+/*----------FILTRADO POR CIUDAD/CATEGORIA/FECHAS-------------*/
+
+router.get('/formFilter',productController.formFilter);
+
+/*----------RUTA DETALLE DE PRODUCTO----------------*/
+
+router.get('/detail/:id',productController.detail);
+
+
+/*-------------RUTA SHOPPING-CART --------------*/
+
+router.get('/shopping-cart/:id',productController.reserva);
+
+
+
+/*-------------------------------------------RUTAS ADMINISTRADOR------------------------------------------------*/
 
 /*---------------RUTAS PARA CREAR -----------------------------*/
 
@@ -32,23 +51,24 @@ router.put('/edit/:id',validation,productController.update);
 router.get('/create',productController.create);
 router.post('/create',validation,productController.save);
 
-/*-----------------RUTA PARA ELIMINAR PRODUCTO-------------------------*/
+
+
+/*-------------RUTAS PARA EDITAR-------------------------------*/
+
+router.get('/edit/:id',productController.edit);
+router.put('/edit/:id',validation,productController.update);
+
+
+/*---------RUTA PARA LISTAR PRODUCTOS-----------*/
+
+router.get('/listing',productController.list);
+
+
+/*----------RUTA PARA ELIMINAR PRODUCTO---------*/
 
 router.delete('/delete/:id',productController.delete);
 
-/*---------------------------FILTRADO POR CATEGORIA-------------------------*/
 
-router.get('/filter/:id',productController.filter);
-
-/*----------------------------FILTRADO POR CIUDAD-------------------------------*/
-router.get('/cities/:id',productController.cities);
-
-
-/*---------------------RUTA PARA RESERVAR PRODUCTO------------------------*/
-
-
-
-router.get('/shopping-cart/:id',productController.reserva);
 
 
 module.exports = router;

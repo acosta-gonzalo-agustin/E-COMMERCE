@@ -55,7 +55,7 @@ function verificacion(req, res, next) {
                 Promise.all([categories, cities, vehicles])
                     .then(function ([categories, cities, vehicles]) {
 
-                        res.render('index', {categories, cities, vehicles, mensaje: 'El correo electrónico que ingresaste no está conectado a una cuenta. Encuentra tu cuenta e inicia sesión'})
+                        res.render('', {categories, cities, vehicles, mensaje: 'El correo electrónico que ingresaste no está conectado a una cuenta. Encuentra tu cuenta e inicia sesión'})
                     });
 
             } else if (condicion == 1) {
