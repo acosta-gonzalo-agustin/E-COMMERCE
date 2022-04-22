@@ -5,20 +5,33 @@ const sequelize = require('../database/models').sequelize;
 
 
 const controlador = {
-    index: function(req,res) {
+    index: function (req, res) {
+
+        /*----------------------------ELMINANDO FECHAS ANTERIORES A LA FECHA ACTUAL EN FECHA DE BUSQUEDA ------*/
+        var date = new Date();
+
+        let year = date.getFullYear();
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+
+        if (day < 10) {
+            day = '0' + day;
+        }
+        if (month < 10) {
+            month = '0' + month;
+        }
+        let pickup_minDate = year + '-' + month + '-' + day;
 
         let categories = db.categories.findAll();
         let cities = db.cities.findAll();
-        let vehicles = db.vehicles.findAll({include:[{association:'category'}]});
-        let date = new Date()
-        console.log(date.getFullYear() + ' ' +  date.getMonth() + ' ' + date.getDay());
-        
-        Promise.all([categories,cities,vehicles])
-        .then(function([categories,cities,vehicles]) {
-            
-            res.render('index',{categories,cities,vehicles})
-        });
-        
+        let vehicles = db.vehicles.findAll({ include: [{ association: 'category' }] });
+
+        Promise.all([categories, cities, vehicles])
+            .then(function ([categories, cities, vehicles]) {
+
+                res.render('index', { categories, cities,vehicles,pickup_minDate})
+            });
+
     },
 }
 

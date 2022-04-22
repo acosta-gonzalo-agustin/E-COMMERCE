@@ -35,15 +35,16 @@
         </div>
       </div>
 
-
+      
       <div class='alinear'>
+
         <div class="mb-1 ancho-hijos">
-          <label for="pickup_date" min = "<%=Date.now()%> " class='blanco'>Fecha de recogida</label>
-          <input type="date" class="form-control" id="pickup_date" name="pickup_date">
+          <label for="pickup_date"  class='blanco'>Fecha de recogida</label>
+          <input type="date" min="<%=pickup_minDate%>" class="form-control pickup_date" name = 'pickup_date'>
         </div>
         <div class="mb-1 ancho-hijos">
           <label for="pickup_time" class='blanco'>Hora de recogida</label>
-          <input type="time" min="10:00" max="18:00" class="form-control fechas" id="pickup_date" name="pickup_date">
+          <input type="time" min="10:00" max="18:00" class="form-control fechas" id="pickup_time" name="pickup_time">
         </div>
       </div>
 
@@ -51,11 +52,11 @@
       <div class='alinear'>
         <div class="mb-1 ancho-hijos">
           <label for="dropoff_date" class='blanco'>Fecha de devolución</label>
-          <input type="date" class="form-control fechas" id="dropoff_date" name="dropoff_date">
+          <input type="date" class="form-control dropoff_date" name="dropoff_date">
         </div>
         <div class="mb-1 ancho-hijos">
           <label for="dropoff_time" class='blanco'>Hora de devolucion</label>
-          <input type="time"  min="10:00" max="18:00" class="form-control fechas" id="dropoff_date" name="dropoff_date">
+          <input type="time"  min="10:00" max="18:00" class="form-control fechas" id="dropoff_time" name="dropoff_time">
         </div>
       </div>
 
@@ -115,10 +116,6 @@
                           </h4>
                           <img src="img/img-autos/<%=i.picture%>" class="d-block w-100" alt="propaganda autos">
                           <div class="card-body">
-                            <p>
-                              <%=i.description%>
-                            </p>
-                            
                             <a href="/product/shopping-cart/<%=i.id%>" class="btn">Reservar</a>
                           </div>
                         </div>
@@ -150,9 +147,6 @@
                             </h4>
                             <img src="img/img-autos/<%=j.picture%>" class="d-block w-100" alt="propaganda autos">
                             <div class="card-body">
-                              <p>
-                                <%=j.description%>
-                              </p>
                               <a href="/product/shopping-cart/<%=j.id%>" class="btn">Reservar</a>
                             </div>
                           </div>
@@ -204,9 +198,6 @@
                             </h4>
                             <img src="img/img-autos/<%=i.picture%>" class="d-block w-100" alt="propaganda autos">
                             <div class="card-body">
-                              <p>
-                                <%=i.description%>
-                              </p>
                               
                               <a href="/product/shopping-cart/<%=i.id%>" class="btn">Reservar</a>
                             </div>
@@ -239,9 +230,6 @@
                               </h4>
                               <img src="img/img-autos/<%=j.picture%>" class="d-block w-100" alt="propaganda autos">
                               <div class="card-body">
-                                <p>
-                                  <%=j.description%>
-                                </p>
                                 <a href="/product/shopping-cart/<%=j.id%>" class="btn">Reservar</a>
                               </div>
                             </div>
@@ -284,9 +272,7 @@
                 </h4>
                 <img src="img/img-autos/<%=vehicles[i].picture%> " class="d-block w-100" alt="propaganda autos">
                 <div class="card-body">
-                  <p>
-                    <%= vehicles[i].description%>
-                  </p>
+                  
                   <a href="/product/shopping-cart/<%=vehicles[i].id%>" class="btn">Reservar</a>
                 </div>
               </div>
@@ -339,6 +325,7 @@
 
     <% } %>
 
+    
 
       <!-------------------------------------------------INCLUYENDO FOOTER------------------------------>
 
