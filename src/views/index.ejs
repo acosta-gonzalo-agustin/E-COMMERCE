@@ -17,14 +17,14 @@
           <select class="form-select" name="pickup_city" id="pickup_city" aria-label="Default select example">
             <option selected>Ciudad retiro</option>
             <%for(i of cities) { %>
-              <option value ="<%=i.id%>">
+              <option value="<%=i.id%>">
                 <%=i.name%>
               </option>
               <% } %>
           </select>
         </div>
         <div class="mb-1 ancho-hijos">
-          <select class="form-select" name = "dropoff_city" id = 'dropoff_city' aria-label="Default select example">
+          <select class="form-select" name="dropoff_city" id='dropoff_city' aria-label="Default select example">
             <option selected>Ciudad devolución</option>
             <%for(i of cities) { %>
               <option value="<%=i.id%>">
@@ -35,15 +35,15 @@
         </div>
       </div>
 
-      
+
       <div class='alinear'>
 
         <div class="mb-1 ancho-hijos">
-          <label for="pickup_date"  class='blanco'>Fecha de recogida</label>
-          <input type="date" min="<%=pickup_minDate%>" class="form-control pickup_date" name = 'pickup_date'>
+          <label for="pickup_date" class='blanco'>Fecha de recogida</label>
+          <input type="date" min="<%=pickup_minDate%>" class="form-control pickup_date" name='pickup_date'>
         </div>
         <div class="mb-1 ancho-hijos">
-          <label for="pickup_time" class='blanco'>Hora de recogida</label>
+          <label for="pickup_time" class='blanco'>Hora de devolucion</label>
           <input type="time" min="10:00" max="18:00" class="form-control fechas" id="pickup_time" name="pickup_time">
         </div>
       </div>
@@ -56,13 +56,13 @@
         </div>
         <div class="mb-1 ancho-hijos">
           <label for="dropoff_time" class='blanco'>Hora de devolucion</label>
-          <input type="time"  min="10:00" max="18:00" class="form-control fechas" id="dropoff_time" name="dropoff_time">
+          <input type="time" min="10:00" max="18:00" class="form-control fechas" id="dropoff_time" name="dropoff_time">
         </div>
       </div>
 
       <div class='alinear'>
         <div class="mb-1 ancho-hijos">
-          <select class="form-select" name = "id_category" id = 'id_category' aria-label="Default select example">
+          <select class="form-select" name="id_category" id='id_category' aria-label="Default select example">
             <option selected>Categoría</option>
             <%for(i of categories) { %>
               <option value="<%=i.id%>">
@@ -72,7 +72,8 @@
           </select>
         </div>
         <div class="mb-1 ancho-hijos">
-          <input type="text" class="form-control" name="promo_code" id="promo_code" placeholder="Codigo promocional" aria-label="Username" aria-describedby="basic-addon1">
+          <input type="text" class="form-control" name="promo_code" id="promo_code" placeholder="Codigo promocional"
+            aria-label="Username" aria-describedby="basic-addon1">
         </div>
 
 
@@ -89,7 +90,7 @@
 
   <section class='calesita'>
 
-    
+
 
     <% if(locals.loggued==false) { %>
       <h1 class="separador">CONOCE NUESTRA FLOTA</h1>
@@ -101,7 +102,7 @@
         <div class="carousel-inner">
 
           <div class="carousel-item active">
-            <div class="row" style= "text-align:center;">
+            <div class="row" style="text-align:center;">
               <h1>
                 <%=categories[0].name%>
               </h1>
@@ -120,16 +121,13 @@
                           </div>
                         </div>
                       </div>
-                      <%} if(contador==3) { 
-                        break; 
-                      } 
-                  } %>
+                      <%} if(contador==3) { break; } } %>
 
             </div>
           </div>
 
 
-          <%for(let i = 1;i < categories.length;i++) { %>
+          <%for(let i=1;i < categories.length;i++) { %>
 
             <div class="carousel-item">
               <div class="row" style="text-align: center;">
@@ -151,115 +149,106 @@
                             </div>
                           </div>
                         </div>
-                      <%} if(suma==3) { break; 
-                      } 
-                    } %>
+                        <%} if(suma==3) { break; } } %>
 
               </div>
-              
-              
+
+
             </div>
             <%}%>
 
         </div>
 
-        <button class="carousel-control-prev slide" type="button" data-bs-target="#carrousel-lg"
+        <button class="carousel-control-prev slide" type="button" data-bs-target="#carrousel-lg" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next slide" type="button" data-bs-target="#carrousel-lg" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+      <!--CONTENDIO CARROUSEL MOBILE AND MD  -->
+
+
+      <div id="carrousel-mobile" class="carousel slide d-lg-none" data-bs-ride="carousel">
+
+        <div class="carousel-inner">
+
+          <div class="carousel-item active">
+            <div class="row" style="text-align:center;">
+              <h1>
+                <%=categories[0].name%>
+              </h1>
+              <%let contador_mobile=0; %>
+                <%for(i of vehicles) { %>
+                  <%if(i.category.name==categories[0].name) { %>
+                    <% contador_mobile++%>
+                      <div class="col-12">
+                        <div class="card" style="width: 100%">
+                          <h4>
+                            <%=i.name%>
+                          </h4>
+                          <img src="img/img-autos/<%=i.picture%>" class="d-block w-100" alt="propaganda autos">
+                          <div class="card-body">
+
+                            <a href="/product/shopping-cart/<%=i.id%>" class="btn">Reservar</a>
+                          </div>
+                        </div>
+                      </div>
+                      <%} if(contador_mobile==1) { break; } } %>
+
+            </div>
+          </div>
+
+
+          <%for(let i=1;i < categories.length;i++) { %>
+
+            <div class="carousel-item">
+              <div class="row" style="text-align: center;">
+                <h1>
+                  <%=categories[i].name%>
+                </h1>
+                <%let suma_mobile=0; %>
+                  <%for(j of vehicles) { %>
+                    <%if(j.category.name==categories[i].name) { %>
+                      <% suma_mobile++%>
+                        <div class="col-12">
+                          <div class="card" style="width: 100%">
+                            <h4>
+                              <%=j.name%>
+                            </h4>
+                            <img src="img/img-autos/<%=j.picture%>" class="d-block w-100" alt="propaganda autos">
+                            <div class="card-body">
+                              <a href="/product/shopping-cart/<%=j.id%>" class="btn">Reservar</a>
+                            </div>
+                          </div>
+                        </div>
+                        <%} if(suma_mobile==1) { break; } } %>
+
+              </div>
+
+
+            </div>
+            <%}%>
+
+        </div>
+
+        <button class="carousel-control-prev slide" type="button" data-bs-target="#carrousel-mobile"
           data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next slide" type="button" data-bs-target="#carrousel-lg"
+        <button class="carousel-control-next slide" type="button" data-bs-target="#carrousel-mobile"
           data-bs-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
       </div>
 
-        <!--CONTENDIO CARROUSEL MOBILE AND MD  -->
 
-
-        <div id="carrousel-mobile" class="carousel slide d-lg-none" data-bs-ride="carousel">
-
-          <div class="carousel-inner">
-  
-            <div class="carousel-item active">
-              <div class="row" style= "text-align:center;">
-                <h1>
-                  <%=categories[0].name%>
-                </h1>
-                <%let contador_mobile=0; %>
-                  <%for(i of vehicles) { %>
-                    <%if(i.category.name==categories[0].name) { %>
-                      <% contador_mobile++%>
-                        <div class="col-12">
-                          <div class="card" style="width: 100%">
-                            <h4>
-                              <%=i.name%>
-                            </h4>
-                            <img src="img/img-autos/<%=i.picture%>" class="d-block w-100" alt="propaganda autos">
-                            <div class="card-body">
-                              
-                              <a href="/product/shopping-cart/<%=i.id%>" class="btn">Reservar</a>
-                            </div>
-                          </div>
-                        </div>
-                        <%} if(contador_mobile==1) { 
-                          break; 
-                        } 
-                    } %>
-  
-              </div>
-            </div>
-  
-  
-            <%for(let i = 1;i < categories.length;i++) { %>
-  
-              <div class="carousel-item">
-                <div class="row" style="text-align: center;">
-                  <h1>
-                    <%=categories[i].name%>
-                  </h1>
-                  <%let suma_mobile=0; %>
-                    <%for(j of vehicles) { %>
-                      <%if(j.category.name==categories[i].name) { %>
-                        <% suma_mobile++%>
-                          <div class="col-12">
-                            <div class="card" style="width: 100%">
-                              <h4>
-                                <%=j.name%>
-                              </h4>
-                              <img src="img/img-autos/<%=j.picture%>" class="d-block w-100" alt="propaganda autos">
-                              <div class="card-body">
-                                <a href="/product/shopping-cart/<%=j.id%>" class="btn">Reservar</a>
-                              </div>
-                            </div>
-                          </div>
-                        <%} if(suma_mobile==1) { break; 
-                        } 
-                      } %>
-  
-                </div>
-                
-                
-              </div>
-              <%}%>
-  
-          </div>
-  
-          <button class="carousel-control-prev slide" type="button" data-bs-target="#carrousel-mobile"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next slide" type="button" data-bs-target="#carrousel-mobile"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
-
-
-    <% } else { %>
+      <% } else { %>
         <h1 class="separador">SELECCIONADOS PARA VOS</h1>
 
         <section class='ciudades'>
@@ -272,7 +261,7 @@
                 </h4>
                 <img src="img/img-autos/<%=vehicles[i].picture%> " class="d-block w-100" alt="propaganda autos">
                 <div class="card-body">
-                  
+
                   <a href="/product/shopping-cart/<%=vehicles[i].id%>" class="btn">Reservar</a>
                 </div>
               </div>
@@ -325,7 +314,7 @@
 
     <% } %>
 
-    
+
 
       <!-------------------------------------------------INCLUYENDO FOOTER------------------------------>
 

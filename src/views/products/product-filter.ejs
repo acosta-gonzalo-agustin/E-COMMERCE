@@ -35,8 +35,8 @@
             <select class="form-select" aria-label="Default select example">
               <option selected>Ciudad retiro</option>
               <%for(i of cities) { %>
-                <option value="<%i.id%>">
-                  <%=i.name%>
+                <option value="<%i.id%>" <%if(locals && locals.id_city && id_city==i.id) { %> selected <% } %>>
+                    <%=i.name%>
                 </option>
                 <% } %>
             </select>
@@ -55,49 +55,45 @@
         </div>
         <div class='alinear'>
           <div class="mb-1 ancho-hijos">
-            <label for="fecha-recogida" class='blanco'>Fecha de recogida</label>
-            <input type="date" class="form-control" id="fecha-recogida">
+            <label for="pickup_date" class='blanco'>Fecha de recogida</label>
+            <input type="date" min="<%=pickup_minDate%>" class="form-control pickup_date" name='pickup_date'>
           </div>
           <div class="mb-1 ancho-hijos">
-            <label for="hora-recogida" class='blanco'>Hora recogida</label>
-            <select id='hora-recogida' class="form-select" aria-label="Default select example">
-              <option value="1">10:00</option>
-              <option value="2">11:00</option>
-              <option value="3">12:00</option>
-              <option value="4">13:00</option>
-              <option value="5">14:00</option>
-              <option value="6">15:00</option>
-              <option value="7">16:00</option>
-              <option value="8">17:00</option>
-              <option value="9">18:00</option>
-              <option value="10">19:00</option>
-              <option value="12">20:00</option>
-              <option value="12">21:00</option>
-            </select>
+            <label for="pickup_time" class='blanco'>Hora de devolucion</label>
+            <input type="time" min="10:00" max="18:00" class="form-control fechas" id="pickup_time" name="pickup_time">
           </div>
         </div>
+
+
         <div class='alinear'>
           <div class="mb-1 ancho-hijos">
-            <label for="fecha-devolucion" class='blanco'>Fecha de devolución</label>
-            <input type="date" class="form-control fechas" id="fecha-devolución">
+            <label for="dropoff_date" class='blanco'>Fecha de devolución</label>
+            <input type="date" class="form-control dropoff_date" name="dropoff_date">
           </div>
           <div class="mb-1 ancho-hijos">
-            <label for="hora-devolución" class='blanco'>Hora devolución</label>
-            <select id='hora-devolución' class="form-select" aria-label="Default select example">
-              <option value="1">10:00</option>
-              <option value="2">11:00</option>
-              <option value="3">12:00</option>
-              <option value="4">13:00</option>
-              <option value="5">14:00</option>
-              <option value="6">15:00</option>
-              <option value="7">16:00</option>
-              <option value="8">17:00</option>
-              <option value="9">18:00</option>
-              <option value="10">19:00</option>
-              <option value="12">20:00</option>
-              <option value="12">21:00</option>
+            <label for="dropoff_time" class='blanco'>Hora de devolucion</label>
+            <input type="time" min="10:00" max="18:00" class="form-control fechas" id="dropoff_time"
+              name="dropoff_time">
+          </div>
+        </div>
+
+        <div class='alinear'>
+          <div class="mb-1 ancho-hijos">
+            <select class="form-select" name="id_category" id='id_category' aria-label="Default select example">
+              <option selected>Categoría</option>
+              <%for(i of categories) { %>
+                <option value="<%=i.id%>" <%if(locals && locals.id_category && id_category==i.id) { %> selected <% } %>>
+                  <%=i.name%>
+                </option>
+                <%}%>
             </select>
           </div>
+          <div class="mb-1 ancho-hijos">
+            <input type="text" class="form-control" name="promo_code" id="promo_code" placeholder="Codigo promocional"
+              aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+
+
         </div>
 
 
@@ -129,16 +125,24 @@
           <div class="row">
             <div class='col-md border-end'>
               <div class="col-sm border-bottom">
-                <h3><%= i.name%></h3>
+                <h3>
+                  <%= i.name%>
+                </h3>
                 <img src="/img/img-autos/<%=i.picture%>" alt="">
               </div>
               <div class="col-sm">
                 <ul>
-                  CARACTERISTICAS 
-                  <li><i class="fas fa-check-circle"></i><%= i.seat_number%> asientos</li>
-                  <li><i class="fas fa-check-circle"></i><%if(i.transmission = 1) { %> automático <% } else { %> manual <%}%></li>
-                  <li><i class="fas fa-check-circle"></i><%=i.fuel.name%></li>
-                  
+                  CARACTERISTICAS
+                  <li><i class="fas fa-check-circle"></i>
+                    <%= i.seat_number%> asientos
+                  </li>
+                  <li><i class="fas fa-check-circle"></i>
+                    <%if(i.transmission=1) { %> automático <% } else { %> manual <%}%>
+                  </li>
+                  <li><i class="fas fa-check-circle"></i>
+                    <%=i.fuel.name%>
+                  </li>
+
                 </ul>
               </div>
             </div>
@@ -147,26 +151,30 @@
                 $<%= i.pricexday%>/dia
               </div>
               <div class="escondido">
-                 
+
                 <ul>
                   ADICIONALES
-                  <%if(i.features != null) %>
-                  <%for(j of i.features) {%>  
-                  <li><%=j.name%></li>
-                  <%}%> 
-                  <li>kilometraje <%=i.mileage%></li>
+                  <%if(i.features !=null) %>
+                    <%for(j of i.features) {%>
+                      <li>
+                        <%=j.name%>
+                      </li>
+                      <%}%>
+                        <li>kilometraje <%=i.mileage%>
+                        </li>
                 </ul>
-                
-  
+
+
               </div>
               <div>
-                <button type="submit" class="btn reserva"><a href="/product/detail/<%=i.id%>" class="btn">Detalle del producto</a></button>
+                <button type="submit" class="btn reserva"><a href="/product/detail/<%=i.id%>" class="btn">Detalle del
+                    producto</a></button>
               </div>
-  
+
             </div>
-  
+
           </div>
-  
+
         </div>
 
         <% } %>

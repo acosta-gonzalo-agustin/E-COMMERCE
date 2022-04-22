@@ -1,11 +1,12 @@
 window.addEventListener('load', function() {
     
-    /*----------------------------ELMINANDO FECHAS DE RECOGIDA  EN FECHA DE DEVOLUCION ------*/
+    /*----------------------------DELIMITANDO FECHA DE DEVOLUCION ------*/
     
     let pickup_date = document.querySelector('.pickup_date')
     
 
     pickup_date.addEventListener('change',function() {
+        
       
         let dropoff_minDate = new Date(pickup_date.value);
         dropoff_minDate.setDate(dropoff_minDate.getDate() + 2);

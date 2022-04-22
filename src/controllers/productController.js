@@ -17,6 +17,21 @@ const controlador = {
 
     categories: function (req, res) {
 
+        /*----------------------------DELIMITANDO FECHA DE RECOGIDA DEL COCHE ------*/
+        var date = new Date();
+
+        let year = date.getFullYear();
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+
+        if (day < 10) {
+            day = '0' + day;
+        }
+        if (month < 10) {
+            month = '0' + month;
+        }
+        let pickup_minDate = year + '-' + month + '-' + day;
+
 
         let categories = db.categories.findAll();
         let cities = db.cities.findAll();
@@ -29,14 +44,14 @@ const controlador = {
                     { association: 'fuel' },
                     { association: 'features' },
                 ],
-                where: { id_category: req.params.id }
+                where: { id_category: req.params.id_category}
             }
 
         );
 
         Promise.all([categories, cities, vehicles])
             .then(function ([categories, cities, vehicles]) {
-                res.render('products/product-filter', { categories, cities, vehicles })
+                res.render('products/product-filter', { categories,id_category:req.params.id_category,cities, vehicles, pickup_minDate})
             })
 
     },
@@ -46,6 +61,21 @@ const controlador = {
 
     cities: function (req, res) {
 
+        /*----------------------------DELIMITANDO FECHA DE RECOGIDA DEL COCHE ------*/
+        var date = new Date();
+
+        let year = date.getFullYear();
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+
+        if (day < 10) {
+            day = '0' + day;
+        }
+        if (month < 10) {
+            month = '0' + month;
+        }
+        let pickup_minDate = year + '-' + month + '-' + day;
+
 
         let categories = db.categories.findAll();
         let cities = db.cities.findAll();
@@ -59,7 +89,7 @@ const controlador = {
                     { association: 'category' },
                     { association: 'features' },
                 ],
-                where: { id_city: req.params.id }
+                where: { id_city: req.params.id_city }
             }
 
         );
@@ -67,7 +97,7 @@ const controlador = {
         Promise.all([categories, cities, vehicles])
             .then(function ([categories, cities, vehicles]) {
                 console.log('llego');
-                res.render('products/product-filter', { categories, cities, vehicles })
+                res.render('products/product-filter', { categories,id_city: req.params.id_city,cities,vehicles,pickup_minDate})
             })
 
     },
@@ -118,20 +148,20 @@ const controlador = {
         let vehicle = db.vehicles.findOne(
             {
                 include: [
-                    { association: 'category'},
-                    { association: 'brand'},
-                    { association: 'city'},
-                    { association: 'fuel'},
-                    { association: 'features'},
+                    { association: 'category' },
+                    { association: 'brand' },
+                    { association: 'city' },
+                    { association: 'fuel' },
+                    { association: 'features' },
                 ],
                 where: { id: req.params.id }
             }
 
         );
 
-        Promise.all([vehicle,cities])
-            .then(function ([vehicle,cities]) {
-                res.render('products/product-detail', { vehicle,cities})
+        Promise.all([vehicle, cities])
+            .then(function ([vehicle, cities]) {
+                res.render('products/product-detail', { vehicle, cities })
             })
 
     },
@@ -153,7 +183,7 @@ const controlador = {
 
         Promise.all([categories, vehicle])
             .then(function ([categories, vehicle]) {
-                res.render('products/shopping-cart', { categories,vehicle});
+                res.render('products/shopping-cart', { categories, vehicle });
 
             })
 

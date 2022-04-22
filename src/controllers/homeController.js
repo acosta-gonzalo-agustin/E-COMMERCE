@@ -7,7 +7,7 @@ const sequelize = require('../database/models').sequelize;
 const controlador = {
     index: function (req, res) {
 
-        /*----------------------------ELMINANDO FECHAS ANTERIORES A LA FECHA ACTUAL EN FECHA DE BUSQUEDA ------*/
+        /*----------------------------DELIMITANDO FECHA DE RECOGIDA DEL COCHE ------*/
         var date = new Date();
 
         let year = date.getFullYear();

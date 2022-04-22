@@ -22,11 +22,11 @@ const validation = [
 
 /*--------FILTRADO POR CATEGORIA-----------*/
 
-router.get('/filter/:id',productController.categories);
+router.get('/filter/:id_category',productController.categories);
 
 /*----------FILTRADO POR CIUDAD----------------*/
 
-router.get('/cities/:id',productController.cities);
+router.get('/cities/:id_city',productController.cities);
 
 /*----------FILTRADO POR CIUDAD/CATEGORIA/FECHAS-------------*/
 
