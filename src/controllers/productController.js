@@ -3,6 +3,9 @@ const path = require('path');
 const { validationResult } = require('express-validator');
 
 const db = require('../database/models');
+const res = require('express/lib/response');
+const { kill } = require('process');
+const { type } = require('express/lib/response');
 
 
 
@@ -44,14 +47,14 @@ const controlador = {
                     { association: 'fuel' },
                     { association: 'features' },
                 ],
-                where: { id_category: req.params.id_category}
+                where: { id_category: req.params.id_category }
             }
 
         );
 
         Promise.all([categories, cities, vehicles])
             .then(function ([categories, cities, vehicles]) {
-                res.render('products/product-filter', { categories,id_category:req.params.id_category,cities, vehicles, pickup_minDate})
+                res.render('products/product-filter', { categories, id_category: req.params.id_category, cities, vehicles, pickup_minDate })
             })
 
     },
@@ -96,8 +99,8 @@ const controlador = {
 
         Promise.all([categories, cities, vehicles])
             .then(function ([categories, cities, vehicles]) {
-                console.log('llego');
-                res.render('products/product-filter', { categories,id_city: req.params.id_city,cities,vehicles,pickup_minDate})
+
+                res.render('products/product-filter', { categories, id_city: req.params.id_city, cities, vehicles, pickup_minDate })
             })
 
     },
@@ -106,44 +109,141 @@ const controlador = {
 
     formFilter: function (req, res) {
 
-        let filtro = req.query;
-        console.log(filtro);
-
-        // let vehicles = db.vehicles.findAll(
-        //     {
-        //         include: [
-        //             { association: 'brand'},
-        //             { association: 'city'},
-        //             { association: 'fuel'},
-        //             { association: 'category'},
-        //             { association: 'features'},
-        //         ],
-        //         where: {id_city:req.params.id}
-        //     }
-
-        // );
+        let dato = req.query;
 
 
-        // let categories = db.categories.findAll();
-        // let cities = db.cities.findAll();
+        /*----------------------------DELIMITANDO FECHA DE RECOGIDA DEL COCHE ------*/
+        var date = new Date();
 
+        let year = date.getFullYear();
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
 
-        // let bookings = db.bookings.findAll()
+        if (day < 10) {
+            day = '0' + day;
+        }
+        if (month < 10) {
+            month = '0' + month;
+        }
+        let pickup_minDate = year + '-' + month + '-' + day;
 
 
 
-        // Promise.all([categories, cities, vehicles])
-        //     .then(function ([categories, cities, vehicles]) {
-        //         console.log('llego');
-        //         res.render('products/product-filter', { categories, cities, vehicles})
-        //     })
+        let categories = db.categories.findAll();
+        let cities = db.cities.findAll();
+        let bookings = db.bookings.findAll(
+            {
+                include: [
+                    { association: 'vehicle' },
+                    { association: 'city_pickup' },
+                    { association: 'city_dropoff' }
+                ]
+            }
 
+        )
+
+        Promise.all([categories, cities, bookings])
+            .then(function ([categories, cities, bookings]) {
+                db.vehicles.findAll({
+                    include: [
+                        { association: 'category' },
+                        { association: 'brand' },
+                        { association: 'city' },
+                        { association: 'fuel' },
+                        { association: 'features' },
+                    ],
+                    where: { id_category: dato.id_category }
+                })
+                    .then(function (vehicles) {
+
+                        /*----------------------------COMPROBANDO DISPONIBILIDAD POR FECHA------------*/
+
+
+                        let reservados = [];
+                        let availables = [];
+
+                        for (i of vehicles) {
+                            let condicion = true;
+                            let pickup = Date.parse(dato.pickup_date);
+                            let dropoff = Date.parse(dato.dropoff_date);
+                            let distancia = 31536000000;
+                            for (j of bookings) {
+                                if (j.id_vehicle == i.id) {
+                                    let booking_pickup = Date.parse(j.dropoff_date);
+                                    if (j < bookings.length - 1) {
+                                        let booking_dropoff = Date.parse(bookings[j + 1].pickup_date);
+                                        if (!((pickup > booking_pickup && pickup < booking_dropoff) && (dropoff > booking_pickup && dropoff < booking_dropoff))) {
+                                            reservados.push(i.id);
+                                            condicion = false;
+                                            break;
+                                        }
+
+                                    } else if (!(pickup > booking_pickup)) {
+                                        reservados.push(i.id);
+                                        condicion = false;
+                                        break;
+
+                                    }
+
+
+                                }
+                            }
+
+                            // console.log(reservados);
+
+                            if (condicion) {
+                                availables.push(i);
+                            }
+
+                        }
+    
+
+                        /*----------------COMPROBANDO DISPONIBILIDAD POR CIUDAD------------*/
+                        for (i of availables) {
+                            
+                            let condicion = true;
+                            let pickup = Date.parse(dato.pickup_date);
+                            let dropoff = Date.parse(dato.dropoff_date);
+                            let distancia = 31536000000; 
+                            for (j of bookings) {
+                                if(j.id_vehicle == i.id) {
+                                    let booking_dropoff = Date.parse(j.dropoff_date);
+                                    if ((pickup - booking_dropoff) < distancia) {
+                                        distancia = pickup - booking_dropoff;
+                                        console.log(distancia);
+                                        var real_city_pickup = j.dropoff_city;
+                                       
+                                        if (j.id < bookings.length - 1) {
+                                            let booking_pickup = Date.parse(bookings[j + 1].pickup_date);
+                                            var real_city_dropoff = bookings[j + 1].pickup_city;
+                                        }
+                                    }
+                                }
+                            }
+                            
+                            if (typeof real_city_pickup != 'undefined' && typeof real_city_dropoff != 'undefined') {
+                                if(dato.pickup_city != real_city_pickup || dato.dropoff_city != real_city_dropoff) {
+                                    reservados.push(i.id);
+                                }
+                            } else if(typeof real_city_pickup != undefined) {
+                                if(dato.pickup_city != real_city_pickup) {
+                                    reservados.push(i.id);
+                                } 
+                            }
+                        }
+
+                        console.log(reservados);
+
+
+                        res.render('products/product-filter', { categories, cities, vehicles, pickup_minDate, reservados })
+
+                    })
+            })
     },
 
     /*---------------------------- funcion detalle de producto --------------------------*/
 
     detail: function (req, res) {
-
         let cities = db.cities.findAll();
         let vehicle = db.vehicles.findOne(
             {
@@ -184,7 +284,6 @@ const controlador = {
         Promise.all([categories, vehicle])
             .then(function ([categories, vehicle]) {
                 res.render('products/shopping-cart', { categories, vehicle });
-
             })
 
 

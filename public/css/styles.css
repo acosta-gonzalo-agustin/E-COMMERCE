@@ -452,17 +452,18 @@ footer .container li {
 
 /*---------------------------------PERFIL USUARIO------------------------------------------*/
 
+#pruebisima {
+    color: black!important;
+}
 
 .link-boton {
-    color: black;
-    text-decoration: none;
+    color: black !important;
+    text-decoration: none !important;
 }
 
 .link-white {
     color: white;
-    text-decoration: none;
-    
-
+    text-decoration: none;    
 }
 
 

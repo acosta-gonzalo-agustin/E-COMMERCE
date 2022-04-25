@@ -26,7 +26,7 @@
 
   <main>
     <div class="dos-forms">
-      <form action='product-listing' method="get" class='formulario registro busqueda tamanio'>
+      <form id = 'filtro' action='product-listing' method="get" class='formulario registro busqueda tamanio'>
         <div>
           <h4 class='titulo'>NUEVA BUSQUEDA</h4>
         </div>
@@ -167,10 +167,23 @@
 
               </div>
               <div>
-                <button type="submit" class="btn reserva"><a href="/product/detail/<%=i.id%>" class="btn">Detalle del
+                <%let reservado = false%> 
+                <%if(locals && locals.reservados) {%>
+                  <%for(k of reservados) { %>
+                    <%if(k == i.id) {%> 
+                      <%reservado = true;%>
+                      <%break;%> 
+                      <%}%>
+                  <%}%>
+                <%}%>
+                <%if(reservado) { %>
+                  <button type="submit" class="reserva presupuesto"><a class="eliminar link-boton" href="#filtro" id = 'pruebisima'>NO DISPONIBLE BUSCAR OTRA FECHA</a></button>
+                <%} else { %>
+                  <button type="submit" class="btn reserva"><a  href="/product/detail/<%=i.id%>" class="btn">Detalle del
                     producto</a></button>
+                <%} %>  
+                
               </div>
-
             </div>
 
           </div>
