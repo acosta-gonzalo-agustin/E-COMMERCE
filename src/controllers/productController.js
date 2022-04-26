@@ -196,18 +196,21 @@ const controlador = {
                             }
 
                         }
+
+                        console.log(availables);
     
 
                         /*----------------COMPROBANDO DISPONIBILIDAD POR CIUDAD------------*/
-                        for (i of availables) {
-                            
-                            let condicion = true;
+                        
+                        for (i of availables) {    
                             let pickup = Date.parse(dato.pickup_date);
                             let dropoff = Date.parse(dato.dropoff_date);
                             let distancia = 31536000000; 
                             for (j of bookings) {
                                 if(j.id_vehicle == i.id) {
                                     let booking_dropoff = Date.parse(j.dropoff_date);
+                                    console.log(booking_dropoff);
+                                    console.log(pickup);
                                     if ((pickup - booking_dropoff) < distancia) {
                                         distancia = pickup - booking_dropoff;
                                         console.log(distancia);
@@ -232,7 +235,7 @@ const controlador = {
                             }
                         }
 
-                        console.log(reservados);
+
 
 
                         res.render('products/product-filter', { categories, cities, vehicles, pickup_minDate, reservados })

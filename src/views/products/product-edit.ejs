@@ -82,11 +82,11 @@
           <label for="transmission">Caja de cambio</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="transmission" id="transmission" value="0" <%if(locals.old && old.transmission == '0') { %> checked <% }%>>
+          <input class="form-check-input" type="radio" name="transmission" id="transmission" value="0" <%if(locals.old && old.transmission == '0' || (vehicle.transmission == '0')) { %> checked <% }%>>
           <label class="form-check-label" for="transmission">Manual</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="transmission" id="transmission" value="1" <%if(locals.old && old.transmission == '1') { %> checked <% }%>>
+          <input class="form-check-input" type="radio" name="transmission" id="transmission" value="1" <%if(locals.old && old.transmission == '1' || (vehicle.transmission == '1')) { %> checked <% }%>>
           <label class="form-check-label" for="transmission">Automatico</label>
         </div>
       </div>
@@ -120,14 +120,14 @@
         <select class="form-select" name='city' id="city">
           <option>Ciudad</option>
           <%for(i of cities) { %>
-          <option value="<%=i.id %>" <%if(locals.old && old.city == i.name) { %> selected <% }%>><%=i.name%> </option>
+          <option value="<%=i.id%>" <%if(locals.old && old.city == i.name ||(vehicle.city.name == i.name)) { %> selected <% }%>><%=i.name%> </option>
           <%}%> 
         </select>
       </div>
 
       <div class="mb-3">
         <label for="description">Descripcion del producto</label>
-        <textarea class="form-control" name="description" id="description" rows="3"> <%= locals.old && old.description %> </textarea>
+        <textarea class="form-control" name="description" id="description" rows="3"> <%if(locals.old && old.description) { %> <%=old.description%> <% } else  { %> <%=vehicle.description%> <%}%>  </textarea>
       </div>
 
       <div class='registro boton'>
