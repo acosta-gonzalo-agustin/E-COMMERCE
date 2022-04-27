@@ -32,8 +32,8 @@
         </div>
         <div class='alinear'>
           <div class="mb-1 ancho-hijos">
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Ciudad retiro</option>
+            <select required class="form-select" aria-label="Default select example">
+              <option>Ciudad retiro</option>
               <%for(i of cities) { %>
                 <option value="<%i.id%>" <%if(locals && locals.id_city && id_city==i.id) { %> selected <% } %>>
                     <%=i.name%>
@@ -42,8 +42,8 @@
             </select>
           </div>
           <div class="mb-1 ancho-hijos">
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Ciudad devolución</option>
+            <select required class="form-select" aria-label="Default select example">
+              <option>Ciudad devolución</option>
               <%for(i of cities) { %>
                 <option value="<%i.id%>">
                   <%=i.name%>

@@ -111,6 +111,8 @@ const controlador = {
 
         let dato = req.query;
 
+        console.log(dato);
+
 
         /*----------------------------DELIMITANDO FECHA DE RECOGIDA DEL COCHE ------*/
         var date = new Date();

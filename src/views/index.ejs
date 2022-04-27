@@ -11,21 +11,23 @@
         <h3 class='titulo-mobile'>ALQUILA TU AUTO</h3>
         <h4 class='titulo'>COMIENZA TU AVENTURA</h4>
       </div>
+      <ul id="errors"> 
+      </ul>
 
       <div class='alinear'>
         <div class="mb-1 ancho-hijos">
-          <select class="form-select" name="pickup_city" id="pickup_city" aria-label="Default select example">
-            <option selected>Ciudad retiro</option>
+          <select class="form-select pickup_city" name="pickup_city" id="pickup_city" aria-label="Default select example">
+            <option>Ciudad retiro</option>
             <%for(i of cities) { %>
-              <option value="<%=i.id%>">
+              <option class="pickup_city" value="<%=i.id%>">
                 <%=i.name%>
               </option>
               <% } %>
           </select>
         </div>
         <div class="mb-1 ancho-hijos">
-          <select class="form-select" name="dropoff_city" id='dropoff_city' aria-label="Default select example">
-            <option selected>Ciudad devolución</option>
+          <select class="form-select dropoff_city" name="dropoff_city" id='dropoff_city' aria-label="Default select example">
+            <option>Ciudad devolución</option>
             <%for(i of cities) { %>
               <option value="<%=i.id%>">
                 <%=i.name%>
@@ -39,12 +41,12 @@
       <div class='alinear'>
 
         <div class="mb-1 ancho-hijos">
-          <label for="pickup_date" class='blanco'>Fecha de recogida</label>
+          <label for="pickup_date" class='blanco'>Fecha de retiro</label>
           <input type="date" min="<%=pickup_minDate%>" class="form-control pickup_date" name='pickup_date'>
         </div>
         <div class="mb-1 ancho-hijos">
-          <label for="pickup_time" class='blanco'>Hora de devolucion</label>
-          <input type="time" min="10:00" max="18:00" class="form-control fechas" id="pickup_time" name="pickup_time">
+          <label for="pickup_time" class='blanco'>Hora de retiro</label>
+          <input type="time" min="10:00" max="18:00" class="form-control fechas pickup_time" id="pickup_time" name="pickup_time">
         </div>
       </div>
 
@@ -56,7 +58,7 @@
         </div>
         <div class="mb-1 ancho-hijos">
           <label for="dropoff_time" class='blanco'>Hora de devolucion</label>
-          <input type="time" min="10:00" max="18:00" class="form-control fechas" id="dropoff_time" name="dropoff_time">
+          <input type="time" min="10:00" max="18:00" class="form-control fechas dropoff_time" id="dropoff_time" name="dropoff_time">
         </div>
       </div>
 
