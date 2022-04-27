@@ -157,88 +157,61 @@ const controlador = {
                     .then(function (vehicles) {
 
                         /*----------------------------COMPROBANDO DISPONIBILIDAD POR FECHA------------*/
-
-
                         let reservados = [];
-                        let availables = [];
 
                         for (i of vehicles) {
                             let condicion = true;
                             let pickup = Date.parse(dato.pickup_date);
                             let dropoff = Date.parse(dato.dropoff_date);
                             let distancia = 31536000000;
+                            var real_date_pickup = '';
+                            var real_city_pickup = '';
+                            var real_date_dropoff = '';
+                            var real_city_dropoff = '';
+                            var index = ''
+
                             for (j of bookings) {
+                                var contador = 0;
                                 if (j.id_vehicle == i.id) {
-                                    let booking_pickup = Date.parse(j.dropoff_date);
-                                    if (j < bookings.length - 1) {
-                                        let booking_dropoff = Date.parse(bookings[j + 1].pickup_date);
-                                        if (!((pickup > booking_pickup && pickup < booking_dropoff) && (dropoff > booking_pickup && dropoff < booking_dropoff))) {
-                                            reservados.push(i.id);
-                                            condicion = false;
-                                            break;
-                                        }
 
-                                    } else if (!(pickup > booking_pickup)) {
-                                        reservados.push(i.id);
-                                        condicion = false;
-                                        break;
-
-                                    }
-
-
-                                }
-                            }
-
-                            // console.log(reservados);
-
-                            if (condicion) {
-                                availables.push(i);
-                            }
-
-                        }
-
-                        console.log(availables);
-    
-
-                        /*----------------COMPROBANDO DISPONIBILIDAD POR CIUDAD------------*/
-                        
-                        for (i of availables) {    
-                            let pickup = Date.parse(dato.pickup_date);
-                            let dropoff = Date.parse(dato.dropoff_date);
-                            let distancia = 31536000000; 
-                            for (j of bookings) {
-                                if(j.id_vehicle == i.id) {
                                     let booking_dropoff = Date.parse(j.dropoff_date);
-                                    console.log(booking_dropoff);
-                                    console.log(pickup);
-                                    if ((pickup - booking_dropoff) < distancia) {
-                                        distancia = pickup - booking_dropoff;
-                                        console.log(distancia);
-                                        var real_city_pickup = j.dropoff_city;
-                                       
-                                        if (j.id < bookings.length - 1) {
-                                            let booking_pickup = Date.parse(bookings[j + 1].pickup_date);
-                                            var real_city_dropoff = bookings[j + 1].pickup_city;
-                                        }
+                                    if ((Math.abs(pickup - booking_dropoff)) < distancia) {
+                                        distancia = Math.abs(pickup - booking_dropoff);
+                                        real_date_pickup = j.dropoff_date;
+                                        real_city_pickup = j.dropoff_city;
+                                        index = bookings.indexOf(j);
                                     }
                                 }
                             }
+
+                            if (real_date_pickup != '') {
                             
-                            if (typeof real_city_pickup != 'undefined' && typeof real_city_dropoff != 'undefined') {
-                                if(dato.pickup_city != real_city_pickup || dato.dropoff_city != real_city_dropoff) {
-                                    reservados.push(i.id);
+                                for (let k = index + 1; k < bookings.length; k++) {
+                                    if (bookings[k].id_vehicle == i.id) {
+                                        real_date_dropoff = bookings[k].pickup_date;
+                                        real_city_dropoff = bookings[k].pickup_city;
+                                        break;
+                                    }
                                 }
-                            } else if(typeof real_city_pickup != undefined) {
-                                if(dato.pickup_city != real_city_pickup) {
+                                if (real_city_dropoff != '' && real_date_dropoff != '') {
+                                    if(dato.pickup_city != real_city_pickup || dato.dropoff_city != real_city_dropoff || !(dato.pickup_date > real_date_pickup && dato.dropoff_date < real_date_dropoff)) {
+                                        reservados.push(i.id);
+                                    }
+
+                                } else if (dato.pickup_city != real_city_pickup || !(dato.pickup_date > real_date_pickup)) {
                                     reservados.push(i.id);
-                                } 
+
+
+                                }
                             }
                         }
 
+                        console.log(reservados);
 
 
 
-                        res.render('products/product-filter', { categories, cities, vehicles, pickup_minDate, reservados })
+
+                        res.render('products/product-filter', { categories, cities, vehicles, pickup_minDate,reservados})
 
                     })
             })
