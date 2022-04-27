@@ -111,7 +111,7 @@ const controlador = {
 
         let dato = req.query;
 
-        console.log(dato);
+        
 
 
         /*----------------------------DELIMITANDO FECHA DE RECOGIDA DEL COCHE ------*/
@@ -130,93 +130,98 @@ const controlador = {
         let pickup_minDate = year + '-' + month + '-' + day;
 
 
-
         let categories = db.categories.findAll();
         let cities = db.cities.findAll();
-        let bookings = db.bookings.findAll(
-            {
+        let bookings = db.bookings.findAll();
+        let vehicles_total = db.vehicles.findAll({
                 include: [
-                    { association: 'vehicle' },
-                    { association: 'city_pickup' },
-                    { association: 'city_dropoff' }
+                    { association: 'category' },
+                    { association: 'brand' },
+                    { association: 'city' },
+                    { association: 'fuel' },
+                    { association: 'features' },
                 ]
-            }
+            })
 
-        )
+        Promise.all([categories, cities, bookings, vehicles_total])
+            .then(function ([categories, cities, bookings, vehicles_total]) {
 
-        Promise.all([categories, cities, bookings])
-            .then(function ([categories, cities, bookings]) {
-                db.vehicles.findAll({
-                    include: [
-                        { association: 'category' },
-                        { association: 'brand' },
-                        { association: 'city' },
-                        { association: 'fuel' },
-                        { association: 'features' },
-                    ],
-                    where: { id_category: dato.id_category }
-                })
-                    .then(function (vehicles) {
-
-                        /*----------------------------COMPROBANDO DISPONIBILIDAD POR FECHA------------*/
-                        let reservados = [];
-
-                        for (i of vehicles) {
-                            let condicion = true;
-                            let pickup = Date.parse(dato.pickup_date);
-                            let dropoff = Date.parse(dato.dropoff_date);
-                            let distancia = 31536000000;
-                            var real_date_pickup = '';
-                            var real_city_pickup = '';
-                            var real_date_dropoff = '';
-                            var real_city_dropoff = '';
-                            var index = ''
-
-                            for (j of bookings) {
-                                var contador = 0;
-                                if (j.id_vehicle == i.id) {
-
-                                    let booking_dropoff = Date.parse(j.dropoff_date);
-                                    if ((Math.abs(pickup - booking_dropoff)) < distancia) {
-                                        distancia = Math.abs(pickup - booking_dropoff);
-                                        real_date_pickup = j.dropoff_date;
-                                        real_city_pickup = j.dropoff_city;
-                                        index = bookings.indexOf(j);
-                                    }
-                                }
-                            }
-
-                            if (real_date_pickup != '') {
-                            
-                                for (let k = index + 1; k < bookings.length; k++) {
-                                    if (bookings[k].id_vehicle == i.id) {
-                                        real_date_dropoff = bookings[k].pickup_date;
-                                        real_city_dropoff = bookings[k].pickup_city;
-                                        break;
-                                    }
-                                }
-                                if (real_city_dropoff != '' && real_date_dropoff != '') {
-                                    if(dato.pickup_city != real_city_pickup || dato.dropoff_city != real_city_dropoff || !(dato.pickup_date > real_date_pickup && dato.dropoff_date < real_date_dropoff)) {
-                                        reservados.push(i.id);
-                                    }
-
-                                } else if (dato.pickup_city != real_city_pickup || !(dato.pickup_date > real_date_pickup)) {
-                                    reservados.push(i.id);
+                let vehicles = [];
 
 
-                                }
+                for(i of vehicles_total) {
+                    if(dato.id_category == 'Categoría') {
+                        vehicles.push(i);
+                    } else if(i.id_category == dato.id_category) {
+                        vehicles.push(i);
+                    }
+                    
+                    }
+                
+
+
+                
+
+                /*----------------------------COMPROBANDO DISPONIBILIDAD POR FECHA------------*/
+                let reservados = [];
+
+                for (i of vehicles) {
+                    let condicion = true;
+                    let pickup = Date.parse(dato.pickup_date);
+                    let dropoff = Date.parse(dato.dropoff_date);
+                    let distancia = 31536000000;
+                    var real_date_pickup = '';
+                    var real_city_pickup = '';
+                    var real_date_dropoff = '';
+                    var real_city_dropoff = '';
+                    var index = ''
+
+                    for (j of bookings) {
+                        
+                        var contador = 0;
+                        if (j.id_vehicle == i.id) {
+
+                            let booking_dropoff = Date.parse(j.dropoff_date);
+                            if ((Math.abs(pickup - booking_dropoff)) < distancia) {
+                                distancia = Math.abs(pickup - booking_dropoff);
+                                real_date_pickup = j.dropoff_date;
+                                real_city_pickup = j.dropoff_city;
+                                index = bookings.indexOf(j);
+                                
                             }
                         }
+                    }
 
-                        console.log(reservados);
+                    if (real_date_pickup != '') {
 
 
+                        for (let k = index + 1; k < bookings.length; k++) {
+                            if (bookings[k].id_vehicle == i.id) {
+                                real_date_dropoff = bookings[k].pickup_date;
+                                real_city_dropoff = bookings[k].pickup_city;
+                                break;
+                            }
+                        }
+                        if (real_city_dropoff != '' && real_date_dropoff != '') {
+                            if (dato.pickup_city != real_city_pickup || dato.dropoff_city != real_city_dropoff || !(dato.pickup_date > real_date_pickup && dato.dropoff_date < real_date_dropoff)) {
+                                reservados.push(i.id);
+                            }
+
+                        } else if (dato.pickup_city != real_city_pickup || !(dato.pickup_date > real_date_pickup)) {
+                            reservados.push(i.id);
 
 
-                        res.render('products/product-filter', { categories, cities, vehicles, pickup_minDate,reservados})
+                        }
+                    }
+                }
 
-                    })
+                
+
+
+                res.render('products/product-filter', { categories, cities, vehicles, pickup_minDate, reservados })
+
             })
+
     },
 
     /*---------------------------- funcion detalle de producto --------------------------*/
