@@ -251,9 +251,9 @@ const controlador = {
 
                 }
 
-                console.log(reservados);
+                console.log(dato);
 
-                res.render('products/product-filter', { categories, cities, vehicles, pickup_minDate, reservados })
+                res.render('products/product-filter', {dato,categories,cities,vehicles,pickup_minDate,reservados })
 
             })
 
