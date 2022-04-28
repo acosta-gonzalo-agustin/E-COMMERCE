@@ -30,7 +30,7 @@ router.get('/cities/:id_city',productController.cities);
 
 /*----------FILTRADO POR CIUDAD/CATEGORIA/FECHAS-------------*/
 
-router.get('/formFilter',productController.formFilter);
+router.get('/formFilter/:id?',productController.formFilter);
 
 /*----------RUTA DETALLE DE PRODUCTO----------------*/
 

@@ -111,7 +111,7 @@ const controlador = {
 
         let dato = req.query;
 
-        
+
 
 
         /*----------------------------DELIMITANDO FECHA DE RECOGIDA DEL COCHE ------*/
@@ -134,14 +134,14 @@ const controlador = {
         let cities = db.cities.findAll();
         let bookings = db.bookings.findAll();
         let vehicles_total = db.vehicles.findAll({
-                include: [
-                    { association: 'category' },
-                    { association: 'brand' },
-                    { association: 'city' },
-                    { association: 'fuel' },
-                    { association: 'features' },
-                ]
-            })
+            include: [
+                { association: 'category' },
+                { association: 'brand' },
+                { association: 'city' },
+                { association: 'fuel' },
+                { association: 'features' },
+            ]
+        })
 
         Promise.all([categories, cities, bookings, vehicles_total])
             .then(function ([categories, cities, bookings, vehicles_total]) {
@@ -149,23 +149,31 @@ const controlador = {
                 let vehicles = [];
 
 
-                for(i of vehicles_total) {
-                    if(dato.id_category == 'Categoría') {
+                for (i of vehicles_total) {
+                    if (typeof req.params.id != 'undefined') {
+                        if (req.params.id == i.id) {
+                            vehicles.push(i);
+                        }
+                    } else if (dato.id_category == 'Categoría') {
                         vehicles.push(i);
-                    } else if(i.id_category == dato.id_category) {
+                    } else if (i.id_category == dato.id_category) {
                         vehicles.push(i);
                     }
-                    
-                    }
-                
+
+                }
 
 
-                
+
+
+
+
 
                 /*----------------------------COMPROBANDO DISPONIBILIDAD POR FECHA------------*/
                 let reservados = [];
 
                 for (i of vehicles) {
+
+
                     let condicion = true;
                     let pickup = Date.parse(dato.pickup_date);
                     let dropoff = Date.parse(dato.dropoff_date);
@@ -174,20 +182,21 @@ const controlador = {
                     var real_city_pickup = '';
                     var real_date_dropoff = '';
                     var real_city_dropoff = '';
-                    var index = ''
+                    var index = 0;
 
                     for (j of bookings) {
-                        
+
                         var contador = 0;
                         if (j.id_vehicle == i.id) {
+
 
                             let booking_dropoff = Date.parse(j.dropoff_date);
                             if ((Math.abs(pickup - booking_dropoff)) < distancia) {
                                 distancia = Math.abs(pickup - booking_dropoff);
-                                real_date_pickup = j.dropoff_date;
+                                real_date_pickup = Date.parse(j.dropoff_date);
                                 real_city_pickup = j.dropoff_city;
                                 index = bookings.indexOf(j);
-                                
+
                             }
                         }
                     }
@@ -196,27 +205,53 @@ const controlador = {
 
 
                         for (let k = index + 1; k < bookings.length; k++) {
+                            
                             if (bookings[k].id_vehicle == i.id) {
-                                real_date_dropoff = bookings[k].pickup_date;
+                                real_date_dropoff = Date.parse(bookings[k].pickup_date);
                                 real_city_dropoff = bookings[k].pickup_city;
                                 break;
                             }
                         }
                         if (real_city_dropoff != '' && real_date_dropoff != '') {
-                            if (dato.pickup_city != real_city_pickup || dato.dropoff_city != real_city_dropoff || !(dato.pickup_date > real_date_pickup && dato.dropoff_date < real_date_dropoff)) {
+
+                            if (!(((dato.pickup_city == real_city_pickup && pickup >= real_date_pickup + 86400000) || (pickup >= real_date_pickup + 172800000)) && ((dato.dropoff_city == real_city_dropoff && dropoff <= real_date_dropoff - 86400000) || (dropoff <= real_date_dropoff - 172800000)))) {
                                 reservados.push(i.id);
                             }
 
-                        } else if (dato.pickup_city != real_city_pickup || !(dato.pickup_date > real_date_pickup)) {
+                        } else if (!((dato.pickup_city == real_city_pickup && pickup >= real_date_pickup + 86400000) || (pickup >= real_date_pickup + 172800000))) {
                             reservados.push(i.id);
 
-
                         }
+
+
+                    } else {
+
+                        let now = new Date();
+
+                        let year = now.getFullYear();
+                        let day = now.getDate();
+                        let month = now.getMonth() + 1;
+
+                        if (day < 10) {
+                            day = '0' + day;
+                        }
+                        if (month < 10) {
+                            month = '0' + month;
+                        }
+
+                        let mili_now = Date.parse(year + '-' + month + '-' + day);
+                        
+                       
+
+                        if (!(dato.pickup_city == i.id_city || pickup >= mili_now + 172800000)) {
+                            reservados.push(i.id);
+                        }
+
                     }
+
                 }
 
-                
-
+                console.log(reservados);
 
                 res.render('products/product-filter', { categories, cities, vehicles, pickup_minDate, reservados })
 
@@ -227,6 +262,23 @@ const controlador = {
     /*---------------------------- funcion detalle de producto --------------------------*/
 
     detail: function (req, res) {
+
+        /*----------------------------DELIMITANDO FECHA DE RECOGIDA DEL COCHE ------*/
+        var date = new Date();
+
+        let year = date.getFullYear();
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+
+        if (day < 10) {
+            day = '0' + day;
+        }
+        if (month < 10) {
+            month = '0' + month;
+        }
+        let pickup_minDate = year + '-' + month + '-' + day;
+
+
         let cities = db.cities.findAll();
         let vehicle = db.vehicles.findOne(
             {
@@ -244,7 +296,7 @@ const controlador = {
 
         Promise.all([vehicle, cities])
             .then(function ([vehicle, cities]) {
-                res.render('products/product-detail', { vehicle, cities })
+                res.render('products/product-detail', { vehicle, cities, pickup_minDate })
             })
 
     },
