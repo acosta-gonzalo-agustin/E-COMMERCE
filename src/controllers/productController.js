@@ -47,7 +47,7 @@ const controlador = {
                     { association: 'fuel' },
                     { association: 'features' },
                 ],
-                where: { id_category: req.params.id_category }
+                where: {id_category: req.params.id_category }
             }
 
         );
@@ -65,8 +65,9 @@ const controlador = {
     cities: function (req, res) {
 
         /*----------------------------DELIMITANDO FECHA DE RECOGIDA DEL COCHE ------*/
-        var date = new Date();
 
+        var date = new Date();
+        console.log(date);
         let year = date.getFullYear();
         let day = date.getDate();
         let month = date.getMonth() + 1;
@@ -79,28 +80,156 @@ const controlador = {
         }
         let pickup_minDate = year + '-' + month + '-' + day;
 
+        let pickup_date = Date.parse(pickup_minDate) + 86400000;
+        let dropoff_date = Date.parse(pickup_minDate) + 518400000;
+        
+        dropoff_date = new Date(dropoff_date);
+        pickup_date = new Date(pickup_date);
+        
+
+        let year_drop = dropoff_date.getFullYear();
+        let day_drop = dropoff_date.getDate();
+        let month_drop = dropoff_date.getMonth() + 1;
+        let year_pick = pickup_date.getFullYear();
+        let day_pick = pickup_date.getDate();
+        let month_pick = pickup_date.getMonth() + 1;
+
+        if (day_drop < 10) {
+            day_drop = '0' + day_drop;
+        }
+        if (month_drop < 10) {
+            month_drop = '0' + month_drop;
+        }
+
+        if (day_pick < 10) {
+            day_pick = '0' + day_pick;
+        }
+        if (month_pick < 10) {
+            month_pick = '0' + month_pick;
+        }
+
+        dropoff_date = year_drop + '-' + month_drop + '-' + day_drop;
+        pickup_date = year_pick + '-' + month_pick + '-' + day_pick;
+
+        let dato = {
+            pickup_city: req.params.id,
+            dropoff_city: req.params.id,
+            pickup_date:pickup_minDate,
+            dropoff_date:dropoff_date,
+            pickup_time: '10:00',
+            dropoff_time: '10:00',
+        }
+
 
         let categories = db.categories.findAll();
         let cities = db.cities.findAll();
+        let bookings = db.bookings.findAll();
+        let vehicles = db.vehicles.findAll({
+            include: [
+                { association: 'category' },
+                { association: 'brand' },
+                { association: 'city' },
+                { association: 'fuel' },
+                { association: 'features' },
+            ]
+        })
 
-        let vehicles = db.vehicles.findAll(
-            {
-                include: [
-                    { association: 'brand' },
-                    { association: 'city' },
-                    { association: 'fuel' },
-                    { association: 'category' },
-                    { association: 'features' },
-                ],
-                where: { id_city: req.params.id_city }
-            }
+        Promise.all([categories, cities, bookings, vehicles])
+            .then(function ([categories, cities, bookings, vehicles]) {
 
-        );
+                
 
-        Promise.all([categories, cities, vehicles])
-            .then(function ([categories, cities, vehicles]) {
+                /*----------------------------COMPROBANDO DISPONIBILIDAD POR FECHA------------*/
+                let reservados = [];
 
-                res.render('products/product-filter', { categories, id_city: req.params.id_city, cities, vehicles, pickup_minDate })
+                for (i of vehicles) {
+
+                    let condicion = true;
+                    let pickup = Date.parse(dato.pickup_date);
+                    let dropoff = Date.parse(dato.dropoff_date);
+                    let distancia = 31536000000;
+                    var real_date_pickup = '';
+                    var real_city_pickup = '';
+                    var real_date_dropoff = '';
+                    var real_city_dropoff = '';
+                    var index = 0;
+
+                    
+
+                    for (j of bookings) {
+
+                        var contador = 0;
+                        if (j.id_vehicle == i.id) {
+
+
+                            let booking_dropoff = Date.parse(j.dropoff_date);
+                            if ((Math.abs(pickup - booking_dropoff)) < distancia) {
+                                distancia = Math.abs(pickup - booking_dropoff);
+                                real_date_pickup = Date.parse(j.dropoff_date);
+                                real_city_pickup = j.dropoff_city;
+                                index = bookings.indexOf(j);
+
+                            }
+                        }
+                    }
+
+                    if (real_date_pickup != '') {
+
+
+                        for (let k = index + 1; k < bookings.length; k++) {
+                            
+                            if (bookings[k].id_vehicle == i.id) {
+                                real_date_dropoff = Date.parse(bookings[k].pickup_date);
+                                real_city_dropoff = bookings[k].pickup_city;
+                                break;
+                            }
+                        }
+                        if (real_city_dropoff != '' && real_date_dropoff != '') {
+
+                            if (!(((dato.pickup_city == real_city_pickup && pickup >= real_date_pickup + 86400000) || (pickup >= real_date_pickup + 172800000)) && ((dato.dropoff_city == real_city_dropoff && dropoff <= real_date_dropoff - 86400000) || (dropoff <= real_date_dropoff - 172800000)))) {
+                                reservados.push(i.id);
+                            }
+
+                        } else if (!((dato.pickup_city == real_city_pickup && pickup >= real_date_pickup + 86400000) || (pickup >= real_date_pickup + 172800000))) {
+                            reservados.push(i.id);
+
+                        }
+
+
+                    } else {
+
+                        let now = new Date();
+
+                        let year = now.getFullYear();
+                        let day = now.getDate();
+                        let month = now.getMonth() + 1;
+
+                        if (day < 10) {
+                            day = '0' + day;
+                        }
+                        if (month < 10) {
+                            month = '0' + month;
+                        }
+
+                        let mili_now = Date.parse(year + '-' + month + '-' + day);
+                        
+                       
+
+                        if (!(dato.pickup_city == i.id_city || pickup >= mili_now + 172800000)) {
+                            reservados.push(i.id);
+                        }
+
+                    }
+                    
+
+                    
+
+                }
+
+                console.log(dato);
+
+                res.render('products/product-filter', {dato,categories,cities,vehicles,pickup_minDate,reservados })
+
             })
 
     },
@@ -224,30 +353,12 @@ const controlador = {
                         }
 
 
-                    } else {
+                    } else if (!(dato.pickup_city == i.id_city || pickup >= pickup_minDate + 172800000)) {
 
-                        let now = new Date();
-
-                        let year = now.getFullYear();
-                        let day = now.getDate();
-                        let month = now.getMonth() + 1;
-
-                        if (day < 10) {
-                            day = '0' + day;
-                        }
-                        if (month < 10) {
-                            month = '0' + month;
-                        }
-
-                        let mili_now = Date.parse(year + '-' + month + '-' + day);
-                        
-                       
-
-                        if (!(dato.pickup_city == i.id_city || pickup >= mili_now + 172800000)) {
-                            reservados.push(i.id);
-                        }
-
+                        reservados.push(i.id);
                     }
+
+                    
 
                 }
 
