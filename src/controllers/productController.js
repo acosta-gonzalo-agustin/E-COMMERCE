@@ -353,7 +353,7 @@ const controlador = {
                         }
 
 
-                    } else if (!(dato.pickup_city == i.id_city || pickup >= pickup_minDate + 172800000)) {
+                    } else if (!(dato.pickup_city == i.id_city || pickup >= Date.parse(pickup_minDate) + 172800000)) {
 
                         reservados.push(i.id);
                     }
