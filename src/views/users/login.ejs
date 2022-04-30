@@ -1,0 +1,39 @@
+<!-------------------------------------------------INCLUYENDO HEAD Y HEADER------------------------------>
+
+<%- include('../parcials/head') %>
+
+
+
+  <main class="main-register">
+    <form class='formulario registro formulario-register' action="/user/login" method="POST">
+        <div class="titulo-registro">
+            <h5>Ingresar</h5>
+          </div>
+        <%if(locals && locals.mensaje) { %><p class = 'error'> <%=locals.mensaje %>  </p> <% } %> 
+        <div class="mb-3">
+          <input type="email" class="form-control" placeholder="Correo Electrónico" name="email" id="email"
+            aria-describedby="emailHelp" value = '<% if(locals.old) { %> <%=old.email%> <% } %>'>
+          <div id="emailHelp" class="form-text">Nunca compartiremos tu correo electrónico con alguien más</div>
+        </div>
+        <div class="mb-3">
+          <input type="password" class="form-control" name="password" id="password" placeholder="Contraseña">
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" name = 'mantener_sesion' id="mantener_sesion" value ="mantener_sesion">
+          <label class="form-check-label" for="mantener_sesion">Mantener sesión iniciada</label>
+        </div>
+        <div class='password'>
+          <button type="submit" class="btn">Iniciar sesión</button>
+          <a  class = 'link-boton login' href="/">¿Olvidaste tu contraseña?</a>
+          <a  class = 'link-boton login' href="/user/register">¿Primera vez? Registrate</a>
+        </div>
+      </form>
+
+
+  </main>
+
+
+
+  <!-------------------------------------------------INCLUYENDO FOOTER------------------------------>
+
+  <%- include('../parcials/footer') %>

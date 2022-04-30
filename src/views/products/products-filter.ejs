@@ -1,0 +1,224 @@
+<!-------------------------------------------------INCLUYENDO HEAD Y HEADER------------------------------>
+
+<%- include('../parcials/head') %>
+
+<div class="filtro">
+  <div>
+    <div class="container">
+      <%for(i of cities) { %>
+        <%if(i.id==dato.pickup_city) { %>
+          <h1>Retiro: <%=i.name%>
+          </h1>
+    </div>
+    <%}%>
+      <%}%>
+        <div class="container">
+          <h1><%=dato.pickup_date%> <%=dato.pickup_time%></h1>
+        </div>
+  </div>
+  <i class="fas fa-arrow-right"></i>
+
+  <div>
+    <div class="container">
+      <%for(i of cities) { %>
+        <%if(i.id== dato.dropoff_city) { %>
+          <h1>Devolución: <%=i.name%>
+          </h1>
+    </div>
+    <%}%>
+      <%}%>
+        <div class="container">
+          <h1><%=dato.dropoff_date%> <%=dato.dropoff_time%></h1>
+        </div>
+  </div>
+</div>
+   
+
+      <main>
+        <div class="dos-forms">
+
+          <form  action='/product/formFilter' method="get" class='formulario registro busqueda tamanio'>
+            <div>
+              <h4 class='titulo'>NUEVA BUSQUEDA</h4>
+            </div>
+            <div class='alinear'>
+              <div class="mb-1 ancho-hijos">
+                <select required class="form-select pickup_city" name="pickup_city" id="pickup_city" aria-label="Default select example">
+                  <option>Ciudad retiro</option>
+                  <%for(i of cities) { %>
+                    <option value="<%i.id%>">
+                        <%=i.name%>
+                    </option>
+                    <% } %>
+                </select>
+              </div>
+              <div class="mb-1 ancho-hijos">
+                <select name="dropoff_city" id='dropoff_city' class="form-select dropoff_city" aria-label="Default select example">
+                  <option>Ciudad devolución</option>
+                  <%for(i of cities) { %>
+                    <option value="<%i.id%>">
+                      <%=i.name%>
+                    </option>
+                    <%}%>
+                </select>
+              </div>
+
+            </div>
+            <div class='alinear'>
+              <div class="mb-1 ancho-hijos">
+                <label for="pickup_date" class='blanco'>Fecha de recogida</label>
+                <input type="date" min="<%=pickup_minDate%>" class="form-control pickup_date" name='pickup_date'>
+              </div>
+              <div class="mb-1 ancho-hijos">
+                <label for="pickup_time" class='blanco'>Hora de devolucion</label>
+                <input type="time" min="10:00" max="18:00" class="form-control fechas" id="pickup_time"
+                  name="pickup_time">
+              </div>
+            </div>
+
+
+            <div class='alinear'>
+              <div class="mb-1 ancho-hijos">
+                <label for="dropoff_date" class='blanco'>Fecha de devolución</label>
+                <input type="date" class="form-control dropoff_date" name="dropoff_date">
+              </div>
+              <div class="mb-1 ancho-hijos">
+                <label for="dropoff_time" class='blanco'>Hora de devolucion</label>
+                <input type="time" min="10:00" max="18:00" class="form-control fechas" id="dropoff_time"
+                  name="dropoff_time">
+              </div>
+            </div>
+
+            <div class='alinear'>
+              <div class="mb-1 ancho-hijos">
+                <select class="form-select" name="id_category" id='id_category' aria-label="Default select example">
+                  <option selected>Categoría</option>
+                  <%for(i of categories) { %>
+                    <option value="<%=i.id%>" <%if(locals && locals.id_category && id_category==i.id) { %> selected <% }
+                        %>>
+                        <%=i.name%>
+                    </option>
+                    <%}%>
+                </select>
+              </div>
+              <div class="mb-1 ancho-hijos">
+                <input type="text" class="form-control" name="promo_code" id="promo_code"
+                  placeholder="Codigo promocional" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+
+
+            </div>
+
+
+            <div class='registro boton'>
+              <button type="submit" class="btn">Enviar</button>
+            </div>
+          </form>
+
+          <form action='product-listing' method="get" class='formulario registro busqueda tamanio precio'>
+            <div class="slidecontainer">
+              <label for="myRange"></label>FILTRAR POR PRECIO
+              <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+            </div>
+          </form>
+
+        </div>
+
+
+
+
+
+
+
+        <div class='lista-productos'>
+
+          <% for(let i of vehicles) { %>
+
+
+            <div class="container grid item">
+              <div class="row">
+                <div class='col-md border-end'>
+                  <div class="col-sm border-bottom">
+                    <h3>
+                      <%= i.name%>
+                    </h3>
+                    <img src="/img/img-autos/<%=i.picture%>" alt="">
+                  </div>
+                  <div class="col-sm">
+                    <ul>
+
+                      CARACTERISTICAS
+                      <li><i class="fas fa-check-circle"></i>
+                        <%= i.seat_number%> asientos
+                      </li>
+                      <li><i class="fas fa-check-circle"></i>
+                        <%if(i.transmission=1) { %> automático <% } else { %> manual <%}%>
+                      </li>
+                      <li><i class="fas fa-check-circle"></i>
+                        <%=i.fuel.name%>
+                      </li>
+
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-md reserva-derecha">
+                  <div>
+                    $<%= i.pricexday%>/dia
+                  </div>
+                  <div class="escondido">
+
+                    <ul>
+                      ADICIONALES
+                      <%if(i.features !=null) %>
+                        <%for(j of i.features) {%>
+                          <li>
+                            <%=j.name%>
+                          </li>
+                          <%}%>
+                            <li>kilometraje <%=i.mileage%>
+                            </li>
+                    </ul>
+
+
+                  </div>
+                  <div>
+                    <%let reservado=false%>
+                      <%if(locals && locals.reservados) {%>
+                        <%for(k of reservados) { %>
+                          <%if(k==i.id) {%>
+                            <%reservado=true;%>
+                              <%break;%>
+                                <%}%>
+                                  <%}%>
+                                    <%}%>
+                                      <%if(reservado) { %>
+                                        <button type="submit" class="reserva presupuesto"><a class="tachado eliminar"
+                                            href="" id='pruebisima'>RESERVADO</a></button>
+                                        <%} else { %>
+                                          <button type="submit" class="btn reserva"><a href="/product/shopping-cart/<%=i.id%>/<%=dato.pickup_date%>/<%=dato.dropoff_date%>/<%=dato.pickup_city%>/<%=dato.dropoff_city%>/<%=dato.pickup_time%>/<%=dato.dropoff_time%>"
+                                              class="btn">Reservar
+                                              producto</a></button>
+                                          <%} %>
+
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+            <% } %>
+
+
+
+
+        </div>
+
+
+      </main>
+
+
+
+      <!-------------------------------------------------INCLUYENDO FOOTER------------------------------>
+
+      <%- include('../parcials/footer') %>

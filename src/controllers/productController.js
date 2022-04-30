@@ -347,7 +347,7 @@ const controlador = {
                                 reservados.push(i.id);
                             }
 
-                        } else if (!((dato.pickup_city == real_city_pickup && pickup >= real_date_pickup + 86400000) || (pickup >= real_date_pickup + 172800000))) {
+                        } else if (!((dato.pickup_city == real_city_pickup && pickup >= real_date_pickup + 86400000) || ((pickup >= real_date_pickup + 172800000) && (pickup >= Date.parse(pickup_minDate) + 172800000)))) {
                             reservados.push(i.id);
 
                         }
