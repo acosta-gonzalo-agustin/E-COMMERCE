@@ -6,22 +6,9 @@
   <div class="filtro">
     <div>
       <div class="container">
-        <h1>Entrega:Cordoba</h1>
-      </div>
-      <div class="container">
-        <h1>07/03 10:00</h1>
+        <h1><%=vehicle.name%></h1>
       </div>
     </div>
-    <i class="fas fa-arrow-right"></i>
-    <div>
-      <div class="container">
-        <h1>Devolucion:Cordoba</h1>
-      </div>
-      <div class="container">
-        <h1>07/03 10:00 </h1>
-      </div>
-    </div>
-
   </div>
 
   <main>
@@ -29,7 +16,7 @@
       <form action='/product/formFilter/<%=vehicle.id%> ' method="get" class='formulario registro busqueda tamanio'>
         <div>
           <h3 class='titulo-mobile'>ALQUILA TU AUTO</h3>
-          <h4 class='titulo'>COMIENZA TU AVENTURA</h4>
+          <h4 class='titulo'>BUSCAR DISPONIBILIDAD</h4>
         </div>
         <ul id="errors"> 
         </ul>
@@ -112,9 +99,6 @@
         <div class="row">
           <div class='col-md border-end'>
             <div class="col-sm border-bottom">
-              <h3>
-                <%= vehicle.name%>
-              </h3>
               <img src="/img/img-autos/<%=vehicle.picture%>" alt="">
             </div>
             <!-- <div class="col-sm">

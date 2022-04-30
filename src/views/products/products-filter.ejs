@@ -2,6 +2,7 @@
 
 <%- include('../parcials/head') %>
 
+<%if(locals && locals.dato) { %> 
 <div class="filtro">
   <div>
     <div class="container">
@@ -33,6 +34,32 @@
   </div>
 </div>
 
+
+
+<% } else if(typeof category != 'undefined') { %>
+  <div class="filtro">
+    <div class="container">
+      <%for(i of categories) { %>
+         <%if(i.id == category) { %>
+          <%=category.name%>  
+           <h1><%=i.name%></h1>
+         <%}%> 
+      <%}%>
+      <h1></h1>
+    </div>
+  </div>
+<%}%>  
+
+<div class="filtro">
+  <div class="container">
+    <h1>
+
+    </h1>
+  </div>
+
+</div>
+
+
  
    
 
@@ -42,6 +69,7 @@
           <form  action='/product/formFilter' method="get" class='formulario registro busqueda tamanio'>
             <div>
               <h4 class='titulo'>NUEVA BUSQUEDA</h4>
+              
             </div>
             <div class='alinear'>
               <div class="mb-1 ancho-hijos">
@@ -180,8 +208,6 @@
                             <li>kilometraje <%=i.mileage%>
                             </li>
                     </ul>
-                    <%console.log(dato)%>
-
                   </div>
                   <div>
                     <%let reservado=false%>
@@ -195,12 +221,16 @@
                                     <%}%>
                                       <%if(reservado) { %>
                                         <button type="submit" class="reserva presupuesto"><a class="tachado eliminar"
-                                            href="" id='pruebisima'>RESERVADO</a></button>
-                                        <%} else { %>
+                                            href="/product/detail/<%=i.id%> " id='pruebisima'>RESERVADO BUSCAR OTRAS OPCIONES</a></button>
+                                        <%} else if(locals && locals.dato) { %>
                                           <button type="submit" class="btn reserva"><a href="/product/shopping-cart/<%=i.id%>/<%=dato.pickup_date%>/<%=dato.dropoff_date%>/<%=dato.pickup_city%>/<%=dato.dropoff_city%>/<%=dato.pickup_time%>/<%=dato.dropoff_time%>"
                                               class="btn">Reservar
                                               producto</a></button>
-                                          <%} %>
+                                          <%} else {%>
+                                            <button type="submit" class="btn reserva"><a href="/product/detail/<%=i.id%>"
+                                              class="btn">Detalle del coche</a></button>
+                                              
+                                            <%}%> 
 
                   </div>
                 </div>

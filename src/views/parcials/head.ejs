@@ -12,10 +12,9 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
-    
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+  <script src="https://kit.fontawesome.com/befb482623.js" crossorigin="anonymous"></script>
   <link rel='stylesheet' href='/css/styles.css'>
-  
+
 </head>
 
 <body>
@@ -31,66 +30,68 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-list">
 
-            
-            <% if(locals.loggued == true && locals.user.id_role == 1) { %>
- 
-            <li class="nav-item">
-              <a class="nav-link" href="/product/listing">Vehiculos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/product/create">Cargar vehiculo</a>
-            </li>
 
-            <% } %>
-            
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="/home" id="navbarDropdown" role="button"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                Categoria de vehiculos
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <%if(locals && locals.categories) { %>
-                  <%for(i of categories) { %>
-                  <li><a class="dropdown-item categoria" href="/product/filter/<%=i.id%>"><%=i.name%> </a></li>
-                <% }
-                }%> 
-              </ul>
-            </li>
-             
-            <li class="nav-item">
-              <a class="nav-link" href="/cities-listing">Ciudades</a>
-            </li>
-            
-            <li class="nav-item">
-              <a class="nav-link" href="/about-us">Quienes somos</a>
-            </li>
+            <% if(locals.loggued==true && locals.user.id_role==1) { %>
 
-            <% if(locals.loggued == true) { %>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="/home" id="navbarDropdown" role="button"
-                  data-bs-toggle="dropdown" aria-expanded="false">
-                  <%=locals.user.name + ' ' +  locals.user.last_name%>
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <%if(locals.user.id_role == 2) { %> 
-                  <li><a class="dropdown-item categoria" href="/user/profile">Mi perfil</a></a></li>
-                  <li><a class="dropdown-item categoria" href="#">Mis reservas</a></li>
-                  <% } %> 
-                  <li><a class="dropdown-item categoria" href="/user/logout">Log out</a></a></li>
-                </ul>
-              </li>
-
-            
-            <% } else { %>
               <li class="nav-item">
-                <a class="nav-link" href="/user/register">Registro</a> 
+                <a class="nav-link" href="/product/listing">Vehiculos</a>
               </li>
               <li class="nav-item">
-                <!-------------------------------------- Button trigger modal --------------------------------------->
-                <a class="nav-link" href="" data-bs-toggle="modal" data-bs-target="#exampleModal">Iniciar sesión</a>   
-                <!------------------------------------- Modal -------------------------------->
+                <a class="nav-link" href="/product/create">Cargar vehiculo</a>
               </li>
-            <% } %>    
+
+              <% } %>
+
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="/home" id="navbarDropdown" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Categoria de vehiculos
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <%if(locals && locals.categories) { %>
+                      <%for(i of categories) { %>
+                        <li><a class="dropdown-item categoria" href="/product/filter/<%=i.id%>">
+                            <%=i.name%>
+                          </a></li>
+                        <% } }%>
+                  </ul>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="/cities-listing">Ciudades</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="/about-us">Quienes somos</a>
+                </li>
+
+                <% if(locals.loggued==true) { %>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="/home" id="navbarDropdown" role="button"
+                      data-bs-toggle="dropdown" aria-expanded="false">
+                      <%=locals.user.name + ' ' + locals.user.last_name%>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <%if(locals.user.id_role==2) { %>
+                        <li><a class="dropdown-item categoria" href="/user/profile">Mi perfil</a></a></li>
+                        <li><a class="dropdown-item categoria" href="#">Mis reservas</a></li>
+                        <% } %>
+                        <li><a class="dropdown-item categoria" href="/user/logout">Log out</a></a></li>
+                    </ul>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/user/login"><i class="fa-solid fa-cart-shopping"></i></a>
+                    </li>
+                  </li>
+
+
+                  <% } else { %>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/user/register">Registro</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/user/login">Iniciar sesión</a>
+                    </li>
+                    <% } %>
           </ul>
           <form class="d-flex">
             <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
@@ -101,38 +102,3 @@
 
 
   </header>
-
-  <div class="modal <%if(locals && locals.mensaje) { %>  in <% } else {%> fade <% } %> "  id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" <% if(locals && locals.mensaje) { %> style="display:none;" <% }%> >
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">INGRESAR</h5>
-          <button type="button prueba" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          
-        </div>
-        <div class="modal-body">
-          <form action="/user/login" method="post">
-            <%if(locals && locals.mensaje) { %><p class = 'error'> <%=locals.mensaje %>  </p> <% } %> 
-            <div class="mb-3">
-              <input type="email" class="form-control" placeholder="Correo Electrónico" name="email" id="email"
-                aria-describedby="emailHelp" value = '<% if(locals.old) { %> <%=old.email%> <% } %>'>
-              <div id="emailHelp" class="form-text">Nunca compartiremos tu correo electrónico con alguien más</div>
-            </div>
-            <div class="mb-3">
-              <input type="password" class="form-control" name="password" id="password" placeholder="Contraseña">
-            </div>
-            <div class="mb-3 form-check">
-              <input type="checkbox" class="form-check-input" name = 'mantener_sesion' id="mantener_sesion" value ="mantener_sesion">
-              <label class="form-check-label" for="mantener_sesion">Mantener sesión iniciada</label>
-            </div>
-            <div class='password'>
-              <button type="submit" class="btn">Iniciar sesión</button>
-              <a href="/">¿Olvidaste tu contraseña?</a>
-              <a href="/user/register">¿Primera vez? Registrate</a>
-            </div>
-          </form>
-          
-        </div>
-      </div>
-    </div>
-  </div>

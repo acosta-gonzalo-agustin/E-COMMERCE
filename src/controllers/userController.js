@@ -89,6 +89,10 @@ const controlador = {
 
     },
 
+    loginForm: function (req, res) {
+        res.render('users/login');
+    },
+
     login: function (req, res) {
         res.redirect('/');
     },

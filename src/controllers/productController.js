@@ -20,6 +20,8 @@ const controlador = {
 
     categories: function (req, res) {
 
+        let category = req.params.id_category;
+
         /*----------------------------DELIMITANDO FECHA DE RECOGIDA DEL COCHE ------*/
         var date = new Date();
 
@@ -54,7 +56,7 @@ const controlador = {
 
         Promise.all([categories, cities, vehicles])
             .then(function ([categories, cities, vehicles]) {
-                res.render('products/product-filter', { categories, id_category: req.params.id_category, cities, vehicles, pickup_minDate })
+                res.render('products/products-filter', { categories,category,cities, vehicles, pickup_minDate })
             })
 
     },
@@ -228,7 +230,7 @@ const controlador = {
 
                 console.log(dato);
 
-                res.render('products/product-filter', {dato,categories,cities,vehicles,pickup_minDate,reservados })
+                res.render('products/products-filter', {dato,categories,cities,vehicles,pickup_minDate,reservados })
 
             })
 
@@ -412,6 +414,9 @@ const controlador = {
     /*---------------------------- funcion cargar shopping-cart --------------------------*/
 
     reserva: function (req, res) {
+        
+        let additionals = db.additionals.findAll();
+        let insurances = db.insurances.findAll();
         let categories = db.categories.findAll();
         let vehicle = db.vehicles.findOne({
             include: [
@@ -424,9 +429,9 @@ const controlador = {
             where: { id: req.params.id }
         })
 
-        Promise.all([categories, vehicle])
+        Promise.all([categories, vehicle,insurances,additionals])
             .then(function ([categories, vehicle]) {
-                res.render('products/shopping-cart', { categories, vehicle });
+                res.render('products/shopping-cart', { categories,vehicle,insurances,additionals});
             })
 
 

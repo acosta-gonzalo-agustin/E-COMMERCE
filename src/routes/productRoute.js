@@ -1,6 +1,7 @@
 const productController = require('../controllers/productController');
 const express = require('express');
 const router = express.Router();
+const login_booking_validation = require('../middlewares/login_booking');
 
 const { body } = require('express-validator');
 
@@ -26,11 +27,11 @@ router.get('/filter/:id_category',productController.categories);
 
 /*----------FILTRADO POR CIUDAD----------------*/
 
-router.get('/cities/:id',productController.cities);
+router.get('/cities/:id_city',productController.cities);
 
 /*----------FILTRADO POR CIUDAD/CATEGORIA/FECHAS-------------*/
 
-router.get('/formFilter',productController.formFilter);
+router.get('/formFilter/:id?',productController.formFilter);
 
 /*----------RUTA DETALLE DE PRODUCTO----------------*/
 
@@ -39,7 +40,7 @@ router.get('/detail/:id',productController.detail);
 
 /*-------------RUTA SHOPPING-CART --------------*/
 
-router.get('/shopping-cart/:id/:pickup_date/:dropoff_date/:pickup_city/:dropoff_city/:pickup_time/:dropoff_time',productController.reserva);
+router.get('/shopping-cart/:id/:pickup_date/:dropoff_date/:pickup_city/:dropoff_city/:pickup_time/:dropoff_time',login_booking_validation,productController.reserva);
 
 
 

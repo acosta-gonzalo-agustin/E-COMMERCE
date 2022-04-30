@@ -33,6 +33,7 @@ router.post('/register',verificacion_usuario,validation,userController.save);
 
 /*---------------------RUTAS PARA LOGUEAR UN USUARIO---------------------------*/
 
+router.get('/login',userController.loginForm);
 router.post('/login',verificacion_cuenta,userController.login);
 
 
