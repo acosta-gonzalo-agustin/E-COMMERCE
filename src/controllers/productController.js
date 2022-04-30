@@ -114,8 +114,8 @@ const controlador = {
         pickup_date = year_pick + '-' + month_pick + '-' + day_pick;
 
         let dato = {
-            pickup_city: req.params.id,
-            dropoff_city: req.params.id,
+            pickup_city: req.params.id_city,
+            dropoff_city: req.params.id_city,
             pickup_date:pickup_minDate,
             dropoff_date:dropoff_date,
             pickup_time: '10:00',
