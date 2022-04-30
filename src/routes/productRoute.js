@@ -30,7 +30,7 @@ router.get('/cities/:id',productController.cities);
 
 /*----------FILTRADO POR CIUDAD/CATEGORIA/FECHAS-------------*/
 
-router.get('/formFilter/:id?',productController.formFilter);
+router.get('/formFilter',productController.formFilter);
 
 /*----------RUTA DETALLE DE PRODUCTO----------------*/
 
@@ -39,7 +39,7 @@ router.get('/detail/:id',productController.detail);
 
 /*-------------RUTA SHOPPING-CART --------------*/
 
-router.get('/shopping-cart/:id',productController.reserva);
+router.get('/shopping-cart/:id/:pickup_date/:dropoff_date/:pickup_city/:dropoff_city/:pickup_time/:dropoff_time',productController.reserva);
 
 
 

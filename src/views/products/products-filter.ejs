@@ -32,6 +32,8 @@
         </div>
   </div>
 </div>
+
+ 
    
 
       <main>
@@ -43,10 +45,10 @@
             </div>
             <div class='alinear'>
               <div class="mb-1 ancho-hijos">
-                <select required class="form-select pickup_city" name="pickup_city" id="pickup_city" aria-label="Default select example">
+                <select class="form-select pickup_city" name="pickup_city" id="pickup_city" aria-label="Default select example">
                   <option>Ciudad retiro</option>
                   <%for(i of cities) { %>
-                    <option value="<%i.id%>">
+                    <option class="pickup_city" value="<%=i.id%>">
                         <%=i.name%>
                     </option>
                     <% } %>
@@ -56,7 +58,7 @@
                 <select name="dropoff_city" id='dropoff_city' class="form-select dropoff_city" aria-label="Default select example">
                   <option>Ciudad devolución</option>
                   <%for(i of cities) { %>
-                    <option value="<%i.id%>">
+                    <option class="pickup_city" value="<%=i.id%>">
                       <%=i.name%>
                     </option>
                     <%}%>
@@ -178,7 +180,7 @@
                             <li>kilometraje <%=i.mileage%>
                             </li>
                     </ul>
-
+                    <%console.log(dato)%>
 
                   </div>
                   <div>

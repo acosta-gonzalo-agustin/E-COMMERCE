@@ -292,11 +292,6 @@ const controlador = {
                 }
 
 
-
-
-
-
-
                 /*----------------------------COMPROBANDO DISPONIBILIDAD POR FECHA------------*/
                 let reservados = [];
 
@@ -362,9 +357,11 @@ const controlador = {
 
                 }
 
-                console.log(dato);
+                console.log(reservados);
 
-                res.render('products/product-filter', {dato,categories,cities,vehicles,pickup_minDate,reservados })
+               
+
+                res.render('products/products-filter', {dato,categories,cities,vehicles,pickup_minDate,reservados })
 
             })
 
