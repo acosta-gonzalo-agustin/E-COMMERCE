@@ -56,7 +56,7 @@ const controlador = {
 
         Promise.all([categories, cities, vehicles])
             .then(function ([categories, cities, vehicles]) {
-                res.render('products/products-filter', { categories,category,cities, vehicles, pickup_minDate })
+                res.render('products/products-filter', { categories,category,cities,vehicles, pickup_minDate })
             })
 
     },
@@ -414,6 +414,11 @@ const controlador = {
     /*---------------------------- funcion cargar shopping-cart --------------------------*/
 
     reserva: function (req, res) {
+
+        let dias = (Date.parse(req.params.dropoff_date) - Date.parse(req.params.pickup_date)) / 86400000;
+
+        dato = req.params;
+        dato.dias = dias; 
         
         let additionals = db.additionals.findAll();
         let insurances = db.insurances.findAll();
@@ -430,8 +435,11 @@ const controlador = {
         })
 
         Promise.all([categories, vehicle,insurances,additionals])
-            .then(function ([categories, vehicle]) {
-                res.render('products/shopping-cart', { categories,vehicle,insurances,additionals});
+            .then(function ([categories, vehicle,insurances,additionals]) {
+                let precioTotal = dias * vehicle.pricexday;
+                dato.precioTotal = precioTotal;
+                
+                res.render('products/booking', {categories,vehicle,insurances,additionals});
             })
 
 

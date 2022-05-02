@@ -85,7 +85,6 @@ app.use('/cities-listing',citiesListingRoute);
 
 app.use('/FAQs',faqsRoute);
 
-
 app.use('/user',userRoute)
 
 

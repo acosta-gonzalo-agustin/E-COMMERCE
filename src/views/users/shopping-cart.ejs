@@ -1,0 +1,84 @@
+<!-------------------------------------------------INCLUYENDO HEAD Y HEADER------------------------------>
+
+<%- include('../parcials/head') %>
+
+  <div class='titulo-lista'>
+    <h1>MI CUENTA</h1>
+  </div>
+
+  <main class="container">
+    <div class="card">
+      <img src="/img/img-users/<%=locals.user.profile_picture%>" class="card-img-top img-fluid" alt="imagen no cargada">
+    </div>
+
+    <table class="table table-striped table-bordered">
+      <tbody>
+        <tr>
+          <td>Nombre</td>
+          <td>
+            <%=locals.user.name%>
+          </td>
+        </tr>
+        <tr>
+          <td>Apellido</td>
+          <td>
+            <%=locals.user.last_name%>
+          </td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td>
+            <%=locals.user.email%>
+          </td>
+        </tr>
+        <tr>
+          <td>Telefono</td>
+          <td>
+            <% if(locals.user.phone_number !='NULL' ) { %>
+              <%=locals.user.phone_number%>
+                <% } %>
+          </td>
+        </tr>
+        <tr>
+          <td>Licencia de conducir</td>
+          <td>
+            <% if(locals.user.driver_licence !='NULL' ) { %>
+              <%=locals.user.driver_licence%>
+                <% } %>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <div class=' boton'>
+              <button type="submit" class="btn"><a class="link-boton" href="/user/edit">Modificar info</a></button>
+            </div>
+          </td>
+        </tr>
+      <tfoot>
+        <tr>
+          <td><button>Reservas actuales</button><button>Reservas pasadas</button></td>
+          <td>
+            <form action="/user/delete/<%=locals.user.id%>?_method=DELETE" method="POST">
+              <button class="" type="submit">Eliminar usuario</button>
+            </form>
+          </td>
+        </tr>
+      </tfoot>
+
+      </tbody>
+    </table>
+    </div>
+
+
+  </main>
+
+
+
+
+
+
+
+  <!-------------------------------------------------INCLUYENDO FOOTER------------------------------>
+
+  <%- include('../parcials/footer') %>

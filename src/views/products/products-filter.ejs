@@ -223,7 +223,7 @@
                                         <button type="submit" class="reserva presupuesto"><a class="tachado eliminar"
                                             href="/product/detail/<%=i.id%> " id='pruebisima'>RESERVADO BUSCAR OTRAS OPCIONES</a></button>
                                         <%} else if(locals && locals.dato) { %>
-                                          <button type="submit" class="btn reserva"><a href="/product/shopping-cart/<%=i.id%>/<%=dato.pickup_date%>/<%=dato.dropoff_date%>/<%=dato.pickup_city%>/<%=dato.dropoff_city%>/<%=dato.pickup_time%>/<%=dato.dropoff_time%>"
+                                          <button type="submit" class="btn reserva"><a href="/product/booking/<%=i.id%>/<%=dato.pickup_date%>/<%=dato.dropoff_date%>/<%=dato.pickup_city%>/<%=dato.dropoff_city%>/<%=dato.pickup_time%>/<%=dato.dropoff_time%>"
                                               class="btn">Reservar
                                               producto</a></button>
                                           <%} else {%>
@@ -249,6 +249,8 @@
 
       </main>
 
+
+      <script src="/js/formulario_style.js"></script>
 
 
       <!-------------------------------------------------INCLUYENDO FOOTER------------------------------>
