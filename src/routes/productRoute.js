@@ -2,6 +2,7 @@ const productController = require('../controllers/productController');
 const express = require('express');
 const router = express.Router();
 const login_booking_validation = require('../middlewares/login_booking');
+const permission_validation = require('../middlewares/permission_validation');
 
 const { body } = require('express-validator');
 
@@ -49,25 +50,25 @@ router.get('/booking/:id/:pickup_date/:dropoff_date/:pickup_city/:dropoff_city/:
 /*---------------RUTAS PARA CREAR -----------------------------*/
 
 
-router.get('/create',productController.create);
-router.post('/create',validation,productController.save);
+router.get('/create',permission_validation,productController.create);
+router.post('/create',permission_validation,validation,productController.save);
 
 
 
 /*-------------RUTAS PARA EDITAR-------------------------------*/
 
-router.get('/edit/:id',productController.edit);
-router.put('/edit/:id',validation,productController.update);
+router.get('/edit/:id',permission_validation,productController.edit);
+router.put('/edit/:id',permission_validation,validation,productController.update);
 
 
 /*---------RUTA PARA LISTAR PRODUCTOS-----------*/
 
-router.get('/listing',productController.list);
+router.get('/listing',permission_validation,productController.list);
 
 
 /*----------RUTA PARA ELIMINAR PRODUCTO---------*/
 
-router.delete('/delete/:id',productController.delete);
+router.delete('/delete/:id',permission_validation,productController.delete);
 
 
 

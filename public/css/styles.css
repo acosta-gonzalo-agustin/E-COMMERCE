@@ -90,6 +90,9 @@ header {
 
 /*--------------------------------- ESTILOS DEL FORMULARIO DE BUSQUEDA DE AUTOS--------------------------*/
 
+.validacion_ocultar {
+    display: none;
+}
 
 .titulo {
     display: none;

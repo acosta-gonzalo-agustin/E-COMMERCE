@@ -39,8 +39,12 @@ window.addEventListener('load', function() {
     
     let filtro = document.querySelector('form.formulario');
 
-
+    let errors_list = document.querySelector('form ul#errors');
+    
     filtro.addEventListener('submit', function(event) {
+
+                
+       
 
         let errors = [];
 
@@ -83,11 +87,15 @@ window.addEventListener('load', function() {
             event.preventDefault();
 
             let errors_list = document.querySelector('form ul#errors');
+            errors_list.innerHtml = "<div></div>";
             for(i of errors) {
 
                 errors_list.innerHTML += "<li>" +  i + "</li>";
-            }
 
+            }
+            errors_list.innerHtml = "<div></div>";
+            console.log(errors_list);
+            
         }      
     })
 
