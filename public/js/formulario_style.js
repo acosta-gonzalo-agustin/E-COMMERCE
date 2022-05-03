@@ -40,6 +40,7 @@ window.addEventListener('load', function() {
     let filtro = document.querySelector('form.formulario');
 
     let errors_list = document.querySelector('form ul#errors');
+    errors_list.style.color = 'blue';
 
     filtro.addEventListener('submit', function(event) {
 
