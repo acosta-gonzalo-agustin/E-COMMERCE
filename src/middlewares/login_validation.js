@@ -55,7 +55,7 @@ function verificacion(req, res, next) {
                 Promise.all([categories, cities, vehicles])
                     .then(function ([categories, cities, vehicles]) {
 
-                        res.render('', {categories, cities, vehicles, mensaje: 'El correo electrónico que ingresaste no está conectado a una cuenta. Encuentra tu cuenta e inicia sesión'})
+                        res.render('users/login', {categories, cities, vehicles, mensaje: 'El correo electrónico que ingresaste no está conectado a una cuenta. Encuentra tu cuenta e inicia sesión'})
                     });
 
             } else if (condicion == 1) {
@@ -66,7 +66,7 @@ function verificacion(req, res, next) {
                 Promise.all([categories, cities, vehicles])
                     .then(function ([categories, cities, vehicles]) {
 
-                        res.render('index', {old:req.body,categories, cities, vehicles, mensaje: 'La contraseña que ingresaste es incorrecta'})
+                        res.render('users/login', {old:req.body,categories, cities, vehicles, mensaje: 'La contraseña que ingresaste es incorrecta'})
                     });
 
             } else {
