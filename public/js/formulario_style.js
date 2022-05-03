@@ -40,12 +40,14 @@ window.addEventListener('load', function() {
     let filtro = document.querySelector('form.formulario');
 
     let errors_list = document.querySelector('form ul#errors');
-    
+
     filtro.addEventListener('submit', function(event) {
 
-                
-       
+        
+        errors_list.innerHTML = "<div></div>";
+        console.log(errors_list);
 
+                
         let errors = [];
 
         let pickup_city = document.querySelector('select.pickup_city');
@@ -85,22 +87,21 @@ window.addEventListener('load', function() {
         if(errors.length > 0) {
 
             event.preventDefault();
+        
 
-            let errors_list = document.querySelector('form ul#errors');
-            errors_list.innerHtml = "<div></div>";
             for(i of errors) {
 
                 errors_list.innerHTML += "<li>" +  i + "</li>";
+                console.log(errors_list);
 
             }
-            errors_list.innerHtml = "<div></div>";
-            console.log(errors_list);
             
-        }      
+            
+            
+        } 
+        
+        
     })
-
-
-    
 
     
   
