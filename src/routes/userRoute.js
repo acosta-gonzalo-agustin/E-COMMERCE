@@ -14,12 +14,11 @@ const validation = [
     body('email').notEmpty().withMessage('debe proveer un email').bail().isEmail().withMessage('el campo debe tener formato de email, por ejemplo nombre@gmail.com'),
     body('password').notEmpty().withMessage('debe elegir una clave para el usuario').bail().isLength({min:8}).withMessage('La clave debe contener al menos ocho caracteres').bail().isStrongPassword({
     minLowercase: 1, minUppercase: 1, minNumbers: 1, minSymbols: 1}).withMessage('La clave debe contener al menos una letra minuscula, una letra mayuscula,un numero y un caracter especial'),
-    body('repeatpassword').custom(async (confirmPassword, {req}) => {
-        const password = req.body.password
-        if(password !== confirmPassword){
-          throw new Error('Las contraseñas no coinciden')
-        }    
-    })
+    body('passwordConfirmation').custom((value, { req }) => {
+        if (value !== req.body.password) {
+          throw new Error('Las contrasenias no coinciden');
+        }
+    }),
 ];
 
 /*----------------------------VALIDACION ACTUALIZACION DATOS DE USUARIO--------------------------------------------*/

@@ -8,11 +8,11 @@
       enctype="multipart/form-data">
       <ul id="errors_register"> 
       </ul>
-      <% if (locals && locals.registrado) { %>
+      <%if(locals && locals.registrado) { %>
         <p class='error'>
           <%=registrado%>
         </p>
-        <% } %>
+        <% }%>
           <div class="titulo-registro">
             <h5>Registrate</h5>
           </div>
@@ -62,22 +62,22 @@
             <div class="mb-3">
               <input type="password" class="form-control" name='password' id="password" placeholder="Contraseña"
                 value="<%= locals.old && old.password%>" enctype="multipart/form-data">
-              <% if (locals && locals.errors) { for(i of locals.errors) { if(i.includes('clave') && ! i.includes('coinciden') ) { %>
-                <p class='error'>
-                  <%=i%>
-                </p>
-                <% } } } %>
-                <% if (locals && locals.errors) { for(i of locals.errors) { if(i.includes('coinciden')) { %>
-                  <p class='error'>
-                    <%=i%>
-                  </p>
-                  <% } } } %>
             </div>
             <div class="mb-3">
               <input type="password" class="form-control" name='repeatpassword' id="repeatpassword"
                 placeholder="Repetir Contraseña" value="<%= locals.old && old.repeatpassword%>">
             </div>
           </div>
+          <% if (locals && locals.errors) { for(i of locals.errors) { if(i.includes('clave') && ! i.includes('coinciden') ) { %>
+            <p class='error'>
+              <%=i%>
+            </p>
+            <% } } } %>
+          <% if (locals && locals.errors) { for(i of locals.errors) { if(i.includes('coinciden')) { %>
+            <p class='error'>
+              <%=i%>
+            </p>
+            <% } } } %>
           <div class='registro boton'>
             <button type="submit" class="btn">Enviar</button>
           </div>
