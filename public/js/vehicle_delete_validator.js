@@ -1,18 +1,20 @@
 window.addEventListener('load', function() {
 
-    let formulario = document.querySelector('form.eliminar');
-
-    
+    let formulario = document.querySelectorAll('form.eliminar');
 
     console.log(formulario);
 
-    formulario.addEventListener('submit',function(e) {
+    for(i of formulario) {
 
-        e.preventDefault();
-        
-        confirm("Esta seguro que desea eliminar el auto");
+        i.addEventListener('submit', function(event) {
+            let confirmacion = confirm('esta seguro de eliminar este vehiculo?');
+            
+            if(confirmacion == false) {
+                event.preventDefault();
 
-        alert("Hello! I am an alert box!!");
-    })
+            }
+        })
+
+    }
     
 })

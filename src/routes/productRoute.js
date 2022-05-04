@@ -50,8 +50,8 @@ router.get('/booking/:id/:pickup_date/:dropoff_date/:pickup_city/:dropoff_city/:
 /*---------------RUTAS PARA CREAR -----------------------------*/
 
 
-router.get('/create',/*permission_validation,*/productController.create);
-router.post('/create',/*permission_validation,*/validation,productController.save);
+router.get('/create',permission_validation,productController.create);
+router.post('/create',permission_validation,validation,productController.save);
 
 
 
@@ -63,12 +63,12 @@ router.put('/edit/:id',permission_validation,validation,productController.update
 
 /*---------RUTA PARA LISTAR PRODUCTOS-----------*/
 
-router.get('/listing',/*permission_validation,*/productController.list);
+router.get('/listing',permission_validation,productController.list);
 
 
 /*----------RUTA PARA ELIMINAR PRODUCTO---------*/
 
-router.delete('/delete/:id',/*permission_validation,*/productController.delete);
+router.delete('/delete/:id',permission_validation,productController.delete);
 
 
 
