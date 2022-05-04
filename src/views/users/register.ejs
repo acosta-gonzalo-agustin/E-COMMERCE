@@ -6,6 +6,8 @@
   <main class="main-register">
     <form class='formulario registro formulario-register' action="/user/register" method="POST"
       enctype="multipart/form-data">
+      <ul id="errors_register"> 
+      </ul>
       <% if (locals && locals.registrado) { %>
         <p class='error'>
           <%=registrado%>
@@ -82,7 +84,7 @@
     </form>
   </main>
 
-
+  <script src="/js/register_validator.js"></script>
 
   <!-------------------------------------------------INCLUYENDO FOOTER------------------------------>
 
