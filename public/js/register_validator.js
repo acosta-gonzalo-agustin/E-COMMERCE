@@ -3,7 +3,7 @@ window.addEventListener('load', function() {
     
 
 
-    /*---------------------------VALIDACIONES FILTRO DE BUSQUEDA-------------------------------------*/
+    
 
     
     let filtro = document.querySelector('form.formulario-register');

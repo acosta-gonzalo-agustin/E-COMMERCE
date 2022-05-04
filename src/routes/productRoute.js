@@ -9,7 +9,7 @@ const { body } = require('express-validator');
 
 const validation = [
     body('name').notEmpty().withMessage('Debe asignar un nombre al articulo').isLength({max:19}).withMessage('El numero de placa tiene como maximo 19 caracteres'),
-    body('plate_number').notEmpty().withMessage('Debe asignar un nombre al articulo').bail().isLength({max:19}).withMessage('El numero de placa tiene como maximo 19 caracteres'),
+    body('plate_number').notEmpty().withMessage('Debe asignar numero de placa').bail().isLength({max:19}).withMessage('El numero de placa tiene como maximo 19 caracteres'),
     body('brands').notEmpty().withMessage('Debe asignar una marca al articulo'),
     body('fuel').notEmpty().withMessage('Debe asignar una combustible al articulo'),
     body('seat_number').notEmpty().withMessage('Debe asignar cantidad de asientos al articulo'),
@@ -50,8 +50,8 @@ router.get('/booking/:id/:pickup_date/:dropoff_date/:pickup_city/:dropoff_city/:
 /*---------------RUTAS PARA CREAR -----------------------------*/
 
 
-router.get('/create',permission_validation,productController.create);
-router.post('/create',permission_validation,validation,productController.save);
+router.get('/create',/*permission_validation,*/productController.create);
+router.post('/create',/*permission_validation,*/validation,productController.save);
 
 
 
@@ -63,12 +63,12 @@ router.put('/edit/:id',permission_validation,validation,productController.update
 
 /*---------RUTA PARA LISTAR PRODUCTOS-----------*/
 
-router.get('/listing',permission_validation,productController.list);
+router.get('/listing',/*permission_validation,*/productController.list);
 
 
 /*----------RUTA PARA ELIMINAR PRODUCTO---------*/
 
-router.delete('/delete/:id',permission_validation,productController.delete);
+router.delete('/delete/:id',/*permission_validation,*/productController.delete);
 
 
 

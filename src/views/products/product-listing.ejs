@@ -44,10 +44,10 @@
 
             </div>
             <div>
-              <button type="submit" class="btn reserva"><a href="/product/edit/<%=i.id%> " class="btn">Editar</a></button>
+              <button type="submit" class="btn reserva"><a href="/product/edit/<%=i.id%>" class="btn">Editar</a></button>
             </div>
             <div>
-              <form  action="/product/delete/<%=i.id%>?_method=DELETE" method="POST">
+              <form class ="eliminar" action="/product/delete/<%=i.id%>?_method=DELETE" method="POST">
                 <button class="eliminar presupuesto" type="submit">Eliminar</button>  
               </form>
               
@@ -69,6 +69,8 @@
 
 
   </main>
+
+  <script src="/js/vehicle_delete_validator.js"></script>
 
 
 

@@ -9,8 +9,6 @@ const { type } = require('express/lib/response');
 
 
 
-
-
 const controlador = {
 
 
@@ -49,14 +47,14 @@ const controlador = {
                     { association: 'fuel' },
                     { association: 'features' },
                 ],
-                where: {id_category: req.params.id_category }
+                where: { id_category: req.params.id_category }
             }
 
         );
 
         Promise.all([categories, cities, vehicles])
             .then(function ([categories, cities, vehicles]) {
-                res.render('products/products-filter', { categories,category,cities,vehicles, pickup_minDate })
+                res.render('products/products-filter', { categories, category, cities, vehicles, pickup_minDate })
             })
 
     },
@@ -84,10 +82,10 @@ const controlador = {
 
         let pickup_date = Date.parse(pickup_minDate) + 86400000;
         let dropoff_date = Date.parse(pickup_minDate) + 518400000;
-        
+
         dropoff_date = new Date(dropoff_date);
         pickup_date = new Date(pickup_date);
-        
+
 
         let year_drop = dropoff_date.getFullYear();
         let day_drop = dropoff_date.getDate();
@@ -116,8 +114,8 @@ const controlador = {
         let dato = {
             pickup_city: req.params.id_city,
             dropoff_city: req.params.id_city,
-            pickup_date:pickup_minDate,
-            dropoff_date:dropoff_date,
+            pickup_date: pickup_minDate,
+            dropoff_date: dropoff_date,
             pickup_time: '10:00',
             dropoff_time: '10:00',
         }
@@ -139,7 +137,7 @@ const controlador = {
         Promise.all([categories, cities, bookings, vehicles])
             .then(function ([categories, cities, bookings, vehicles]) {
 
-                
+
 
                 /*----------------------------COMPROBANDO DISPONIBILIDAD POR FECHA------------*/
                 let reservados = [];
@@ -156,7 +154,7 @@ const controlador = {
                     var real_city_dropoff = '';
                     var index = 0;
 
-                    
+
 
                     for (j of bookings) {
 
@@ -179,7 +177,7 @@ const controlador = {
 
 
                         for (let k = index + 1; k < bookings.length; k++) {
-                            
+
                             if (bookings[k].id_vehicle == i.id) {
                                 real_date_dropoff = Date.parse(bookings[k].pickup_date);
                                 real_city_dropoff = bookings[k].pickup_city;
@@ -214,23 +212,23 @@ const controlador = {
                         }
 
                         let mili_now = Date.parse(year + '-' + month + '-' + day);
-                        
-                       
+
+
 
                         if (!(dato.pickup_city == i.id_city || pickup >= mili_now + 172800000)) {
                             reservados.push(i.id);
                         }
 
                     }
-                    
 
-                    
+
+
 
                 }
 
                 console.log(dato);
 
-                res.render('products/products-filter', {dato,categories,cities,vehicles,pickup_minDate,reservados })
+                res.render('products/products-filter', { dato, categories, cities, vehicles, pickup_minDate, reservados })
 
             })
 
@@ -331,7 +329,7 @@ const controlador = {
 
 
                         for (let k = index + 1; k < bookings.length; k++) {
-                            
+
                             if (bookings[k].id_vehicle == i.id) {
                                 real_date_dropoff = Date.parse(bookings[k].pickup_date);
                                 real_city_dropoff = bookings[k].pickup_city;
@@ -355,15 +353,15 @@ const controlador = {
                         reservados.push(i.id);
                     }
 
-                    
+
 
                 }
 
                 console.log(reservados);
 
-               
 
-                res.render('products/products-filter', {dato,categories,cities,vehicles,pickup_minDate,reservados })
+
+                res.render('products/products-filter', { dato, categories, cities, vehicles, pickup_minDate, reservados })
 
             })
 
@@ -418,8 +416,8 @@ const controlador = {
         let dias = (Date.parse(req.params.dropoff_date) - Date.parse(req.params.pickup_date)) / 86400000;
 
         dato = req.params;
-        dato.dias = dias; 
-        
+        dato.dias = dias;
+
         let additionals = db.additionals.findAll();
         let insurances = db.insurances.findAll();
         let categories = db.categories.findAll();
@@ -434,12 +432,12 @@ const controlador = {
             where: { id: req.params.id }
         })
 
-        Promise.all([categories, vehicle,insurances,additionals])
-            .then(function ([categories, vehicle,insurances,additionals]) {
+        Promise.all([categories, vehicle, insurances, additionals])
+            .then(function ([categories, vehicle, insurances, additionals]) {
                 let precioTotal = dias * vehicle.pricexday;
                 dato.precioTotal = precioTotal;
-                
-                res.render('products/booking', {categories,vehicle,insurances,additionals});
+
+                res.render('products/booking', { categories, vehicle, insurances, additionals });
             })
 
 
@@ -471,6 +469,7 @@ const controlador = {
     save: function (req, res) {
 
         let dato = req.body;
+        
 
         let errors = validationResult(req);
         if (errors.isEmpty()) {
@@ -530,14 +529,37 @@ const controlador = {
                     });
 
                 } else {
-                    let error_tipo = 'El archivo debe tener formato jpg, jpeg,png';
-                    res.render('products/product-create', { errors: errors.array(), old: req.body, error: error_tipo });
+
+                    let brands = db.brands.findAll();
+                    let additionals = db.additionals.findAll();
+                    let categories = db.categories.findAll();
+                    let cities = db.cities.findAll();
+                    let features = db.features.findAll();
+                    let fuels = db.fuels.findAll();
+
+                    Promise.all([brands, additionals, categories, cities, features, fuels])
+                        .then(function ([brands, additionals, categories, cities, features, fuels]) {
+                            let error_tipo = 'El archivo debe tener formato jpg, jpeg,png';
+                            res.render('products/product-create', { errors: errors.array(), old: req.body, error: error_tipo,brands,additionals,categories,cities,features,fuels});
+                        })
+
                 }
 
             } else {
+                let brands = db.brands.findAll();
+                let additionals = db.additionals.findAll();
+                let categories = db.categories.findAll();
+                let cities = db.cities.findAll();
+                let features = db.features.findAll();
+                let fuels = db.fuels.findAll();
 
-                let error_tipo = 'Debe seleccionar una imagen';
-                res.render('products/product-create', { errors: errors.array(), old: req.body, error: error_tipo });
+                Promise.all([brands, additionals, categories, cities, features, fuels])
+                    .then(function ([brands, additionals, categories, cities, features, fuels]) {
+                        let error_tipo = 'Debe seleccionar una imagen';
+                        res.render('products/product-create', { errors: errors.array(), old: req.body, error: error_tipo,brands,additionals,categories,cities,features,fuels});
+                    })
+
+
             }
 
         } else {
