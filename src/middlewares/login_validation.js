@@ -7,6 +7,8 @@ const db = require('../database/models');
 function verificacion(req, res, next) {
     let condicion = 0;
 
+    console.log(req.body);
+
     db.users.findOne({
         include:
             [

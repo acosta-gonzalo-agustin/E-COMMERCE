@@ -10,11 +10,11 @@
       </ul>
         <div class="titulo-registro">
             <h5>Ingresar</h5>
-          </div>
+        </div>
         <%if(locals && locals.mensaje) { %><p class = 'error'> <%=locals.mensaje %>  </p> <% } %> 
         <div class="mb-3">
-          <input  class="form-control" placeholder="Correo Electrónico" name="email" id="email"
-            aria-describedby="emailHelp" value = '<% if(locals.old) { %> <%=old.email%> <% } %>'>
+          <input  class="form-control email" placeholder="Correo Electrónico" name="email" id="email"
+            aria-describedby="emailHelp" value = '<%if(locals.old){%><%=old.email%><%}%>'>
           <div id="emailHelp" class="form-text">Nunca compartiremos tu correo electrónico con alguien más</div>
         </div>
         <div class="mb-3">
