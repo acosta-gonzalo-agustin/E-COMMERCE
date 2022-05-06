@@ -806,6 +806,84 @@ const controlador = {
 
     },
 
+    /*---------------------------------METODOS API-----------------------------------------------------*/
+
+    listing: function(req,res) {
+
+        let categories = db.categories.findAll();
+        let vehicles = db.vehicles.findAll();
+
+        Promise.all([categories,vehicles])
+        .then(function([categories,vehicles]) {
+            countByCategory = [];
+            for(i of categories) {
+                let category = 0; 
+                for(j of vehicles) {
+                    if(j.id_category == i.id) {
+                        category ++;
+                    }
+                }
+               
+                countByCategory.push({[i.name]:category});
+            }
+            return res.status(200).json({
+                count: vehicles.length,
+                countByCategory: countByCategory,
+                data:vehicles,
+                status:200,
+            })
+        })
+
+
+    },
+
+    categories: function(req,res) {
+        
+        db.categories.findAll()
+        .then(function(categories) {
+            return res.status(200).json({
+                total:categories.length,
+                data: categories,
+                status:200,
+
+            })
+        })
+    },
+
+    vehicle: function(req,res) {
+
+        id = req.params.id;
+
+        db.vehicles.findOne({
+            include: [
+                { association: 'category'},
+                { association: 'brand'},
+                { association: 'city'},
+                { association: 'fuel'},
+                { association: 'features'},
+            ],
+            where:{id:id}
+        })
+        .then(function(vehicle) {
+            return res.status(200).json({
+                data: {
+                    name:vehicle.name,
+                    plate_number: vehicle.plate_number,
+                    mileage:vehicle.mileage,
+                    pricexday:vehicle.pricexday,
+                    city: vehicle.city.name,
+                    brand: vehicle.brand.name,
+                    category: vehicle.category.name,
+                    transmission:vehicle.transmission,
+                    seat_number:vehicle.seat_number,
+                    fuel:vehicle.fuel.name,
+                    picture:vehicle.picture,
+                    description:vehicle.description
+                }
+            })
+        })
+    }
+
 }
 
 module.exports = controlador;

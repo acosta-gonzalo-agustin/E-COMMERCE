@@ -72,5 +72,15 @@ router.delete('/delete/:id',permission_validation,productController.delete);
 
 
 
+/*----------------------------RUTAS API--------------------------------------------------------*/
+
+router.get('/list',productController.listing);
+
+router.get('/:id',productController.vehicle);
+
+router.get('/categories',productController.categories);
+
+router.get('/:id',productController.vehicle);
+
 
 module.exports = router;

@@ -216,11 +216,40 @@ const controlador = {
 
         res.redirect('/');
 
+    },
+
+    listing: function(req,res) {
+
+        db.users.findAll()
+        .then(function(users) {
+            return res.status(200).json({
+                total:users.length,
+                data:users,
+                status:200
+            });
+        })
+        
+    },
+
+    user: function(req,res) {
+        let id = req.params.id
+
+        db.users.findByPk(id)
+        .then(function(user) {
+            return res.status(200).json({
+                data:{
+                    name: user.name,
+                    last_name: user.last_name,
+                    email: user.email,
+                    phone_number: user.phone_number,
+                    driver_licence :user.driver_licence,
+                    promo_code:user.promo_code,
+                    id_role:user.id_role
+                },
+                status:200
+            });
+        })
     }
-
-
-
-
 
 }
 

@@ -67,5 +67,12 @@ router.get('/logout',userController.logout);
 router.delete('/delete/:id',userController.delete);
 
 
+/*--------------------------------RUTAS APIS----------------------------------------*/
+
+router.get('/listing',userController.listing);
+
+router.get('/:id',userController.user);
+
+
 module.exports = router;
 
