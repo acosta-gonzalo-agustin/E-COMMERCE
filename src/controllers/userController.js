@@ -51,9 +51,9 @@ const controlador = {
                         } else {
 
                             db.users.create({
-                                name: dato.name,
-                                last_name: dato.last_name,
-                                email: dato.email,
+                                name: dato.name.trim(),
+                                last_name: dato.last_name.trim(),
+                                email: dato.email.trim(),
                                 password: bcrypt.hashSync(dato.password, 10),
                                 promo_code: 'AAA555',
                                 id_role: 2,

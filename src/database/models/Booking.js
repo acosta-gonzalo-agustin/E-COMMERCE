@@ -3,7 +3,6 @@ function bookingsData(sequelize, Datatypes) {
 
     let cols = {
         id:{type:Datatypes.INTEGER,primaryKey:true,autoIncrement:true},
-        booking_number:{type:Datatypes.STRING(50)},
         id_insurance:{type:Datatypes.INTEGER},
         pickup_date:{type:Datatypes.DATE},
         dropoff_date:{type:Datatypes.DATE},

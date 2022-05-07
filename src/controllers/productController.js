@@ -491,14 +491,14 @@ const controlador = {
 
 
                             db.vehicles.create({
-                                name: dato.name,
-                                plate_number: dato.plate_number,
+                                name: dato.name.trim(),
+                                plate_number: dato.plate_number.trim(),
                                 seat_number: dato.seat_number,
                                 transmission: dato.transmission,
                                 mileage: '0',
                                 pricexday: dato.pricexday,
                                 picture: nombre,
-                                description: dato.description,
+                                description: dato.description.trim(),
                                 id_category: dato.category,
                                 id_fuel: dato.fuel,
                                 id_brand: dato.brands,

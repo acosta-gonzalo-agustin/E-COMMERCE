@@ -1,8 +1,7 @@
 function permission(req, res, next) {
 
     if (req.session && req.session.user) {
-        if (req.session.user.email == 'admin1@gmail.com') {
-            console.log('es el administrador');
+        if (req.session.user.id_role == 1) {
             next();
         } else {
             res.send('pagina no encontrada');

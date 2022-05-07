@@ -41,6 +41,8 @@
 
               <% } %>
 
+              <% if(locals.loggued==false  || (locals.loggued == true && locals.user.id_role==2)) { %>
+
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="/home" id="navbarDropdown" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false">
@@ -63,6 +65,7 @@
                 <li class="nav-item">
                   <a class="nav-link" href="/about-us">Quienes somos</a>
                 </li>
+                <%}%> 
 
                 <% if(locals.loggued==true) { %>
                   <li class="nav-item dropdown">
@@ -71,7 +74,7 @@
                       <%=locals.user.name + ' ' + locals.user.last_name%>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <%if(locals.user.id_role==2) { %>
+                      <%if(locals.user.id_role == 1) { %>
                         <li><a class="dropdown-item categoria" href="/user/profile">Mi perfil</a></a></li>
                         <li><a class="dropdown-item categoria" href="#">Mis reservas</a></li>
                         <% } %>
