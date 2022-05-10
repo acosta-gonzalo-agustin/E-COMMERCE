@@ -4,8 +4,8 @@ function loggued(req,res,next) {
     if(req.session && req.session.user) {
         res.locals.loggued = true;      
         res.locals.user = req.session.user;
-        console.log('llego');
     } 
+    
     next();
 }
 

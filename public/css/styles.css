@@ -699,7 +699,7 @@ footer .container li {
 
     .lista-productos {
 
-        flex-grow: 0.5;
+        flex-grow: 0.4;
 
     }
 
@@ -779,18 +779,19 @@ footer .container li {
 
     .cliente {
         margin-left: 5vw !important;
-        width: 45vw !important;
+        width: 35vw !important;
     }
 
 
     .resumen-pedido {
         margin-right: 2vw;
-        width: 45VW!important;
+        width: 35VW!important;
         position: sticky;
-        top: 120px;   
+        top: 500px;   
     }
 
 
     
     
 }
+

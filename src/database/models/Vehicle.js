@@ -15,7 +15,8 @@ function vehiclesData(sequelize, Datatypes) {
         seat_number:{type:Datatypes.INTEGER},
         id_fuel:{type:Datatypes.INTEGER},
         picture:{type:Datatypes.STRING(500)},
-        description: {type:Datatypes.STRING(1000)}
+        description: {type:Datatypes.STRING(1000)},
+        state: {type:Datatypes.BOOLEAN}
     };
     
     let config = {timestamps:false,camelCase:false,tableName:'vehicle'};

@@ -47,7 +47,9 @@ const controlador = {
                     { association: 'fuel' },
                     { association: 'features' },
                 ],
-                where: { id_category: req.params.id_category }
+                where: {
+                    id_category: req.params.id_category,
+                }
             }
 
         );
@@ -67,7 +69,7 @@ const controlador = {
         /*----------------------------DELIMITANDO FECHA DE RECOGIDA DEL COCHE ------*/
 
         var date = new Date();
-        console.log(date);
+
         let year = date.getFullYear();
         let day = date.getDate();
         let month = date.getMonth() + 1;
@@ -144,79 +146,84 @@ const controlador = {
 
                 for (i of vehicles) {
 
-                    let condicion = true;
-                    let pickup = Date.parse(dato.pickup_date);
-                    let dropoff = Date.parse(dato.dropoff_date);
-                    let distancia = 31536000000;
-                    var real_date_pickup = '';
-                    var real_city_pickup = '';
-                    var real_date_dropoff = '';
-                    var real_city_dropoff = '';
-                    var index = 0;
+                    if (i.state) {
+                        reservados.push(i.id);
+                    } else {
+
+                        let pickup = Date.parse(dato.pickup_date);
+                        let dropoff = Date.parse(dato.dropoff_date);
+                        let distancia = 31536000000;
+                        var real_date_pickup = '';
+                        var real_city_pickup = '';
+                        var real_date_dropoff = '';
+                        var real_city_dropoff = '';
+                        var index = 0;
 
 
 
-                    for (j of bookings) {
+                        for (j of bookings) {
 
-                        var contador = 0;
-                        if (j.id_vehicle == i.id) {
+                            var contador = 0;
+                            if (j.id_vehicle == i.id) {
 
 
-                            let booking_dropoff = Date.parse(j.dropoff_date);
-                            if ((Math.abs(pickup - booking_dropoff)) < distancia) {
-                                distancia = Math.abs(pickup - booking_dropoff);
-                                real_date_pickup = Date.parse(j.dropoff_date);
-                                real_city_pickup = j.dropoff_city;
-                                index = bookings.indexOf(j);
+                                let booking_dropoff = Date.parse(j.dropoff_date);
+                                if ((Math.abs(pickup - booking_dropoff)) < distancia) {
+                                    distancia = Math.abs(pickup - booking_dropoff);
+                                    real_date_pickup = Date.parse(j.dropoff_date);
+                                    real_city_pickup = j.dropoff_city;
+                                    index = bookings.indexOf(j);
 
+                                }
                             }
                         }
-                    }
 
-                    if (real_date_pickup != '') {
+                        if (real_date_pickup != '') {
 
 
-                        for (let k = index + 1; k < bookings.length; k++) {
+                            for (let k = index + 1; k < bookings.length; k++) {
 
-                            if (bookings[k].id_vehicle == i.id) {
-                                real_date_dropoff = Date.parse(bookings[k].pickup_date);
-                                real_city_dropoff = bookings[k].pickup_city;
-                                break;
+                                if (bookings[k].id_vehicle == i.id) {
+                                    real_date_dropoff = Date.parse(bookings[k].pickup_date);
+                                    real_city_dropoff = bookings[k].pickup_city;
+                                    break;
+                                }
                             }
-                        }
-                        if (real_city_dropoff != '' && real_date_dropoff != '') {
+                            if (real_city_dropoff != '' && real_date_dropoff != '') {
 
-                            if (!(((dato.pickup_city == real_city_pickup && pickup >= real_date_pickup + 86400000) || (pickup >= real_date_pickup + 172800000)) && ((dato.dropoff_city == real_city_dropoff && dropoff <= real_date_dropoff - 86400000) || (dropoff <= real_date_dropoff - 172800000)))) {
+                                if (!(((dato.pickup_city == real_city_pickup && pickup >= real_date_pickup + 86400000) || (pickup >= real_date_pickup + 172800000)) && ((dato.dropoff_city == real_city_dropoff && dropoff <= real_date_dropoff - 86400000) || (dropoff <= real_date_dropoff - 172800000)))) {
+                                    reservados.push(i.id);
+                                }
+
+                            } else if (!((dato.pickup_city == real_city_pickup && pickup >= real_date_pickup + 86400000) || (pickup >= real_date_pickup + 172800000))) {
+                                reservados.push(i.id);
+
+                            }
+
+
+                        } else {
+
+                            let now = new Date();
+
+                            let year = now.getFullYear();
+                            let day = now.getDate();
+                            let month = now.getMonth() + 1;
+
+                            if (day < 10) {
+                                day = '0' + day;
+                            }
+                            if (month < 10) {
+                                month = '0' + month;
+                            }
+
+                            let mili_now = Date.parse(year + '-' + month + '-' + day);
+
+
+
+                            if (!(dato.pickup_city == i.id_city || pickup >= mili_now + 172800000)) {
                                 reservados.push(i.id);
                             }
 
-                        } else if (!((dato.pickup_city == real_city_pickup && pickup >= real_date_pickup + 86400000) || (pickup >= real_date_pickup + 172800000))) {
-                            reservados.push(i.id);
-
-                        }
-
-
-                    } else {
-
-                        let now = new Date();
-
-                        let year = now.getFullYear();
-                        let day = now.getDate();
-                        let month = now.getMonth() + 1;
-
-                        if (day < 10) {
-                            day = '0' + day;
-                        }
-                        if (month < 10) {
-                            month = '0' + month;
-                        }
-
-                        let mili_now = Date.parse(year + '-' + month + '-' + day);
-
-
-
-                        if (!(dato.pickup_city == i.id_city || pickup >= mili_now + 172800000)) {
-                            reservados.push(i.id);
                         }
 
                     }
@@ -226,7 +233,7 @@ const controlador = {
 
                 }
 
-                console.log(dato);
+
 
                 res.render('products/products-filter', { dato, categories, cities, vehicles, pickup_minDate, reservados })
 
@@ -297,60 +304,66 @@ const controlador = {
 
                 for (i of vehicles) {
 
-
-                    let condicion = true;
-                    let pickup = Date.parse(dato.pickup_date);
-                    let dropoff = Date.parse(dato.dropoff_date);
-                    let distancia = 31536000000;
-                    var real_date_pickup = '';
-                    var real_city_pickup = '';
-                    var real_date_dropoff = '';
-                    var real_city_dropoff = '';
-                    var index = 0;
-
-                    for (j of bookings) {
-
-                        var contador = 0;
-                        if (j.id_vehicle == i.id) {
-
-
-                            let booking_dropoff = Date.parse(j.dropoff_date);
-                            if ((Math.abs(pickup - booking_dropoff)) < distancia) {
-                                distancia = Math.abs(pickup - booking_dropoff);
-                                real_date_pickup = Date.parse(j.dropoff_date);
-                                real_city_pickup = j.dropoff_city;
-                                index = bookings.indexOf(j);
-
-                            }
-                        }
-                    }
-
-                    if (real_date_pickup != '') {
-
-
-                        for (let k = index + 1; k < bookings.length; k++) {
-
-                            if (bookings[k].id_vehicle == i.id) {
-                                real_date_dropoff = Date.parse(bookings[k].pickup_date);
-                                real_city_dropoff = bookings[k].pickup_city;
-                                break;
-                            }
-                        }
-                        if (real_city_dropoff != '' && real_date_dropoff != '') {
-
-                            if (!(((dato.pickup_city == real_city_pickup && pickup >= real_date_pickup + 86400000) || (pickup >= real_date_pickup + 172800000)) && ((dato.dropoff_city == real_city_dropoff && dropoff <= real_date_dropoff - 86400000) || (dropoff <= real_date_dropoff - 172800000)))) {
-                                reservados.push(i.id);
-                            }
-
-                        } else if (!((dato.pickup_city == real_city_pickup && pickup >= real_date_pickup + 86400000) || ((pickup >= real_date_pickup + 172800000) && (pickup >= Date.parse(pickup_minDate) + 172800000)))) {
-                            reservados.push(i.id);
-
-                        }
-
-
-                    } else if (!(dato.pickup_city == i.id_city || pickup >= Date.parse(pickup_minDate) + 172800000)) {
-
+                    if (i.state) {
                         reservados.push(i.id);
+                    } else {
+
+
+                        let pickup = Date.parse(dato.pickup_date);
+                        let dropoff = Date.parse(dato.dropoff_date);
+                        let distancia = 31536000000;
+                        var real_date_pickup = '';
+                        var real_city_pickup = '';
+                        var real_date_dropoff = '';
+                        var real_city_dropoff = '';
+                        var index = 0;
+
+
+                        for (j of bookings) {
+
+                            var contador = 0;
+                            if (j.id_vehicle == i.id) {
+
+
+                                let booking_dropoff = Date.parse(j.dropoff_date);
+                                if ((Math.abs(pickup - booking_dropoff)) < distancia) {
+                                    distancia = Math.abs(pickup - booking_dropoff);
+                                    real_date_pickup = Date.parse(j.dropoff_date);
+                                    real_city_pickup = j.dropoff_city;
+                                    index = bookings.indexOf(j);
+
+                                }
+                            }
+                        }
+
+                        if (real_date_pickup != '') {
+
+
+                            for (let k = index + 1; k < bookings.length; k++) {
+
+                                if (bookings[k].id_vehicle == i.id) {
+                                    real_date_dropoff = Date.parse(bookings[k].pickup_date);
+                                    real_city_dropoff = bookings[k].pickup_city;
+                                    break;
+                                }
+                            }
+                            if (real_city_dropoff != '' && real_date_dropoff != '') {
+
+                                if (!(((dato.pickup_city == real_city_pickup && pickup >= real_date_pickup + 86400000) || (pickup >= real_date_pickup + 172800000)) && ((dato.dropoff_city == real_city_dropoff && dropoff <= real_date_dropoff - 86400000) || (dropoff <= real_date_dropoff - 172800000)))) {
+                                    reservados.push(i.id);
+                                }
+
+                            } else if (!((dato.pickup_city == real_city_pickup && pickup >= real_date_pickup + 86400000) || ((pickup >= real_date_pickup + 172800000) && (pickup >= Date.parse(pickup_minDate) + 172800000)))) {
+                                reservados.push(i.id);
+
+                            }
+
+
+                        } else if (!(dato.pickup_city == i.id_city || pickup >= Date.parse(pickup_minDate) + 172800000)) {
+
+                            reservados.push(i.id);
+                        }
+
                     }
 
 
@@ -413,7 +426,23 @@ const controlador = {
 
     reserva: function (req, res) {
 
+        if (req.session.booking) {
+            delete req.session.booking;
+        }
+
         let dias = (Date.parse(req.params.dropoff_date) - Date.parse(req.params.pickup_date)) / 86400000;
+
+        req.session.booking = {
+            'id': req.params.id,
+            'pickup_date': req.params.pickup_date,
+            'pickup_time': req.params.pickup_time,
+            'pickup_city': req.params.pickup_city,
+            'dropoff_date': req.params.dropoff_date,
+            'dropoff_time': req.params.dropoff_time,
+            'dropoff_city': req.params.dropoff_city,
+            'dias': dias
+        };
+
 
         dato = req.params;
         dato.dias = dias;
@@ -437,9 +466,62 @@ const controlador = {
                 let precioTotal = dias * vehicle.pricexday;
                 dato.precioTotal = precioTotal;
 
-                res.render('products/booking', { categories, vehicle, insurances, additionals });
+                res.render('products/booking', { categories, vehicle, insurances, additionals, dato });
             })
 
+
+    },
+
+    /*--------------------------------CONFIRMAR-RESERVA-------------------------------------*/
+
+    reservaConfirm: function (req, res) {
+
+
+
+        db.vehicles.update(
+            {
+                state: 1
+            },
+            {
+                where: {
+                    id: req.session.booking.id
+                }
+            }
+        )
+            .then(function () {
+                db.bookings.create({
+                    id_insurance: req.body.seguro,
+                    pickup_date: req.session.booking.pickup_date,
+                    dropoff_date: req.session.booking.dropoff_date,
+                    total: 500,
+                    id_vehicle: req.session.booking.id,
+                    id_user: req.session.user.id,
+                    pickup_city: req.session.booking.pickup_city,
+                    dropoff_city: req.session.booking.dropoff_city,
+                    pickup_time: req.session.booking.pickup_time,
+                    dropoff_time: req.session.booking.dropoff_time,
+                })
+                    .then(function () {
+                        db.vehicles.update({
+                            state: 0,
+                        },
+                            {
+                                where: { id: req.session.booking.id }
+                            })
+
+                    })
+                    .then(function () {
+
+                    })
+            })
+
+
+
+        // console.log(req.body);
+        // console.log(req.session.booking);
+        // console.log(req.session.user);
+
+        // res.send(req.session.booking);
 
     },
 
@@ -469,7 +551,7 @@ const controlador = {
     save: function (req, res) {
 
         let dato = req.body;
-        
+
 
         let errors = validationResult(req);
         if (errors.isEmpty()) {
@@ -540,7 +622,7 @@ const controlador = {
                     Promise.all([brands, additionals, categories, cities, features, fuels])
                         .then(function ([brands, additionals, categories, cities, features, fuels]) {
                             let error_tipo = 'El archivo debe tener formato jpg, jpeg,png';
-                            res.render('products/product-create', { errors: errors.array(), old: req.body, error: error_tipo,brands,additionals,categories,cities,features,fuels});
+                            res.render('products/product-create', { errors: errors.array(), old: req.body, error: error_tipo, brands, additionals, categories, cities, features, fuels });
                         })
 
                 }
@@ -556,7 +638,7 @@ const controlador = {
                 Promise.all([brands, additionals, categories, cities, features, fuels])
                     .then(function ([brands, additionals, categories, cities, features, fuels]) {
                         let error_tipo = 'Debe seleccionar una imagen';
-                        res.render('products/product-create', { errors: errors.array(), old: req.body, error: error_tipo,brands,additionals,categories,cities,features,fuels});
+                        res.render('products/product-create', { errors: errors.array(), old: req.body, error: error_tipo, brands, additionals, categories, cities, features, fuels });
                     })
 
 
@@ -808,81 +890,84 @@ const controlador = {
 
     /*---------------------------------METODOS API-----------------------------------------------------*/
 
-    listing: function(req,res) {
+    listing: function (req, res) {
 
         let categories = db.categories.findAll();
         let vehicles = db.vehicles.findAll();
 
-        Promise.all([categories,vehicles])
-        .then(function([categories,vehicles]) {
-            countByCategory = [];
-            for(i of categories) {
-                let category = 0; 
-                for(j of vehicles) {
-                    if(j.id_category == i.id) {
-                        category ++;
+        Promise.all([categories, vehicles])
+            .then(function ([categories, vehicles]) {
+                countByCategory = [];
+                for (i of categories) {
+                    let category = 0;
+                    for (j of vehicles) {
+                        if (j.id_category == i.id) {
+                            category++;
+                        }
                     }
+
+                    countByCategory.push({ [i.name]: category });
                 }
-               
-                countByCategory.push({[i.name]:category});
-            }
-            return res.status(200).json({
-                count: vehicles.length,
-                countByCategory: countByCategory,
-                data:vehicles,
-                status:200,
+                return res.status(200).json({
+                    count: vehicles.length,
+                    countByCategory: countByCategory,
+                    data: vehicles,
+                    status: 200,
+                })
             })
-        })
 
 
     },
 
-    categories_api: function(req,res) {
-        
+    categories_api: function (req, res) {
+
         db.categories.findAll()
-        .then(function(categories) {
-            return res.status(200).json({
-                total:categories.length,
-                data: categories,
-                status:200,
+            .then(function (categories) {
+                return res.status(200).json({
+                    total: categories.length,
+                    data: categories,
+                    status: 200,
 
+                })
             })
-        })
     },
-    
 
-    vehicle: function(req,res) {
+
+    vehicle: function (req, res) {
 
         id = req.params.id;
 
         db.vehicles.findOne({
             include: [
-                { association: 'category'},
-                { association: 'brand'},
-                { association: 'city'},
-                { association: 'fuel'},
-                { association: 'features'},
+                { association: 'category' },
+                { association: 'brand' },
+                { association: 'city' },
+                { association: 'fuel' },
+                { association: 'features' },
             ],
-            where:{id:id}
+            where: { id: id }
         })
-        .then(function(vehicle) {
-            return res.status(200).json({
-                data: {
-                    name:vehicle.name,
-                    plate_number: vehicle.plate_number,
-                    mileage:vehicle.mileage,
-                    pricexday:vehicle.pricexday,
-                    city: vehicle.city.name,
-                    brand: vehicle.brand.name,
-                    category: vehicle.category.name,
-                    transmission:vehicle.transmission,
-                    seat_number:vehicle.seat_number,
-                    fuel:vehicle.fuel.name,
-                    picture:vehicle.picture,
-                    description:vehicle.description
-                }
+            .then(function (vehicle) {
+                return res.status(200).json({
+                    data: {
+                        name: vehicle.name,
+                        plate_number: vehicle.plate_number,
+                        mileage: vehicle.mileage,
+                        pricexday: vehicle.pricexday,
+                        city: vehicle.city.name,
+                        brand: vehicle.brand.name,
+                        category: vehicle.category.name,
+                        transmission: vehicle.transmission,
+                        seat_number: vehicle.seat_number,
+                        fuel: vehicle.fuel.name,
+                        picture: vehicle.picture,
+                        description: vehicle.description
+                    }
+                })
             })
-        })
+            .catch(function (error) {
+                return res.send(error);
+            })
     }
 
 }

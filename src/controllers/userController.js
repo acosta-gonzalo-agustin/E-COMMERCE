@@ -249,6 +249,9 @@ const controlador = {
                 status:200
             });
         })
+        .catch(function(error) {
+            return res.json(error);
+        })
     }
 
 }

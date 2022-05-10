@@ -1,6 +1,6 @@
 <!-------------------------------------------------INCLUYENDO HEAD Y HEADER------------------------------>
 
-<%- include('../parcials/head') %>
+<%- include('../parcials/head') %> 
 
 <%if(locals && locals.dato) { %> 
 <div class="filtro">
@@ -8,7 +8,7 @@
     <div class="container">
       <%for(i of cities) { %>
         <%if(i.id==dato.pickup_city) { %>
-          <h1>Retiro: <%=i.name%>
+          <h1 id="city_pickup">Retiro: <%=i.name%>
           </h1>
     </div>
     <%}%>
@@ -69,6 +69,8 @@
           <form  action='/product/formFilter' method="get" class='formulario registro busqueda tamanio'>
             <div>
               <h4 class='titulo'>NUEVA BUSQUEDA</h4>
+              <ul id="errors"> 
+              </ul>
               
             </div>
             <div class='alinear'>
@@ -100,8 +102,8 @@
                 <input type="date" min="<%=pickup_minDate%>" class="form-control pickup_date" name='pickup_date'>
               </div>
               <div class="mb-1 ancho-hijos">
-                <label for="pickup_time" class='blanco'>Hora de devolucion</label>
-                <input type="time" min="10:00" max="18:00" class="form-control fechas" id="pickup_time"
+                <label for="pickup_time" class='blanco'>Hora de retiro</label>
+                <input type="time" min="10:00" max="18:00" class="form-control fechas pickup_time" id="pickup_time"
                   name="pickup_time">
               </div>
             </div>
@@ -114,7 +116,7 @@
               </div>
               <div class="mb-1 ancho-hijos">
                 <label for="dropoff_time" class='blanco'>Hora de devolucion</label>
-                <input type="time" min="10:00" max="18:00" class="form-control fechas" id="dropoff_time"
+                <input type="time" min="10:00" max="18:00" class="form-control fechas dropoff_time" id="dropoff_time"
                   name="dropoff_time">
               </div>
             </div>
@@ -223,7 +225,7 @@
                                         <button type="submit" class="reserva presupuesto"><a class="tachado eliminar"
                                             href="/product/detail/<%=i.id%> " id='pruebisima'>RESERVADO BUSCAR OTRAS OPCIONES</a></button>
                                         <%} else if(locals && locals.dato) { %>
-                                          <button type="submit" class="btn reserva"><a href="/product/booking/<%=i.id%>/<%=dato.pickup_date%>/<%=dato.dropoff_date%>/<%=dato.pickup_city%>/<%=dato.dropoff_city%>/<%=dato.pickup_time%>/<%=dato.dropoff_time%>"
+                                          <button type="submit" id = 'booking' class="btn reserva"><a href="/product/booking/<%=i.id%>/<%=dato.pickup_date%>/<%=dato.dropoff_date%>/<%=dato.pickup_city%>/<%=dato.dropoff_city%>/<%=dato.pickup_time%>/<%=dato.dropoff_time%>"
                                               class="btn">Reservar
                                               producto</a></button>
                                           <%} else {%>
@@ -251,6 +253,7 @@
 
 
       <script src="/js/formulario_style.js"></script>
+      
 
 
       <!-------------------------------------------------INCLUYENDO FOOTER------------------------------>

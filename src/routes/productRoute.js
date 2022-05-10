@@ -42,6 +42,7 @@ router.get('/detail/:id',productController.detail);
 /*-------------RUTA BOOKING --------------*/
 
 router.get('/booking/:id/:pickup_date/:dropoff_date/:pickup_city/:dropoff_city/:pickup_time/:dropoff_time',/*login_booking_validation,*/productController.reserva);
+router.post('/booking',productController.reservaConfirm);
 
 
 
