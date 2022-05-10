@@ -74,15 +74,17 @@
                       <%=locals.user.name + ' ' + locals.user.last_name%>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <%if(locals.user.id_role == 1) { %>
+                      <%if(locals.user.id_role == 2) {%>
                         <li><a class="dropdown-item categoria" href="/user/profile">Mi perfil</a></a></li>
                         <li><a class="dropdown-item categoria" href="#">Mis reservas</a></li>
                         <% } %>
                         <li><a class="dropdown-item categoria" href="/user/logout">Log out</a></a></li>
                     </ul>
+                    <%if(locals.user.id_role == 2) {%>
                     <li class="nav-item">
                       <a class="nav-link" href="/user/login"><i class="fa-solid fa-cart-shopping"></i></a>
                     </li>
+                    <% } %>
                   </li>
 
 

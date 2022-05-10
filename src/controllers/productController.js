@@ -837,7 +837,7 @@ const controlador = {
 
     },
 
-    categories: function(req,res) {
+    categories_api: function(req,res) {
         
         db.categories.findAll()
         .then(function(categories) {
@@ -849,6 +849,7 @@ const controlador = {
             })
         })
     },
+    
 
     vehicle: function(req,res) {
 

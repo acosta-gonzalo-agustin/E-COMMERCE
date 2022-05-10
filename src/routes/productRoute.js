@@ -76,11 +76,11 @@ router.delete('/delete/:id',permission_validation,productController.delete);
 
 router.get('/list',productController.listing);
 
+
+router.get('/categories',productController.categories_api);
+
 router.get('/:id',productController.vehicle);
 
-router.get('/categories',productController.categories);
-
-router.get('/:id',productController.vehicle);
 
 
 module.exports = router;
