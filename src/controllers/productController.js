@@ -370,11 +370,11 @@ const controlador = {
 
                 }
 
-             
 
 
 
-                res.render('products/products-filter', { dato, categories,cities,vehicles,pickup_minDate,reservados})
+
+                res.render('products/products-filter', { dato, categories, cities, vehicles, pickup_minDate, reservados })
 
             })
 
@@ -417,7 +417,7 @@ const controlador = {
 
         Promise.all([vehicle, cities])
             .then(function ([vehicle, cities]) {
-                res.render('products/product-detail', {vehicle,cities,pickup_minDate})
+                res.render('products/product-detail', { vehicle, cities, pickup_minDate })
             })
 
     },
@@ -454,7 +454,7 @@ const controlador = {
 
                 console.log(req.session.user.id_role);
 
-                res.render('products/booking',{categories,vehicle,insurances,additionals,dato});
+                res.render('products/booking', { categories, vehicle, insurances, additionals, dato });
             })
 
 
@@ -464,8 +464,6 @@ const controlador = {
 
     reservaConfirm: function (req, res) {
 
-
-        
 
         db.vehicles.update(
             {
@@ -477,9 +475,7 @@ const controlador = {
                 }
             }
         )
-            .then(function (vehicle) {
-
-               
+            .then(function () {
 
                 db.bookings.create({
                     id_insurance: req.body.seguro,
@@ -493,19 +489,28 @@ const controlador = {
                     pickup_time: req.session.booking.pickup_time,
                     dropoff_time: req.session.booking.dropoff_time,
                 })
-                    // .then(function (booking) {
-                    //     console.log(booking.id)
+                    .then(function () {
+                        if (req.body.additionals != undefined) {
 
-                    //     if (typeof req.body.features != 'undefined') {
-                    //         for (i of req.body.features) {
-                    //             db.additional_booking.create({
-                    //                 id_additional: i,
-                    //                 id_booking: booking.id
-                    //             })
-                    //         }
-                    //     }
+                            db.bookings.findOne({ order: [['id', 'DESC']] })
+                                .then(function (booking) {
 
-                    // })
+
+
+
+                                    for (i of req.body.additionals) {
+
+                                        db.additionals_bookings.create({
+                                            id_additional: i,
+                                            id_booking: booking.id,
+                                        })
+
+                                    }
+                                })
+                        }
+
+
+                    })
                     .then(function () {
 
                         db.vehicles.update({
@@ -516,7 +521,7 @@ const controlador = {
                             })
 
                     })
-                    .then(function() {
+                    .then(function () {
                         delete req.session.booking;
                         res.redirect('/');
                     })
@@ -862,31 +867,52 @@ const controlador = {
 
     delete: function (req, res) {
 
-
-        /*------------------------BORRANDO IMAGEN-----------------*/
-
-        db.vehicles.findByPk(req.params.id)
-            .then(function (resultado) {
-                fs.unlinkSync(path.join(__dirname, '../../public/img/img-autos/' + resultado.picture));
-
-            })
-
-        /*----------------------------  ELIMINANDO PRODUCTO --------------------------*/
-
-        db.vehicles_features.destroy({
-            where: {
-                id_vehicle: req.params.id
-            }
+        db.bookings.findOne({
+            where: { id_vehicle: req.params.id }
         })
-            .then(function () {
-                db.vehicles.destroy({
-                    where: {
-                        id: req.params.id
-                    }
-                })
+            .then(function (vehicle) {
+
+
+                if (vehicle == null) {
+
+
+                    /*------------------------BORRANDO IMAGEN-----------------*/
+
+                    db.vehicles.findByPk(req.params.id)
+                        .then(function (resultado) {
+                            fs.unlinkSync(path.join(__dirname, '../../public/img/img-autos/' + resultado.picture));
+
+                        })
+
+                    /*----------------------------  ELIMINANDO PRODUCTO --------------------------*/
+
+                    db.vehicles_features.destroy({
+                        where: {
+                            id_vehicle: req.params.id
+                        }
+                    })
+                        .then(function () {
+                            db.vehicles.destroy({
+                                where: {
+                                    id: req.params.id
+                                }
+                            })
+                        })
+
+                    res.redirect('/');
+                } else {
+                    res.send('el vehiculo esta bloqueado por reservas');
+                }
+
+
+
+
+
+
             })
 
-        res.redirect('/');
+
+
 
     },
 

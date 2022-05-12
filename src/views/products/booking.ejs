@@ -74,12 +74,12 @@
                 <%for(i of additionals) {%>
               <li class=" additionals list-group-item d-flex justify-content-between lh-sm">
                 <div class="form-check"> 
-                  <input class="form-check-input" type="checkbox" value="<%=i.id%>" id="features" name='features'>
-                  <label class="form-check-label" for="features">
+                  <input class="form-check-input" type="checkbox" value="<%=i.id%>" id="additionals" name='additionals'>
+                  <label class="form-check-label" for="additionals">
                     <%=i.name%>
                   </label>
                 </div>
-                <span class=" text-muted precio">$<%=i.price%> </span>
+                <span id = 'additionals' class=" text-muted precio">$<%=i.price%></span>
               </li>
               <%}%>
                 </li>
@@ -97,7 +97,7 @@
                       </h6>
                     </label>
                   </div>
-                  <span class="text-muted">$<%=i.pricexday%></span>
+                  <span id="seguro_price" class="text-muted">$<%=i.pricexday%></span>
                 </li>
                 <%}%>
                   </li>
@@ -184,6 +184,7 @@
 
 
   <script src="/js/booking_style.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
   <!-------------------------------------------------INCLUYENDO FOOTER------------------------------>

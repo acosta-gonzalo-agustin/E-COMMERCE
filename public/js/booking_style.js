@@ -13,7 +13,7 @@ window.addEventListener('load', function () {
     let total = this.document.querySelector('strong#total');
     let seguros = document.querySelectorAll('.seguro input');
     let additionals = document.querySelectorAll('.additionals input');
-    console.log(additionals);
+    
 
 
     /*-----------------------------------seleccion de elementos formulario------------------------------------*/
@@ -27,17 +27,26 @@ window.addEventListener('load', function () {
     let seguro =  document.querySelector('span#seguro');
 
 
+    let additional_price =  document.querySelectorAll('span#additionals');
+
+    let seguro_price =  document.querySelectorAll('span#seguro_price');
+
+    
+
+
     for (i of additionals) {
+
         i.addEventListener('change', function (e) {
             if (e.target.checked) {
-                suma += Number(e.target.value);
-                suma_additional += Number(e.target.value);
+
+                suma += Number(additional_price[e.target.value-1].textContent.replace('$',''));
+                suma_additional += Number(additional_price[e.target.value-1].textContent.replace('$',''));
                 total.innerHTML = suma;
                 additional.innerHTML = suma_additional;
             }
             else {
-                suma -= Number(e.target.value);
-                suma_additional -= Number(e.target.value);
+                suma -= Number(additional_price[e.target.value-1].textContent.replace('$',''));
+                suma_additional -= Number(additional_price[e.target.value-1].textContent.replace('$',''));
                 total.innerHTML = suma;
                 additional.innerHTML = suma_additional;
 
@@ -52,10 +61,10 @@ window.addEventListener('load', function () {
         i.addEventListener('change', function (e) {
             if (e.target.checked && option != e.target.value) {
                 suma -= option;
-                suma += Number(e.target.value);
+                suma += Number(seguro_price[e.target.value-1].textContent.replace('$',''));
                 suma_seguro -= option;
-                suma_seguro += Number(e.target.value);
-                option = Number(e.target.value);
+                suma_seguro += Number(seguro_price[e.target.value-1].textContent.replace('$',''));
+                option = Number(seguro_price[e.target.value-1].textContent.replace('$',''));
                 total.innerHTML = suma;
                 seguro.innerHTML = suma_seguro;
             }
@@ -70,14 +79,12 @@ window.addEventListener('load', function () {
 
         e.preventDefault();
 
-        localStorage.setItem('total',total);
 
-        
-
-        if(false == false) {
+        swal("Reserva confirmada", "Disfruta de tu viaje!", "success")
+        .then(function() {
             booking.submit();
-        }
 
+        })
 
 
     })
