@@ -78,6 +78,10 @@ window.addEventListener('load', function () {
     booking.addEventListener('submit',function(e) {
 
         e.preventDefault();
+        
+        let preciototalInput = document.querySelector('input#precioTotal');
+        preciototalInput.value = suma;
+       
 
 
         swal("Reserva confirmada", "Disfruta de tu viaje!", "success")

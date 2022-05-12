@@ -519,7 +519,7 @@ const controlador = {
                     id_insurance: req.body.seguro,
                     pickup_date: req.session.booking.pickup_date,
                     dropoff_date: req.session.booking.dropoff_date,
-                    total: req.session.booking.precioTotal,
+                    total: req.body.precioTotal,
                     id_vehicle: req.session.booking.id,
                     id_user: req.session.user.id,
                     pickup_city: req.session.booking.pickup_city,
@@ -532,9 +532,6 @@ const controlador = {
 
                             db.bookings.findOne({ order: [['id', 'DESC']] })
                                 .then(function (booking) {
-
-
-
 
                                     for (i of req.body.additionals) {
 
