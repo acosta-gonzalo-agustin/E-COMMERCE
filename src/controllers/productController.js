@@ -147,6 +147,7 @@ const controlador = {
                 for (i of vehicles) {
 
                     if (i.state) {
+
                         reservados.push(i.id);
                     } else {
 
@@ -163,7 +164,7 @@ const controlador = {
 
                         for (j of bookings) {
 
-                            var contador = 0;
+                    
                             if (j.id_vehicle == i.id) {
 
 
@@ -179,6 +180,7 @@ const controlador = {
                         }
 
                         if (real_date_pickup != '') {
+                            
 
 
                             for (let k = index + 1; k < bookings.length; k++) {
@@ -190,12 +192,14 @@ const controlador = {
                                 }
                             }
                             if (real_city_dropoff != '' && real_date_dropoff != '') {
+                                
 
                                 if (!(((dato.pickup_city == real_city_pickup && pickup >= real_date_pickup + 86400000) || (pickup >= real_date_pickup + 172800000)) && ((dato.dropoff_city == real_city_dropoff && dropoff <= real_date_dropoff - 86400000) || (dropoff <= real_date_dropoff - 172800000)))) {
                                     reservados.push(i.id);
                                 }
 
                             } else if (!((dato.pickup_city == real_city_pickup && pickup >= real_date_pickup + 86400000) || (pickup >= real_date_pickup + 172800000))) {
+                                
                                 reservados.push(i.id);
 
                             }
@@ -221,6 +225,7 @@ const controlador = {
 
 
                             if (!(dato.pickup_city == i.id_city || pickup >= mili_now + 172800000)) {
+                                
                                 reservados.push(i.id);
                             }
 
@@ -246,6 +251,8 @@ const controlador = {
     formFilter: function (req, res) {
 
         let dato = req.query;
+
+        console.log(dato)
 
 
 
@@ -317,13 +324,24 @@ const controlador = {
                         var real_date_dropoff = '';
                         var real_city_dropoff = '';
                         var index = 0;
+                        var check_first_booking = 0;
 
 
                         for (j of bookings) {
 
-                            var contador = 0;
                             if (j.id_vehicle == i.id) {
 
+                                check_first_booking ++;
+
+                                let booking_pickup = Date.parse(j.pickup_date);
+
+                                if(dropoff < booking_pickup && check_first_booking == 1) {
+                                    if(!(dato.dropoff_city == i.id_city || dropoff <= booking_pickup - 172800000)) {
+                                        reservados.push(i.id);
+                                    }
+                                    break;
+
+                                } else {
 
                                 let booking_dropoff = Date.parse(j.dropoff_date);
                                 if ((Math.abs(pickup - booking_dropoff)) < distancia) {
@@ -333,11 +351,12 @@ const controlador = {
                                     index = bookings.indexOf(j);
 
                                 }
+                                }
+                                
                             }
                         }
 
-                        if (real_date_pickup != '') {
-
+                        if (real_date_pickup != '') {   
 
                             for (let k = index + 1; k < bookings.length; k++) {
 
@@ -350,17 +369,19 @@ const controlador = {
                             if (real_city_dropoff != '' && real_date_dropoff != '') {
 
                                 if (!(((dato.pickup_city == real_city_pickup && pickup >= real_date_pickup + 86400000) || (pickup >= real_date_pickup + 172800000)) && ((dato.dropoff_city == real_city_dropoff && dropoff <= real_date_dropoff - 86400000) || (dropoff <= real_date_dropoff - 172800000)))) {
+                                    
                                     reservados.push(i.id);
                                 }
 
                             } else if (!((dato.pickup_city == real_city_pickup && pickup >= real_date_pickup + 86400000) || ((pickup >= real_date_pickup + 172800000) && (pickup >= Date.parse(pickup_minDate) + 172800000)))) {
+                                console.log(dato.pickup_city == real_city_pickup);
                                 reservados.push(i.id);
 
                             }
 
 
                         } else if (!(dato.pickup_city == i.id_city || pickup >= Date.parse(pickup_minDate) + 172800000)) {
-
+                            
                             reservados.push(i.id);
                         }
 
