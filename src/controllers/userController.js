@@ -222,6 +222,20 @@ const controlador = {
 
     },
 
+    bookings: function(req,res) {
+
+        db.bookings.findAll({
+            where: {id_user:req.session.user.id}
+        })
+        .then(function(bookings) {
+            res.send(bookings)
+        })
+
+    },
+
+
+    /*---------------------------------------RUTAS API USUARIO----------------------------------*/
+
     listing: function(req,res) {
 
         db.users.findAll()

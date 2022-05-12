@@ -55,6 +55,10 @@ router.get('/profile',userController.profile);
 router.get('/edit',userController.edit);
 router.put('/edit',validation_update,userController.update);
 
+/*---------------------RUTAS PARA VER RESERVAS ---------------------------*/
+
+router.get('/bookings',userController.bookings);
+
 
 
 /*---------------------RUTAS PARA DESLOGUEAR UN USARIO---------------------------*/
