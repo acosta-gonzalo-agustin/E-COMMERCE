@@ -1,7 +1,8 @@
 const productController = require('../controllers/productController');
 const express = require('express');
 const router = express.Router();
-const login_booking_validation = require('../middlewares/login_booking');
+const loggued_booking = require('../middlewares/loggued_booking');
+const booking_session = require('../middlewares/booking_session');
 const permission_validation = require('../middlewares/permission_validation');
 
 const { body } = require('express-validator');
@@ -41,8 +42,8 @@ router.get('/detail/:id',productController.detail);
 
 /*-------------RUTA BOOKING --------------*/
 
-router.get('/booking/:id/:pickup_date/:dropoff_date/:pickup_city/:dropoff_city/:pickup_time/:dropoff_time',/*login_booking_validation,*/productController.reserva);
-router.post('/booking',productController.reservaConfirm);
+router.get('/booking/:id/:pickup_date/:dropoff_date/:pickup_city/:dropoff_city/:pickup_time/:dropoff_time',booking_session,productController.reserva);
+router.post('/booking',loggued_booking,productController.reservaConfirm);
 
 
 

@@ -370,11 +370,11 @@ const controlador = {
 
                 }
 
-                console.log(reservados);
+             
 
 
 
-                res.render('products/products-filter', { dato, categories, cities, vehicles, pickup_minDate, reservados })
+                res.render('products/products-filter', { dato, categories,cities,vehicles,pickup_minDate,reservados})
 
             })
 
@@ -417,7 +417,7 @@ const controlador = {
 
         Promise.all([vehicle, cities])
             .then(function ([vehicle, cities]) {
-                res.render('products/product-detail', { vehicle, cities, pickup_minDate })
+                res.render('products/product-detail', {vehicle,cities,pickup_minDate})
             })
 
     },
@@ -426,26 +426,12 @@ const controlador = {
 
     reserva: function (req, res) {
 
-        if (req.session.booking) {
-            delete req.session.booking;
-        }
-
         let dias = (Date.parse(req.params.dropoff_date) - Date.parse(req.params.pickup_date)) / 86400000;
 
-        req.session.booking = {
-            'id': req.params.id,
-            'pickup_date': req.params.pickup_date,
-            'pickup_time': req.params.pickup_time,
-            'pickup_city': req.params.pickup_city,
-            'dropoff_date': req.params.dropoff_date,
-            'dropoff_time': req.params.dropoff_time,
-            'dropoff_city': req.params.dropoff_city,
-            'dias': dias
-        };
+        req.session.booking.dias = dias;
 
+        dato = req.session.booking;
 
-        dato = req.params;
-        dato.dias = dias;
 
         let additionals = db.additionals.findAll();
         let insurances = db.insurances.findAll();
@@ -466,7 +452,9 @@ const controlador = {
                 let precioTotal = dias * vehicle.pricexday;
                 dato.precioTotal = precioTotal;
 
-                res.render('products/booking', { categories, vehicle, insurances, additionals, dato });
+                console.log(req.session.user.id_role);
+
+                res.render('products/booking',{categories,vehicle,insurances,additionals,dato});
             })
 
 
@@ -477,6 +465,7 @@ const controlador = {
     reservaConfirm: function (req, res) {
 
 
+        
 
         db.vehicles.update(
             {
@@ -488,12 +477,15 @@ const controlador = {
                 }
             }
         )
-            .then(function () {
+            .then(function (vehicle) {
+
+               
+
                 db.bookings.create({
                     id_insurance: req.body.seguro,
                     pickup_date: req.session.booking.pickup_date,
                     dropoff_date: req.session.booking.dropoff_date,
-                    total: 500,
+                    total: req.session.booking.precioTotal,
                     id_vehicle: req.session.booking.id,
                     id_user: req.session.user.id,
                     pickup_city: req.session.booking.pickup_city,
@@ -501,7 +493,21 @@ const controlador = {
                     pickup_time: req.session.booking.pickup_time,
                     dropoff_time: req.session.booking.dropoff_time,
                 })
+                    // .then(function (booking) {
+                    //     console.log(booking.id)
+
+                    //     if (typeof req.body.features != 'undefined') {
+                    //         for (i of req.body.features) {
+                    //             db.additional_booking.create({
+                    //                 id_additional: i,
+                    //                 id_booking: booking.id
+                    //             })
+                    //         }
+                    //     }
+
+                    // })
                     .then(function () {
+
                         db.vehicles.update({
                             state: 0,
                         },
@@ -510,18 +516,14 @@ const controlador = {
                             })
 
                     })
-                    .then(function () {
-
+                    .then(function() {
+                        delete req.session.booking;
+                        res.redirect('/');
                     })
             })
 
 
 
-        // console.log(req.body);
-        // console.log(req.session.booking);
-        // console.log(req.session.user);
-
-        // res.send(req.session.booking);
 
     },
 

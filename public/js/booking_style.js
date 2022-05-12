@@ -13,6 +13,8 @@ window.addEventListener('load', function () {
     let total = this.document.querySelector('strong#total');
     let seguros = document.querySelectorAll('.seguro input');
     let additionals = document.querySelectorAll('.additionals input');
+    console.log(additionals);
+
 
     /*-----------------------------------seleccion de elementos formulario------------------------------------*/
 

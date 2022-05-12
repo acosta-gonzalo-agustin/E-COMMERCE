@@ -100,6 +100,10 @@ const controlador = {
     profile: function (req, res) {
         db.categories.findAll()
         .then(function(categories) {
+
+            if(typeof req.session.booking!= 'undefined') {
+                console.log(req.session.booking);
+            }
             res.render('users/profile',{categories})
         })
     },

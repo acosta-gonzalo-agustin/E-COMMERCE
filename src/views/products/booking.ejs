@@ -1,12 +1,12 @@
 <!-------------------------------------------------INCLUYENDO HEAD Y HEADER------------------------------>
 
-<%- include('../parcials/head') %>
+<%- include('../parcials/head') %> 
 
 
 
 
   <main class="grid">
-
+    
     <div class="row">
 
       <!------------------------------------- DATOS DEL PRODUCTO SELECCIONADO--------------------------------->
@@ -73,7 +73,7 @@
                 <span>ADICIONALES</span>
                 <%for(i of additionals) {%>
               <li class=" additionals list-group-item d-flex justify-content-between lh-sm">
-                <div class="form-check">
+                <div class="form-check"> 
                   <input class="form-check-input" type="checkbox" value="<%=i.id%>" id="features" name='features'>
                   <label class="form-check-label" for="features">
                     <%=i.name%>
@@ -126,7 +126,7 @@
             <span class="badge bg-primary rounded-pill">$</span>
           </h4>
 
-          <form action="/product/booking" method="post" class="booking">
+          
             <ul class="list-group mb-3">
               <li class="list-group-item d-flex justify-content-between lh-sm">
                 <div>
@@ -171,8 +171,7 @@
                 </strong>
               </li>
             </ul>
-            <button type="submit" class="btn">Reservar</button>
-          </form>
+            
         </div>
 
       </div>
