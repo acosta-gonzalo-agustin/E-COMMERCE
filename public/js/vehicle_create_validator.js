@@ -115,6 +115,9 @@ window.addEventListener('load', function() {
                 error_back.innerHTML = "<p></p>";   
             }
               
+        } else {
+
+            localStorage.setItem('create','ok');
         } 
         
     })

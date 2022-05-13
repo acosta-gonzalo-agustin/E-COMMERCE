@@ -902,13 +902,18 @@ const controlador = {
 
     delete: function (req, res) {
 
+    
+
         db.bookings.findOne({
             where: { id_vehicle: req.params.id }
         })
             .then(function (vehicle) {
 
+                console.log(vehicle)
+
 
                 if (vehicle == null) {
+                 
 
 
                     /*------------------------BORRANDO IMAGEN-----------------*/
@@ -936,7 +941,25 @@ const controlador = {
 
                     res.redirect('/');
                 } else {
-                    res.send('el vehiculo esta bloqueado por reservas');
+
+                    let categories = db.categories.findAll();
+
+
+                    let vehicles = db.vehicles.findAll({
+
+                        include: [
+                            { association: 'brand' },
+                            { association: 'category' },
+                            { association: 'city' },
+                            { association: 'features' },
+                            { association: 'fuel' }
+                        ]
+                    })
+
+                    Promise.all([categories, vehicles])
+                        .then(function ([categories, vehicles]) {
+                            res.render('products/product-listing', { categories, vehicles,mensaje:'reservado'});
+                        })
                 }
 
 

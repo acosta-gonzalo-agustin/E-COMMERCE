@@ -90,6 +90,12 @@ header {
 
 /*--------------------------------- ESTILOS DEL FORMULARIO DE BUSQUEDA DE AUTOS--------------------------*/
 
+
+.swal-overlay {
+    background-color: rgb(240, 196, 114);
+  }
+
+
 .validacion_ocultar {
     display: none;
 }

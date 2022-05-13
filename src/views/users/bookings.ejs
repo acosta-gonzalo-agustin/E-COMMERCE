@@ -1,0 +1,112 @@
+<!-------------------------------------------------INCLUYENDO HEAD Y HEADER------------------------------>
+
+<%- include('../parcials/head') %>
+
+  <h1 class="titulo-lista">MIS RESERVAS</h1>
+
+  <main>
+
+
+
+
+    <div class='lista-productos'>
+
+      <% for(let i of bookings) { %>
+
+
+        <div class="container grid item">
+          <div class="row">
+            <div class='col-md border-end'>
+              <div class="col-sm border-bottom">
+                <h3>
+                  <%= i.vehicle.name%>
+                </h3>
+                <img src="/img/img-autos/<%=i.vehicle.picture%>" alt="">
+              </div>
+              <div class="col-sm">
+                <ul>
+
+                  CARACTERISTICAS
+                  <li><i class="fas fa-check-circle"></i>
+                    <%= i.vehicle.seat_number%> asientos
+                  </li>
+                  <li><i class="fas fa-check-circle"></i>
+                    <%if(i.vehicle.transmission=1) { %> automático <% } else { %> manual <%}%>
+                  </li>
+                  <li><i class="fas fa-check-circle"></i>
+                    <%=i.vehicle.name%>
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+            <div class="col-md reserva-derecha grid">
+              <div>
+                <%=i.city_pickup.name%>
+                <%=i.pickup_date%>
+                <%i.pickup_time%>   
+              </div>
+              <div>
+                <%=i.city_dropoff.name%>
+                <%=i.dropoff_date%>
+                <%i.dropoff_time%>  
+
+              </div>
+              <div>
+                $<%= i.vehicle.pricexday%>/dia
+              </div>
+              <div class="escondido">
+
+                <ul>
+                  ADICIONALES
+                  <%if(i.additionals !=null) %>
+                    <%for(j of i.additionals) {%>
+                      <li>
+                        <%=j.name%>
+                      </li>
+                      <%}%>
+                        <li>kilometraje <%=i.vehicle.mileage%>
+                        </li>
+                </ul>
+              </div>
+
+              <div class="col-sm">
+                <ul>
+
+                  CARACTERISTICAS
+                  <li><i class="fas fa-check-circle"></i>
+                    <%= i.vehicle.seat_number%> asientos
+                  </li>
+                  <li><i class="fas fa-check-circle"></i>
+                    <%if(i.vehicle.transmission=1) { %> automático <% } else { %> manual <%}%>
+                  </li>
+                  <li><i class="fas fa-check-circle"></i>
+                    <%=i.vehicle.name%>
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <% } %>
+
+
+
+
+    </div>
+
+
+  </main>
+
+
+
+
+
+
+  <!-------------------------------------------------INCLUYENDO FOOTER------------------------------>
+
+  <%- include('../parcials/footer') %>

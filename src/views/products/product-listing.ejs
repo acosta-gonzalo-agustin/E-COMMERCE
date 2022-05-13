@@ -6,7 +6,9 @@
   <h1 class="titulo-lista">LISTA DE PRODUCTOS</h1>
 
   <div class='lista-productos listado'>
-
+    <div id = "reservado">
+      <%if(locals && locals.mensaje){%><%=mensaje%><%}%> 
+    </div>
     <% for(let i of vehicles) { %>
    
       <div class="container grid item">
@@ -47,7 +49,7 @@
               <button type="submit" class="btn reserva"><a href="/product/edit/<%=i.id%>" class="btn">Editar</a></button>
             </div>
             <div>
-              <form class ="eliminar" action="/product/delete/<%=i.id%>?_method=DELETE" method="POST">
+              <form class ="eliminar" id="<%=i.id%>" action="/product/delete/<%=i.id%>?_method=DELETE" method="POST">
                   <button class="eliminar presupuesto" type="submit">Eliminar</button>
               </form>
               

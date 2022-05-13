@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const verificacion_usuario = require('../middlewares/verificacion_usuario')
 const verificacion_cuenta = require('../middlewares/login_validation')
+const loggued_booking = require('../middlewares/loggued_booking');
 
 const { body } = require('express-validator');
 
@@ -48,16 +49,16 @@ router.post('/login',verificacion_cuenta,userController.login);
 
 /*---------------------RUTAS PERFIL---------------------------*/
 
-router.get('/profile',userController.profile);
+router.get('/profile',loggued_booking,userController.profile);
 
 /*---------------------RUTAS PARA EDITAR PERFIL---------------------------*/
 
-router.get('/edit',userController.edit);
-router.put('/edit',validation_update,userController.update);
+router.get('/edit',loggued_booking,userController.edit);
+router.put('/edit',loggued_booking,validation_update,userController.update);
 
 /*---------------------RUTAS PARA VER RESERVAS ---------------------------*/
 
-router.get('/bookings',userController.bookings);
+router.get('/bookings',loggued_booking,userController.bookings);
 
 
 
@@ -68,7 +69,7 @@ router.get('/logout',userController.logout);
 
 /*---------------------RUTAS PARA ELIMINAR UN USARIO---------------------------*/
 
-router.delete('/delete/:id',userController.delete);
+router.delete('/delete/:id',loggued_booking,userController.delete);
 
 
 /*--------------------------------RUTAS APIS----------------------------------------*/

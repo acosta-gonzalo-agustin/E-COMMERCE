@@ -4,7 +4,7 @@
 
   <main>
 
-    <form class='formulario registro formulario-producto' action="/product/edit/<%=vehicle.id%>?_method=PUT"
+    <form class='formulario registro formulario-producto' id="update" action="/product/edit/<%=vehicle.id%>?_method=PUT"
       enctype="multipart/form-data" method="POST">
 
       <% if (locals && locals.errors) { %>
@@ -144,9 +144,8 @@
 
   <!-------------------------------------------------INCLUYENDO FOOTER------------------------------>
 
+  <script src="/js/vehicle_update_validator.js"></script>
+
   <%- include('../parcials/footer') %>
-
-
-    </body>
 
 </html>

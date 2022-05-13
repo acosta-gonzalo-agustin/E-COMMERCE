@@ -225,10 +225,19 @@ const controlador = {
     bookings: function(req,res) {
 
         db.bookings.findAll({
+            include:[
+                {association:'vehicle'},
+                {association:'user'},
+                {association:'city_pickup'},
+                {association:'city_dropoff'},
+                {association:'insurances'},
+                {association:'additionals'}
+                
+            ],
             where: {id_user:req.session.user.id}
         })
         .then(function(bookings) {
-            res.send(bookings)
+            res.render('users/bookings',{bookings})
         })
 
     },

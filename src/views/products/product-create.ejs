@@ -4,7 +4,7 @@
 
   <main>
  
-    <form class='formulario registro formulario-producto' action="/product/create" enctype="multipart/form-data" method="POST">
+    <form class='formulario registro formulario-producto' id="create" action="/product/create" enctype="multipart/form-data" method="POST">
       <% if (locals && locals.errors) { %>
         <%for(i of errors) { %>
           <p class = 'error'> <%=i.msg %>  </p> 
