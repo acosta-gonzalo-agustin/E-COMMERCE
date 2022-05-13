@@ -6,13 +6,12 @@
 
     <form class='formulario registro formulario-producto' id="update" action="/product/edit/<%=vehicle.id%>?_method=PUT"
       enctype="multipart/form-data" method="POST">
-
       <% if (locals && locals.errors) { %>
         <%for(i of errors) { %>
-          <p class = 'error'> <%=i.msg %>  </p> 
+          <p class = 'error'> <%=i.msg%></p> 
         <% } %>
       <% } %>
-
+      <ul id="errors_update"></ul>
       <div class="titulo-crear">
         <h1>EDITAR PRODUCTO</h1>
       </div>
@@ -82,12 +81,12 @@
           <label for="transmission">Caja de cambio</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="transmission" id="transmission" value="0" <%if(locals.old && old.transmission == '0' || (vehicle.transmission == '0')) { %> checked <% }%>>
-          <label class="form-check-label" for="transmission">Manual</label>
+          <input class="form-check-input transmission" type="radio" name="transmission" id="transmission" value="0" <%if(locals.old && old.transmission == '0' || vehicle.transmission == '0' ) { %> checked <% }%>>
+          <label class="form-check-label transmission" for="transmission">Manual</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="transmission" id="transmission" value="1" <%if(locals.old && old.transmission == '1' || (vehicle.transmission == '1')) { %> checked <% }%>>
-          <label class="form-check-label" for="transmission">Automatico</label>
+          <input class="form-check-input transmission" type="radio" name="transmission" id="transmission" value="1" <%if(locals.old && old.transmission == '1' || vehicle.transmission == '1') { %> checked <% }%>>
+          <label class="form-check-label transmission" for="transmission">Automatico</label>
         </div>
       </div>
 
@@ -111,7 +110,7 @@
 
       <div class="input-group mb-3">
         <span class="input-group-text">$</span>
-        <input type="number" step="0.01" class="form-control" aria-label="Amount (to the nearest dollar)" name="pricexday" placeholder="precioxDia"  value="<%if(locals.old && old.pricexday){%><%=old.pricexday%><%}else{%><%=vehicle.pricexday%><%}%>">
+        <input type="number" step="0.01" class="form-control" aria-label="Amount (to the nearest dollar)" id = 'pricexday' name="pricexday" placeholder="precioxDia"  value="<%if(locals.old && old.pricexday){%><%=old.pricexday%><%}else{%><%=vehicle.pricexday%><%}%>">
         <span class="input-group-text">.00</span>
       </div>
       
