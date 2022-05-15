@@ -230,7 +230,7 @@ const controlador = {
 
     bookings: function(req,res) {
 
-        db.bookings.findAll({
+        let bookings = db.bookings.findAll({
             include:[
                 {association:'vehicle'},
                 {association:'user'},
@@ -242,8 +242,12 @@ const controlador = {
             ],
             where: {id_user:req.session.user.id}
         })
-        .then(function(bookings) {
-            res.render('users/bookings',{bookings})
+
+        let categories = db.categories.findAll()
+        
+        Promise.all([bookings,categories])
+        .then(function([bookings,categories]) {
+            res.render('users/bookings',{bookings,categories})
         })
 
     },
