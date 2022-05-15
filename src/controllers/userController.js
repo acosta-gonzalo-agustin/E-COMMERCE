@@ -4,6 +4,9 @@ const { validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const db = require('../database/models')
 
+const fetch =  require('node-fetch');
+const { json } = require('sequelize/types');
+
 
 
 const controlador = {
@@ -13,10 +16,22 @@ const controlador = {
 
     register: function (req, res) {
 
-        db.categories.findAll()
-        .then(function(categories) {
-            res.render('users/register',{categories})
+
+
+        fetch('http://localhost:3000/user/listing')
+        .then(function(lista) {
+            lista.json()
+            .then(function(resultado) {
+                let array = json.parse(resultado);
+                res.send(array[0]);
+            })
         })
+
+
+        // db.categories.findAll()
+        // .then(function(categories) {
+        //     res.render('users/register',{categories})
+        // })
     },
 
 
@@ -279,7 +294,8 @@ const controlador = {
         .catch(function(error) {
             return res.json(error);
         })
-    }
+    },
+
 
 }
 
