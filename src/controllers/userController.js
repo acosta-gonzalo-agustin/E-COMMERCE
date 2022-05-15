@@ -5,7 +5,6 @@ const bcrypt = require('bcryptjs');
 const db = require('../database/models')
 
 const fetch =  require('node-fetch');
-const { json } = require('sequelize/types');
 
 
 
