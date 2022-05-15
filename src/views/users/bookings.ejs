@@ -2,14 +2,17 @@
 
 <%- include('../parcials/head') %>
 
+  <%if(bookings.length != 0) {%> 
+
   <h1 class="titulo-lista">MIS RESERVAS</h1>
 
   <main>
 
 
-
+    
 
     <div class='lista-productos'>
+      
 
       <% for(let i of bookings) { %>
 
@@ -90,17 +93,16 @@
 
           </div>
 
-        </div>
-
+        </div> 
+        
         <% } %>
-
-
-
-
     </div>
 
-
   </main>
+
+  <%} else {%>
+    <h1 class="titulo-lista">USTED AUN NO CUENTA CON RESERVAS</h1>
+  <%} %>
 
 
 

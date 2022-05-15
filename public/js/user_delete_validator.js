@@ -1,6 +1,6 @@
 window.addEventListener('load', function() {
 
-    let formulario = document.querySelector('form.delete');
+    let formulario = document.querySelector('form#delete');
 
     console.log(formulario);
 
@@ -11,6 +11,8 @@ window.addEventListener('load', function() {
             if(confirmacion == false) {
                 event.preventDefault();
 
+            } else {
+                localStorage.setItem('delete_user','ok');
             }
         })
 

@@ -1,9 +1,12 @@
 window.addEventListener('load', function () {
 
 
-    if(localStorage.getItem('reserva')) {
-        console.log(this.localStorage.getItem('reserva'));
 
+    /*------------------------------------MENSAJES A TRANSACCIONES CON SWEET ALERT-------------------*/
+
+
+    if(localStorage.getItem('reserva')) {
+        
         swal("Reserva confirmada", "Disfruta de tu viaje!", "success")
         .then(function() {
             localStorage.removeItem('reserva');
@@ -13,8 +16,7 @@ window.addEventListener('load', function () {
     }
 
     if(localStorage.getItem('delete')) {
-        console.log(this.localStorage.getItem('delete'));
-
+  
         swal({
             title: "El coche se ha eliminado de la base de datos",
             text: "",
@@ -29,7 +31,6 @@ window.addEventListener('load', function () {
     }
 
     if(localStorage.getItem('create')) {
-        console.log(this.localStorage.getItem('create'));
 
         swal({
             title: "El coche se ha guardado en la base de datos",
@@ -45,7 +46,6 @@ window.addEventListener('load', function () {
     }
 
     if(localStorage.getItem('update')) {
-        console.log(this.localStorage.getItem('update'));
 
         swal({
             title: "Se han guardado con exito los cambios en el articulo",
@@ -55,6 +55,35 @@ window.addEventListener('load', function () {
           })
         .then(function() {
             localStorage.removeItem('update');
+        })
+
+        
+    }
+
+
+    if(localStorage.getItem('register')) {
+        swal({
+            title: "La cuenta se creo exitosamente",
+            text: "Inicie sesion",
+            icon: "success",
+            button: "Ok",
+          })
+        .then(function() {
+            localStorage.removeItem('register');
+        })
+
+        
+    }
+
+    if(localStorage.getItem('delete_user')) {
+        swal({
+            title: "El usuario ha sido eliminado",
+            text: "",
+            icon: "success",
+            button: "Ok",
+          })
+        .then(function() {
+            localStorage.removeItem('delete_user');
         })
 
         
