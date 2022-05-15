@@ -8,12 +8,15 @@ const fetch =  require('node-fetch');
 
 
 
+
 const controlador = {
 
     /*-----------------------METODO CARGAR FORMULARIO DE REGISTRO--------------------------------*/
 
 
     register: function (req, res) {
+
+
 
 
         db.categories.findAll()
