@@ -17,21 +17,10 @@ const controlador = {
     register: function (req, res) {
 
 
-
-        fetch('http://localhost:3000/user/listing')
-        .then(function(lista) {
-            lista.json()
-            .then(function(resultado) {
-                let array = json.parse(resultado);
-                res.send(array[0]);
-            })
+        db.categories.findAll()
+        .then(function(categories) {
+            res.render('users/register',{categories})
         })
-
-
-        // db.categories.findAll()
-        // .then(function(categories) {
-        //     res.render('users/register',{categories})
-        // })
     },
 
 
