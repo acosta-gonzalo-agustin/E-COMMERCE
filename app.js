@@ -7,10 +7,14 @@ const cookieParser = require('cookie-parser');
 const expressFileUpload = require('express-fileupload');
 const Logueado = require('./src/middlewares/Loggued');
 const userCookie = require('./src/middlewares/user_cookie');
+const cors = require('cors');
 
 
+
+app.use(cors())
 
 app.use(express.static(path.join(__dirname, './public')));
+
 
 
 /*-----------------------------IMPORTANDO RUTAS---------------------------------------------*/
@@ -92,6 +96,13 @@ app.use('/user',userRoute)
 /*---------------------------------MONTAJE DE SERVIDOR----------------------------------------------*/
 
 
-app.listen(process.env.PORT || 3000, function() {
+app.listen(process.env.PORT || 3001, function() {
   console.log('servidor montado');
 });
+
+/*---------------------------------- AGREGANDO CORS PARA PODER TRABAJAR SOBRE DIFERENTES SERVIDORES EN FRONT Y BACK--*/
+
+
+
+
+

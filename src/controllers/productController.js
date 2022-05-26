@@ -979,7 +979,18 @@ const controlador = {
     listing: function (req, res) {
 
         let categories = db.categories.findAll();
-        let vehicles = db.vehicles.findAll();
+        let vehicles = db.vehicles.findAll(
+            {
+
+                include: [
+                    { association: 'brand' },
+                    { association: 'category' },
+                    { association: 'city' },
+                    { association: 'features' },
+                    { association: 'fuel' }
+                ]
+            }
+        );
 
         Promise.all([categories, vehicles])
             .then(function ([categories, vehicles]) {
@@ -992,10 +1003,10 @@ const controlador = {
                         }
                     }
 
-                    countByCategory.push({ [i.name]: category });
+                    countByCategory.push([i.name,category]);
                 }
                 return res.status(200).json({
-                    count: vehicles.length,
+                    total: vehicles.length,
                     countByCategory: countByCategory,
                     data: vehicles,
                     status: 200,
