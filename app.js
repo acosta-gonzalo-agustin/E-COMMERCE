@@ -96,7 +96,7 @@ app.use('/user',userRoute)
 /*---------------------------------MONTAJE DE SERVIDOR----------------------------------------------*/
 
 
-app.listen(process.env.PORT || 3001, function() {
+app.listen(process.env.PORT || 3000, function() {
   console.log('servidor montado');
 });
 
