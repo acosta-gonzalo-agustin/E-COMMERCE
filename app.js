@@ -1,8 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-// const session = require('express-session');
-const session = require('cookie-session');
+const session = require('express-session');
 const cookieParser = require('cookie-parser');
 
 const expressFileUpload = require('express-fileupload');
@@ -97,7 +96,7 @@ app.use('/user',userRoute)
 /*---------------------------------MONTAJE DE SERVIDOR----------------------------------------------*/
 
 
-app.listen(process.env.PORT || 3000, function() {
+app.listen(process.env.PORT || 3001, function() {
   console.log('servidor montado');
 });
 
