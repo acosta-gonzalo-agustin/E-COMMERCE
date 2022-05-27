@@ -116,7 +116,7 @@ const controlador = {
 
     logout: function (req, res) {
         res.clearCookie('user');
-        req.session.destroy();
+        req.session = null;
         res.redirect('/');
     },
 
@@ -171,7 +171,7 @@ const controlador = {
                                 })
 
                             res.clearCookie('user');
-                            req.session.destroy();
+                            req.session = null;
                             res.redirect('/');
                         }
 
@@ -196,7 +196,7 @@ const controlador = {
                 )
 
                 res.clearCookie('user');
-                req.session.destroy();
+                req.session = null;
 
                 res.redirect('/');
             }
@@ -218,7 +218,7 @@ const controlador = {
     delete: function (req, res) {
         fs.unlinkSync(path.join(__dirname, '../../public/img/img-users/' + req.session.user.profile_picture));
         res.clearCookie('user');
-        req.session.destroy();
+        req.session = null;
         db.users.destroy({
             where: { id: req.params.id }
         });

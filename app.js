@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const session = require('express-session');
+const cookieSession = require('cookie-session')
 const cookieParser = require('cookie-parser');
 
 const expressFileUpload = require('express-fileupload');
@@ -56,10 +56,9 @@ app.use(expressFileUpload({
 
 /*------------------------------EXPRESS-SESSION A NIVEL APLICACION--------------------------------*/
 
-  app.use(session( {
+  app.use(cookieSession( {
     secret: "Secret message",
-    resave:false,
-    saveUninitialized:false,
+    
   }));
 
 /*------------------------------COOKIE-PARSER A NIVEL APLICACION--------------------------------*/
