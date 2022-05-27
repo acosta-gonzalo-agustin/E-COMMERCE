@@ -19,7 +19,8 @@ module.exports =
     "username": "root",
     "password": null,
     "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "host": "mysql-gonzaloacosta.alwaysdata.net",
+    "dialect": "mysql",
+    'port':3306
   }
 }
