@@ -100,7 +100,7 @@ app.listen(process.env.PORT || 3000, function() {
   console.log('servidor montado');
 });
 
-/*---------------------------------- AGREGANDO CORS PARA PODER TRABAJAR SOBRE DIFERENTES SERVIDORES EN FRONT Y BACK--*/
+
 
 
 
