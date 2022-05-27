@@ -16,9 +16,9 @@ module.exports =
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
+    "username": "264166",
+    "password": 'LuisGonzalobsascba5',
+    "database": "gonzaloacosta_fastwheel",
     "host": "mysql-gonzaloacosta.alwaysdata.net",
     "dialect": "mysql",
     'port':3306
