@@ -1108,7 +1108,7 @@ const controlador = {
                         { association: 'features'},
                     ],
                     where: {
-                        id_category: req.params.id_category,
+                        id_category: maximo,
                     }
 
                 })
