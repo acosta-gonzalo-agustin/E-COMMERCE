@@ -81,9 +81,14 @@ router.get('/list',productController.listing);
 
 router.get('/categories',productController.categories_api);
 
+router.get('/main_booking',productController.main_booking);
+
+
 router.get('/:id',productController.vehicle);
 
-router.get('/prueba',productController.probando)
+
+
+
 
 
 

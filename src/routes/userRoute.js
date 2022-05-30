@@ -74,9 +74,12 @@ router.delete('/delete/:id',loggued_booking,userController.delete);
 
 /*--------------------------------RUTAS APIS----------------------------------------*/
 
+
+
 router.get('/listing',userController.listing);
 
 router.get('/:id',userController.user);
+
 
 
 module.exports = router;

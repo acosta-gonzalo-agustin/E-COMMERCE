@@ -11,12 +11,6 @@ const { type } = require('express/lib/response');
 
 const controlador = {
 
-    probando: function(req,res) {
-        console.log('aa')
-        res.send("porfa")
-    },
-
-
 
 
     /*---------------------------- funcion cargar filtro categoria en formulario --------------------------*/
@@ -273,7 +267,7 @@ const controlador = {
 
         let dato = req.query;
 
-        console.log(dato)
+       
 
 
 
@@ -396,7 +390,7 @@ const controlador = {
                                 }
 
                             } else if (!((dato.pickup_city == real_city_pickup && pickup >= real_date_pickup + 86400000) || ((pickup >= real_date_pickup + 172800000) && (pickup >= Date.parse(pickup_minDate) + 172800000)))) {
-                                console.log(dato.pickup_city == real_city_pickup);
+                            
 
                                 reservados.push(i.id);
 
@@ -495,7 +489,6 @@ const controlador = {
                 let precioTotal = dias * vehicle.pricexday;
                 dato.precioTotal = precioTotal;
 
-                console.log(req.session.user.id_role);
 
                 res.render('products/booking', { categories, vehicle, insurances, additionals, dato });
             })
@@ -914,7 +907,7 @@ const controlador = {
         })
             .then(function (vehicle) {
 
-                console.log(vehicle)
+            
 
 
                 if (vehicle == null) {
@@ -1072,11 +1065,54 @@ const controlador = {
             })
     },
 
-    probando: function(req,res) {
-        res.send('por favor')
+    main_booking: function (req, res) {
+
+
+        db.bookings.findAll()
+            .then(function (data) {
+                let cuenta = [];
+                for(i of data) {
+                    if(cuenta.length == 0) {
+                        cuenta.push([i.id_vehicle,1])  
+                    } else {
+
+                        let condicion = true;
+
+                        for(j of cuenta) {
+                            if(i.id_vehicle == j[0]) {
+                                j[1]++
+                                condicion = false;
+                                break;
+                            }
+                        }
+                        if(condicion == true) {
+                            cuenta.push([i.id_vehicle,1]);
+                        }
+                    }
+                }
+                let num = 0;
+                let maximo = [];
+                for(i of cuenta) {
+                    if(i[1] > num) {
+                        maximo = i[0];
+                        num = i[1];
+                    }
+                }
+
+                db.vehicles.findByPk(maximo)
+                .then(function(data) {
+
+                    return res.status(200).json({
+                        vehicle: data,
+                    })
+                })
+                .catch(function (error) {
+                    return res.send(error);
+                })
+     
+            })
 
     }
-
 
 
 
