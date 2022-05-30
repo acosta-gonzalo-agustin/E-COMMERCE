@@ -1099,28 +1099,28 @@ const controlador = {
                     }
                 }
 
-                db.vehicles.findOne({
-                    include: [
-                        { association: 'category'},
-                        { association: 'brand'},
-                        { association: 'city'},
-                        { association: 'fuel'},
-                        { association: 'features'},
-                    ],
-                    where: {
-                        id_category: maximo,
+                db.vehicles.findOne(
+                    {
+                        include: [
+                            { association: 'category' },
+                            { association: 'brand' },
+                            { association: 'city' },
+                            { association: 'fuel' },
+                            { association: 'features' },
+                        ],
+                        where: { id: maximo}
                     }
 
-                })
-                    .then(function (data) {
+                )
+                .then(function (data) {
 
-                        return res.status(200).json({
+                    return res.status(200).json({
                             vehicle: data,
-                        })
                     })
-                    .catch(function (error) {
-                        return res.send(error);
-                    })
+                })
+                .catch(function (error) {
+                    return res.send(error);
+                })
 
             })
 
