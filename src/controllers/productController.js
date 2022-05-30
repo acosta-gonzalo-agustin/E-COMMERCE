@@ -267,7 +267,7 @@ const controlador = {
 
         let dato = req.query;
 
-       
+
 
 
 
@@ -390,7 +390,7 @@ const controlador = {
                                 }
 
                             } else if (!((dato.pickup_city == real_city_pickup && pickup >= real_date_pickup + 86400000) || ((pickup >= real_date_pickup + 172800000) && (pickup >= Date.parse(pickup_minDate) + 172800000)))) {
-                            
+
 
                                 reservados.push(i.id);
 
@@ -907,7 +907,7 @@ const controlador = {
         })
             .then(function (vehicle) {
 
-            
+
 
 
                 if (vehicle == null) {
@@ -1071,45 +1071,57 @@ const controlador = {
         db.bookings.findAll()
             .then(function (data) {
                 let cuenta = [];
-                for(i of data) {
-                    if(cuenta.length == 0) {
-                        cuenta.push([i.id_vehicle,1])  
+                for (i of data) {
+                    if (cuenta.length == 0) {
+                        cuenta.push([i.id_vehicle, 1])
                     } else {
 
                         let condicion = true;
 
-                        for(j of cuenta) {
-                            if(i.id_vehicle == j[0]) {
+                        for (j of cuenta) {
+                            if (i.id_vehicle == j[0]) {
                                 j[1]++
                                 condicion = false;
                                 break;
                             }
                         }
-                        if(condicion == true) {
-                            cuenta.push([i.id_vehicle,1]);
+                        if (condicion == true) {
+                            cuenta.push([i.id_vehicle, 1]);
                         }
                     }
                 }
                 let num = 0;
                 let maximo = [];
-                for(i of cuenta) {
-                    if(i[1] > num) {
+                for (i of cuenta) {
+                    if (i[1] > num) {
                         maximo = i[0];
                         num = i[1];
                     }
                 }
 
-                db.vehicles.findByPk(maximo)
-                .then(function(data) {
+                db.vehicles.findOne({
+                    include: [
+                        { association: 'category'},
+                        { association: 'brand'},
+                        { association: 'city'},
+                        { association: 'fuel'},
+                        { association: 'features'},
+                    ],
+                    where: {
+                        id_category: req.params.id_category,
+                    }
 
-                    return res.status(200).json({
-                        vehicle: data,
+                })
+                    .then(function (data) {
+
+                        return res.status(200).json({
+                            vehicle: data,
+                        })
                     })
-                })
-                .catch(function (error) {
-                    return res.send(error);
-                })
-     
+                    .catch(function (error) {
+                        return res.send(error);
+                    })
+
             })
 
     }
