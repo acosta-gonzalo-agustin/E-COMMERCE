@@ -281,7 +281,8 @@ const controlador = {
                     phone_number: user.phone_number,
                     driver_licence :user.driver_licence,
                     promo_code:user.promo_code,
-                    id_role:user.id_role
+                    id_role:user.id_role,
+                    picture:user.picture
                 },
                 status:200
             });
