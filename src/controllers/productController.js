@@ -1072,6 +1072,11 @@ const controlador = {
             })
     },
 
+    probando: function(req,res) {
+        res.send('por favor')
+
+    }
+
 
 
 
