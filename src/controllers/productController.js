@@ -11,6 +11,11 @@ const { type } = require('express/lib/response');
 
 const controlador = {
 
+    probando: function(req,res) {
+        console.log('aa')
+        res.send("porfa")
+    },
+
 
 
 
@@ -902,7 +907,7 @@ const controlador = {
 
     delete: function (req, res) {
 
-    
+
 
         db.bookings.findOne({
             where: { id_vehicle: req.params.id }
@@ -913,7 +918,7 @@ const controlador = {
 
 
                 if (vehicle == null) {
-                 
+
 
 
                     /*------------------------BORRANDO IMAGEN-----------------*/
@@ -958,7 +963,7 @@ const controlador = {
 
                     Promise.all([categories, vehicles])
                         .then(function ([categories, vehicles]) {
-                            res.render('products/product-listing', { categories, vehicles,mensaje:'reservado'});
+                            res.render('products/product-listing', { categories, vehicles, mensaje: 'reservado' });
                         })
                 }
 
@@ -1003,7 +1008,7 @@ const controlador = {
                         }
                     }
 
-                    countByCategory.push([i.name,category]);
+                    countByCategory.push([i.name, category]);
                 }
                 return res.status(200).json({
                     total: vehicles.length,
@@ -1065,7 +1070,10 @@ const controlador = {
             .catch(function (error) {
                 return res.send(error);
             })
-    }
+    },
+
+
+
 
 }
 

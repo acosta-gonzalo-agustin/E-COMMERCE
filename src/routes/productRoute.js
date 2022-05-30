@@ -83,6 +83,12 @@ router.get('/categories',productController.categories_api);
 
 router.get('/:id',productController.vehicle);
 
+router.get('/prueba',productController.probando)
+
+
+
+
+
 
 
 module.exports = router;
