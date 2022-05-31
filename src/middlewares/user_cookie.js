@@ -1,5 +1,5 @@
-
 function loggued(req, res, next) {
+
     if (req.cookies.user != undefined && req.session.user == undefined) {
 
         const db = require('../database/models');
@@ -18,11 +18,14 @@ function loggued(req, res, next) {
                         'id_role': resultado.id_role
                     };
                 }
+                next();
             })
 
+    } else {
+        next()
     }
 
-    next();
+    
 
 }
 

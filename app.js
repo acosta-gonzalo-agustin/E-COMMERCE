@@ -16,6 +16,30 @@ app.use(cors())
 app.use(express.static(path.join(__dirname, './public')));
 
 
+/*------------------------------EXPRESS-SESSION A NIVEL APLICACION--------------------------------*/
+
+app.use(cookieSession( {
+  secret: "Secret message",
+  
+}));
+
+
+/*------------------------------COOKIE-PARSER A NIVEL APLICACION--------------------------------*/
+
+app.use(cookieParser());
+
+/*------------------------------MIDDLEWARE USUARIO LOGGUEADO NIVEL APLICACION--------------------------------*/
+
+app.use(userCookie); 
+
+
+
+
+/*------------------------------MIDDLEWARE USUARIO LOGGUEADO NIVEL APLICACION--------------------------------*/
+
+app.use(Logueado); 
+
+
 
 /*-----------------------------IMPORTANDO RUTAS---------------------------------------------*/
 
@@ -54,31 +78,13 @@ app.use(expressFileUpload({
 
 
 
-/*------------------------------EXPRESS-SESSION A NIVEL APLICACION--------------------------------*/
 
-  app.use(cookieSession( {
-    secret: "Secret message",
-    
-  }));
-
-/*------------------------------COOKIE-PARSER A NIVEL APLICACION--------------------------------*/
-
-app.use(cookieParser());
-
-/*------------------------------MIDDLEWARE USUARIO LOGGUEADO NIVEL APLICACION--------------------------------*/
-
-app.use(userCookie); 
-
-
-/*------------------------------MIDDLEWARE USUARIO LOGGUEADO NIVEL APLICACION--------------------------------*/
-
-app.use(Logueado); 
 
 
 
 /*---------------------------RUTEO DE VISTAS-------------------------------*/  
 
-app.use('/',homeRoute);
+app.use('/',userCookie,homeRoute);
 
 app.use('/about-us',aboutUsRoute);
 
