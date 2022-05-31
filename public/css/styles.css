@@ -226,6 +226,9 @@ P {
     
 /*---------------------------------   ESTILOS DE LA VISTA PRODUCT-LISTING -----------------------------------------*/
 
+#reservado {
+    visibility: hidden;
+}
 
 main {
     display: flex;
