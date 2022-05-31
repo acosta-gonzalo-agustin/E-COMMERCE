@@ -7,7 +7,7 @@ window.addEventListener('load', function() {
 
     if(reservado.textContent.trim() == 'reservado') {
         localStorage.removeItem('delete');
-        swal("El vehiculo se encuentra con una reserva pendiente");
+        swal("El vehículo se encuentra con una reserva pendiente");
         reservado.innerHTML = '';
 
     }
