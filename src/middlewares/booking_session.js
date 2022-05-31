@@ -1,13 +1,13 @@
 function loggued(req,res,next) {
 
-    
-    
+        
     res.locals.loggued = false;
     if(req.session && req.session.user) {
 
         if (req.session.booking) {
             delete req.session.booking;
         }
+        res.locals.loggued = true;
     
         req.session.booking = {
             'id': req.params.id,
