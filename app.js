@@ -84,7 +84,7 @@ app.use(expressFileUpload({
 
 /*---------------------------RUTEO DE VISTAS-------------------------------*/  
 
-app.use('/',userCookie,homeRoute);
+app.use('/',homeRoute);
 
 app.use('/about-us',aboutUsRoute);
 
