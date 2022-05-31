@@ -81,10 +81,9 @@ router.get('/list',productController.listing);
 
 router.get('/categories',productController.categories_api);
 
+router.get('/:id(\\d{12})',productController.vehicle);
+
 router.get('/main_booking',productController.main_booking);
-
-
-router.get('/:id',productController.vehicle);
 
 
 

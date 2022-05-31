@@ -74,11 +74,13 @@ router.delete('/delete/:id',loggued_booking,userController.delete);
 
 /*--------------------------------RUTAS APIS----------------------------------------*/
 
-
+router.get('/:id(\\d{12})',userController.user);
 
 router.get('/listing',userController.listing);
 
-router.get('/:id',userController.user);
+
+
+
 
 
 
