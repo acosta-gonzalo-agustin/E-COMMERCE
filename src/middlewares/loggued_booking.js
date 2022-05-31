@@ -4,7 +4,7 @@ function permission(req, res, next) {
         if (req.session.user.id_role == 2) {
             next();
         } else {
-            res.send('pagina no encontrada');
+            res.send('el administrador no puede hacer reservas. Ingresa con un cliente');
         }
     } else {
         res.send('pagina no encontrada');
