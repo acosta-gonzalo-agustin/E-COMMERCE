@@ -6,6 +6,7 @@ window.addEventListener('load', function() {
     let formularios = document.querySelectorAll('form.eliminar');
 
     if(reservado.textContent.trim() == 'reservado') {
+        localStorage.removeItem('delete');
         swal("El vehiculo se encuentra con una reserva pendiente");
         reservado.innerHTML = '';
 
