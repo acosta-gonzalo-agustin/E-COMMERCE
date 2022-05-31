@@ -194,23 +194,42 @@
                   </div>
                 </div>
                 <div class="col-md reserva-derecha">
-                  <div>
-                    $<%= i.pricexday%>/dia
-                  </div>
-                  <div class="escondido">
+                  <div class="row">
 
-                    <ul>
-                      ADICIONALES
-                      <%if(i.features !=null) %>
-                        <%for(j of i.features) {%>
-                          <li>
-                            <%=j.name%>
-                          </li>
-                          <%}%>
-                            <li>kilometraje <%=i.mileage%>
+                    <div class="escondido col-md">
+  
+                      <ul>
+                        ADICIONALES
+                        <%if(i.features !=null) %>
+                          <%for(j of i.features) {%>
+                            <li>
+                              <%=j.name%>
                             </li>
-                    </ul>
+                            <%}%>
+                              <li>kilometraje <%=i.mileage%>
+                              </li>
+                      </ul>
+                    </div>
+
+                    <div class="col-md precio">
+                      <h3 precio>$<%= i.pricexday%>/dia</h3>
+                    </div>
+
                   </div>
+
+                  <div class="row">
+                    <div class="col-xs-3 col-md-4" >
+                      <h5 precio>aceptamos:</h3>
+                    </div>
+                    <div class="col-xs-3 col-md-4" >
+                      <img class="previaje img-fluid " src="/img/pre_viaje.jpg" alt="">
+                    </div>
+                    <div class="col-xs-3 col-md-4">
+                      <img class="previaje img-fluid " src="/img/mercado.png" alt="">
+                    </div>
+                  </div>
+                  
+                  
                   <div>
                     <%let reservado=false%>
                       <%if(locals && locals.reservados) {%>
@@ -222,7 +241,7 @@
                                   <%}%>
                                     <%}%>
                                       <%if(reservado) { %>
-                                        <button type="submit" class="reserva presupuesto"><a class="tachado eliminar"
+                                        <button type="submit" class="reserva presupuesto "><a class="tachado eliminar btn"
                                             href="/product/detail/<%=i.id%> " id='pruebisima'>RESERVADO BUSCAR OTRAS OPCIONES</a></button>
                                         <%} else if(locals && locals.dato) { %>
                                           <button type="submit" id = 'booking' class="btn reserva"><a href="/product/booking/<%=i.id%>/<%=dato.pickup_date%>/<%=dato.dropoff_date%>/<%=dato.pickup_city%>/<%=dato.dropoff_city%>/<%=dato.pickup_time%>/<%=dato.dropoff_time%>"

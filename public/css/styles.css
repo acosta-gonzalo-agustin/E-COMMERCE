@@ -318,6 +318,15 @@ div.filtro .container {
     width: 100% !important;
 }
 
+
+.previaje {
+    max-width: 40%!important;
+}
+
+.precio {
+    color: rgb(177, 169, 169);
+}
+
 /*-------------------------------- ESTILO DE CARRITO DE COMPRA----------------------------------------*/
 
 .g-3{
@@ -648,6 +657,11 @@ footer .container li {
 
     
 @media (min-width: 769px) {
+
+
+    .previaje {
+        max-width: 70%!important;
+    }
 
     /* estilos carrousel*/
 
