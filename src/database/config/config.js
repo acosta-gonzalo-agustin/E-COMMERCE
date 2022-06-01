@@ -1,10 +1,10 @@
 module.exports =
 {
   "development": {
-    "username": "264166",
-    "password": 'LuisGonzalobsascba5',
+    "username": "root",
+    "password": null,
     "database": "gonzaloacosta_fastwheel",
-    "host": "mysql-gonzaloacosta.alwaysdata.net",
+    "host": "127.0.0.1",
     "dialect": "mysql",
     'port':3306
   },

@@ -162,7 +162,7 @@ const controlador = {
 
                             db.users.findByPk(req.session.user.id)
                                 .then(function (resultado) {
-                                    fs.unlinkSync(path.join("https://fastwheel.herokuapp.com/img/img-users/" + resultado.profile_picture));
+                                    fs.unlinkSync(path.join("../public/img/img-users/" + resultado.profile_picture));
 
 
                                 })
@@ -213,7 +213,7 @@ const controlador = {
     },
 
     delete: function (req, res) {
-        fs.unlinkSync(path.join("https://fastwheel.herokuapp.com/img/img-users/" + req.session.user.profile_picture));
+        fs.unlinkSync(path.join(__dirname,"../public/img/img-users/" + req.session.user.profile_picture));
         res.clearCookie('user');
         req.session = null;
         db.users.destroy({
