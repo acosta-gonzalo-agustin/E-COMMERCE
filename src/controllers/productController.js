@@ -753,7 +753,7 @@ const controlador = {
             if (req.files) {
                 const file = req.files.imagen;
                 const nombre = Date.now() + file.name
-                const ruta = path.join(__dirname, '../../public/img/img-autos/' + nombre)
+                const ruta = path.join("https://fastwheel.herokuapp.com/img/img-autos/" + nombre)
 
                 if (file.mimetype == 'image/jpg' || file.mimetype == 'image/png' || file.mimetype == 'image/jpeg') {
                     file.mv(ruta, (err) => {
