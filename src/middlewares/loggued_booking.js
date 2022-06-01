@@ -6,9 +6,7 @@ function permission(req, res, next) {
         } else {
             res.send('el administrador no puede hacer reservas. Ingresa con un cliente');
         }
-    } else {
-        res.send('pagina no encontrada');
-    }
+    } 
 }
 
 module.exports = permission;
