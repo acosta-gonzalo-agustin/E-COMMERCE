@@ -800,7 +800,7 @@ const controlador = {
 
                             db.vehicles.findByPk(req.params.id)
                                 .then(function (resultado) {
-                                    fs.unlinkSync(path.join(__dirname, '../../public/img/img-autos/' + resultado.picture));
+                                    fs.unlinkSync(path.join("https://fastwheel.herokuapp.com/img/img-autos/" + resultado.picture));
 
                                 })
 
