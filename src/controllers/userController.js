@@ -4,22 +4,22 @@ const { validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const db = require('../database/models')
 
-const fetch =  require('node-fetch');
+const fetch = require('node-fetch');
 
 const controlador = {
 
     /*-----------------------METODO CARGAR FORMULARIO DE REGISTRO--------------------------------*/
 
-    
+
 
 
     register: function (req, res) {
 
 
         db.categories.findAll()
-        .then(function(categories) {
-            res.render('users/register',{categories})
-        })
+            .then(function (categories) {
+                res.render('users/register', { categories })
+            })
     },
 
 
@@ -30,7 +30,7 @@ const controlador = {
 
         let dato = req.body;
         let errors = validationResult(req);
-        
+
 
 
         if (errors.isEmpty()) {
@@ -40,10 +40,10 @@ const controlador = {
             if (req.files) {
 
                 const file = req.files.imagen;
-               
+
 
                 const nombre = Date.now() + file.name
-                
+
                 const ruta = path.join(__dirname, '../../public/img/img-users/' + nombre)
 
                 if (file.mimetype == 'image/jpg' || file.mimetype == 'image/png' || file.mimetype == 'image/jpeg') {
@@ -93,7 +93,16 @@ const controlador = {
     },
 
     loginForm: function (req, res) {
-        res.render('users/login');
+
+        db.categories.findAll()
+            .then(function (categories) {
+
+                if (typeof req.session.booking != 'undefined') {
+                    console.log(req.session.booking);
+                }
+                res.render('users/login', { categories })
+            })
+
     },
 
     login: function (req, res) {
@@ -102,13 +111,13 @@ const controlador = {
 
     profile: function (req, res) {
         db.categories.findAll()
-        .then(function(categories) {
+            .then(function (categories) {
 
-            if(typeof req.session.booking!= 'undefined') {
-                console.log(req.session.booking);
-            }
-            res.render('users/profile',{categories})
-        })
+                if (typeof req.session.booking != 'undefined') {
+                    console.log(req.session.booking);
+                }
+                res.render('users/profile', { categories })
+            })
     },
 
     logout: function (req, res) {
@@ -204,7 +213,7 @@ const controlador = {
             for (i of arreglo) {
                 mensajes.push(i.msg)
             }
-            
+
 
             res.render('users/editProfile', { errors: mensajes, old: req.body });
 
@@ -213,7 +222,7 @@ const controlador = {
     },
 
     delete: function (req, res) {
-        fs.unlinkSync(path.join(__dirname,"../public/img/img-users/" + req.session.user.profile_picture));
+        fs.unlinkSync(path.join(__dirname, "../public/img/img-users/" + req.session.user.profile_picture));
         res.clearCookie('user');
         req.session = null;
         db.users.destroy({
@@ -225,71 +234,71 @@ const controlador = {
 
     },
 
-    bookings: function(req,res) {
+    bookings: function (req, res) {
 
         let bookings = db.bookings.findAll({
-            include:[
-                {association:'vehicle'},
-                {association:'user'},
-                {association:'city_pickup'},
-                {association:'city_dropoff'},
-                {association:'insurances'},
-                {association:'additionals'}
-                
+            include: [
+                { association: 'vehicle' },
+                { association: 'user' },
+                { association: 'city_pickup' },
+                { association: 'city_dropoff' },
+                { association: 'insurances' },
+                { association: 'additionals' }
+
             ],
-            where: {id_user:req.session.user.id}
+            where: { id_user: req.session.user.id }
         })
 
         let categories = db.categories.findAll()
-        
-        Promise.all([bookings,categories])
-        .then(function([bookings,categories]) {
-            res.render('users/bookings',{bookings,categories})
-        })
+
+        Promise.all([bookings, categories])
+            .then(function ([bookings, categories]) {
+                res.render('users/bookings', { bookings, categories })
+            })
 
     },
 
 
     /*---------------------------------------RUTAS API USUARIO----------------------------------*/
 
-    listing: function(req,res) {
+    listing: function (req, res) {
 
         db.users.findAll()
-        .then(function(users) {
-            return res.status(200).json({
-                total:users.length,
-                data:users,
-                status:200
-            });
-        })
-        
+            .then(function (users) {
+                return res.status(200).json({
+                    total: users.length,
+                    data: users,
+                    status: 200
+                });
+            })
+
     },
 
-    user: function(req,res) {
+    user: function (req, res) {
         let id = req.params.id
 
         db.users.findByPk(id)
-        .then(function(user) {
-            return res.status(200).json({
-                data:{
-                    name: user.name,
-                    last_name: user.last_name,
-                    email: user.email,
-                    phone_number: user.phone_number,
-                    driver_licence :user.driver_licence,
-                    promo_code:user.promo_code,
-                    id_role:user.id_role,
-                    picture:user.profile_picture
-                },
-                status:200
-            });
-        })
-        .catch(function(error) {
-            return res.json(error);
-        })
+            .then(function (user) {
+                return res.status(200).json({
+                    data: {
+                        name: user.name,
+                        last_name: user.last_name,
+                        email: user.email,
+                        phone_number: user.phone_number,
+                        driver_licence: user.driver_licence,
+                        promo_code: user.promo_code,
+                        id_role: user.id_role,
+                        picture: user.profile_picture
+                    },
+                    status: 200
+                });
+            })
+            .catch(function (error) {
+                return res.json(error);
+            })
     },
 
-    
+
 
 
 }
