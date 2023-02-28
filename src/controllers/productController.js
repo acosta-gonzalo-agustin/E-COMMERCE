@@ -3,9 +3,7 @@ const path = require('path');
 const { validationResult } = require('express-validator');
 
 const db = require('../database/models');
-const res = require('express/lib/response');
-const { kill } = require('process');
-const { type } = require('express/lib/response');
+
 
 
 
@@ -603,6 +601,7 @@ const controlador = {
                 const file = req.files.imagen;
                 const nombre = Date.now() + file.name
                 const ruta = path.join(__dirname, '../../public/img/img-autos/' + nombre)
+                
 
                 if (file.mimetype == 'image/jpg' || file.mimetype == 'image/png' || file.mimetype == 'image/jpeg') {
                     file.mv(ruta, (err) => {
@@ -910,6 +909,8 @@ const controlador = {
 
 
 
+
+                
                 if (vehicle == null) {
 
 
