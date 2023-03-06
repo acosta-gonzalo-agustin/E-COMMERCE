@@ -7,13 +7,29 @@ const cookieParser = require('cookie-parser');
 const expressFileUpload = require('express-fileupload');
 const Logueado = require('./src/middlewares/Loggued');
 const userCookie = require('./src/middlewares/user_cookie');
+const cloudinary = require('cloudinary').v2;
 const cors = require('cors');
+
 
 
 
 app.use(cors())
 
 app.use(express.static(path.join(__dirname, './public')));
+
+
+/*------------------------------CLOUDINARY CONFIG --------------------------------*/
+
+
+
+
+// Configuration 
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET
+});
+
 
 
 /*------------------------------EXPRESS-SESSION A NIVEL APLICACION--------------------------------*/

@@ -20,6 +20,7 @@
   "homepage": "https://github.com/acosta-gonzalo-agustin/Fast-Wheel#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "cloudinary": "^1.34.0",
     "cookie-parser": "^1.4.6",
     "cookie-session": "^2.0.0",
     "cors": "^2.8.5",
