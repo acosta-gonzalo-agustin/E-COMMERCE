@@ -66,6 +66,7 @@ const productRoute = require('./src/routes/productRoute');
 const citiesListingRoute = require('./src/routes/citiesListingRoute');
 const faqsRoute = require('./src/routes/faqsRoute');
 const userRoute = require('./src/routes/userRoute');
+const cloudyRoute = require('./src/routes/Cloudy');
 
 
 /*----------------------------ESTABLECIENDO EL MOTOR DE PLANTILLA -----------------------------------*/
@@ -101,6 +102,8 @@ app.use(expressFileUpload({
 
 /*---------------------------RUTEO DE VISTAS-------------------------------*/  
 
+
+
 app.use('/',homeRoute);
 
 app.use('/about-us',aboutUsRoute);
@@ -112,6 +115,8 @@ app.use('/cities-listing',citiesListingRoute);
 app.use('/FAQs',faqsRoute);
 
 app.use('/user',userRoute)
+
+app.use('/cloudys',cloudyRoute)
 
 
 

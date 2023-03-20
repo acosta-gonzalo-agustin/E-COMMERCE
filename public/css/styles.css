@@ -395,7 +395,7 @@ div.filtro .container {
 }
 
 .main-register{
-    background-image: url('../img/fondo-registro.jpg');
+    background-image: url('https://res.cloudinary.com/dnxq6ul1l/image/upload/v1679335385/Fast-Wheel/fondo-registro_vyh5zh.jpg');
     align-items: baseline;
     height: 700px;
 }
@@ -550,7 +550,7 @@ footer .container li {
     }
     .main-about {
         padding: 15%;
-        background-image: url('../img/concesio.jpg');
+        background-image: url('https://res.cloudinary.com/dnxq6ul1l/image/upload/v1679335386/Fast-Wheel/concesio_mecokb.jpg');
         background-position: center;
         background-size: cover;
         display:flex;
@@ -589,7 +589,7 @@ footer .container li {
         position: relative;
         padding-bottom: 10%;
         margin-bottom: 4vh;
-        background-image: url('../img/imagen-entrada.jpg');
+        background-image: url('https://res.cloudinary.com/dnxq6ul1l/image/upload/v1679335385/Fast-Wheel/imagen-entrada_agnkec.jpg');
         background-size: 100%;
         background-repeat: no-repeat;
     }

@@ -4,6 +4,18 @@ const { validationResult } = require('express-validator');
 
 const db = require('../database/models');
 
+/* CLOUDINARY CONFIG */
+
+const cloudinary = require('cloudinary').v2;
+
+
+// Configuration 
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET
+});
+
 
 
 
@@ -604,36 +616,30 @@ const controlador = {
 
 
                 // Upload
-
-const res = cloudinary.uploader.upload('https://upload.wikimedia.org/wikipedia/commons/a/ae/Olympic_flag.jpg', {public_id: "olympic_flag"})
-
-res.then((data) => {
-  console.log(data);
-  console.log(data.secure_url);
-}).catch((err) => {
-  console.log(err);
-});
-
-
-// Generate 
-const url = cloudinary.url("olympic_flag", {
-  width: 100,
-  height: 150,
-  Crop: 'fill'
-});
-
-
-
-// The output url
-console.log(url);
-// https://res.cloudinary.com/<cloud_name>/image/upload/h_150,w_100/olympic_flag
                 
-
                 if (file.mimetype == 'image/jpg' || file.mimetype == 'image/png' || file.mimetype == 'image/jpeg') {
                     file.mv(ruta, (err) => {
                         if (err) {
                             return res.status(500).send(err);
                         } else {
+
+
+                            const cloudy_data = cloudinary.uploader.upload(ruta, {public_id: nombre})
+
+                            cloudy_data.then((data) => {
+                                console.log(data);
+                                console.log(data.secure_url);
+                              }).catch((err) => {
+                                console.log(err);
+                              });
+                              
+                              
+                              // Generate 
+                              const url = cloudinary.url(nombre, {
+                                width: 100,
+                                height: 150,
+                                Crop: 'fill'
+                              });
 
 
 
@@ -778,13 +784,36 @@ console.log(url);
             if (req.files) {
                 const file = req.files.imagen;
                 const nombre = Date.now() + file.name
-                const ruta = path.join("https://fastwheel.herokuapp.com/img/img-autos/" + nombre)
+                const ruta = path.join(__dirname, '../../public/img/img-autos/' + nombre)
 
                 if (file.mimetype == 'image/jpg' || file.mimetype == 'image/png' || file.mimetype == 'image/jpeg') {
                     file.mv(ruta, (err) => {
                         if (err) {
                             return res.status(500).send(err);
                         } else {
+
+
+                            db.vehicles.findByPk(req.params.id)
+                            .then(function (resultado) {
+                                cloudinary.uploader.destroy(resultado.name)
+                            })
+
+                            const cloudy_data = cloudinary.uploader.upload(ruta, {public_id: nombre})
+
+                            cloudy_data.then((data) => {
+                                console.log(data);
+                                console.log(data.secure_url);
+                              }).catch((err) => {
+                                console.log(err);
+                              });
+                              
+                              
+                              // Generate 
+                              const url = cloudinary.url(nombre, {
+                                width: 100,
+                                height: 150,
+                                Crop: 'fill'
+                              });
 
                             db.vehicles.update(
                                 {
@@ -928,7 +957,11 @@ console.log(url);
 
 
         db.bookings.findOne({
-            where: { id_vehicle: req.params.id }
+            where: { 
+                id_vehicle: req.params.id,
+                
+
+            }
         })
             .then(function (vehicle) {
 
@@ -948,6 +981,12 @@ console.log(url);
                             fs.unlinkSync(path.join(__dirname, '../../public/img/img-autos/' + resultado.picture));
 
                         })
+
+                    db.vehicles.findByPk(req.params.id)
+                        .then(function (resultado) {
+                            cloudinary.uploader.destroy(resultado.name)
+                        })
+
 
                     /*----------------------------  ELIMINANDO PRODUCTO --------------------------*/
 
@@ -983,7 +1022,7 @@ console.log(url);
 
                     Promise.all([categories, vehicles])
                         .then(function ([categories, vehicles]) {
-                            res.render('products/product-listing', { categories, vehicles, mensaje: 'reservado' });
+                            res.render('products/product-listing', { categories, vehicles, mensaje: 'reservado'});
                         })
                 }
 
