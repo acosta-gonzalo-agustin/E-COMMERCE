@@ -800,7 +800,7 @@ const controlador = {
                                 cloudinary.uploader.destroy(resultado.name)
                             })
 
-                            const cloudy_data = cloudinary.uploader.upload(ruta, {public_id: nombre})
+                            const cloudy_data = cloudinary.uploader.upload(file, {folder: img-autos})
 
                             cloudy_data.then((data) => {
                                 console.log(data);
