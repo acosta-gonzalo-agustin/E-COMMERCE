@@ -52,7 +52,7 @@ router.post('/booking',loggued_booking,productController.reservaConfirm);
 /*---------------RUTAS PARA CREAR -----------------------------*/
 
 
-router.get('/create',permission_validation,productController.create);
+router.get('/create'/*,permission_validation*/,productController.create);
 router.post('/create',permission_validation,validation,productController.save);
 
 
