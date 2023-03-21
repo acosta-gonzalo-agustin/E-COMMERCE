@@ -626,7 +626,7 @@ const controlador = {
                         } else {
 
 
-                            const cloudy_data = cloudinary.uploader.upload(file, {use_filename : true, folder : Fast-Wheel})
+                            const cloudy_data = cloudinary.uploader.upload(file, {use_filename : true, folder : "Fast-Wheel/img-autos"})
 
                             cloudy_data.then((data) => {
                                 console.log(data);
