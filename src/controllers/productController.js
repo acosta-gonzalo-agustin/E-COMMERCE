@@ -620,10 +620,10 @@ const controlador = {
                 // Upload
                 
                 if (file.mimetype == 'image/jpg' || file.mimetype == 'image/png' || file.mimetype == 'image/jpeg') {
-                    file.mv(ruta, (err) => {
-                        if (err) {
-                            return res.status(500).send(err);
-                        } else {
+                    // file.mv(ruta, (err) => {
+                        // if (err) {
+                        //     return res.status(500).send(err);
+                        // } else {
 
 
                             const cloudy_data = cloudinary.uploader.upload(file, {use_filename : true, folder : "Fast-Wheel/img-autos"})
@@ -681,7 +681,7 @@ const controlador = {
                             res.redirect('/');
                         }
 
-                    });
+                    // });
 
                 } else {
 
