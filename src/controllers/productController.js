@@ -611,6 +611,9 @@ const controlador = {
 
             if (req.files) {
                 const file = req.files.imagen;
+
+                console.log(file);
+                
                 const nombre = Date.now() + file.name
                 const ruta = path.join(__dirname, '../../public/img/img-autos/' + nombre)
 
@@ -624,7 +627,7 @@ const controlador = {
                         } else {
 
 
-                            const cloudy_data = cloudinary.v2.uploader.upload(file, {folder: 'Fast-Wheel/img-autos',use_filename:true})
+                            const cloudy_data = cloudinary.uploader.upload(file, {folder: 'Fast-Wheel/img-autos',use_filename:true})
 
                             cloudy_data.then((data) => {
                                 console.log(data);
