@@ -652,7 +652,7 @@ const controlador = {
                                 transmission: dato.transmission,
                                 mileage: '0',
                                 pricexday: dato.pricexday,
-                                picture: nombre,
+                                picture: secure_url,
                                 description: dato.description.trim(),
                                 id_category: dato.category,
                                 id_fuel: dato.fuel,
