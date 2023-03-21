@@ -6,7 +6,7 @@ const db = require('../database/models');
 
 /* CLOUDINARY CONFIG */
 
-const cloudinary = require('cloudinary');
+const cloudinary = require('cloudinary').v2;
 
 
 // Configuration 
