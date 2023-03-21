@@ -36,6 +36,7 @@
     "mysql2": "^2.3.3",
     "node-fetch": "^2.6.7",
     "nodemon": "^2.0.16",
+    "react-scripts": "^5.0.1",
     "sequelize": "^6.18.0",
     "sequelize-cli": "^6.4.1"
   }
