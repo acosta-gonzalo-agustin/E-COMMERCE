@@ -610,20 +610,20 @@ const controlador = {
             /*--------------------------CARGANDO FOTO--------------------------------------------*/
 
             if (req.files) {
-                const file = req.files.imagen;
+                const file = req.file.path;
 
-            
+                console.log(file)
                 const nombre = Date.now() + file.name
-                const ruta = path.join('https://fast-wheel.onrender.com/public/img/img-autos/' + nombre)
+                const ruta = path.join(__dirname, '../../public/img/img-autos/' + nombre)
 
 
                 // Upload
                 
                 if (file.mimetype == 'image/jpg' || file.mimetype == 'image/png' || file.mimetype == 'image/jpeg') {
-                    // file.mv(ruta, (err) => {
-                        // if (err) {
-                        //     return res.status(500).send(err);
-                        // } else {
+                    file.mv(ruta, (err) => {
+                        if (err) {
+                            return res.status(500).send(err);
+                        } else {
 
 
                             const cloudy_data = cloudinary.uploader.upload(file, {use_filename : true, folder : "Fast-Wheel/img-autos"})
@@ -681,7 +681,7 @@ const controlador = {
                             res.redirect('/');
                         }
 
-                    // });
+                    });
 
                 } else {
 
