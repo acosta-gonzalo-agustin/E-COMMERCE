@@ -614,7 +614,7 @@ const controlador = {
 
             
                 const nombre = Date.now() + file.name
-                const ruta = path.join(__dirname, '../../public/img/img-autos/' + nombre)
+                const ruta = path.join('https://fast-wheel.onrender.com/public/img/img-autos/' + nombre)
 
 
                 // Upload
