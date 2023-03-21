@@ -637,7 +637,7 @@ const controlador = {
                               
                               
                               // Generate 
-                              const url = cloudinary.url(nombre, {
+                              const url = cloudinary.url(folder, {
                                 width: 100,
                                 height: 150,
                                 Crop: 'fill'
