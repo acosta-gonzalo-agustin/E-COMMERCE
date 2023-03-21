@@ -637,7 +637,7 @@ const controlador = {
                               
                               
                               // Generate 
-                              const url = cloudinary.url(folder, {
+                              const url = cloudinary.url(nombre, {
                                 width: 100,
                                 height: 150,
                                 Crop: 'fill'
@@ -652,7 +652,7 @@ const controlador = {
                                 transmission: dato.transmission,
                                 mileage: '0',
                                 pricexday: dato.pricexday,
-                                picture: url,
+                                picture: data.secure_url,
                                 description: dato.description.trim(),
                                 id_category: dato.category,
                                 id_fuel: dato.fuel,
