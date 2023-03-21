@@ -626,22 +626,22 @@ const controlador = {
                         } else {
 
 
-                            const cloudy_data = cloudinary.uploader.upload(file, {use_filename : true, folder : "Fast-Wheel/img-autos"})
+                            // const cloudy_data = cloudinary.uploader.upload(file, {use_filename : true, folder : "Fast-Wheel/img-autos"})
 
-                            cloudy_data.then((data) => {
-                                console.log(data);
-                                console.log(data.secure_url);
-                              }).catch((err) => {
-                                console.log(err);
-                              });
+                            // cloudy_data.then((data) => {
+                            //     console.log(data);
+                            //     console.log(data.secure_url);
+                            //   }).catch((err) => {
+                            //     console.log(err);
+                            //   });
                               
                               
-                              // Generate 
-                              const url = cloudinary.url(nombre, {
-                                width: 100,
-                                height: 150,
-                                Crop: 'fill'
-                              });
+                            //   // Generate 
+                            //   const url = cloudinary.url(nombre, {
+                            //     width: 100,
+                            //     height: 150,
+                            //     Crop: 'fill'
+                            //   });
 
 
 
@@ -652,7 +652,7 @@ const controlador = {
                                 transmission: dato.transmission,
                                 mileage: '0',
                                 pricexday: dato.pricexday,
-                                picture: secure_url,
+                                picture: picture,
                                 description: dato.description.trim(),
                                 id_category: dato.category,
                                 id_fuel: dato.fuel,
@@ -795,27 +795,27 @@ const controlador = {
                         } else {
 
 
-                            db.vehicles.findByPk(req.params.id)
-                            .then(function (resultado) {
-                                cloudinary.uploader.destroy(resultado.name)
-                            })
+                            // db.vehicles.findByPk(req.params.id)
+                            // .then(function (resultado) {
+                            //     cloudinary.uploader.destroy(resultado.name)
+                            // })
 
-                            const cloudy_data = cloudinary.uploader.upload(file, {use_filename : true, folder : "Fast-Wheel/img-autos"})
+                            // const cloudy_data = cloudinary.uploader.upload(file, {use_filename : true, folder : "Fast-Wheel/img-autos"})
 
-                            cloudy_data.then((data) => {
-                                console.log(data);
-                                console.log(data.secure_url);
-                              }).catch((err) => {
-                                console.log(err);
-                              });
+                            // cloudy_data.then((data) => {
+                            //     console.log(data);
+                            //     console.log(data.secure_url);
+                            //   }).catch((err) => {
+                            //     console.log(err);
+                            //   });
                               
                               
-                              // Generate 
-                              const url = cloudinary.url(nombre, {
-                                width: 100,
-                                height: 150,
-                                Crop: 'fill'
-                              });
+                            //   // Generate 
+                            //   const url = cloudinary.url(nombre, {
+                            //     width: 100,
+                            //     height: 150,
+                            //     Crop: 'fill'
+                            //   });
 
                             db.vehicles.update(
                                 {
@@ -825,7 +825,7 @@ const controlador = {
                                     transmission: dato.transmission,
                                     mileage: '0',
                                     pricexday: dato.pricexday,
-                                    picture: url,
+                                    picture: nombre,
                                     description: dato.description,
                                     id_category: dato.category,
                                     id_fuel: dato.fuel,
