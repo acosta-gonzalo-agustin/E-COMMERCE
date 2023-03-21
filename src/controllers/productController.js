@@ -612,8 +612,7 @@ const controlador = {
             if (req.files) {
                 const file = req.files.imagen;
 
-                console.log(file);
-                
+            
                 const nombre = Date.now() + file.name
                 const ruta = path.join(__dirname, '../../public/img/img-autos/' + nombre)
 
@@ -627,22 +626,22 @@ const controlador = {
                         } else {
 
 
-                            const cloudy_data = cloudinary.uploader.upload(file, {public_id: nombre})
+                            // const cloudy_data = cloudinary.uploader.upload(file, {public_id: nombre})
 
-                            cloudy_data.then((data) => {
-                                console.log(data);
-                                console.log(data.secure_url);
-                              }).catch((err) => {
-                                console.log(err);
-                              });
+                            // cloudy_data.then((data) => {
+                            //     console.log(data);
+                            //     console.log(data.secure_url);
+                            //   }).catch((err) => {
+                            //     console.log(err);
+                            //   });
                               
                               
-                              // Generate 
-                              const url = cloudinary.url(nombre, {
-                                width: 100,
-                                height: 150,
-                                Crop: 'fill'
-                              });
+                            //   // Generate 
+                            //   const url = cloudinary.url(nombre, {
+                            //     width: 100,
+                            //     height: 150,
+                            //     Crop: 'fill'
+                            //   });
 
 
 
