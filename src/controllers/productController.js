@@ -610,7 +610,7 @@ const controlador = {
             /*--------------------------CARGANDO FOTO--------------------------------------------*/
 
             if (req.files) {
-                const file = req.file.path;
+                const file = req.files.path;
 
                 console.log(file)
                 const nombre = Date.now() + file.name
