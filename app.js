@@ -7,30 +7,33 @@ const cookieParser = require('cookie-parser');
 const expressFileUpload = require('express-fileupload');
 const Logueado = require('./src/middlewares/Loggued');
 const userCookie = require('./src/middlewares/user_cookie');
-const cloudinary = require('cloudinary').v2;
+
+
 const cors = require('cors');
 
 
 
-// dsa// 
 
 app.use(cors())
 
 app.use(express.static(path.join(__dirname, './public')));
 
 
-/*------------------------------CLOUDINARY CONFIG --------------------------------*/
 
 
 
 
-// Configuration 
-cloudinary.config({
-  cloud_name: process.env.CLOUD_NAME,
-  api_key: process.env.API_KEY,
-  api_secret: process.env.API_SECRET
-});
 
+
+
+  /*----------------------------------------------RUTA DE EXPRESS FILE UPLOAD-------------------------------*/
+  app.use(expressFileUpload({
+    // limits: { fileSize: 512000 }, // 500kb
+    useTempFiles: true,
+    tempFileDir: './uploads/'
+
+  })
+  );
 
 
 /*------------------------------EXPRESS-SESSION A NIVEL APLICACION--------------------------------*/
@@ -66,7 +69,7 @@ const productRoute = require('./src/routes/productRoute');
 const citiesListingRoute = require('./src/routes/citiesListingRoute');
 const faqsRoute = require('./src/routes/faqsRoute');
 const userRoute = require('./src/routes/userRoute');
-const cloudyRoute = require('./src/routes/Cloudy');
+
 
 
 /*----------------------------ESTABLECIENDO EL MOTOR DE PLANTILLA -----------------------------------*/
@@ -87,12 +90,8 @@ const methodOverride = require('method-override');
 app.use(methodOverride('_method'));
 
 
-/*----------------------------------------------RUTA DE EXPRESS FILE UPLOAD-------------------------------*/
-app.use(expressFileUpload({
-    // limits: { fileSize: 512000 }, // 500kb
-    abortOnLimit: true
-  })
-  );
+
+
 
 
 
@@ -116,7 +115,7 @@ app.use('/FAQs',faqsRoute);
 
 app.use('/user',userRoute)
 
-app.use('/cloudys',cloudyRoute)
+
 
 
 

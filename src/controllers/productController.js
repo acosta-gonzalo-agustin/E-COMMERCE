@@ -1,10 +1,11 @@
-const fs = require('fs');
+const  fs =  require('fs');
 const path = require('path');
 const { validationResult } = require('express-validator');
-
 const db = require('../database/models');
 
+
 /* CLOUDINARY CONFIG */
+
 
 const cloudinary = require('cloudinary').v2;
 
@@ -16,6 +17,14 @@ cloudinary.config({
   api_secret: process.env.API_SECRET
 });
 
+
+
+ async function uploadImage(path_folder,folder) {
+        return  await cloudinary.uploader.upload(path_folder,{
+  folder
+})
+
+}
 
 
 
@@ -610,27 +619,68 @@ const controlador = {
             /*--------------------------CARGANDO FOTO--------------------------------------------*/
 
             if (req.files) {
-                const file = req.files.path;
 
-                console.log(file)
-                const nombre = Date.now() + file.name
-                const ruta = path.join(__dirname, '../../public/img/img-autos/' + nombre)
 
+                const file = req.files.imagen;
+                /*const fileRoute = req.file.path;*/
+                console.log(req.files)
+
+                nombre = Date.now() + file.name
 
                 // Upload
                 
                 if (file.mimetype == 'image/jpg' || file.mimetype == 'image/png' || file.mimetype == 'image/jpeg') {
-                    file.mv(ruta, (err) => {
-                        if (err) {
-                            return res.status(500).send(err);
-                        } else {
+                    
 
+                            let folder = 'Fast-Wheel/img-autos';
 
-                            const cloudy_data = cloudinary.uploader.upload(file, {use_filename : true, folder : "Fast-Wheel/img-autos"})
+                            const result =  uploadImage(file.tempFilePath,folder) ;
+                             
+                            result.then((data) => {
+                                
+                                db.vehicles.create({
+                                    name: dato.name.trim(),
+                                    plate_number: dato.plate_number.trim(),
+                                    seat_number: dato.seat_number,
+                                    transmission: dato.transmission,
+                                    mileage: '0',
+                                    pricexday: dato.pricexday,
+                                    secure_url: data.secure_url,
+                                    public_id: data.public_id,
+                                    description: dato.description.trim(),
+                                    id_category: dato.category,
+                                    id_fuel: dato.fuel,
+                                    id_brand: dato.brands,
+                                    id_city: dato.city,
+                                })
+                                    .then(function () {
+                                        if (dato.features != undefined) {
+    
+                                            db.vehicles.findOne({ order: [['id', 'DESC']] })
+                                                .then(function (resultado) {
+    
+    
+                                                    for (i of dato.features) {
+    
+                                                        db.vehicles_features.create({
+                                                            id_feature: i,
+                                                            id_vehicle: resultado.id,
+                                                        })
+    
+                                                    }
+                                                })
+                                        }
 
-                            cloudy_data.then((data) => {
-                                console.log(data);
-                                console.log(data.secure_url);
+                                        console.log(file.tempFilePath)
+
+                                        fs.unlinkSync(file.tempFilePath);
+    
+                                    })
+
+                                    
+
+                                res.redirect('/');
+                              
                               }).catch((err) => {
                                 console.log(err);
                               });
@@ -643,46 +693,11 @@ const controlador = {
                                 Crop: 'fill'
                               });
 
-
-
-                            db.vehicles.create({
-                                name: dato.name.trim(),
-                                plate_number: dato.plate_number.trim(),
-                                seat_number: dato.seat_number,
-                                transmission: dato.transmission,
-                                mileage: '0',
-                                pricexday: dato.pricexday,
-                                picture: nombre,
-                                description: dato.description.trim(),
-                                id_category: dato.category,
-                                id_fuel: dato.fuel,
-                                id_brand: dato.brands,
-                                id_city: dato.city,
-                            })
-                                .then(function () {
-                                    if (dato.features != undefined) {
-
-                                        db.vehicles.findOne({ order: [['id', 'DESC']] })
-                                            .then(function (resultado) {
-
-
-                                                for (i of dato.features) {
-
-                                                    db.vehicles_features.create({
-                                                        id_feature: i,
-                                                        id_vehicle: resultado.id,
-                                                    })
-
-                                                }
-                                            })
-                                    }
-
-                                })
-                            res.redirect('/');
-                        }
-
-                    });
-
+                              
+                              
+                                 
+                        
+                    
                 } else {
 
                     let brands = db.brands.findAll();
@@ -784,86 +799,48 @@ const controlador = {
             /*--------------------------CARGANDO FOTO--------------------------------------------*/
 
             if (req.files) {
+
                 const file = req.files.imagen;
-                const nombre = Date.now() + file.name
-                const ruta = path.join(__dirname, '../../public/img/img-autos/' + nombre)
+               
+
 
                 if (file.mimetype == 'image/jpg' || file.mimetype == 'image/png' || file.mimetype == 'image/jpeg') {
-                    file.mv(ruta, (err) => {
-                        if (err) {
-                            return res.status(500).send(err);
-                        } else {
-
+                 
+                    
 
                             db.vehicles.findByPk(req.params.id)
                             .then(function (resultado) {
-                                cloudinary.uploader.destroy(resultado.name)
+                                cloudinary.uploader.destroy(resultado.picture)
                             })
 
-                            const cloudy_data = cloudinary.uploader.upload(file, {use_filename : true, folder : "Fast-Wheel/img-autos"})
+                            let folder = 'Fast-Wheel/img-autos';
 
-                            cloudy_data.then((data) => {
-                                console.log(data);
-                                console.log(data.secure_url);
-                              }).catch((err) => {
-                                console.log(err);
-                              });
-                              
-                              
-                              // Generate 
-                              const url = cloudinary.url(nombre, {
-                                width: 100,
-                                height: 150,
-                                Crop: 'fill'
-                              });
+                            const result =  uploadImage(file.tempFilePath,folder) ;
+                     
+                            result.then((data) => {
 
-                            db.vehicles.update(
-                                {
-                                    name: dato.name,
-                                    plate_number: dato.plate_number,
-                                    seat_number: dato.seat_number,
-                                    transmission: dato.transmission,
-                                    mileage: '0',
-                                    pricexday: dato.pricexday,
-                                    picture: nombre,
-                                    description: dato.description,
-                                    id_category: dato.category,
-                                    id_fuel: dato.fuel,
-                                    id_brand: dato.brands,
-                                    id_city: dato.city,
-                                },
-                                { where: { id: req.params.id } }
-                            )
-                            // .then(function () {
-                            //     if (dato.features != undefined) {
-
-                            //         db.vehicles.findOne({ order: [['id', 'DESC']] })
-                            //             .then(function (resultado) {
-                            //                 console.log(resultado.id);
-
-                            //                 for (i of dato.features) {
-
-                            //                     db.vehicles_features.create({
-                            //                         id_feature: i,
-                            //                         id_vehicle: resultado.id,
-                            //                     })
-
-                            //                 }
-                            //             })
-                            //     }
-
-                            // })
-
-                            db.vehicles.findByPk(req.params.id)
-                                .then(function (resultado) {
-                                    fs.unlinkSync(path.join(__dirname, '../../public/img/img-autos/' + resultado.picture));
-
-                                })
-
-                            res.redirect('/');
-                        }
-
-                    });
+                                db.vehicles.update(
+                                    {
+                                        name: dato.name,
+                                        plate_number: dato.plate_number,
+                                        seat_number: dato.seat_number,
+                                        transmission: dato.transmission,
+                                        mileage: '0',
+                                        pricexday: dato.pricexday,
+                                        picture: data.secure_url,
+                                        description: dato.description,
+                                        id_category: dato.category,
+                                        id_fuel: dato.fuel,
+                                        id_brand: dato.brands,
+                                        id_city: dato.city,
+                                    },
+                                    { where: { id: req.params.id } }
+                                )
+                            })
+                        
+                        res.redirect('/');
+             
+                     
 
                 } else {
                     let error_tipo = 'El archivo debe tener formato jpg, jpeg,png';
