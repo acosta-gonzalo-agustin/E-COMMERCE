@@ -810,7 +810,7 @@ const controlador = {
 
                             db.vehicles.findByPk(req.params.id)
                             .then(function (resultado) {
-                                cloudinary.uploader.destroy(resultado.picture)
+                                cloudinary.uploader.destroy(resultado.public_id)
                             })
 
                             let folder = 'Fast-Wheel/img-autos';
@@ -827,7 +827,8 @@ const controlador = {
                                         transmission: dato.transmission,
                                         mileage: '0',
                                         pricexday: dato.pricexday,
-                                        picture: data.secure_url,
+                                        secure_url: data.secure_url,
+                                        public_id: data.public_id,
                                         description: dato.description,
                                         id_category: dato.category,
                                         id_fuel: dato.fuel,
@@ -963,7 +964,7 @@ const controlador = {
 
                     db.vehicles.findByPk(req.params.id)
                         .then(function (resultado) {
-                            cloudinary.uploader.destroy(resultado.name)
+                            cloudinary.uploader.destroy(resultado.public_id)
                         })
 
 
