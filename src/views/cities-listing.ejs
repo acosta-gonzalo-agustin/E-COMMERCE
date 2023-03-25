@@ -6,7 +6,7 @@
 
         <%for(i of cities) { %> 
           <div class="contene-city-1">
-            <img class="imagen-bsas" src ="https://res.cloudinary.com/dnxq6ul1l/image/upload/v1679335381/Fast-Wheel/img-cities/<%=i.picture%> ">
+            <img class="imagen-bsas" src ="<%=i.secure_url%> ">
             <h3 class="titulo-citys"><%=i.name%> </h3>
             <p class="parra-citys">
               <%=i.description%> 
