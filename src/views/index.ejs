@@ -291,7 +291,7 @@
             <%for(let i=0;i <4; i++) { %>
               <div class="card point">
                 <a href="/product/cities/<%=cities[i].id%>" class="">
-                  <!-- <img src="https://res.cloudinary.com/dnxq6ul1l/image/upload/v1679335381/Fast-Wheel/img-cities/<=cities[i].picture%>" class="card-img-top img-fluid" alt="..."> -->
+                  <img src="<%=cities[i].secure_url%>" class="card-img-top img-fluid" alt="...">
                   <div class="card-body">
                   </div>
                   <%=cities[i].name%>

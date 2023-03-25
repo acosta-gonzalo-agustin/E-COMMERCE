@@ -6,7 +6,7 @@ function citiesData(sequelize, Datatypes) {
         name:{type:Datatypes.STRING(19)},
         description:{type:Datatypes.TEXT},
         secure_url:{type:Datatypes.STRING(100)},
-        public_id: data.public_id,
+        public_id: {type:Datatypes.STRING(500)},
     };
     
     let config = {timestamps:false,camelCase:false,tableName:'city'};
