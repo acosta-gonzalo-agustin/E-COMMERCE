@@ -572,8 +572,20 @@ const controlador = {
                                 where: { id: req.session.booking.id }
                             })
 
+                    }).then(function () {
+
+                        db.bookings.findAndCountAll(
+                            {
+                                where: {id_user: req.session.user.id}
+                            },{
+                                offset: 10,
+                                limit: 2
+                            }
+                            )
+                            console.log(count)
                     })
-                    .then(function () {
+                    .then(function(data) {
+                        // console.log(count)
                         delete req.session.booking;
                         res.redirect('/');
                     })
